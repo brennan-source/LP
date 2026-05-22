@@ -1,25 +1,29 @@
 import { PrismaClient } from "@prisma/client";
 import { PrismaLibSql } from "@prisma/adapter-libsql";
 
-function createPrismaClient() {
+function createPrismaClient(): PrismaClient {
   const url = process.env.DATABASE_URL;
   const authToken = process.env.DATABASE_AUTH_TOKEN;
-
   if (!url) throw new Error("DATABASE_URL is not set");
-
-  // Local sqlite file — used in dev
-  if (url.startsWith("file:")) {
-    const adapter = new PrismaLibSql({ url: `libsql+${url}` });
-    return new PrismaClient({ adapter } as ConstructorParameters<typeof PrismaClient>[0]);
-  }
-
-  // Turso / remote libsql
-  const adapter = new PrismaLibSql({ url, authToken });
+  const adapter = new PrismaLibSql(url.startsWith("file:") ? { url: `libsql+${url}` } : { url, authToken });
   return new PrismaClient({ adapter } as ConstructorParameters<typeof PrismaClient>[0]);
 }
 
-const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
+// Lazy singleton — client is created on first access, not at module load time.
+// This prevents build-time errors when DATABASE_URL is not set in the environment.
+let _prisma: PrismaClient | null = null;
 
-export const prisma = globalForPrisma.prisma ?? createPrismaClient();
+function getPrisma(): PrismaClient {
+  if (!_prisma) {
+    const g = globalThis as unknown as { _lpPrisma?: PrismaClient };
+    _prisma = g._lpPrisma ?? createPrismaClient();
+    if (process.env.NODE_ENV !== "production") g._lpPrisma = _prisma;
+  }
+  return _prisma;
+}
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+export const prisma: PrismaClient = new Proxy({} as PrismaClient, {
+  get(_t, prop) {
+    return (getPrisma() as unknown as Record<string | symbol, unknown>)[prop];
+  },
+});
