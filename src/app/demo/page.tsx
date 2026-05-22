@@ -50,7 +50,7 @@ export default function DemoPage() {
         body: JSON.stringify(DEMO_BIZ),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed to start audit");
+      if (!res.ok) throw new Error(data.error || "Unknown error — check Vercel function logs");
 
       setStep("running");
 
