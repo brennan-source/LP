@@ -7,7 +7,7 @@ const PRODUCTS = [
     color: "bg-slate-50 border-slate-200",
     headerColor: "bg-slate-800 text-white",
     items: [
-      { name: "AI Readiness Assessment", price: "$19", desc: "Full scorecard with savings calculator" },
+      { name: "AI Readiness Assessment", price: "$15", desc: "Full scorecard with savings calculator" },
       { name: "AI Basics for Business Owners", price: "$197", desc: "Self-paced course, tools & workflow" },
       { name: "Full Course Bundle (3 courses)", price: "$497", desc: "AI for Marketing, Operations & Finance" },
     ],
@@ -77,10 +77,10 @@ export default function Home() {
             Get My AI Readiness Score <ArrowRight className="w-5 h-5" />
           </Link>
           <div className="text-slate-500 text-sm">
-            <span className="font-bold text-slate-700 text-2xl mr-1">$19</span> · free to complete · pay to unlock full report
+            <span className="font-bold text-slate-700 text-2xl mr-1">$15</span> · free to complete · pay to unlock full report
           </div>
         </div>
-        <p className="text-xs text-slate-400">LeadPulse customers save 25% with code LEADPULSE</p>
+        <p className="text-xs text-slate-400">LeadPulse report holders: use your invite code for <strong>$12</strong> ($3 off)</p>
       </section>
 
       {/* Impact metrics */}
@@ -134,7 +134,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-black text-slate-900 mb-3">Products for every stage</h2>
-            <p className="text-slate-500">From a $19 assessment to a $45K custom AI build — we meet you where you are.</p>
+            <p className="text-slate-500">From a $15 assessment to a $45K custom AI build — we meet you where you are.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {PRODUCTS.map((tier, i) => (
@@ -172,7 +172,7 @@ export default function Home() {
             { n: "1", t: "Enter business info", d: "Name, website, location, team size — 2 minutes." },
             { n: "2", t: "We scan your website", d: "Automated analysis of your current tech stack and tools." },
             { n: "3", t: "Answer 15 questions", d: "About your processes, AI usage, and biggest time drains." },
-            { n: "4", t: "Pay $19, get your report", d: "Full scorecard + savings estimates + 3-phase roadmap." },
+            { n: "4", t: "Pay $15, get your report", d: "Full scorecard + savings estimates + 3-phase roadmap." },
           ].map((s, i) => (
             <div key={i} className="text-center">
               <div className="w-12 h-12 bg-violet-600 text-white rounded-xl flex items-center justify-center text-xl font-black mx-auto mb-3">{s.n}</div>
@@ -187,14 +187,14 @@ export default function Home() {
       <section className="bg-gradient-to-br from-violet-600 to-indigo-700 py-20 text-center text-white">
         <h2 className="text-4xl font-black mb-4">Your AI transformation starts with knowing where you stand.</h2>
         <p className="text-violet-200 text-lg max-w-xl mx-auto mb-8">
-          Take the 10-minute assessment. Get a dollar-quantified readiness score and a custom roadmap for $19.
+          Take the 10-minute assessment. Get a dollar-quantified readiness score and a custom roadmap for $15.
         </p>
         <Link href="/assess" className="inline-flex items-center gap-2 bg-white text-violet-700 font-bold px-12 py-5 rounded-xl text-xl hover:bg-violet-50 transition-colors shadow-xl">
           Start My Free Assessment <ArrowRight className="w-6 h-6" />
         </Link>
         <div className="mt-4 flex justify-center gap-6 text-sm text-violet-300">
           <span className="flex items-center gap-1"><CheckCircle className="w-4 h-4" />Free to complete</span>
-          <span className="flex items-center gap-1"><CheckCircle className="w-4 h-4" />$19 to unlock full report</span>
+          <span className="flex items-center gap-1"><CheckCircle className="w-4 h-4" />$15 to unlock full report</span>
           <span className="flex items-center gap-1"><CheckCircle className="w-4 h-4" />Money-back guarantee</span>
         </div>
       </section>

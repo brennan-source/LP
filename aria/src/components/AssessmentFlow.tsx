@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Loader2, ArrowRight, ArrowLeft, CheckCircle, Building2, Globe, MapPin, Mail, Briefcase, Users, DollarSign, Phone } from "lucide-react";
 
@@ -91,11 +91,12 @@ const RadioGroup = ({ name, value, onChange, options }: {
 
 export function AssessmentFlow() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [step, setStep] = useState<"business" | "scanning" | "quiz" | "submitting">("business");
   const [assessmentId, setAssessmentId] = useState<string>("");
   const [quizPage, setQuizPage] = useState(0);
   const [error, setError] = useState("");
-  const [coupon, setCoupon] = useState("");
+  const [coupon, setCoupon] = useState(searchParams.get("coupon") || "");
   const [loading, setLoading] = useState(false);
 
   const [biz, setBiz] = useState<BusinessForm>({
@@ -428,7 +429,7 @@ export function AssessmentFlow() {
             <input type="email" required placeholder="you@yourbusiness.com" value={biz.email} onChange={setBizField("email")} className={inputCls} />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1.5">LeadPulse coupon code <span className="font-normal text-slate-400">(25% off if you have one)</span></label>
+            <label className="block text-sm font-medium text-slate-700 mb-1.5">LeadPulse invite code <span className="font-normal text-slate-400">($12 instead of $15)</span></label>
             <input type="text" placeholder="e.g. LEADPULSE" value={coupon} onChange={(e) => setCoupon(e.target.value)} className={inputCls} />
           </div>
         </div>
@@ -436,7 +437,7 @@ export function AssessmentFlow() {
         <button type="submit" disabled={loading} className="w-full bg-violet-600 hover:bg-violet-700 disabled:opacity-60 text-white font-bold py-4 rounded-xl text-lg flex items-center justify-center gap-2 transition-colors">
           {loading ? <><Loader2 className="w-5 h-5 animate-spin" />Starting...</> : <>Start Free Assessment <ArrowRight className="w-5 h-5" /></>}
         </button>
-        <p className="text-center text-xs text-slate-400">Free to complete · $19 to unlock your full report</p>
+        <p className="text-center text-xs text-slate-400">Free to complete · $15 to unlock · $12 with LeadPulse invite code</p>
       </form>
     );
   }
@@ -502,7 +503,7 @@ export function AssessmentFlow() {
             className="flex-1 bg-violet-600 hover:bg-violet-700 disabled:opacity-50 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors"
           >
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle className="w-4 h-4" />}
-            Get My AI Score — $19
+            Get My AI Score — $15
           </button>
         ) : (
           <button

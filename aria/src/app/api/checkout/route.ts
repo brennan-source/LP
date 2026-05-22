@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe, ASSESSMENT_PRICE_CENTS } from "@/lib/stripe";
 import { prisma } from "@/lib/db";
+import { buildReport } from "@/lib/assess";
+import { QuizAnswers, ScanResults } from "@/types/assessment";
+
+const COUPON_CODE = process.env.ARIA_COUPON_CODE || "LEADPULSE";
+const COUPON_DISCOUNT_CENTS = parseInt(process.env.ARIA_COUPON_DISCOUNT_CENTS || "300");
+const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,15 +15,20 @@ export async function POST(req: NextRequest) {
     if (!a) return NextResponse.json({ error: "Assessment not found" }, { status: 404 });
 
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3001";
-
-    // Bundle discount: if coupon = "LEADPULSE", apply 25% off
-    const isBundleDiscount = coupon?.toUpperCase() === "LEADPULSE";
-    const finalPrice = isBundleDiscount
-      ? Math.round(ASSESSMENT_PRICE_CENTS * 0.75)
+    const isCoupon = coupon?.toUpperCase() === COUPON_CODE.toUpperCase();
+    const finalPrice = isCoupon
+      ? ASSESSMENT_PRICE_CENTS - COUPON_DISCOUNT_CENTS
       : ASSESSMENT_PRICE_CENTS;
 
-    const description = isBundleDiscount
-      ? "AI Readiness Assessment — Bundle discount with LeadPulse (25% off)"
+    // Demo/dev mode: skip Stripe, generate report directly
+    if (DEMO_MODE) {
+      await prisma.assessment.update({ where: { id: assessmentId }, data: { paid: true } });
+      generateReportAsync(a);
+      return NextResponse.json({ url: `${appUrl}/report/${assessmentId}?demo=1` });
+    }
+
+    const description = isCoupon
+      ? `AI Readiness Assessment — LeadPulse member price ($${(finalPrice / 100).toFixed(0)})`
       : "Aria AI Readiness Assessment — full report with savings estimates and custom roadmap";
 
     const session = await stripe.checkout.sessions.create({
@@ -38,7 +49,7 @@ export async function POST(req: NextRequest) {
       mode: "payment",
       customer_email: a.email,
       success_url: `${appUrl}/report/${assessmentId}?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${appUrl}/assess/${assessmentId}?cancelled=true`,
+      cancel_url: `${appUrl}/assess?cancelled=true`,
       metadata: { assessmentId },
     });
 
@@ -51,5 +62,27 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Checkout error:", error);
     return NextResponse.json({ error: "Failed to create checkout" }, { status: 500 });
+  }
+}
+
+async function generateReportAsync(a: {
+  id: string; businessName: string; websiteUrl: string;
+  industry: string; city: string; state: string;
+  quizAnswers: string | null; scanResults: string | null;
+}) {
+  try {
+    const quiz: QuizAnswers = a.quizAnswers ? JSON.parse(a.quizAnswers) : {};
+    const scan: ScanResults = a.scanResults ? JSON.parse(a.scanResults) : {};
+    const report = await buildReport(
+      a.id, a.businessName, a.websiteUrl,
+      a.industry, a.city, a.state, quiz, scan
+    );
+    const { prisma: db } = await import("@/lib/db");
+    await db.assessment.update({
+      where: { id: a.id },
+      data: { report: JSON.stringify(report), status: "complete" },
+    });
+  } catch (error) {
+    console.error("Report generation failed:", error);
   }
 }

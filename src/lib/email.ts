@@ -51,6 +51,17 @@ export async function sendReportEmail(toEmail: string, results: AuditResults): P
     <a href="${reportUrl}" style="background: #3b82f6; color: white; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 16px; display: inline-block;">View Your Full Report →</a>
   </div>
 
+  <div style="margin-top: 32px; background: linear-gradient(135deg, #4c1d95, #3730a3); border-radius: 12px; padding: 24px; text-align: center;">
+    <p style="color: #c4b5fd; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 8px;">Exclusive member offer</p>
+    <h3 style="color: white; font-size: 18px; font-weight: 800; margin: 0 0 8px;">Your AI Readiness Score — $12</h3>
+    <p style="color: #c4b5fd; font-size: 14px; margin: 0 0 16px;">
+      As a LeadPulse report holder, you're invited to take the Aria AI Readiness Assessment at our member price.<br>
+      Use code <strong style="color: white; background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 4px;">LEADPULSE</strong> at checkout — normally $15, yours for $12.
+    </p>
+    <p style="color: #a5b4fc; font-size: 13px; margin: 0 0 16px;">8 scored categories · estimated monthly savings · custom AI roadmap</p>
+    <a href="${process.env.NEXT_PUBLIC_ARIA_URL || "https://aria.ai"}/assess?coupon=LEADPULSE" style="background: white; color: #4c1d95; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-weight: 700; font-size: 15px; display: inline-block;">Get My AI Score for $12 →</a>
+  </div>
+
   <p style="color: #94a3b8; font-size: 12px; text-align: center; margin-top: 32px;">
     LeadPulse · Your lead generation score card<br>
     <a href="${reportUrl}" style="color: #3b82f6;">View full report</a>

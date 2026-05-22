@@ -1,10 +1,11 @@
+import { Suspense } from "react";
 import { AssessmentFlow } from "@/components/AssessmentFlow";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Loader2 } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
   title: "AI Readiness Assessment — Aria",
-  description: "Find out exactly where AI can save your business money and increase revenue. Free to complete, $19 to unlock your full report.",
+  description: "Find out exactly where AI can save your business money and increase revenue. Free to complete, $15 to unlock your full report.",
 };
 
 export default function AssessPage() {
@@ -25,7 +26,7 @@ export default function AssessPage() {
             10 minutes. 8 scored categories. A dollar-quantified gap analysis and custom AI roadmap.
           </p>
           <div className="mt-4 flex items-center justify-center gap-2">
-            <span className="text-3xl font-black text-violet-600">$19</span>
+            <span className="text-3xl font-black text-violet-600">$15</span>
             <span className="text-slate-400 text-sm">to unlock full report · free to complete</span>
           </div>
         </div>
@@ -45,11 +46,13 @@ export default function AssessPage() {
         </div>
 
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
-          <AssessmentFlow />
+          <Suspense fallback={<div className="flex justify-center py-8"><Loader2 className="w-6 h-6 animate-spin text-violet-500" /></div>}>
+            <AssessmentFlow />
+          </Suspense>
         </div>
 
         <p className="text-center text-xs text-slate-400 mt-6">
-          LeadPulse customers: enter code <strong>LEADPULSE</strong> for 25% off
+          LeadPulse report holders: enter code <strong>LEADPULSE</strong> for $12 (save $3)
         </p>
       </div>
     </div>
