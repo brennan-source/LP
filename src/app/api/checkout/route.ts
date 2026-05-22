@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe, AUDIT_PRICE_CENTS } from "@/lib/stripe";
 import { prisma } from "@/lib/db";
+import { runAudit } from "@/lib/audit";
+import { sendReportEmail } from "@/lib/email";
 import { normalizeUrl } from "@/lib/utils";
+
+const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
 
 export async function POST(req: NextRequest) {
   try {
@@ -27,6 +31,16 @@ export async function POST(req: NextRequest) {
     });
 
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+
+    // Demo mode: skip Stripe, run audit directly
+    if (DEMO_MODE) {
+      await prisma.auditJob.update({
+        where: { id: job.id },
+        data: { paid: true, status: "running" },
+      });
+      runAuditAsync({ ...job, websiteUrl: normalizeUrl(websiteUrl) });
+      return NextResponse.json({ url: `${appUrl}/report/${job.id}?demo=1`, jobId: job.id });
+    }
 
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
@@ -64,5 +78,31 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Checkout error:", error);
     return NextResponse.json({ error: "Failed to create checkout session" }, { status: 500 });
+  }
+}
+
+async function runAuditAsync(job: {
+  id: string; businessName: string; websiteUrl: string;
+  phoneNumber: string | null; industry: string;
+  city: string; state: string; email: string;
+}) {
+  try {
+    const results = await runAudit(job.id, {
+      businessName: job.businessName,
+      websiteUrl: job.websiteUrl,
+      phoneNumber: job.phoneNumber || undefined,
+      industry: job.industry,
+      city: job.city,
+      state: job.state,
+      email: job.email,
+    });
+    await prisma.auditJob.update({
+      where: { id: job.id },
+      data: { status: "complete", results: JSON.stringify(results) },
+    });
+    await sendReportEmail(job.email, results);
+  } catch (error) {
+    console.error("Demo audit failed:", error);
+    await prisma.auditJob.update({ where: { id: job.id }, data: { status: "failed" } });
   }
 }
