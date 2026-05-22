@@ -7,7 +7,7 @@ import { QuizAnswers, ScanResults } from "@/types/assessment";
 
 const COUPON_CODE = process.env.ARIA_COUPON_CODE || "LEADPULSE";
 const COUPON_DISCOUNT_CENTS = parseInt(process.env.ARIA_COUPON_DISCOUNT_CENTS || "300");
-const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
+const DEMO_MODE = process.env.DEMO_MODE === "true";
 
 export async function POST(req: NextRequest) {
   try {

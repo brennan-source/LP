@@ -5,7 +5,7 @@ import { runAudit } from "@/lib/audit";
 import { sendReportEmail } from "@/lib/email";
 import { normalizeUrl } from "@/lib/utils";
 
-const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
+const DEMO_MODE = process.env.DEMO_MODE === "true";
 
 export async function POST(req: NextRequest) {
   try {
