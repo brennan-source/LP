@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { prisma } from "@/lib/db";
 import { buildReport } from "@/lib/assess";
+import { sendAriaReportEmail } from "@/lib/email";
 import { QuizAnswers, ScanResults } from "@/types/assessment";
 import Stripe from "stripe";
 
@@ -37,7 +38,7 @@ export async function POST(req: NextRequest) {
 
 async function generateReportAsync(a: {
   id: string; businessName: string; websiteUrl: string;
-  industry: string; city: string; state: string;
+  industry: string; city: string; state: string; email: string;
   quizAnswers: string | null; scanResults: string | null;
 }) {
   try {
@@ -53,6 +54,8 @@ async function generateReportAsync(a: {
       where: { id: a.id },
       data: { report: JSON.stringify(report), status: "complete" },
     });
+
+    await sendAriaReportEmail(a.email, report);
   } catch (error) {
     console.error("Report generation failed:", error);
     await prisma.assessment.update({ where: { id: a.id }, data: { status: "failed" } });

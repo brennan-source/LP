@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { stripe, ASSESSMENT_PRICE_CENTS } from "@/lib/stripe";
 import { prisma } from "@/lib/db";
 import { buildReport } from "@/lib/assess";
+import { sendAriaReportEmail } from "@/lib/email";
 import { QuizAnswers, ScanResults } from "@/types/assessment";
 
 const COUPON_CODE = process.env.ARIA_COUPON_CODE || "LEADPULSE";
@@ -67,7 +68,7 @@ export async function POST(req: NextRequest) {
 
 async function generateReportAsync(a: {
   id: string; businessName: string; websiteUrl: string;
-  industry: string; city: string; state: string;
+  industry: string; city: string; state: string; email: string;
   quizAnswers: string | null; scanResults: string | null;
 }) {
   try {
@@ -77,11 +78,11 @@ async function generateReportAsync(a: {
       a.id, a.businessName, a.websiteUrl,
       a.industry, a.city, a.state, quiz, scan
     );
-    const { prisma: db } = await import("@/lib/db");
-    await db.assessment.update({
+    await prisma.assessment.update({
       where: { id: a.id },
       data: { report: JSON.stringify(report), status: "complete" },
     });
+    await sendAriaReportEmail(a.email, report);
   } catch (error) {
     console.error("Report generation failed:", error);
   }
