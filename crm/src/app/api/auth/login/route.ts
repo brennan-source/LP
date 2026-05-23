@@ -1,4 +1,5 @@
-import { checkPassword, createSessionToken, setSessionCookie } from "@/lib/auth";
+import { checkPassword, createSessionToken, COOKIE_NAME } from "@/lib/auth";
+import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
@@ -14,9 +15,15 @@ export async function POST(request: Request) {
     }
 
     const token = createSessionToken();
-    await setSessionCookie(token);
-
-    return Response.json({ ok: true });
+    const response = NextResponse.json({ ok: true });
+    response.cookies.set(COOKIE_NAME, token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 30,
+    });
+    return response;
   } catch (err) {
     const message = err instanceof Error ? err.message : "Internal server error";
     return Response.json({ error: message }, { status: 500 });
