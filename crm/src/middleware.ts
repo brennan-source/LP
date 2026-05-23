@@ -4,9 +4,10 @@ import { validateSessionToken, COOKIE_NAME } from "@/lib/auth";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Allow login page and webhook routes
+  // Allow login page, auth routes, and webhook routes
   if (
     pathname === "/login" ||
+    pathname.startsWith("/api/auth/") ||
     pathname.startsWith("/api/webhook/")
   ) {
     return NextResponse.next();
