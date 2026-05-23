@@ -48,3 +48,6 @@ aria/node_modules
 aria/.next
 screenshots/
 .claude/
+crm/.next/
+crm/node_modules/
+crm/package-lock.json
