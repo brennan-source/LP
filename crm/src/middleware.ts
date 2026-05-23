@@ -15,7 +15,12 @@ export function middleware(request: NextRequest) {
 
   const token = request.cookies.get(COOKIE_NAME)?.value;
 
-  if (!token || !validateSessionToken(token)) {
+  try {
+    if (!token || !validateSessionToken(token)) {
+      const loginUrl = new URL("/login", request.url);
+      return NextResponse.redirect(loginUrl);
+    }
+  } catch {
     const loginUrl = new URL("/login", request.url);
     return NextResponse.redirect(loginUrl);
   }
