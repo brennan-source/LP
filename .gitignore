@@ -47,3 +47,4 @@ aria/.env
 aria/node_modules
 aria/.next
 screenshots/
+.claude/
