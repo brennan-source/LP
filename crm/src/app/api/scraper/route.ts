@@ -18,17 +18,18 @@ export async function POST(request: Request) {
     let newCount = 0;
 
     for (const contact of scraped) {
-      if (!contact.email) continue;
+      const email = contact.email
+        ?? `${contact.businessName.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.${city.toLowerCase()}.${state.toLowerCase()}@scrape.local`;
 
       try {
         const existing = await prisma.contact.findUnique({
-          where: { email: contact.email },
+          where: { email },
         });
 
         if (!existing) {
           await prisma.contact.create({
             data: {
-              email: contact.email,
+              email,
               businessName: contact.businessName ?? null,
               phone: contact.phone ?? null,
               website: contact.website ?? null,
