@@ -16,22 +16,45 @@ function filterEmail(email: string): boolean {
   return !SKIP_PREFIXES.some((prefix) => lower.startsWith(prefix));
 }
 
-async function fetchWebsiteEmails(websiteUrl: string): Promise<string[]> {
+const CONTACT_PATHS = ["/contact", "/contact-us", "/about", "/about-us", "/get-in-touch", "/reach-us"];
+
+async function fetchPageEmails(url: string): Promise<string[]> {
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 8000);
-    const res = await fetch(websiteUrl, {
+    const res = await fetch(url, {
       signal: controller.signal,
       headers: { "User-Agent": "Mozilla/5.0 (compatible; CRMBot/1.0)" },
     });
     clearTimeout(timeout);
     if (!res.ok) return [];
     const html = await res.text();
-    const found = html.match(EMAIL_REGEX) ?? [];
-    return [...new Set(found.filter(filterEmail))];
+
+    // mailto: links are the most reliable signal
+    const mailtoEmails = [...html.matchAll(/mailto:([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g)]
+      .map((m) => m[1]);
+
+    const regexEmails = html.match(EMAIL_REGEX) ?? [];
+    return [...new Set([...mailtoEmails, ...regexEmails].filter(filterEmail))];
   } catch {
     return [];
   }
+}
+
+async function fetchWebsiteEmails(websiteUrl: string): Promise<string[]> {
+  const base = websiteUrl.replace(/\/$/, "");
+
+  // Check homepage and contact/about subpages in parallel
+  const pages = [base, ...CONTACT_PATHS.map((p) => base + p)];
+  const results = await Promise.all(pages.map(fetchPageEmails));
+  const all = results.flat();
+
+  // Prefer emails on the same domain over any generic ones
+  let domain: string | undefined;
+  try { domain = new URL(base).hostname.replace(/^www\./, ""); } catch { /* ignore */ }
+
+  const onDomain = all.filter((e) => domain && e.toLowerCase().endsWith("@" + domain));
+  return onDomain.length > 0 ? [...new Set(onDomain)] : [...new Set(all)];
 }
 
 interface PlaceResult {
