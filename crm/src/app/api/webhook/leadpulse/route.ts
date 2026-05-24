@@ -1,50 +1,72 @@
-import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 
-export async function POST(req: NextRequest) {
+export async function POST(request: Request) {
   try {
-    const body = await req.json();
-    const { event, customer } = body;
-    if (!customer?.email) {
-      return NextResponse.json({ error: "Missing customer data" }, { status: 400 });
+    const body = await request.json();
+    const { email, businessName, city, state, industry, jobId } = body;
+
+    if (!email) {
+      return Response.json({ error: "email is required" }, { status: 400 });
     }
 
-    let contact = await prisma.contact.findFirst({ where: { email: customer.email } });
-
-    if (!contact) {
-      contact = await prisma.contact.create({
-        data: {
-          name: customer.name ?? customer.email,
-          email: customer.email,
-          phone: customer.phone ?? null,
-          business: customer.business ?? "Unknown",
-          industry: customer.industry ?? "Unknown",
-          city: customer.city ?? "Unknown",
-          state: customer.state ?? "Unknown",
-          status: event === "purchase" ? "customer" : "lead",
-          source: "webhook",
-          product: "lp",
-        },
-      });
-    } else if (event === "purchase") {
-      await prisma.contact.update({
-        where: { id: contact.id },
-        data: { status: "customer", product: contact.product === "aria" ? "both" : "lp" },
-      });
-    }
-
-    await prisma.activity.create({
-      data: {
-        contactId: contact.id,
-        type: event ?? "webhook",
-        title: `LeadPulse: ${event ?? "event"}`,
-        body: JSON.stringify(body),
+    // Upsert contact
+    const contact = await prisma.contact.upsert({
+      where: { email },
+      create: {
+        email,
+        businessName: businessName ?? null,
+        city: city ?? null,
+        state: state ?? null,
+        industry: industry ?? null,
+        stage: "customer",
+        source: "leadpulse_webhook",
+      },
+      update: {
+        businessName: businessName ?? undefined,
+        city: city ?? undefined,
+        state: state ?? undefined,
+        industry: industry ?? undefined,
+        stage: "customer",
       },
     });
 
-    return NextResponse.json({ ok: true });
+    // Upsert ContactProduct for leadpulse
+    const existingProduct = await prisma.contactProduct.findFirst({
+      where: {
+        contactId: contact.id,
+        product: "leadpulse",
+      },
+    });
+
+    if (!existingProduct) {
+      await prisma.contactProduct.create({
+        data: {
+          contactId: contact.id,
+          product: "leadpulse",
+          status: "paid",
+          paidAt: new Date(),
+        },
+      });
+    } else {
+      await prisma.contactProduct.update({
+        where: { id: existingProduct.id },
+        data: { status: "paid", paidAt: existingProduct.paidAt ?? new Date() },
+      });
+    }
+
+    // Log activity
+    await prisma.activity.create({
+      data: {
+        contactId: contact.id,
+        type: "purchase",
+        description: "Purchased LeadPulse audit",
+        metadata: jobId ? JSON.stringify({ jobId }) : null,
+      },
+    });
+
+    return Response.json({ ok: true, contactId: contact.id });
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
-    return NextResponse.json({ error: message }, { status: 500 });
+    const message = err instanceof Error ? err.message : "Internal server error";
+    return Response.json({ error: message }, { status: 500 });
   }
 }

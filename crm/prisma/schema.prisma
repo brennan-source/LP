@@ -7,30 +7,63 @@ datasource db {
 }
 
 model Contact {
-  id         String     @id @default(cuid())
-  name       String
-  email      String?
-  phone      String?
-  business   String
-  industry   String
-  city       String
-  state      String
-  website    String?
-  status     String     @default("prospect")
-  source     String     @default("manual")
-  product    String?
-  notes      String?
-  createdAt  DateTime   @default(now())
-  updatedAt  DateTime   @updatedAt
-  activities Activity[]
+  id           String   @id @default(cuid())
+  firstName    String?
+  lastName     String?
+  email        String   @unique
+  phone        String?
+  businessName String?
+  industry     String?
+  city         String?
+  state        String?
+  website      String?
+  stage        String   @default("prospect")
+  source       String   @default("scraped")
+  tags         String?
+  notes        Note[]
+  activities   Activity[]
+  products     ContactProduct[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
-model Activity {
+model ContactProduct {
+  id         String    @id @default(cuid())
+  contactId  String
+  contact    Contact   @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  product    String
+  status     String    @default("prospect")
+  paidAt     DateTime?
+  valuecents Int?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Note {
   id        String   @id @default(cuid())
   contactId String
   contact   Contact  @relation(fields: [contactId], references: [id], onDelete: Cascade)
-  type      String
-  title     String
-  body      String?
+  content   String
   createdAt DateTime @default(now())
+}
+
+model Activity {
+  id          String   @id @default(cuid())
+  contactId   String
+  contact     Contact  @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  type        String
+  description String?
+  metadata    String?
+  createdAt   DateTime @default(now())
+}
+
+model Campaign {
+  id        String   @id @default(cuid())
+  name      String
+  subject   String
+  body      String
+  status    String   @default("draft")
+  sentCount Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
