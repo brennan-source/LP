@@ -63,9 +63,10 @@ export default function CampaignsClient({ campaigns }: Props) {
               {campaigns.map((campaign, i) => (
                 <tr
                   key={campaign.id}
-                  className={`hover:bg-slate-700/50 transition ${
+                  className={`hover:bg-slate-700/50 transition cursor-pointer ${
                     i < campaigns.length - 1 ? "border-b border-slate-700/50" : ""
                   }`}
+                  onClick={() => window.location.href = `/campaigns/${campaign.id}`}
                 >
                   <td className="px-4 py-3">
                     <span className="font-medium text-white">{campaign.name}</span>
