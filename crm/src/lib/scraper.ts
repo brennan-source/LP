@@ -76,8 +76,8 @@ function extractCityState(place: PlaceResult): { city?: string; state?: string }
   let city: string | undefined;
   let state: string | undefined;
   for (const comp of components) {
-    if (comp.types.includes("locality")) city = comp.longText;
-    if (comp.types.includes("administrative_area_level_1")) state = comp.longText;
+    if (comp.types?.includes("locality")) city = comp.longText;
+    if (comp.types?.includes("administrative_area_level_1")) state = comp.longText;
   }
   return { city, state };
 }
