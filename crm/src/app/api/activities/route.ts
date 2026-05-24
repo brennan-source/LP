@@ -4,12 +4,12 @@ import { prisma } from "@/lib/db";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { contactId, type, title, body: bodyText } = body;
-    if (!contactId || !type || !title) {
+    const { contactId, type, description, metadata } = body;
+    if (!contactId || !type) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
     const activity = await prisma.activity.create({
-      data: { contactId, type, title, body: bodyText || null },
+      data: { contactId, type, description: description || null, metadata: metadata || null },
     });
     return NextResponse.json(activity, { status: 201 });
   } catch (err) {
