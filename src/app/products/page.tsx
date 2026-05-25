@@ -208,9 +208,9 @@ export default function ProductsPage() {
                     </li>
                   ))}
                 </ul>
-                <button className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-sm transition-colors flex items-center justify-center gap-1.5">
+                <a href="mailto:brennan@teamaria.ai?subject=LeadPulse Bundle Inquiry" className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-sm transition-colors flex items-center justify-center gap-1.5">
                   Get Started <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             ))}
           </div>
@@ -247,9 +247,9 @@ export default function ProductsPage() {
                     </li>
                   ))}
                 </ul>
-                <button className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-sm transition-colors">
+                <a href={`mailto:brennan@teamaria.ai?subject=LeadPulse - ${tool.name}`} className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-sm transition-colors block text-center">
                   {tool.cta}
-                </button>
+                </a>
               </div>
             ))}
           </div>
