@@ -63,6 +63,7 @@ export async function PATCH(
       city,
       state,
       website,
+      linkedinUrl,
       stage,
       tags,
     } = body;
@@ -77,6 +78,7 @@ export async function PATCH(
     if (city !== undefined) data.city = city;
     if (state !== undefined) data.state = state;
     if (website !== undefined) data.website = website;
+    if (linkedinUrl !== undefined) data.linkedinUrl = linkedinUrl;
     if (stage !== undefined) data.stage = stage;
     if (tags !== undefined) data.tags = tags;
 

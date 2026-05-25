@@ -29,6 +29,7 @@ export async function PATCH(
 
     const data: Record<string, unknown> = {};
     if (body.name !== undefined) data.name = body.name;
+    if (body.type !== undefined) data.type = body.type;
     if (body.subject !== undefined) data.subject = body.subject;
     if (body.body !== undefined) data.body = body.body;
     if (body.status !== undefined) data.status = body.status;

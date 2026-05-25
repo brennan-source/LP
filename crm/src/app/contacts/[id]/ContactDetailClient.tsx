@@ -12,6 +12,7 @@ const ACTIVITY_ICONS: Record<string, string> = {
   stage_change: "🔄",
   email: "📧",
   call: "📞",
+  linkedin: "🔗",
 };
 
 function formatDate(dateStr: string) {
@@ -42,6 +43,7 @@ export default function ContactDetailClient({ contact: initial }: Props) {
     city: contact.city ?? "",
     state: contact.state ?? "",
     website: contact.website ?? "",
+    linkedinUrl: contact.linkedinUrl ?? "",
     tags: contact.tags ?? "",
   });
   const [saving, setSaving] = useState(false);
@@ -266,6 +268,15 @@ export default function ContactDetailClient({ contact: initial }: Props) {
                     className="input"
                   />
                 </Field>
+                <Field label="LinkedIn URL">
+                  <input
+                    type="url"
+                    value={form.linkedinUrl}
+                    placeholder="https://linkedin.com/in/..."
+                    onChange={(e) => setForm((f) => ({ ...f, linkedinUrl: e.target.value }))}
+                    className="input"
+                  />
+                </Field>
                 <Field label="Tags">
                   <input
                     type="text"
@@ -303,6 +314,21 @@ export default function ContactDetailClient({ contact: initial }: Props) {
                         className="text-violet-400 hover:underline"
                       >
                         {contact.website}
+                      </a>
+                    ) : undefined
+                  }
+                />
+                <InfoRow
+                  label="LinkedIn"
+                  value={
+                    contact.linkedinUrl ? (
+                      <a
+                        href={contact.linkedinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:underline"
+                      >
+                        {contact.linkedinUrl}
                       </a>
                     ) : undefined
                   }

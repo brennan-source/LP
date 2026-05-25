@@ -55,6 +55,7 @@ export interface Contact {
   city: string | null;
   state: string | null;
   website: string | null;
+  linkedinUrl: string | null;
   stage: string;
   source: string;
   tags: string | null;
@@ -65,9 +66,12 @@ export interface Contact {
   updatedAt: string;
 }
 
+export type CampaignType = "email" | "linkedin" | "call";
+
 export interface Campaign {
   id: string;
   name: string;
+  type: CampaignType;
   subject: string;
   body: string;
   status: string;

@@ -17,6 +17,7 @@ model Contact {
   city         String?
   state        String?
   website      String?
+  linkedinUrl  String?
   stage        String   @default("prospect")
   source       String   @default("scraped")
   tags         String?
@@ -60,7 +61,8 @@ model Activity {
 model Campaign {
   id        String   @id @default(cuid())
   name      String
-  subject   String
+  type      String   @default("email")
+  subject   String   @default("")
   body      String
   status    String   @default("draft")
   sentCount Int      @default(0)
