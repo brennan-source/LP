@@ -6,6 +6,7 @@ export interface BusinessInput {
   city: string;
   state: string;
   email: string;
+  revenueRange?: string;
 }
 
 export interface CategoryScore {
@@ -30,7 +31,8 @@ export interface ActionItem {
 export interface Competitor {
   name: string;
   domain: string;
-  scores: Partial<Record<ScoreCategory, number>>;
+  rating?: number;
+  reviewCount?: number;
 }
 
 export type ScoreCategory =
@@ -51,6 +53,7 @@ export interface AuditResults {
   industry: string;
   city: string;
   state: string;
+  revenueRange?: string;
   overallScore: number;
   overallGrade: Grade;
   competitorAvgScore: number;

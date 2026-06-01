@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Loader2, ArrowRight, Building2, Globe, Phone, MapPin, Mail, Briefcase } from "lucide-react";
+import { Loader2, ArrowRight, Building2, Globe, Phone, MapPin, Mail, Briefcase, DollarSign } from "lucide-react";
 
 const INDUSTRIES = [
   "Plumber",
@@ -52,6 +52,7 @@ interface FormData {
   city: string;
   state: string;
   email: string;
+  revenueRange: string;
 }
 
 export function AuditForm() {
@@ -64,6 +65,7 @@ export function AuditForm() {
     city: "",
     state: "",
     email: "",
+    revenueRange: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -137,6 +139,21 @@ export function AuditForm() {
           <select required value={form.industry} onChange={set("industry")} className={cn(inputClass, "cursor-pointer")}>
             <option value="">Select your industry...</option>
             {INDUSTRIES.map((ind) => <option key={ind} value={ind}>{ind}</option>)}
+          </select>
+        </div>
+
+        {/* Annual Revenue */}
+        <div>
+          <label className="block text-sm font-medium text-slate-700 mb-1.5">
+            <span className="flex items-center gap-1.5"><DollarSign className="w-3.5 h-3.5" />Annual Revenue <span className="text-slate-400 font-normal">(used to estimate your revenue impact)</span></span>
+          </label>
+          <select required value={form.revenueRange} onChange={set("revenueRange")} className={cn(inputClass, "cursor-pointer")}>
+            <option value="">Select range...</option>
+            <option value="under250k">Under $250K</option>
+            <option value="250k_1m">$250K – $1M</option>
+            <option value="1m_5m">$1M – $5M</option>
+            <option value="5m_25m">$5M – $25M</option>
+            <option value="over25m">$25M+</option>
           </select>
         </div>
 
