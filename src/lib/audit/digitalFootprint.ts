@@ -1,5 +1,6 @@
 import { CategoryScore } from "@/types/audit";
 import { scoreToGrade } from "@/lib/utils";
+import { serperSearch } from "@/lib/serper";
 
 export async function auditDigitalFootprint(
   businessName: string,
@@ -65,39 +66,42 @@ export async function auditDigitalFootprint(
 
 async function checkDirectoryPresence(businessName: string, city: string, state: string) {
   const directories = [
-    { name: "Google Business Profile", domain: "google.com/maps" },
-    { name: "Yelp", domain: "yelp.com" },
-    { name: "BBB", domain: "bbb.org" },
-    { name: "YellowPages", domain: "yellowpages.com" },
-    { name: "Apple Maps / Siri", domain: "maps.apple.com" },
-    { name: "Bing Places", domain: "bing.com/maps" },
+    { name: "Google Business Profile", domains: ["google.com/maps", "maps.google", "g.co"] },
+    { name: "Yelp", domains: ["yelp.com"] },
+    { name: "BBB", domains: ["bbb.org"] },
+    { name: "YellowPages", domains: ["yellowpages.com"] },
+    { name: "Angi / HomeAdvisor", domains: ["angi.com", "homeadvisor.com"] },
+    { name: "Facebook", domains: ["facebook.com"] },
   ];
 
   const details: string[] = [];
   let score = 0;
 
-  // We attempt a Google search for the business in each directory
-  for (const dir of directories) {
-    try {
-      const query = encodeURIComponent(`site:${dir.domain} "${businessName}" "${city}"`);
-      const res = await fetch(`https://www.google.com/search?q=${query}`, {
-        signal: AbortSignal.timeout(5000),
-        headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-        },
-      });
-      const html = await res.text();
-      const found = html.includes(dir.domain) && html.toLowerCase().includes(businessName.toLowerCase().split(" ")[0]);
+  const data = await serperSearch(`"${businessName}" "${city}" ${state}`);
 
-      if (found) {
-        score += 10;
-        details.push(`✓ Found on ${dir.name}`);
-      } else {
-        details.push(`✗ Not found on ${dir.name}`);
-      }
-    } catch {
-      details.push(`⚠ Could not verify ${dir.name} listing`);
-      score += 3; // partial credit for uncertainty
+  if (!data) {
+    // No API key — give partial credit with uncertainty note
+    directories.forEach((d) => details.push(`⚠ Could not verify ${d.name} listing`));
+    return { score: 18, details };
+  }
+
+  const allLinks = data.organic.map((r) => r.link.toLowerCase());
+
+  // Also check localResults for Google Business Profile
+  const firstWord = businessName.toLowerCase().split(" ")[0];
+  const hasGBP = (data.localResults ?? []).some((r) => r.title.toLowerCase().includes(firstWord));
+
+  for (const dir of directories) {
+    const found =
+      dir.name === "Google Business Profile"
+        ? hasGBP
+        : allLinks.some((link) => dir.domains.some((d) => link.includes(d)));
+
+    if (found) {
+      score += 10;
+      details.push(`✓ Found on ${dir.name}`);
+    } else {
+      details.push(`✗ Not found on ${dir.name}`);
     }
   }
 
@@ -108,38 +112,51 @@ async function checkReviewPresence(businessName: string, city: string) {
   const details: string[] = [];
   let score = 0;
 
-  // Check Google for reviews
-  try {
-    const query = encodeURIComponent(`"${businessName}" "${city}" reviews`);
-    const res = await fetch(`https://www.google.com/search?q=${query}`, {
-      signal: AbortSignal.timeout(8000),
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-      },
-    });
-    const html = await res.text();
-    const lowerHtml = html.toLowerCase();
+  const data = await serperSearch(`"${businessName}" "${city}" reviews`);
 
-    // Look for star ratings / review counts in SERP
-    const hasStarRating = lowerHtml.includes("rating") || lowerHtml.includes("stars") || lowerHtml.includes("reviews");
-    const reviewCountMatch = html.match(/(\d+)\s+reviews?/i);
-    const reviewCount = reviewCountMatch ? parseInt(reviewCountMatch[1]) : 0;
-
-    if (reviewCount > 50) {
-      score += 40;
-      details.push(`✓ Strong review presence (~${reviewCount} reviews found)`);
-    } else if (reviewCount > 10) {
-      score += 25;
-      details.push(`⚠ Some reviews (~${reviewCount}) — need more to compete`);
-    } else if (hasStarRating) {
-      score += 15;
-      details.push("⚠ Reviews exist but count is low");
-    } else {
-      details.push("✗ Few or no reviews found online");
-    }
-  } catch {
+  if (!data) {
     details.push("⚠ Could not fully verify review presence");
-    score += 10;
+    return { score: 10, details };
+  }
+
+  // Prefer structured local results (Google Business Profile data)
+  const firstWord = businessName.toLowerCase().split(" ")[0];
+  const localMatch = (data.localResults ?? []).find((r) =>
+    r.title.toLowerCase().includes(firstWord)
+  );
+
+  if (localMatch?.ratingCount) {
+    const count = localMatch.ratingCount;
+    const rating = localMatch.rating ?? 0;
+    if (count > 100) {
+      score += 40;
+      details.push(`✓ Strong review presence — ${count.toLocaleString()} Google reviews (${rating}★)`);
+    } else if (count > 25) {
+      score += 28;
+      details.push(`⚠ ${count} Google reviews (${rating}★) — need more to compete`);
+    } else {
+      score += 15;
+      details.push(`⚠ Only ${count} Google reviews — well below competitive threshold`);
+    }
+    return { score: Math.min(40, score), details };
+  }
+
+  // Fall back to organic snippet parsing
+  const snippets = data.organic.map((r) => r.snippet).join(" ");
+  const reviewCountMatch = snippets.match(/(\d[\d,]+)\s+(?:Google\s+)?reviews?/i);
+  const reviewCount = reviewCountMatch ? parseInt(reviewCountMatch[1].replace(/,/g, "")) : 0;
+
+  if (reviewCount > 50) {
+    score += 40;
+    details.push(`✓ Strong review presence (~${reviewCount} reviews found)`);
+  } else if (reviewCount > 10) {
+    score += 25;
+    details.push(`⚠ Some reviews (~${reviewCount}) — need more to compete`);
+  } else if (snippets.toLowerCase().includes("review")) {
+    score += 15;
+    details.push("⚠ Reviews exist but count is low");
+  } else {
+    details.push("✗ Few or no reviews found online");
   }
 
   return { score: Math.min(40, score), details };

@@ -1,5 +1,6 @@
 import { CategoryScore } from "@/types/audit";
 import { scoreToGrade, extractDomain } from "@/lib/utils";
+import { serperSearch } from "@/lib/serper";
 
 export async function auditSEO(url: string, businessName: string, city: string, state: string, industry: string): Promise<CategoryScore> {
   const [siteData, serpData] = await Promise.all([
@@ -133,24 +134,20 @@ async function fetchSiteMetadata(url: string) {
 }
 
 async function checkSerpPresence(businessName: string, city: string, state: string, industry: string) {
-  // Use Google's public search — check if business appears in top results
-  // In production, integrate SerpAPI or ValueSERP for reliable data
-  try {
-    const query = encodeURIComponent(`${industry} ${city} ${state}`);
-    const res = await fetch(`https://www.google.com/search?q=${query}&num=10`, {
-      signal: AbortSignal.timeout(8000),
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-        "Accept-Language": "en-US,en;q=0.9",
-      },
-    });
-    const html = await res.text();
-    const nameLower = businessName.toLowerCase();
-    const ranksLocally = html.toLowerCase().includes(nameLower);
-    return { ranksLocally };
-  } catch {
-    return { ranksLocally: false };
-  }
+  const data = await serperSearch(`${industry} ${city} ${state}`);
+  if (!data) return { ranksLocally: false };
+
+  const nameLower = businessName.toLowerCase();
+  const firstWord = nameLower.split(" ")[0];
+
+  const inOrganic = data.organic.slice(0, 10).some(
+    (r) => r.title.toLowerCase().includes(firstWord) || r.link.toLowerCase().includes(firstWord)
+  );
+  const inLocal = (data.localResults ?? []).some(
+    (r) => r.title.toLowerCase().includes(firstWord)
+  );
+
+  return { ranksLocally: inOrganic || inLocal };
 }
 
 function getSEOSummary(score: number, city: string, industry: string): string {

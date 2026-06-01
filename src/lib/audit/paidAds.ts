@@ -1,5 +1,6 @@
 import { CategoryScore } from "@/types/audit";
 import { scoreToGrade, extractDomain } from "@/lib/utils";
+import { serperSearch } from "@/lib/serper";
 
 export async function auditPaidAds(url: string, businessName: string, city: string, industry: string): Promise<CategoryScore> {
   const [googleAds, fbAds] = await Promise.allSettled([
@@ -59,48 +60,23 @@ export async function auditPaidAds(url: string, businessName: string, city: stri
 }
 
 async function checkGoogleAds(businessName: string, city: string, industry: string) {
-  try {
-    const query = encodeURIComponent(`${industry} ${city}`);
-    const res = await fetch(`https://www.google.com/search?q=${query}`, {
-      signal: AbortSignal.timeout(8000),
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-        "Accept-Language": "en-US,en;q=0.9",
-      },
-    });
-    const html = await res.text();
-    const lowerHtml = html.toLowerCase();
-    const nameLower = businessName.toLowerCase();
+  const data = await serperSearch(`${industry} ${city}`);
+  if (!data) return { running: false, competitorCount: 2 };
 
-    // Check for ad labels (Google ads show "Sponsored" in search results)
-    const hasSponsoredLabel = lowerHtml.includes("sponsored") || lowerHtml.includes("ads·");
-    const running = hasSponsoredLabel && lowerHtml.includes(nameLower.split(" ")[0]);
+  const ads = data.ads ?? [];
+  const firstWord = businessName.toLowerCase().split(" ")[0];
+  const running = ads.some(
+    (ad) => ad.title.toLowerCase().includes(firstWord) || ad.link.toLowerCase().includes(firstWord)
+  );
+  const competitorCount = Math.min(4, ads.length);
 
-    // Count competitor ad count (rough)
-    const sponsoredMatches = (html.match(/sponsored/gi) || []).length;
-    const competitorCount = Math.min(4, sponsoredMatches);
-
-    return { running, competitorCount };
-  } catch {
-    return { running: false, competitorCount: 2 };
-  }
+  return { running, competitorCount };
 }
 
 async function checkFacebookAds(businessName: string) {
-  // Facebook Ad Library is public but requires API access for reliable data
-  // For MVP, we return a conservative estimate
-  try {
-    const query = encodeURIComponent(businessName);
-    const res = await fetch(`https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=US&q=${query}&search_type=keyword_unordered`, {
-      signal: AbortSignal.timeout(8000),
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; LeadScoreBot/1.0)" },
-    });
-    const html = await res.text();
-    const running = html.toLowerCase().includes(businessName.toLowerCase().split(" ")[0]) && html.includes("ad");
-    return { running };
-  } catch {
-    return { running: false };
-  }
+  // Facebook Ad Library requires authenticated API access — not available without Meta Business credentials
+  // Conservative: return false (no false positives)
+  return { running: false };
 }
 
 function getPaidAdsSummary(score: number, industry: string, city: string): string {
