@@ -233,7 +233,7 @@ export function AuditForm() {
       </button>
 
       <p className="text-center text-xs text-slate-400">
-        Secure payment via Stripe · Report delivered instantly · 100% satisfaction guarantee
+        Secure payment via Stripe · Report delivered instantly
       </p>
     </form>
   );

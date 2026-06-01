@@ -13,7 +13,7 @@ export default function ConsultPage() {
         <div className="max-w-3xl mx-auto flex items-center justify-between">
           <Link href="/" className="font-black text-slate-900 text-xl">Aria</Link>
           <Link href="/assess" className="bg-violet-600 text-white text-sm font-semibold px-5 py-2 rounded-lg hover:bg-violet-700 transition-colors">
-            Get Your Scorecard — $15
+            Get Your Scorecard — $9
           </Link>
         </div>
       </nav>
