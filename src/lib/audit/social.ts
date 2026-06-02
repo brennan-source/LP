@@ -11,10 +11,10 @@ const SOCIAL_PLATFORMS = [
   { name: "YouTube", key: "youtube", urlPattern: "youtube.com", weight: 10 },
 ];
 
-export async function auditSocialMedia(url: string, businessName: string, city: string, state: string): Promise<CategoryScore> {
+export async function auditSocialMedia(url: string, businessName: string, city: string, state: string, industry: string): Promise<CategoryScore> {
   const [siteLinks, gbpPresent] = await Promise.all([
     extractSocialLinks(url),
-    checkGBPPresence(businessName, city, state),
+    checkGBPPresence(businessName, city, state, industry),
   ]);
   const details: string[] = [];
   const actions = [];
@@ -85,18 +85,26 @@ export async function auditSocialMedia(url: string, businessName: string, city: 
   };
 }
 
-async function checkGBPPresence(businessName: string, city: string, state: string): Promise<boolean> {
-  const data = await serperSearch(`${businessName} ${city} ${state}`);
-  if (!data) return false;
+function searchIndustry(industry: string): string {
+  return industry.split(/\s*\/\s*/)[0].trim();
+}
+
+async function checkGBPPresence(businessName: string, city: string, state: string, industry: string): Promise<boolean> {
   const firstWord = businessName.toLowerCase().split(" ")[0];
-  const inLocal = (data.localResults ?? []).some((r) => r.title.toLowerCase().includes(firstWord));
-  const inOrganic = (data.organic ?? []).some(
+  // Category query ("HVAC Lowell MA") reliably triggers local pack with GBP listings
+  const [nameData, categoryData] = await Promise.all([
+    serperSearch(`${businessName} ${city} ${state}`),
+    serperSearch(`${searchIndustry(industry)} ${city} ${state}`),
+  ]);
+  const inCategoryLocal = (categoryData?.localResults ?? []).some((r) => r.title.toLowerCase().includes(firstWord));
+  const inNameLocal = (nameData?.localResults ?? []).some((r) => r.title.toLowerCase().includes(firstWord));
+  const inOrganic = (nameData?.organic ?? []).some(
     (r) =>
       (r.link.toLowerCase().includes("google.com/maps") || r.link.toLowerCase().includes("maps.google")) &&
       (r.title.toLowerCase().includes(firstWord) || r.snippet.toLowerCase().includes(firstWord))
   );
-  const inKG = !!data.knowledgeGraph?.title?.toLowerCase().includes(firstWord);
-  return inLocal || inOrganic || inKG;
+  const inKG = !!nameData?.knowledgeGraph?.title?.toLowerCase().includes(firstWord);
+  return inCategoryLocal || inNameLocal || inOrganic || inKG;
 }
 
 async function extractSocialLinks(url: string): Promise<string[]> {

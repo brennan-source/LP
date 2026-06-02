@@ -8,13 +8,12 @@ export async function auditDigitalFootprint(
   state: string,
   industry: string
 ): Promise<CategoryScore> {
-  const checks = await Promise.allSettled([
-    checkDirectoryPresence(businessName, city, state),
-    checkReviewPresence(businessName, city),
-  ]);
+  const directoryResult = await checkDirectoryPresence(businessName, city, state, industry).catch(() => ({ score: 0, details: [], categoryLocalResults: [] as Array<{ title: string; rating?: number; ratingCount?: number }> }));
+  const categoryLocals: Array<{ title: string; rating?: number; ratingCount?: number }> = directoryResult.categoryLocalResults ?? [];
+  const reviewResult = await checkReviewPresence(businessName, city, categoryLocals).catch(() => ({ score: 0, details: [] }));
 
-  const directoryData = checks[0].status === "fulfilled" ? checks[0].value : { score: 0, details: [] };
-  const reviewData = checks[1].status === "fulfilled" ? checks[1].value : { score: 0, details: [] };
+  const directoryData = directoryResult;
+  const reviewData = reviewResult;
 
   const details = [...directoryData.details, ...reviewData.details];
   const actions = [];
@@ -64,7 +63,11 @@ export async function auditDigitalFootprint(
   };
 }
 
-async function checkDirectoryPresence(businessName: string, city: string, state: string) {
+function searchIndustry(industry: string): string {
+  return industry.split(/\s*\/\s*/)[0].trim();
+}
+
+async function checkDirectoryPresence(businessName: string, city: string, state: string, industry: string) {
   const directories = [
     { name: "Google Business Profile", domains: ["google.com/maps", "maps.google", "g.co"] },
     { name: "Yelp", domains: ["yelp.com"] },
@@ -77,10 +80,11 @@ async function checkDirectoryPresence(businessName: string, city: string, state:
   const details: string[] = [];
   let score = 0;
 
-  // Two queries: one for reviews/directories (surfaces Yelp, BBB), one for local pack (surfaces GBP)
-  const [reviewData, localData] = await Promise.all([
+  // Three queries: name+reviews (Yelp/BBB), name only, and category (triggers local pack for GBP)
+  const [reviewData, localData, categoryData] = await Promise.all([
     serperSearch(`${businessName} ${city} ${state} reviews`),
     serperSearch(`${businessName} ${city} ${state}`),
+    serperSearch(`${searchIndustry(industry)} ${city} ${state}`),
   ]);
 
   if (!reviewData && !localData) {
@@ -95,9 +99,9 @@ async function checkDirectoryPresence(businessName: string, city: string, state:
 
   const firstWord = businessName.toLowerCase().split(" ")[0];
 
-  // GBP can appear as a local result OR as a google.com/maps organic link
+  // GBP: check local results from category query (most reliable), name queries, and organic Maps links
   const hasGBP =
-    [...(reviewData?.localResults ?? []), ...(localData?.localResults ?? [])].some(
+    [...(categoryData?.localResults ?? []), ...(reviewData?.localResults ?? []), ...(localData?.localResults ?? [])].some(
       (r) => r.title.toLowerCase().includes(firstWord)
     ) ||
     [...(reviewData?.organic ?? []), ...(localData?.organic ?? [])].some(
@@ -120,12 +124,31 @@ async function checkDirectoryPresence(businessName: string, city: string, state:
     }
   }
 
-  return { score: Math.min(60, score), details };
+  return { score: Math.min(60, score), details, categoryLocalResults: categoryData?.localResults ?? [] };
 }
 
-async function checkReviewPresence(businessName: string, city: string) {
+async function checkReviewPresence(businessName: string, city: string, categoryLocalResults: Array<{ title: string; rating?: number; ratingCount?: number }>) {
   const details: string[] = [];
   let score = 0;
+  const firstWord = businessName.toLowerCase().split(" ")[0];
+
+  // Category local results (from "HVAC City State" query) have the most reliable review counts
+  const categoryMatch = categoryLocalResults.find((r) => r.title.toLowerCase().includes(firstWord));
+  if (categoryMatch?.ratingCount) {
+    const count = categoryMatch.ratingCount;
+    const rating = categoryMatch.rating ?? 0;
+    if (count > 100) {
+      score += 40;
+      details.push(`✓ Strong review presence — ${count.toLocaleString()} Google reviews (${rating}★)`);
+    } else if (count > 25) {
+      score += 28;
+      details.push(`⚠ ${count} Google reviews (${rating}★) — need more to compete`);
+    } else {
+      score += 15;
+      details.push(`⚠ Only ${count} Google reviews — well below competitive threshold`);
+    }
+    return { score: Math.min(40, score), details };
+  }
 
   const data = await serperSearch(`${businessName} ${city} reviews`);
 
@@ -133,8 +156,6 @@ async function checkReviewPresence(businessName: string, city: string) {
     details.push("⚠ Could not fully verify review presence");
     return { score: 10, details };
   }
-
-  const firstWord = businessName.toLowerCase().split(" ")[0];
 
   // Serper returns a knowledgeGraph for branded queries — most accurate review data
   const kg = data.knowledgeGraph;
