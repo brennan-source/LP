@@ -60,7 +60,8 @@ export async function auditPaidAds(url: string, businessName: string, city: stri
 }
 
 async function checkGoogleAds(businessName: string, city: string, industry: string) {
-  const data = await serperSearch(`${industry} ${city}`);
+  // Use "near city" phrasing — more likely to trigger paid ad results in Serper
+  const data = await serperSearch(`${industry} near ${city}`);
   if (!data) return { running: false, competitorCount: 2 };
 
   const ads = data.ads ?? [];
@@ -68,7 +69,9 @@ async function checkGoogleAds(businessName: string, city: string, industry: stri
   const running = ads.some(
     (ad) => ad.title.toLowerCase().includes(firstWord) || ad.link.toLowerCase().includes(firstWord)
   );
-  const competitorCount = Math.min(4, ads.length);
+  // If Serper returned no ads, that may mean genuinely no ads OR Serper didn't capture them —
+  // use 1 as minimum competitor count so the copy doesn't say "0 competitors"
+  const competitorCount = ads.length > 0 ? Math.min(4, ads.length) : 1;
 
   return { running, competitorCount };
 }

@@ -77,19 +77,28 @@ async function checkDirectoryPresence(businessName: string, city: string, state:
   const details: string[] = [];
   let score = 0;
 
-  const data = await serperSearch(`"${businessName}" "${city}" ${state}`);
+  // Two queries: one for reviews/directories (surfaces Yelp, BBB), one for local pack (surfaces GBP)
+  const [reviewData, localData] = await Promise.all([
+    serperSearch(`${businessName} ${city} ${state} reviews`),
+    serperSearch(`${businessName} ${city} ${state}`),
+  ]);
 
-  if (!data) {
-    // No API key — give partial credit with uncertainty note
+  if (!reviewData && !localData) {
     directories.forEach((d) => details.push(`⚠ Could not verify ${d.name} listing`));
     return { score: 18, details };
   }
 
-  const allLinks = data.organic.map((r) => r.link.toLowerCase());
+  const allLinks = [
+    ...(reviewData?.organic ?? []),
+    ...(localData?.organic ?? []),
+  ].map((r) => r.link.toLowerCase());
 
-  // Also check localResults for Google Business Profile
+  // GBP appears in local results of the unquoted business name query
   const firstWord = businessName.toLowerCase().split(" ")[0];
-  const hasGBP = (data.localResults ?? []).some((r) => r.title.toLowerCase().includes(firstWord));
+  const hasGBP = [
+    ...(reviewData?.localResults ?? []),
+    ...(localData?.localResults ?? []),
+  ].some((r) => r.title.toLowerCase().includes(firstWord));
 
   for (const dir of directories) {
     const found =
@@ -112,7 +121,7 @@ async function checkReviewPresence(businessName: string, city: string) {
   const details: string[] = [];
   let score = 0;
 
-  const data = await serperSearch(`"${businessName}" "${city}" reviews`);
+  const data = await serperSearch(`${businessName} ${city} reviews`);
 
   if (!data) {
     details.push("⚠ Could not fully verify review presence");
@@ -141,10 +150,17 @@ async function checkReviewPresence(businessName: string, city: string) {
     return { score: Math.min(40, score), details };
   }
 
-  // Fall back to organic snippet parsing
-  const snippets = data.organic.map((r) => r.snippet).join(" ");
+  // Fall back to organic snippet parsing — require business name nearby to avoid false positives
+  const nameLower = businessName.toLowerCase();
+  const snippets = data.organic
+    .filter((r) => r.snippet.toLowerCase().includes(firstWord) || r.title.toLowerCase().includes(firstWord))
+    .map((r) => r.snippet)
+    .join(" ");
+
   const reviewCountMatch = snippets.match(/(\d[\d,]+)\s+(?:Google\s+)?reviews?/i);
-  const reviewCount = reviewCountMatch ? parseInt(reviewCountMatch[1].replace(/,/g, "")) : 0;
+  const rawCount = reviewCountMatch ? parseInt(reviewCountMatch[1].replace(/,/g, "")) : 0;
+  // Cap at 5000 to reject aggregate directory counts (e.g. "10,796 Yelp reviews in Lowell")
+  const reviewCount = rawCount > 5000 ? 0 : rawCount;
 
   if (reviewCount > 50) {
     score += 40;
@@ -152,7 +168,7 @@ async function checkReviewPresence(businessName: string, city: string) {
   } else if (reviewCount > 10) {
     score += 25;
     details.push(`⚠ Some reviews (~${reviewCount}) — need more to compete`);
-  } else if (snippets.toLowerCase().includes("review")) {
+  } else if (nameLower && data.organic.some((r) => r.snippet.toLowerCase().includes("review"))) {
     score += 15;
     details.push("⚠ Reviews exist but count is low");
   } else {
