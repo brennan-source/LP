@@ -18,18 +18,18 @@ export async function POST(request: Request) {
     let newCount = 0;
 
     for (const contact of scraped) {
-      const email = contact.email
-        ?? `${contact.businessName.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.${city.toLowerCase()}.${state.toLowerCase()}@scrape.local`;
+      // Skip contacts with no email and no website — nothing useful to store
+      if (!contact.email) continue;
 
       try {
         const existing = await prisma.contact.findUnique({
-          where: { email },
+          where: { email: contact.email },
         });
 
         if (!existing) {
           await prisma.contact.create({
             data: {
-              email,
+              email: contact.email,
               businessName: contact.businessName ?? null,
               phone: contact.phone ?? null,
               website: contact.website ?? null,
@@ -38,12 +38,14 @@ export async function POST(request: Request) {
               industry: contact.industry ?? null,
               stage: "prospect",
               source: "scraped",
+              // Tag inferred emails so user knows to verify before sending
+              tags: contact.emailInferred ? "email-inferred" : null,
             },
           });
           newCount++;
         }
       } catch {
-        // Skip duplicates or invalid entries
+        // Skip duplicates or constraint violations
       }
     }
 
