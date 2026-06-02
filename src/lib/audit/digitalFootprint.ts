@@ -1,6 +1,6 @@
 import { CategoryScore } from "@/types/audit";
 import { scoreToGrade } from "@/lib/utils";
-import { serperSearch } from "@/lib/serper";
+import { serperSearch, SerperResponse } from "@/lib/serper";
 
 export async function auditDigitalFootprint(
   businessName: string,
@@ -93,12 +93,18 @@ async function checkDirectoryPresence(businessName: string, city: string, state:
     ...(localData?.organic ?? []),
   ].map((r) => r.link.toLowerCase());
 
-  // GBP appears in local results of the unquoted business name query
   const firstWord = businessName.toLowerCase().split(" ")[0];
-  const hasGBP = [
-    ...(reviewData?.localResults ?? []),
-    ...(localData?.localResults ?? []),
-  ].some((r) => r.title.toLowerCase().includes(firstWord));
+
+  // GBP can appear as a local result OR as a google.com/maps organic link
+  const hasGBP =
+    [...(reviewData?.localResults ?? []), ...(localData?.localResults ?? [])].some(
+      (r) => r.title.toLowerCase().includes(firstWord)
+    ) ||
+    [...(reviewData?.organic ?? []), ...(localData?.organic ?? [])].some(
+      (r) =>
+        (r.link.toLowerCase().includes("google.com/maps") || r.link.toLowerCase().includes("maps.google")) &&
+        (r.title.toLowerCase().includes(firstWord) || r.snippet.toLowerCase().includes(firstWord))
+    );
 
   for (const dir of directories) {
     const found =
@@ -128,8 +134,28 @@ async function checkReviewPresence(businessName: string, city: string) {
     return { score: 10, details };
   }
 
-  // Prefer structured local results (Google Business Profile data)
   const firstWord = businessName.toLowerCase().split(" ")[0];
+
+  // Serper returns a knowledgeGraph for branded queries — most accurate review data
+  const kg = data.knowledgeGraph;
+  const kgMatch = kg?.rating && kg?.ratingCount && kg.title?.toLowerCase().includes(firstWord);
+  if (kgMatch) {
+    const count = kg!.ratingCount!;
+    const rating = kg!.rating!;
+    if (count > 100) {
+      score += 40;
+      details.push(`✓ Strong review presence — ${count.toLocaleString()} Google reviews (${rating}★)`);
+    } else if (count > 25) {
+      score += 28;
+      details.push(`⚠ ${count} Google reviews (${rating}★) — need more to compete`);
+    } else {
+      score += 15;
+      details.push(`⚠ Only ${count} Google reviews — well below competitive threshold`);
+    }
+    return { score: Math.min(40, score), details };
+  }
+
+  // Fall back to structured local results (Google Business Profile data)
   const localMatch = (data.localResults ?? []).find((r) =>
     r.title.toLowerCase().includes(firstWord)
   );

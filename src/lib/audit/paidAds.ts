@@ -20,7 +20,8 @@ export async function auditPaidAds(url: string, businessName: string, city: stri
     score += 60;
     details.push("✓ Running Google Ads — capturing active searchers");
   } else {
-    details.push(`✗ No Google Ads detected — ${googleData.competitorCount} competitors are running ads for your keywords`);
+    const compText = googleData.competitorCount === 1 ? "1 competitor is" : `${googleData.competitorCount} competitors are`;
+    details.push(`✗ No Google Ads detected — ${compText} running ads for your keywords`);
     actions.push({
       priority: "high" as const,
       title: "Start Google Ads to capture in-market customers",
@@ -59,9 +60,13 @@ export async function auditPaidAds(url: string, businessName: string, city: stri
   };
 }
 
+// Strip display suffixes like " / Heating & Cooling" for cleaner search queries
+function searchIndustry(industry: string): string {
+  return industry.split(/\s*\/\s*/)[0].trim();
+}
+
 async function checkGoogleAds(businessName: string, city: string, industry: string) {
-  // Use "near city" phrasing — more likely to trigger paid ad results in Serper
-  const data = await serperSearch(`${industry} near ${city}`);
+  const data = await serperSearch(`${searchIndustry(industry)} near ${city}`);
   if (!data) return { running: false, competitorCount: 2 };
 
   const ads = data.ads ?? [];

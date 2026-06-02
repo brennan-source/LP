@@ -1,5 +1,6 @@
 import { CategoryScore } from "@/types/audit";
 import { scoreToGrade } from "@/lib/utils";
+import { serperSearch } from "@/lib/serper";
 
 const SOCIAL_PLATFORMS = [
   { name: "Facebook", key: "facebook", urlPattern: "facebook.com", weight: 20 },
@@ -10,16 +11,20 @@ const SOCIAL_PLATFORMS = [
   { name: "YouTube", key: "youtube", urlPattern: "youtube.com", weight: 10 },
 ];
 
-export async function auditSocialMedia(url: string, businessName: string): Promise<CategoryScore> {
-  const siteLinks = await extractSocialLinks(url);
+export async function auditSocialMedia(url: string, businessName: string, city: string, state: string): Promise<CategoryScore> {
+  const [siteLinks, gbpPresent] = await Promise.all([
+    extractSocialLinks(url),
+    checkGBPPresence(businessName, city, state),
+  ]);
   const details: string[] = [];
   const actions = [];
   let score = 0;
 
   for (const platform of SOCIAL_PLATFORMS) {
-    const found = siteLinks.some((link) =>
-      new RegExp(platform.urlPattern, "i").test(link)
-    );
+    const found =
+      platform.key === "google"
+        ? gbpPresent
+        : siteLinks.some((link) => new RegExp(platform.urlPattern, "i").test(link));
     if (found) {
       score += platform.weight;
       details.push(`✓ ${platform.name} profile linked`);
@@ -78,6 +83,20 @@ export async function auditSocialMedia(url: string, businessName: string): Promi
     estimatedRevenueLoss: finalScore < 50 ? Math.round((60 - finalScore) * 75) : 0,
     actions,
   };
+}
+
+async function checkGBPPresence(businessName: string, city: string, state: string): Promise<boolean> {
+  const data = await serperSearch(`${businessName} ${city} ${state}`);
+  if (!data) return false;
+  const firstWord = businessName.toLowerCase().split(" ")[0];
+  const inLocal = (data.localResults ?? []).some((r) => r.title.toLowerCase().includes(firstWord));
+  const inOrganic = (data.organic ?? []).some(
+    (r) =>
+      (r.link.toLowerCase().includes("google.com/maps") || r.link.toLowerCase().includes("maps.google")) &&
+      (r.title.toLowerCase().includes(firstWord) || r.snippet.toLowerCase().includes(firstWord))
+  );
+  const inKG = !!data.knowledgeGraph?.title?.toLowerCase().includes(firstWord);
+  return inLocal || inOrganic || inKG;
 }
 
 async function extractSocialLinks(url: string): Promise<string[]> {

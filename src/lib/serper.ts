@@ -20,10 +20,20 @@ export interface SerperLocalResult {
   website?: string;
 }
 
+export interface SerperKnowledgeGraph {
+  title?: string;
+  type?: string;
+  rating?: number;
+  ratingCount?: number;
+  description?: string;
+  attributes?: Record<string, string>;
+}
+
 export interface SerperResponse {
   organic: SerperOrganic[];
   ads?: SerperAd[];
   localResults?: SerperLocalResult[];
+  knowledgeGraph?: SerperKnowledgeGraph;
 }
 
 export async function serperSearch(query: string): Promise<SerperResponse | null> {

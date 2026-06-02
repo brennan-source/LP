@@ -34,7 +34,7 @@ export async function runAudit(jobId: string, input: BusinessInput): Promise<Aud
   const [website, seo, social, footprint, paidAds, leadCapture, aiSearch, competitors] = await Promise.all([
     auditWebsite(url),
     auditSEO(url, input.businessName, input.city, input.state, input.industry),
-    auditSocialMedia(url, input.businessName),
+    auditSocialMedia(url, input.businessName, input.city, input.state),
     auditDigitalFootprint(input.businessName, input.city, input.state, input.industry),
     auditPaidAds(url, input.businessName, input.city, input.industry),
     auditLeadCapture(url, input.phoneNumber),

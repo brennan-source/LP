@@ -133,8 +133,12 @@ async function fetchSiteMetadata(url: string) {
   }
 }
 
+function searchIndustry(industry: string): string {
+  return industry.split(/\s*\/\s*/)[0].trim();
+}
+
 async function checkSerpPresence(businessName: string, city: string, state: string, industry: string) {
-  const data = await serperSearch(`${industry} ${city} ${state}`);
+  const data = await serperSearch(`${searchIndustry(industry)} ${city} ${state}`);
   if (!data) return { ranksLocally: false };
 
   const nameLower = businessName.toLowerCase();
