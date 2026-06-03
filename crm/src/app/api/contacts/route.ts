@@ -26,6 +26,15 @@ export async function GET(request: Request) {
       where.stage = stage;
     }
 
+    const hasWebsite = url.searchParams.get("hasWebsite");
+    if (hasWebsite === "false") where.hasWebsite = false;
+
+    const weakWebsite = url.searchParams.get("weakWebsite");
+    if (weakWebsite === "true") where.weakWebsite = true;
+
+    const previewVisited = url.searchParams.get("previewVisited");
+    if (previewVisited === "true") where.stage = "preview_visited";
+
     const [contacts, total] = await Promise.all([
       prisma.contact.findMany({
         where,

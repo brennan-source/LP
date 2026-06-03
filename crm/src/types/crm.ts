@@ -2,6 +2,8 @@ export type Stage =
   | "prospect"
   | "contacted"
   | "demo_sent"
+  | "postcard_sent"
+  | "preview_visited"
   | "trial"
   | "customer"
   | "churned";
@@ -10,6 +12,8 @@ export const STAGES: { value: Stage; label: string }[] = [
   { value: "prospect", label: "Prospect" },
   { value: "contacted", label: "Contacted" },
   { value: "demo_sent", label: "Demo Sent" },
+  { value: "postcard_sent", label: "Postcard Sent" },
+  { value: "preview_visited", label: "Preview Visited" },
   { value: "trial", label: "Trial" },
   { value: "customer", label: "Customer" },
   { value: "churned", label: "Churned" },
@@ -59,6 +63,13 @@ export interface Contact {
   stage: string;
   source: string;
   tags: string | null;
+  hasWebsite: boolean;
+  weakWebsite: boolean;
+  auditScore: number | null;
+  previewSlug: string | null;
+  previewUrl: string | null;
+  postcardSentAt: string | null;
+  previewVisitedAt: string | null;
   notes: Note[];
   activities: Activity[];
   products: ContactProduct[];
@@ -76,6 +87,24 @@ export interface Campaign {
   body: string;
   status: string;
   sentCount: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type ClientTier = "starter" | "growth" | "scale";
+export type ClientStatus = "active" | "paused" | "churned";
+
+export interface Client {
+  id: string;
+  contactId: string;
+  contact?: Contact;
+  tier: string;
+  monthlyRate: number;
+  startDate: string;
+  framerUrl: string | null;
+  domain: string | null;
+  status: string;
+  notes: string | null;
   createdAt: string;
   updatedAt: string;
 }
