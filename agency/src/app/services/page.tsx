@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-const SERVICES = [
+const GROWTH_SERVICES = [
   {
     icon: "🌐",
     title: "Website Design & Hosting",
     tagline: "Free for the first 4 months",
-    body: "We build a professional, mobile-optimized website on Framer — fast, beautiful, and easy to update. You own it after month 4. Hosting included.",
+    body: "We build a professional, mobile-optimized website — fast, beautiful, and easy to update. You own it after month 4. Hosting included.",
     bullets: ["Custom design", "Mobile-first", "Fast loading", "Contact forms", "Google Analytics"],
   },
   {
@@ -24,24 +24,41 @@ const SERVICES = [
   },
   {
     icon: "📱",
-    title: "Social Media",
+    title: "Social & Email",
     tagline: "Stay visible without the work",
-    body: "2 posts per week on the platforms that matter for your industry. We handle content creation, scheduling, and community management.",
-    bullets: ["Content creation", "2 posts/week", "Facebook, Instagram, or Google Business", "Seasonal promotions", "Review responses"],
+    body: "2 social posts per week plus a monthly email newsletter to your customer list. Seasonal promotions, before/after photos, review requests — handled.",
+    bullets: ["Content creation", "2 social posts/week", "Monthly email newsletter", "Seasonal promotions", "Review request sequences"],
+  },
+];
+
+const OPS_SERVICES = [
+  {
+    icon: "💬",
+    title: "Lead & Booking Automation",
+    tagline: "Never lose a lead to slow follow-up",
+    body: "AI chat widget on your site that answers questions and books appointments 24/7. Automated follow-up sequences so leads don't go cold while you're on a job.",
+    bullets: ["AI chat widget", "Automated lead follow-up", "Online booking integration", "Missed call text-back", "CRM setup"],
   },
   {
-    icon: "📧",
-    title: "Email Marketing",
-    tagline: "Stay top of mind with past customers",
-    body: "Monthly newsletter to your customer list — seasonal offers, helpful tips, before/after photos. Turns one-time customers into repeat business.",
-    bullets: ["Monthly newsletter", "List management", "Seasonal campaigns", "Review request sequences"],
+    icon: "📋",
+    title: "Quoting & Billing",
+    tagline: "Get paid faster with less friction",
+    body: "Automated estimate delivery, invoice follow-up, and payment collection. Stop manually chasing customers — the system does it.",
+    bullets: ["Digital quote templates", "Automated invoice reminders", "Online payment collection", "Job approval workflows", "QuickBooks / accounting sync"],
   },
   {
-    icon: "🤖",
-    title: "AI Automation",
-    tagline: "Work smarter, not harder",
-    body: "AI chat widget that books appointments and answers questions 24/7. Automated follow-up for leads who don't respond. CRM setup for managing your pipeline.",
-    bullets: ["AI chat widget", "Lead follow-up automation", "Booking integration", "CRM setup", "Monthly automation audit"],
+    icon: "📅",
+    title: "Scheduling & Dispatch",
+    tagline: "Stop playing phone tag with your crew",
+    body: "Job scheduling, crew assignments, and dispatch — all automated. Customers get confirmations and reminders. Your team always knows where to be.",
+    bullets: ["Online customer scheduling", "Crew job assignments", "Automated confirmations & reminders", "Route optimization", "Field updates via mobile"],
+  },
+  {
+    icon: "🏢",
+    title: "Back Office & HR",
+    tagline: "Run your business, not paperwork",
+    body: "HR onboarding workflows, payroll integrations, time tracking, and reporting dashboards. Built for small teams that don't have an office manager.",
+    bullets: ["Employee onboarding automation", "Payroll workflow setup", "Time tracking integration", "Job costing & margin reporting", "Document management"],
   },
 ];
 
@@ -63,29 +80,64 @@ export default function ServicesPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="text-5xl font-black text-white mb-4">What we do</h1>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">Everything a marketing agency does, powered by AI, at a fraction of the cost.</p>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+              Two problems, one partner. We get you more jobs — then build the systems so you can actually handle them.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {SERVICES.map((service) => (
-              <div key={service.title} className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h2 className="text-xl font-bold text-white mb-1">{service.title}</h2>
-                <p className="text-amber-400 text-sm font-medium mb-3">{service.tagline}</p>
-                <p className="text-slate-400 mb-4 leading-relaxed">{service.body}</p>
-                <ul className="space-y-1.5">
-                  {service.bullets.map((b) => (
-                    <li key={b} className="flex items-center gap-2 text-sm text-slate-300">
-                      <span className="text-green-400 shrink-0">✓</span>
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {/* Growth services */}
+          <div className="mb-16">
+            <div className="mb-8 pb-4 border-b border-slate-800">
+              <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-1">Get more jobs</p>
+              <h2 className="text-2xl font-black text-white">Marketing & Growth</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {GROWTH_SERVICES.map((service) => (
+                <div key={service.title} className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                  <div className="text-4xl mb-4">{service.icon}</div>
+                  <h2 className="text-xl font-bold text-white mb-1">{service.title}</h2>
+                  <p className="text-amber-400 text-sm font-medium mb-3">{service.tagline}</p>
+                  <p className="text-slate-400 mb-4 leading-relaxed">{service.body}</p>
+                  <ul className="space-y-1.5">
+                    {service.bullets.map((b) => (
+                      <li key={b} className="flex items-center gap-2 text-sm text-slate-300">
+                        <span className="text-green-400 shrink-0">✓</span>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="text-center mt-16">
+          {/* Ops services */}
+          <div className="mb-16">
+            <div className="mb-8 pb-4 border-b border-slate-800">
+              <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-1">Run your business</p>
+              <h2 className="text-2xl font-black text-white">Operations & Automation</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {OPS_SERVICES.map((service) => (
+                <div key={service.title} className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                  <div className="text-4xl mb-4">{service.icon}</div>
+                  <h2 className="text-xl font-bold text-white mb-1">{service.title}</h2>
+                  <p className="text-amber-400 text-sm font-medium mb-3">{service.tagline}</p>
+                  <p className="text-slate-400 mb-4 leading-relaxed">{service.body}</p>
+                  <ul className="space-y-1.5">
+                    {service.bullets.map((b) => (
+                      <li key={b} className="flex items-center gap-2 text-sm text-slate-300">
+                        <span className="text-green-400 shrink-0">✓</span>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="text-center">
             <Link href="/pricing" className="inline-block px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition">
               See Pricing
             </Link>

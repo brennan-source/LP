@@ -41,6 +41,48 @@ const TIERS = [
   },
 ];
 
+const OPS_TIERS = [
+  {
+    name: "Quick Win",
+    setup: 1500,
+    monthly: null,
+    description: "One automation, fast. Pick the single biggest time-waster in your business and we'll fix it.",
+    includes: [
+      "One workflow automated",
+      "Quote follow-up, invoice reminders, or booking confirmation",
+      "Setup + testing included",
+      "Handoff training",
+    ],
+  },
+  {
+    name: "Ops Core",
+    setup: 4500,
+    monthly: 299,
+    description: "The full front-of-house stack. Quoting, scheduling, payment collection, and lead follow-up — all connected.",
+    includes: [
+      "Digital quoting & estimate delivery",
+      "Online scheduling & booking",
+      "Invoice & payment automation",
+      "Lead follow-up sequences",
+      "Monthly support & updates",
+    ],
+  },
+  {
+    name: "Back Office",
+    setup: 9500,
+    monthly: 499,
+    description: "Everything in Ops Core plus the systems behind the scenes — HR, payroll workflows, job costing, and reporting.",
+    includes: [
+      "Everything in Ops Core",
+      "HR onboarding workflows",
+      "Payroll integration & setup",
+      "Job costing & margin reporting",
+      "Document management",
+      "Monthly support & updates",
+    ],
+  },
+];
+
 export default function PricingPage() {
   return (
     <>
@@ -62,7 +104,11 @@ export default function PricingPage() {
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">Free website included. Cancel anytime after your 4-month agreement. You own the site after month 4.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          {/* Marketing retainers */}
+          <div className="mb-6">
+            <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-6">Marketing retainers</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
             {TIERS.map((tier) => (
               <div key={tier.name} className={`rounded-2xl border p-8 relative ${tier.popular ? "bg-amber-900/20 border-amber-500" : "bg-slate-900 border-slate-800"}`}>
                 {tier.popular && (
@@ -91,12 +137,50 @@ export default function PricingPage() {
             ))}
           </div>
 
-          {/* AI Ops */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-2xl font-bold text-white mb-2">AI Ops Projects</h2>
-            <p className="text-slate-400 mb-2">Custom automation projects: booking systems, CRM builds, workflow automation, AI integrations.</p>
-            <p className="text-amber-400 font-bold mb-4">$5,000 – $25,000 per project</p>
-            <Link href="/contact" className="inline-block px-6 py-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white rounded-xl font-medium transition">
+          {/* Operations projects */}
+          <div className="mb-6">
+            <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-2">Operations projects</p>
+            <p className="text-slate-400 text-sm">One-time build fee + optional monthly support. Can be added on top of any marketing retainer.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {OPS_TIERS.map((tier) => (
+              <div key={tier.name} className="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col">
+                <h2 className="text-xl font-bold text-white mb-1">{tier.name}</h2>
+                <div className="mb-4">
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-3xl font-black text-white">${tier.setup.toLocaleString()}</span>
+                    <span className="text-slate-400 text-sm">setup</span>
+                  </div>
+                  {tier.monthly && (
+                    <p className="text-amber-400 text-sm font-medium mt-0.5">+ ${tier.monthly}/mo support</p>
+                  )}
+                </div>
+                <p className="text-slate-400 text-sm leading-relaxed mb-4">{tier.description}</p>
+                <ul className="space-y-2 mb-8 flex-1">
+                  {tier.includes.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-slate-300">
+                      <span className="text-green-400 mt-0.5 shrink-0">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/contact"
+                  className="block w-full text-center py-3 bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 rounded-xl font-semibold transition"
+                >
+                  Get Started
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          {/* Custom */}
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 mb-20">
+            <div>
+              <h2 className="text-xl font-bold text-white mb-1">Custom / Enterprise</h2>
+              <p className="text-slate-400 text-sm max-w-xl">Multi-location businesses, ERP integrations, complex builds, or anything that doesn&apos;t fit neatly into a package. Let&apos;s scope it together.</p>
+            </div>
+            <Link href="/contact" className="shrink-0 px-6 py-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white rounded-xl font-medium transition">
               Let&apos;s Talk
             </Link>
           </div>
