@@ -60,6 +60,58 @@ export async function scrapeBusinesses(params: {
   return businesses.map(normalize);
 }
 
+export interface OutscraperReview {
+  author_title: string;
+  review_rating: number;
+  review_text: string | null;
+  review_datetime_utc: string | null;
+}
+
+export interface NormalizedReview {
+  authorName: string;
+  rating: number;
+  text: string;
+  publishedAt: Date | null;
+}
+
+export async function fetchReviews(params: {
+  businessName: string;
+  city: string;
+  state: string;
+  limit?: number;
+}): Promise<NormalizedReview[]> {
+  if (!API_KEY) throw new Error("OUTSCRAPER_API_KEY is not set");
+
+  const query = `${params.businessName}, ${params.city}, ${params.state}`;
+  const url = new URL(`${BASE_URL}/maps/reviews-v3`);
+  url.searchParams.set("query", query);
+  url.searchParams.set("reviewsLimit", String(params.limit ?? 10));
+  url.searchParams.set("async", "false");
+  url.searchParams.set("fields", "author_title,review_rating,review_text,review_datetime_utc");
+  url.searchParams.set("ignoreEmpty", "true");
+
+  const res = await fetch(url.toString(), {
+    headers: { "X-API-KEY": API_KEY, "Content-Type": "application/json" },
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Outscraper reviews error ${res.status}: ${text.slice(0, 200)}`);
+  }
+
+  const data = await res.json() as { data?: Array<Array<{ reviews_data?: OutscraperReview[] }>> };
+  const reviewsData: OutscraperReview[] = (data.data ?? []).flat().flatMap((b) => b.reviews_data ?? []);
+
+  return reviewsData
+    .filter((r) => r.review_text && r.review_text.trim().length > 10)
+    .map((r) => ({
+      authorName: r.author_title,
+      rating: r.review_rating,
+      text: r.review_text!.trim(),
+      publishedAt: r.review_datetime_utc ? new Date(r.review_datetime_utc) : null,
+    }));
+}
+
 function normalize(b: OutscraperBusiness): NormalizedContact {
   return {
     businessName: b.name,

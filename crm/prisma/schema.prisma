@@ -32,6 +32,7 @@ model Contact {
   activities       Activity[]
   products         ContactProduct[]
   client           Client?
+  reviews          Review[]
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
 }
@@ -76,6 +77,18 @@ model Campaign {
   sentCount Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Review {
+  id          String   @id @default(cuid())
+  contactId   String
+  contact     Contact  @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  authorName  String
+  rating      Int
+  text        String
+  publishedAt DateTime?
+  source      String   @default("google")
+  createdAt   DateTime @default(now())
 }
 
 model Client {

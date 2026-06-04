@@ -12,6 +12,7 @@ export async function GET(
         products: true,
         notes: { orderBy: { createdAt: "desc" } },
         activities: { orderBy: { createdAt: "desc" } },
+        reviews: { orderBy: { publishedAt: "desc" } },
       },
     });
 
@@ -104,6 +105,7 @@ export async function PATCH(
         products: true,
         notes: { orderBy: { createdAt: "desc" } },
         activities: { orderBy: { createdAt: "desc" } },
+        reviews: { orderBy: { publishedAt: "desc" } },
       },
     });
 

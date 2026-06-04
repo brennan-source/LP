@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { STAGES } from "@/types/crm";
-import type { Contact } from "@/types/crm";
+import type { Contact, Review } from "@/types/crm";
 
 const ACTIVITY_ICONS: Record<string, string> = {
   purchase: "💳",
@@ -67,6 +67,11 @@ export default function ContactDetailClient({ contact: initial }: Props) {
   const [sendingPostcard, setSendingPostcard] = useState(false);
   const [postcardError, setPostcardError] = useState("");
   const [postcardSuccess, setPostcardSuccess] = useState(false);
+
+  // Reviews
+  const [reviews, setReviews] = useState<Review[]>(contact.reviews ?? []);
+  const [fetchingReviews, setFetchingReviews] = useState(false);
+  const [reviewsError, setReviewsError] = useState("");
 
   async function handleSave() {
     setSaving(true);
@@ -146,6 +151,19 @@ export default function ContactDetailClient({ contact: initial }: Props) {
       setPostcardError(data.error ?? "Failed to send postcard");
     }
     setSendingPostcard(false);
+  }
+
+  async function handleFetchReviews() {
+    setFetchingReviews(true);
+    setReviewsError("");
+    const res = await fetch(`/api/contacts/${contact.id}/reviews`, { method: "POST" });
+    const data = await res.json();
+    if (res.ok) {
+      setReviews(data.reviews);
+    } else {
+      setReviewsError(data.error ?? "Failed to fetch reviews");
+    }
+    setFetchingReviews(false);
   }
 
   const displayName =
@@ -381,6 +399,40 @@ export default function ContactDetailClient({ contact: initial }: Props) {
                   <div key={note.id} className="bg-slate-700/50 rounded-lg p-3">
                     <p className="text-white text-sm">{note.content}</p>
                     <p className="text-slate-500 text-xs mt-1">{formatDate(note.createdAt)}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Google Reviews */}
+          <div className="bg-slate-800 rounded-xl border border-slate-700 p-5">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Google Reviews</h2>
+              <button
+                onClick={handleFetchReviews}
+                disabled={fetchingReviews || !contact.businessName}
+                title={!contact.businessName ? "Contact needs a business name" : undefined}
+                className="px-3 py-1.5 bg-violet-700 hover:bg-violet-600 disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-medium rounded-lg transition"
+              >
+                {fetchingReviews ? "Fetching…" : reviews.length > 0 ? "Refresh" : "Fetch Reviews"}
+              </button>
+            </div>
+            {reviewsError && <p className="text-red-400 text-xs mb-3">{reviewsError}</p>}
+            {reviews.length === 0 ? (
+              <p className="text-slate-500 text-sm">No reviews fetched yet.</p>
+            ) : (
+              <div className="space-y-3">
+                {reviews.map((r) => (
+                  <div key={r.id} className="bg-slate-700/50 rounded-lg p-3">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-white text-sm font-medium">{r.authorName}</span>
+                      <span className="text-yellow-400 text-sm">{"★".repeat(r.rating)}{"☆".repeat(5 - r.rating)}</span>
+                    </div>
+                    <p className="text-slate-300 text-sm leading-relaxed">{r.text}</p>
+                    {r.publishedAt && (
+                      <p className="text-slate-500 text-xs mt-1">{new Date(r.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</p>
+                    )}
                   </div>
                 ))}
               </div>

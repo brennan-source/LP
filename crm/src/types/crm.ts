@@ -39,6 +39,17 @@ export interface Note {
   createdAt: string;
 }
 
+export interface Review {
+  id: string;
+  contactId: string;
+  authorName: string;
+  rating: number;
+  text: string;
+  publishedAt: string | null;
+  source: string;
+  createdAt: string;
+}
+
 export interface Activity {
   id: string;
   contactId: string;
@@ -73,6 +84,7 @@ export interface Contact {
   notes: Note[];
   activities: Activity[];
   products: ContactProduct[];
+  reviews: Review[];
   createdAt: string;
   updatedAt: string;
 }

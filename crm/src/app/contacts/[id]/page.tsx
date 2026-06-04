@@ -19,6 +19,7 @@ export default async function ContactDetailPage({
         products: true,
         notes: { orderBy: { createdAt: "desc" } },
         activities: { orderBy: { createdAt: "desc" } },
+        reviews: { orderBy: { publishedAt: "desc" } },
       },
     }),
     prisma.contact.count(),
