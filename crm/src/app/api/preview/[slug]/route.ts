@@ -7,8 +7,10 @@ export async function GET(
 ) {
   const { slug } = await params;
 
+  let contact: { id: string; previewUrl: string | null; businessName: string | null } | null = null;
+
   try {
-    const contact = await prisma.contact.findUnique({
+    contact = await prisma.contact.findUnique({
       where: { previewSlug: slug },
     });
 
@@ -34,6 +36,9 @@ export async function GET(
   }
 
   const agencyUrl = process.env.AGENCY_URL ?? "https://gomakr.ai";
-  const name = encodeURIComponent(slug);
-  redirect(`${agencyUrl}/preview/${slug}`);
+  const qs = new URLSearchParams();
+  if (contact?.previewUrl) qs.set("url", contact.previewUrl);
+  if (contact?.businessName) qs.set("name", contact.businessName);
+  const query = qs.toString() ? `?${qs.toString()}` : "";
+  redirect(`${agencyUrl}/preview/${slug}${query}`);
 }

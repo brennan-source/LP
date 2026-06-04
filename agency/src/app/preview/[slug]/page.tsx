@@ -2,15 +2,44 @@ import Link from "next/link";
 
 interface Props {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ name?: string }>;
+  searchParams: Promise<{ url?: string; name?: string }>;
 }
 
 export default async function PreviewPage({ params, searchParams }: Props) {
   const { slug } = await params;
-  const { name } = await searchParams;
+  const { url, name } = await searchParams;
 
+  const framerUrl = url ? decodeURIComponent(url) : null;
   const displayName = name ? decodeURIComponent(name) : "Your Business";
 
+  // Mode 1: Framer URL present — iframe the actual demo with a sticky CTA banner
+  if (framerUrl) {
+    return (
+      <div className="h-screen flex flex-col overflow-hidden">
+        {/* Sticky CTA banner */}
+        <div className="bg-violet-600 px-4 py-2.5 flex items-center justify-between gap-4 shrink-0">
+          <p className="text-white text-sm font-medium truncate">
+            This is your free website from Makr — built for {displayName}
+          </p>
+          <Link
+            href="/contact"
+            className="shrink-0 bg-white text-violet-700 font-bold text-sm px-4 py-1.5 rounded-lg hover:bg-violet-50 transition"
+          >
+            Claim it free →
+          </Link>
+        </div>
+        {/* Full-height Framer iframe */}
+        <iframe
+          src={framerUrl}
+          className="flex-1 w-full border-0"
+          title={`${displayName} — preview`}
+          allow="fullscreen"
+        />
+      </div>
+    );
+  }
+
+  // Mode 2: No Framer URL — generic landing page
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col">
       {/* CTA banner */}
@@ -23,7 +52,6 @@ export default async function PreviewPage({ params, searchParams }: Props) {
         </p>
       </div>
 
-      {/* Preview content */}
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="max-w-2xl w-full text-center">
           <div className="inline-flex items-center gap-2 bg-violet-900/30 border border-violet-800 rounded-full px-4 py-1.5 text-violet-300 text-sm mb-8">
@@ -61,9 +89,7 @@ export default async function PreviewPage({ params, searchParams }: Props) {
           <p className="text-slate-600 text-sm">
             No credit card. No contracts. You own the site after 4 months.
           </p>
-          <p className="text-slate-700 text-xs mt-4">
-            Reference: {slug}
-          </p>
+          <p className="text-slate-700 text-xs mt-4">ref: {slug}</p>
         </div>
       </div>
 
