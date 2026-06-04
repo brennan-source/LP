@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const SERVICES = [
+const GROW = [
   {
     icon: "🌐",
     title: "Free Website",
@@ -8,18 +8,21 @@ const SERVICES = [
   },
   {
     icon: "📍",
-    title: "Local SEO",
-    description: "Rank higher on Google Maps and local search. Your customers are looking — we make sure they find you.",
+    title: "Local SEO & Ads",
+    description: "Rank higher on Google Maps, run smarter ad campaigns. Your customers are looking — we make sure they find you first.",
+  },
+];
+
+const RUN = [
+  {
+    icon: "📋",
+    title: "Quoting & Billing",
+    description: "Automated estimates, invoices, and payment collection. Stop chasing customers and losing jobs to slow follow-up.",
   },
   {
-    icon: "📣",
-    title: "Google Ads",
-    description: "We manage your ad spend so every dollar works harder. No wasted budget, no guesswork.",
-  },
-  {
-    icon: "🤖",
-    title: "AI Automation",
-    description: "Automated booking, follow-up, and lead capture. Work fewer hours and close more jobs.",
+    icon: "⚙️",
+    title: "Operations & Back Office",
+    description: "Scheduling, HR onboarding, payroll workflows, and reporting. Systems that run your business so you don't have to babysit it.",
   },
 ];
 
@@ -40,7 +43,7 @@ export default function HomePage() {
             <Link href="/pricing" className="hover:text-white transition">Pricing</Link>
             <Link href="/contact" className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-900 rounded-lg transition font-medium">Get Started</Link>
           </div>
-          <Link href="/contact" className="md:hidden px-3 py-1.5 bg-amber-500 text-slate-900 text-sm rounded-lg">Get Started</Link>
+          <Link href="/contact" className="md:hidden px-3 py-1.5 bg-amber-500 text-slate-900 text-sm rounded-lg font-medium">Get Started</Link>
         </div>
       </nav>
 
@@ -49,14 +52,14 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-amber-900/30 border border-amber-800 rounded-full px-4 py-1.5 text-amber-300 text-sm mb-8">
             <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
-            Now serving home service businesses in New England
+            Built for home service businesses in New England
           </div>
           <h1 className="text-5xl md:text-7xl font-black text-white leading-tight tracking-tight mb-6">
             You built your business.<br />
             <span className="text-amber-400">We make it grow.</span>
           </h1>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Makr is a local marketing agency powered by AI. We build your website, run your SEO, manage your ads, and automate your follow-up — so you can focus on the work you&apos;re actually good at.
+            Makr is a growth partner for home service businesses. We get you more jobs, then build the systems — quoting, billing, scheduling, operations — so you can actually handle them.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -79,7 +82,7 @@ export default function HomePage() {
       {/* Industries */}
       <section className="py-12 px-6 border-y border-slate-800">
         <div className="max-w-6xl mx-auto">
-          <p className="text-center text-slate-500 text-sm mb-6">We work with local businesses across New England</p>
+          <p className="text-center text-slate-500 text-sm mb-6">We work with home service businesses across New England</p>
           <div className="flex flex-wrap justify-center gap-3">
             {INDUSTRIES.map((ind) => (
               <span key={ind} className="px-4 py-2 bg-slate-800 border border-slate-700 rounded-full text-slate-300 text-sm">
@@ -90,22 +93,44 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services */}
+      {/* Services — two value props */}
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-white mb-4">Everything your business needs to grow</h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">One partner for your website, marketing, and automation. No juggling agencies, freelancers, or software subscriptions.</p>
+
+          {/* Get more jobs */}
+          <div className="mb-16">
+            <div className="mb-8">
+              <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-2">Get more jobs</p>
+              <h2 className="text-3xl font-black text-white">More calls. More booked work.</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {GROW.map((service) => (
+                <div key={service.title} className="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-slate-600 transition">
+                  <div className="text-4xl mb-4">{service.icon}</div>
+                  <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
+                  <p className="text-slate-400 leading-relaxed">{service.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {SERVICES.map((service) => (
-              <div key={service.title} className="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-slate-600 transition">
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
-                <p className="text-slate-400 leading-relaxed">{service.description}</p>
-              </div>
-            ))}
+
+          {/* Run your business */}
+          <div>
+            <div className="mb-8">
+              <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-2">Run your business</p>
+              <h2 className="text-3xl font-black text-white">Less chaos. More margin.</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {RUN.map((service) => (
+                <div key={service.title} className="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-slate-600 transition">
+                  <div className="text-4xl mb-4">{service.icon}</div>
+                  <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
+                  <p className="text-slate-400 leading-relaxed">{service.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
+
           <div className="text-center mt-10">
             <Link href="/services" className="text-amber-400 hover:text-amber-300 font-medium transition">
               See everything we do →
@@ -126,7 +151,7 @@ export default function HomePage() {
               { step: "01", title: "We build your site free", body: "We design and build a professional website for your business at no cost. You get to see it before committing to anything." },
               { step: "02", title: "We prove we can grow your leads", body: "For the first 4 months, Makr runs your SEO, manages your Google Business Profile, and publishes content — completely free." },
               { step: "03", title: "You decide if it's worth it", body: "After 4 months, if you've seen real results, you continue at $499/month. If not, you walk away — no fee, no hassle." },
-              { step: "04", title: "You own everything", body: "After 4 months, the website is yours free and clear. No hostage websites, no surprise fees." },
+              { step: "04", title: "We help you build the back end", body: "Once the leads are flowing, we build the systems — quoting, billing, scheduling, HR — so growth doesn't create new headaches." },
             ].map(({ step, title, body }) => (
               <div key={step} className="flex gap-6">
                 <div className="shrink-0 w-12 h-12 bg-amber-900/50 border border-amber-800 rounded-xl flex items-center justify-center text-amber-400 font-black text-sm">{step}</div>
