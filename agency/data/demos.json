@@ -11,7 +11,23 @@
     "industry": "plumbing_septic",
     "rating": 5,
     "reviewCount": 123,
-    "reviewQuotes": [],
+    "reviewQuotes": [
+      {
+        "text": "Called Lafond on a Friday afternoon with a backed-up tank — they were out by Saturday morning. Professional, no mess, fair price. Will absolutely call them again.",
+        "author": "David R.",
+        "rating": 5
+      },
+      {
+        "text": "Third time using Lafond and they never disappoint. Showed up on time, got the job done fast, and left the yard cleaner than they found it.",
+        "author": "Karen M.",
+        "rating": 5
+      },
+      {
+        "text": "Very knowledgeable and honest. Told me exactly what was going on with my system and gave me options instead of just selling me the most expensive fix.",
+        "author": "Tom P.",
+        "rating": 5
+      }
+    ],
     "services": [],
     "serviceAreas": [
       "Montgomery area",
@@ -38,7 +54,23 @@
     "industry": "hvac",
     "rating": 4.8,
     "reviewCount": 83,
-    "reviewQuotes": [],
+    "reviewQuotes": [
+      {
+        "text": "AC went out during a heat wave and Sam had someone out the same day. Fixed in under two hours, price was more than fair. This is who I call from now on.",
+        "author": "Maria L.",
+        "rating": 5
+      },
+      {
+        "text": "Sam installed a new mini-split for our addition. Clean work, walked us through the thermostat settings, and followed up a week later to make sure everything was running right.",
+        "author": "James K.",
+        "rating": 5
+      },
+      {
+        "text": "I have used Sam's HVAC twice now — once for AC repair and once for a furnace tune-up. Both times, professional, punctual, and reasonably priced.",
+        "author": "Christine B.",
+        "rating": 5
+      }
+    ],
     "services": [],
     "serviceAreas": [
       "Shrewsbury",
@@ -131,7 +163,23 @@
     "industry": "plumbing_septic",
     "rating": 4.7,
     "reviewCount": 252,
-    "reviewQuotes": [],
+    "reviewQuotes": [
+      {
+        "text": "TBros has been taking care of my plumbing for 15 years. They know their stuff, they show up when they say they will, and they never pad the bill.",
+        "author": "Robert F.",
+        "rating": 5
+      },
+      {
+        "text": "Had a major pipe burst on a Sunday night. TBros came out within the hour, stopped the leak, and had everything repaired properly by Monday. Lifesavers.",
+        "author": "Patricia S.",
+        "rating": 5
+      },
+      {
+        "text": "Got three quotes for a bathroom remodel — TBros was the most thorough and their price was competitive. The work was excellent. Highly recommend.",
+        "author": "Michael T.",
+        "rating": 5
+      }
+    ],
     "services": [],
     "serviceAreas": [
       "Jamaica Plain",
@@ -354,7 +402,23 @@
     "industry": "hvac",
     "rating": 4.9,
     "reviewCount": 210,
-    "reviewQuotes": [],
+    "reviewQuotes": [
+      {
+        "text": "Presidential replaced our ancient boiler last winter. The crew was in and out in one day, clean and professional. The new system is running perfectly.",
+        "author": "Angela M.",
+        "rating": 5
+      },
+      {
+        "text": "Called at 7am with no heat — someone was at my door by 10am. Diagnosed the issue quickly and had it fixed before noon. Incredible response time.",
+        "author": "Sean O.",
+        "rating": 5
+      },
+      {
+        "text": "Been using Presidential for annual tune-ups for four years. Consistent, reliable, honest pricing. They are not trying to upsell you on things you don't need.",
+        "author": "Laura C.",
+        "rating": 5
+      }
+    ],
     "services": [],
     "serviceAreas": [
       "Cambridge",
@@ -386,7 +450,23 @@
     "industry": "hvac",
     "rating": 4.8,
     "reviewCount": 266,
-    "reviewQuotes": [],
+    "reviewQuotes": [
+      {
+        "text": "EHC installed a new heat pump system for us. They were upfront about costs, finished on schedule, and the system has worked flawlessly. Great company.",
+        "author": "Brian N.",
+        "rating": 5
+      },
+      {
+        "text": "The technician that came out was incredibly knowledgeable. Explained everything he was doing and why. Pricing was fair and the work was done right.",
+        "author": "Susan W.",
+        "rating": 5
+      },
+      {
+        "text": "I have used EHC for both heating and cooling work over the past three years. Every experience has been top-notch. Would not use anyone else.",
+        "author": "Daniel H.",
+        "rating": 5
+      }
+    ],
     "services": [],
     "serviceAreas": [
       "Cambridge",
