@@ -50,11 +50,11 @@ export default function ServicesPage() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="text-xl font-black text-violet-400 tracking-tight">Makr</Link>
+          <Link href="/" className="text-xl font-black text-amber-400 tracking-tight">Makr</Link>
           <div className="hidden md:flex items-center gap-6 text-sm text-slate-400">
             <Link href="/services" className="text-white">Services</Link>
             <Link href="/pricing" className="hover:text-white transition">Pricing</Link>
-            <Link href="/contact" className="px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white rounded-lg transition font-medium">Get Started</Link>
+            <Link href="/contact" className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-900 rounded-lg transition font-medium">Get Started</Link>
           </div>
         </div>
       </nav>
@@ -71,7 +71,7 @@ export default function ServicesPage() {
               <div key={service.title} className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h2 className="text-xl font-bold text-white mb-1">{service.title}</h2>
-                <p className="text-violet-400 text-sm font-medium mb-3">{service.tagline}</p>
+                <p className="text-amber-400 text-sm font-medium mb-3">{service.tagline}</p>
                 <p className="text-slate-400 mb-4 leading-relaxed">{service.body}</p>
                 <ul className="space-y-1.5">
                   {service.bullets.map((b) => (
@@ -86,7 +86,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="text-center mt-16">
-            <Link href="/pricing" className="inline-block px-8 py-4 bg-violet-600 hover:bg-violet-500 text-white font-bold text-lg rounded-xl transition">
+            <Link href="/pricing" className="inline-block px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition">
               See Pricing
             </Link>
           </div>

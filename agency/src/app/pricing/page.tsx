@@ -46,11 +46,11 @@ export default function PricingPage() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="text-xl font-black text-violet-400 tracking-tight">Makr</Link>
+          <Link href="/" className="text-xl font-black text-amber-400 tracking-tight">Makr</Link>
           <div className="hidden md:flex items-center gap-6 text-sm text-slate-400">
             <Link href="/services" className="hover:text-white transition">Services</Link>
             <Link href="/pricing" className="text-white">Pricing</Link>
-            <Link href="/contact" className="px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white rounded-lg transition font-medium">Get Started</Link>
+            <Link href="/contact" className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-900 rounded-lg transition font-medium">Get Started</Link>
           </div>
         </div>
       </nav>
@@ -64,9 +64,9 @@ export default function PricingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {TIERS.map((tier) => (
-              <div key={tier.name} className={`rounded-2xl border p-8 relative ${tier.popular ? "bg-violet-900/20 border-violet-600" : "bg-slate-900 border-slate-800"}`}>
+              <div key={tier.name} className={`rounded-2xl border p-8 relative ${tier.popular ? "bg-amber-900/20 border-amber-500" : "bg-slate-900 border-slate-800"}`}>
                 {tier.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-violet-600 text-white text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
                 )}
                 <h2 className="text-xl font-bold text-white mb-1">{tier.name}</h2>
                 <div className="flex items-baseline gap-1 mb-6">
@@ -83,7 +83,7 @@ export default function PricingPage() {
                 </ul>
                 <Link
                   href="/contact"
-                  className={`block w-full text-center py-3 rounded-xl font-semibold transition ${tier.popular ? "bg-violet-600 hover:bg-violet-500 text-white" : "bg-slate-800 hover:bg-slate-700 text-white border border-slate-700"}`}
+                  className={`block w-full text-center py-3 rounded-xl font-semibold transition ${tier.popular ? "bg-amber-500 hover:bg-amber-400 text-slate-900" : "bg-slate-800 hover:bg-slate-700 text-white border border-slate-700"}`}
                 >
                   Get Started
                 </Link>
@@ -95,7 +95,7 @@ export default function PricingPage() {
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-2xl font-bold text-white mb-2">AI Ops Projects</h2>
             <p className="text-slate-400 mb-2">Custom automation projects: booking systems, CRM builds, workflow automation, AI integrations.</p>
-            <p className="text-violet-400 font-bold mb-4">$5,000 – $25,000 per project</p>
+            <p className="text-amber-400 font-bold mb-4">$5,000 – $25,000 per project</p>
             <Link href="/contact" className="inline-block px-6 py-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white rounded-xl font-medium transition">
               Let&apos;s Talk
             </Link>
