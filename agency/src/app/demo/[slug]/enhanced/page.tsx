@@ -58,22 +58,26 @@ function Stars({ rating }: { rating: number }) {
   );
 }
 
-// Subtle geometric SVG pattern (no external fetch)
-function HeroPattern({ color }: { color: string }) {
-  return (
-    <svg className="absolute inset-0 w-full h-full opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-          <path d="M 40 0 L 0 0 0 40" fill="none" stroke={color} strokeWidth="1"/>
-        </pattern>
-        <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
-          <circle cx="10" cy="10" r="1.5" fill={color}/>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#grid)"/>
-      <rect width="100%" height="100%" fill="url(#dots)"/>
-    </svg>
-  );
+// Curated Unsplash photo IDs per industry/scene
+const PHOTOS = {
+  hvac: {
+    hero: "photo-1621905251189-08b45d6a269e",      // HVAC technician working
+    work1: "photo-1558618666-fcd25c85cd64",         // AC unit outdoor
+    work2: "photo-1504328345606-18bbc8c9d7d1",      // furnace/heating
+    work3: "photo-1621905252507-b35492cc74b4",      // HVAC duct work
+    cta:   "photo-1504328345606-18bbc8c9d7d1",
+  },
+  plumbing: {
+    hero: "photo-1585771724684-38269d6639fd",       // plumber working under sink
+    work1: "photo-1558618047-3c8c76ca7d13",         // pipes / drain
+    work2: "photo-1607400201515-c2c41c07d307",      // water heater
+    work3: "photo-1581092918056-0c4c3acd3789",      // emergency repair
+    cta:   "photo-1585771724684-38269d6639fd",
+  },
+};
+
+function unsplash(id: string, w = 1200) {
+  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=75`;
 }
 
 export default async function EnhancedDemoPage({ params }: Props) {
@@ -83,6 +87,7 @@ export default async function EnhancedDemoPage({ params }: Props) {
   const d = resolveDemo(raw);
 
   const isHvac = d.industry === "hvac";
+  const photos = isHvac ? PHOTOS.hvac : PHOTOS.plumbing;
   const industryLabel = isHvac ? "HVAC" : "Plumbing & Septic";
   const industryIcon = isHvac ? "❄️" : "🔧";
 
@@ -165,26 +170,29 @@ export default async function EnhancedDemoPage({ params }: Props) {
               </div>
             </div>
 
-            {/* Right: branded graphic panel (2 cols) */}
-            <div className={`hidden md:flex md:col-span-2 relative items-center justify-center bg-gradient-to-br ${accent.panelGrad} overflow-hidden`}>
-              <HeroPattern color="white" />
-              {/* Decorative circles */}
-              <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-white/5" />
-              <div className="absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-white/5" />
-              {/* Center content */}
-              <div className="relative z-10 text-center px-8">
-                <div className="text-7xl mb-6">{industryIcon}</div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-5 mb-4 border border-white/10">
+            {/* Right: real industry photo panel (2 cols) */}
+            <div className="hidden md:block md:col-span-2 relative overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={unsplash(photos.hero)}
+                alt={`${industryLabel} professional at work`}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              {/* Dark gradient overlay so stats remain readable */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+              {/* Stats overlay at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                <div className="bg-black/50 backdrop-blur-sm rounded-2xl px-5 py-4 mb-3 border border-white/10 text-center">
                   <p className="text-white font-black text-3xl mb-0.5">{d.rating.toFixed(1)}</p>
                   <div className="text-yellow-300 text-base mb-0.5">{"★".repeat(Math.round(d.rating))}</div>
                   <p className="text-white/70 text-xs">{d.reviewCount} Google Reviews</p>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="bg-white/10 rounded-xl px-3 py-3 border border-white/10 text-center">
+                  <div className="bg-black/50 rounded-xl px-3 py-3 border border-white/10 text-center backdrop-blur-sm">
                     <p className="text-white font-bold text-sm">Licensed</p>
                     <p className="text-white/60 text-xs">& Insured</p>
                   </div>
-                  <div className="bg-white/10 rounded-xl px-3 py-3 border border-white/10 text-center">
+                  <div className="bg-black/50 rounded-xl px-3 py-3 border border-white/10 text-center backdrop-blur-sm">
                     <p className="text-white font-bold text-sm">24/7</p>
                     <p className="text-white/60 text-xs">Emergency</p>
                   </div>
@@ -264,17 +272,15 @@ export default async function EnhancedDemoPage({ params }: Props) {
               <h2 className="text-3xl font-black text-gray-900">See the Difference We Make</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                { label: isHvac ? "AC Installation" : "Drain Cleaning", icon: isHvac ? "❄️" : "🚿", desc: "Fast, clean, and done right" },
-                { label: isHvac ? "Furnace Replacement" : "Water Heater Install", icon: isHvac ? "🔥" : "🌡️", desc: "Efficient, up-to-code installs" },
-                { label: isHvac ? "Emergency Repair" : "Emergency Plumbing", icon: "🚨", desc: "Here when you need us most" },
-              ].map((item) => (
-                <div key={item.label} className={`relative rounded-2xl overflow-hidden bg-gradient-to-br ${accent.panelGrad} aspect-video flex items-end p-5`}>
-                  <HeroPattern color="white" />
-                  {/* Photo placeholder — replace with <img> in production */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-6xl opacity-30">{item.icon}</span>
-                  </div>
+              {([
+                { label: isHvac ? "AC Installation" : "Drain Cleaning", photo: photos.work1, desc: "Fast, clean, and done right" },
+                { label: isHvac ? "Furnace Replacement" : "Water Heater Install", photo: photos.work2, desc: "Efficient, up-to-code installs" },
+                { label: isHvac ? "Emergency Repair" : "Emergency Plumbing", photo: photos.work3, desc: "Here when you need us most" },
+              ] as { label: string; photo: string; desc: string }[]).map((item) => (
+                <div key={item.label} className="relative rounded-2xl overflow-hidden aspect-video flex items-end p-5">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={unsplash(item.photo, 800)} alt={item.label} className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   <div className="relative z-10 bg-black/40 backdrop-blur-sm rounded-xl px-4 py-3 w-full">
                     <p className="text-white font-bold text-sm">{item.label}</p>
                     <p className="text-white/70 text-xs">{item.desc}</p>
@@ -282,7 +288,6 @@ export default async function EnhancedDemoPage({ params }: Props) {
                 </div>
               ))}
             </div>
-            <p className="text-center text-gray-400 text-xs mt-4">Photo slots — replaced with real job photos at launch</p>
           </div>
         </section>
 
@@ -391,8 +396,10 @@ export default async function EnhancedDemoPage({ params }: Props) {
         )}
 
         {/* ── CTA ── */}
-        <section id="contact" className={`bg-gradient-to-br ${accent.panelGrad} relative overflow-hidden py-20 px-4`}>
-          <HeroPattern color="white" />
+        <section id="contact" className="relative overflow-hidden py-20 px-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={unsplash(photos.cta)} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/65" />
           <div className="relative z-10 max-w-3xl mx-auto text-center">
             <p className="text-white/70 text-sm font-bold uppercase tracking-widest mb-3">Get Started Today</p>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-4">Ready for a Free Estimate?</h2>
