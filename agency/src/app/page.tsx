@@ -34,26 +34,26 @@ export default function HomePage() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-xl font-black text-violet-400 tracking-tight">Makr</span>
+          <span className="text-xl font-black text-amber-400 tracking-tight">Makr</span>
           <div className="hidden md:flex items-center gap-6 text-sm text-slate-400">
             <Link href="/services" className="hover:text-white transition">Services</Link>
             <Link href="/pricing" className="hover:text-white transition">Pricing</Link>
-            <Link href="/contact" className="px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white rounded-lg transition font-medium">Get Started</Link>
+            <Link href="/contact" className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-900 rounded-lg transition font-medium">Get Started</Link>
           </div>
-          <Link href="/contact" className="md:hidden px-3 py-1.5 bg-violet-600 text-white text-sm rounded-lg">Get Started</Link>
+          <Link href="/contact" className="md:hidden px-3 py-1.5 bg-amber-500 text-slate-900 text-sm rounded-lg">Get Started</Link>
         </div>
       </nav>
 
       {/* Hero */}
       <section className="pt-32 pb-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-violet-900/30 border border-violet-800 rounded-full px-4 py-1.5 text-violet-300 text-sm mb-8">
-            <span className="w-2 h-2 bg-violet-400 rounded-full animate-pulse" />
+          <div className="inline-flex items-center gap-2 bg-amber-900/30 border border-amber-800 rounded-full px-4 py-1.5 text-amber-300 text-sm mb-8">
+            <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
             Now serving home service businesses in New England
           </div>
           <h1 className="text-5xl md:text-7xl font-black text-white leading-tight tracking-tight mb-6">
             You built your business.<br />
-            <span className="text-violet-400">We make it grow.</span>
+            <span className="text-amber-400">We make it grow.</span>
           </h1>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
             Makr is a local marketing agency powered by AI. We build your website, run your SEO, manage your ads, and automate your follow-up — so you can focus on the work you&apos;re actually good at.
@@ -61,7 +61,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="px-8 py-4 bg-violet-600 hover:bg-violet-500 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-violet-900/50"
+              className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition shadow-lg shadow-amber-900/50"
             >
               Get a Free Website
             </Link>
@@ -107,7 +107,7 @@ export default function HomePage() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link href="/services" className="text-violet-400 hover:text-violet-300 font-medium transition">
+            <Link href="/services" className="text-amber-400 hover:text-amber-300 font-medium transition">
               See everything we do →
             </Link>
           </div>
@@ -129,7 +129,7 @@ export default function HomePage() {
               { step: "04", title: "You own everything", body: "After 4 months, the website is yours free and clear. No hostage websites, no surprise fees." },
             ].map(({ step, title, body }) => (
               <div key={step} className="flex gap-6">
-                <div className="shrink-0 w-12 h-12 bg-violet-900/50 border border-violet-800 rounded-xl flex items-center justify-center text-violet-400 font-black text-sm">{step}</div>
+                <div className="shrink-0 w-12 h-12 bg-amber-900/50 border border-amber-800 rounded-xl flex items-center justify-center text-amber-400 font-black text-sm">{step}</div>
                 <div>
                   <h3 className="text-white font-bold text-lg mb-1">{title}</h3>
                   <p className="text-slate-400">{body}</p>
@@ -147,7 +147,7 @@ export default function HomePage() {
           <p className="text-slate-400 text-lg mb-8">Fill out the form and we&apos;ll build a demo site for your business — free, no commitment.</p>
           <Link
             href="/contact"
-            className="inline-block px-8 py-4 bg-violet-600 hover:bg-violet-500 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-violet-900/50"
+            className="inline-block px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition shadow-lg shadow-amber-900/50"
           >
             Get My Free Website
           </Link>
@@ -157,7 +157,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="border-t border-slate-800 py-8 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-slate-500 text-sm">
-          <span className="font-black text-violet-400">Makr</span>
+          <span className="font-black text-amber-400">Makr</span>
           <div className="flex gap-6">
             <Link href="/services" className="hover:text-slate-300 transition">Services</Link>
             <Link href="/pricing" className="hover:text-slate-300 transition">Pricing</Link>
