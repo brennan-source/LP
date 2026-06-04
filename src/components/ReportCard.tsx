@@ -4,7 +4,7 @@ import { AuditResults, ScoreCategory } from "@/types/audit";
 import { ScoreGauge } from "./ScoreGauge";
 import { CategoryCard } from "./CategoryCard";
 import { formatDollars, gradeColor } from "@/lib/utils";
-import { AlertTriangle, TrendingUp, Zap, Target, Download } from "lucide-react";
+import { AlertTriangle, TrendingUp, Zap, Target, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const CATEGORY_LABELS: Record<ScoreCategory, string> = {
@@ -24,12 +24,21 @@ const PRIORITY_ICON = {
   low: <Target className="w-4 h-4 text-blue-500" />,
 };
 
+const REVENUE_LABELS: Record<string, string> = {
+  under250k: "under $250K/year",
+  "250k_1m": "$250K–$1M/year",
+  "1m_5m": "$1M–$5M/year",
+  "5m_25m": "$5M–$25M/year",
+  over25m: "$25M+/year",
+};
+
 interface ReportCardProps {
   results: AuditResults;
 }
 
 export function ReportCard({ results }: ReportCardProps) {
   const vsCompetitor = results.overallScore - results.competitorAvgScore;
+  const revenueLabel = results.revenueRange ? REVENUE_LABELS[results.revenueRange] : null;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 space-y-8">
@@ -51,7 +60,7 @@ export function ReportCard({ results }: ReportCardProps) {
             <div className="mt-2 space-y-1">
               <div className="text-xs text-slate-400">Overall Score</div>
               <div className={cn("text-sm font-bold", vsCompetitor >= 0 ? "text-emerald-400" : "text-red-400")}>
-                {vsCompetitor >= 0 ? "+" : ""}{vsCompetitor} vs competitors
+                {vsCompetitor >= 0 ? "+" : ""}{vsCompetitor} vs local avg
               </div>
             </div>
           </div>
@@ -65,12 +74,16 @@ export function ReportCard({ results }: ReportCardProps) {
             <AlertTriangle className="w-5 h-5 text-red-500" />
           </div>
           <div>
-            <h2 className="font-bold text-red-800 text-lg">
-              Estimated {formatDollars(results.estimatedMonthlyRevenueLoss)}/month in missed revenue
-            </h2>
-            <p className="text-red-700 text-sm mt-1">
-              Based on industry benchmarks for a {results.industry} business in {results.city} with your current lead generation gaps.
-              Addressing your top priorities could recapture a significant portion of this revenue.
+            <div className="flex items-center gap-2 flex-wrap mb-1">
+              <h2 className="font-bold text-red-800 text-lg">
+                Est. {formatDollars(results.estimatedMonthlyRevenueLoss)}/month in missed revenue
+              </h2>
+              <span className="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full font-medium">Estimate</span>
+            </div>
+            <p className="text-red-700 text-sm">
+              Projection based on industry conversion benchmarks for a {results.industry} business
+              {revenueLabel ? ` doing ${revenueLabel}` : ""} in {results.city} with your specific gap profile.
+              Actual impact varies — this is a directional estimate, not a guarantee.
             </p>
           </div>
         </div>
@@ -91,6 +104,39 @@ export function ReportCard({ results }: ReportCardProps) {
           ))}
         </div>
       </div>
+
+      {/* Real Competitors */}
+      {results.competitors.length > 0 && (
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-bold text-slate-900">Competitors in Your Area</h2>
+            <span className="text-xs text-slate-400">Via Google Places</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {results.competitors.map((comp, i) => (
+              <div key={i} className="bg-white rounded-xl border border-slate-200 p-4 flex items-center justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="font-medium text-slate-900 text-sm truncate">{comp.name}</p>
+                  {comp.domain && (
+                    <p className="text-xs text-slate-400 truncate">{comp.domain}</p>
+                  )}
+                </div>
+                {comp.rating != null && (
+                  <div className="shrink-0 text-right">
+                    <div className="flex items-center gap-1 justify-end">
+                      <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
+                      <span className="text-sm font-bold text-slate-900">{comp.rating.toFixed(1)}</span>
+                    </div>
+                    {comp.reviewCount != null && (
+                      <p className="text-xs text-slate-400">{comp.reviewCount.toLocaleString()} reviews</p>
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Top 5 Priorities */}
       <div className="bg-white rounded-xl border-2 border-slate-200 p-6">
@@ -135,16 +181,16 @@ export function ReportCard({ results }: ReportCardProps) {
       <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center">
         <h2 className="text-2xl font-bold mb-2">Ready to Fix These Gaps?</h2>
         <p className="text-blue-200 mb-6 max-w-lg mx-auto">
-          We have AI-powered tools that directly address each of your weak areas — starting at $49/month.
-          Most clients recoup their investment in the first week.
+          We have AI-powered tools that directly address each of your weak areas — starting at $29/month.
+          Most clients see measurable improvement within 30 days.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <button className="bg-white text-blue-700 font-bold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors">
+          <a href="/products" className="bg-white text-blue-700 font-bold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors">
             See the Fix It Plans →
-          </button>
-          <button className="border border-blue-400 text-white font-medium px-8 py-3 rounded-xl hover:bg-blue-700 transition-colors">
-            Talk to a Growth Advisor
-          </button>
+          </a>
+          <a href="mailto:brennan@teamaria.ai?subject=LeadPulse Report - Strategy Call" className="border border-blue-400 text-white font-medium px-8 py-3 rounded-xl hover:bg-blue-700 transition-colors">
+            Talk to Brennan
+          </a>
         </div>
       </div>
 

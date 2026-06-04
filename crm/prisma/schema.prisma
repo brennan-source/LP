@@ -7,24 +7,33 @@ datasource db {
 }
 
 model Contact {
-  id           String   @id @default(cuid())
-  firstName    String?
-  lastName     String?
-  email        String   @unique
-  phone        String?
-  businessName String?
-  industry     String?
-  city         String?
-  state        String?
-  website      String?
-  stage        String   @default("prospect")
-  source       String   @default("scraped")
-  tags         String?
-  notes        Note[]
-  activities   Activity[]
-  products     ContactProduct[]
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id               String    @id @default(cuid())
+  firstName        String?
+  lastName         String?
+  email            String    @unique
+  phone            String?
+  businessName     String?
+  industry         String?
+  city             String?
+  state            String?
+  website          String?
+  linkedinUrl      String?
+  stage            String    @default("prospect")
+  source           String    @default("scraped")
+  tags             String?
+  hasWebsite       Boolean   @default(true)
+  weakWebsite      Boolean   @default(false)
+  auditScore       Int?
+  previewSlug      String?   @unique
+  previewUrl       String?
+  postcardSentAt   DateTime?
+  previewVisitedAt DateTime?
+  notes            Note[]
+  activities       Activity[]
+  products         ContactProduct[]
+  client           Client?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 }
 
 model ContactProduct {
@@ -60,10 +69,26 @@ model Activity {
 model Campaign {
   id        String   @id @default(cuid())
   name      String
-  subject   String
+  type      String   @default("email")
+  subject   String   @default("")
   body      String
   status    String   @default("draft")
   sentCount Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Client {
+  id          String   @id @default(cuid())
+  contactId   String   @unique
+  contact     Contact  @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  tier        String
+  monthlyRate Int
+  startDate   DateTime
+  framerUrl   String?
+  domain      String?
+  status      String   @default("active")
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

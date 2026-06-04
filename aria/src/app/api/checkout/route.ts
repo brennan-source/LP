@@ -6,7 +6,7 @@ import { sendAriaReportEmail } from "@/lib/email";
 import { QuizAnswers, ScanResults } from "@/types/assessment";
 
 const COUPON_CODE = process.env.ARIA_COUPON_CODE || "LEADPULSE";
-const COUPON_DISCOUNT_CENTS = parseInt(process.env.ARIA_COUPON_DISCOUNT_CENTS || "300");
+const COUPON_DISCOUNT_CENTS = parseInt(process.env.ARIA_COUPON_DISCOUNT_CENTS || "200");
 const DEMO_MODE = process.env.DEMO_MODE === "true";
 
 export async function POST(req: NextRequest) {

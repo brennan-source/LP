@@ -12,6 +12,9 @@ const ACTIVITY_ICONS: Record<string, string> = {
   stage_change: "🔄",
   email: "📧",
   call: "📞",
+  linkedin: "🔗",
+  postcard: "📮",
+  preview_visit: "👀",
 };
 
 function formatDate(dateStr: string) {
@@ -22,6 +25,12 @@ function formatDate(dateStr: string) {
     hour: "2-digit",
     minute: "2-digit",
   });
+}
+
+function ScoreBadge({ score }: { score: number | null }) {
+  if (score === null) return <span className="text-slate-500 text-sm">Not checked</span>;
+  const color = score >= 80 ? "text-green-400" : score >= 50 ? "text-yellow-400" : "text-red-400";
+  return <span className={`text-lg font-bold ${color}`}>{score}<span className="text-xs font-normal text-slate-400">/100</span></span>;
 }
 
 interface Props {
@@ -42,7 +51,9 @@ export default function ContactDetailClient({ contact: initial }: Props) {
     city: contact.city ?? "",
     state: contact.state ?? "",
     website: contact.website ?? "",
+    linkedinUrl: contact.linkedinUrl ?? "",
     tags: contact.tags ?? "",
+    previewUrl: contact.previewUrl ?? "",
   });
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
@@ -50,13 +61,20 @@ export default function ContactDetailClient({ contact: initial }: Props) {
   const [addingNote, setAddingNote] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
+  // Postcard panel state
+  const [showPostcard, setShowPostcard] = useState(false);
+  const [postcardForm, setPostcardForm] = useState({ line1: "", zip: "" });
+  const [sendingPostcard, setSendingPostcard] = useState(false);
+  const [postcardError, setPostcardError] = useState("");
+  const [postcardSuccess, setPostcardSuccess] = useState(false);
+
   async function handleSave() {
     setSaving(true);
     setSaveError("");
     const res = await fetch(`/api/contacts/${contact.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
+      body: JSON.stringify({ ...form, _currentBusinessName: contact.businessName }),
     });
     if (res.ok) {
       const data = await res.json();
@@ -92,7 +110,6 @@ export default function ContactDetailClient({ contact: initial }: Props) {
     });
     if (res.ok) {
       setNoteText("");
-      // Refresh contact data
       const refreshRes = await fetch(`/api/contacts/${contact.id}`);
       if (refreshRes.ok) {
         const data = await refreshRes.json();
@@ -106,11 +123,29 @@ export default function ContactDetailClient({ contact: initial }: Props) {
     if (!confirm("Delete this contact permanently?")) return;
     setDeleting(true);
     const res = await fetch(`/api/contacts/${contact.id}`, { method: "DELETE" });
+    if (res.ok) router.push("/contacts");
+    else setDeleting(false);
+  }
+
+  async function handleSendPostcard(e: React.FormEvent) {
+    e.preventDefault();
+    setPostcardError("");
+    setSendingPostcard(true);
+    const res = await fetch(`/api/contacts/${contact.id}/postcard`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(postcardForm),
+    });
     if (res.ok) {
-      router.push("/contacts");
+      const data = await res.json();
+      setContact(data.contact);
+      setPostcardSuccess(true);
+      setShowPostcard(false);
     } else {
-      setDeleting(false);
+      const data = await res.json();
+      setPostcardError(data.error ?? "Failed to send postcard");
     }
+    setSendingPostcard(false);
   }
 
   const displayName =
@@ -118,55 +153,46 @@ export default function ContactDetailClient({ contact: initial }: Props) {
       ? `${contact.firstName ?? ""} ${contact.lastName ?? ""}`.trim()
       : contact.email;
 
+  const appUrl = typeof window !== "undefined" ? window.location.origin : "";
+  const trackingUrl = contact.previewSlug ? `${appUrl}/api/preview/${contact.previewSlug}` : null;
+
   return (
     <div className="p-6 max-w-4xl">
-      {/* Back */}
-      <Link
-        href="/contacts"
-        className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white text-sm transition mb-5"
-      >
+      <Link href="/contacts" className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white text-sm transition mb-5">
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
         Back to contacts
       </Link>
 
-      {/* Header */}
       <div className="flex items-start justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-white">{displayName}</h1>
           <p className="text-slate-400 text-sm mt-0.5">{contact.email}</p>
+          <div className="flex gap-2 mt-2">
+            {!contact.hasWebsite && (
+              <span className="inline-flex text-xs px-2 py-0.5 rounded-full font-medium bg-rose-900/60 text-rose-300">No website</span>
+            )}
+            {contact.weakWebsite && (
+              <span className="inline-flex text-xs px-2 py-0.5 rounded-full font-medium bg-orange-900/60 text-orange-300">Weak website</span>
+            )}
+            {contact.previewVisitedAt && (
+              <span className="inline-flex text-xs px-2 py-0.5 rounded-full font-medium bg-amber-900/60 text-amber-300">Preview visited</span>
+            )}
+          </div>
         </div>
         <div className="flex gap-2">
           {editing ? (
             <>
-              <button
-                onClick={() => { setEditing(false); setSaveError(""); }}
-                className="px-3 py-1.5 text-slate-300 hover:text-white text-sm transition"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleSave}
-                disabled={saving}
-                className="px-4 py-1.5 bg-violet-600 hover:bg-violet-500 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition"
-              >
+              <button onClick={() => { setEditing(false); setSaveError(""); }} className="px-3 py-1.5 text-slate-300 hover:text-white text-sm transition">Cancel</button>
+              <button onClick={handleSave} disabled={saving} className="px-4 py-1.5 bg-violet-600 hover:bg-violet-500 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition">
                 {saving ? "Saving…" : "Save"}
               </button>
             </>
           ) : (
             <>
-              <button
-                onClick={() => setEditing(true)}
-                className="px-4 py-1.5 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium rounded-lg transition"
-              >
-                Edit
-              </button>
-              <button
-                onClick={handleDelete}
-                disabled={deleting}
-                className="px-4 py-1.5 bg-red-900/50 hover:bg-red-800 text-red-300 hover:text-white text-sm font-medium rounded-lg transition"
-              >
+              <button onClick={() => setEditing(true)} className="px-4 py-1.5 bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium rounded-lg transition">Edit</button>
+              <button onClick={handleDelete} disabled={deleting} className="px-4 py-1.5 bg-red-900/50 hover:bg-red-800 text-red-300 hover:text-white text-sm font-medium rounded-lg transition">
                 {deleting ? "Deleting…" : "Delete"}
               </button>
             </>
@@ -175,8 +201,12 @@ export default function ContactDetailClient({ contact: initial }: Props) {
       </div>
 
       {saveError && (
-        <div className="mb-4 px-3 py-2 bg-red-900/20 border border-red-800 rounded-lg text-red-400 text-sm">
-          {saveError}
+        <div className="mb-4 px-3 py-2 bg-red-900/20 border border-red-800 rounded-lg text-red-400 text-sm">{saveError}</div>
+      )}
+
+      {postcardSuccess && (
+        <div className="mb-4 px-3 py-2 bg-green-900/20 border border-green-800 rounded-lg text-green-400 text-sm">
+          Postcard sent successfully via Lob.
         </div>
       )}
 
@@ -185,96 +215,24 @@ export default function ContactDetailClient({ contact: initial }: Props) {
         <div className="lg:col-span-2 space-y-5">
           {/* Contact info */}
           <div className="bg-slate-800 rounded-xl border border-slate-700 p-5">
-            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-4">
-              Contact Info
-            </h2>
+            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-4">Contact Info</h2>
             {editing ? (
               <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-3">
-                  <Field label="First Name">
-                    <input
-                      type="text"
-                      value={form.firstName}
-                      onChange={(e) => setForm((f) => ({ ...f, firstName: e.target.value }))}
-                      className="input"
-                    />
-                  </Field>
-                  <Field label="Last Name">
-                    <input
-                      type="text"
-                      value={form.lastName}
-                      onChange={(e) => setForm((f) => ({ ...f, lastName: e.target.value }))}
-                      className="input"
-                    />
-                  </Field>
+                  <Field label="First Name"><input type="text" value={form.firstName} onChange={(e) => setForm((f) => ({ ...f, firstName: e.target.value }))} className="input" /></Field>
+                  <Field label="Last Name"><input type="text" value={form.lastName} onChange={(e) => setForm((f) => ({ ...f, lastName: e.target.value }))} className="input" /></Field>
                 </div>
-                <Field label="Email">
-                  <input
-                    type="email"
-                    value={form.email}
-                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                    className="input"
-                  />
-                </Field>
-                <Field label="Phone">
-                  <input
-                    type="text"
-                    value={form.phone}
-                    onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-                    className="input"
-                  />
-                </Field>
-                <Field label="Business Name">
-                  <input
-                    type="text"
-                    value={form.businessName}
-                    onChange={(e) => setForm((f) => ({ ...f, businessName: e.target.value }))}
-                    className="input"
-                  />
-                </Field>
+                <Field label="Email"><input type="email" value={form.email} onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))} className="input" /></Field>
+                <Field label="Phone"><input type="text" value={form.phone} onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))} className="input" /></Field>
+                <Field label="Business Name"><input type="text" value={form.businessName} onChange={(e) => setForm((f) => ({ ...f, businessName: e.target.value }))} className="input" /></Field>
                 <div className="grid grid-cols-2 gap-3">
-                  <Field label="City">
-                    <input
-                      type="text"
-                      value={form.city}
-                      onChange={(e) => setForm((f) => ({ ...f, city: e.target.value }))}
-                      className="input"
-                    />
-                  </Field>
-                  <Field label="State">
-                    <input
-                      type="text"
-                      value={form.state}
-                      onChange={(e) => setForm((f) => ({ ...f, state: e.target.value }))}
-                      className="input"
-                    />
-                  </Field>
+                  <Field label="City"><input type="text" value={form.city} onChange={(e) => setForm((f) => ({ ...f, city: e.target.value }))} className="input" /></Field>
+                  <Field label="State"><input type="text" value={form.state} onChange={(e) => setForm((f) => ({ ...f, state: e.target.value }))} className="input" /></Field>
                 </div>
-                <Field label="Industry">
-                  <input
-                    type="text"
-                    value={form.industry}
-                    onChange={(e) => setForm((f) => ({ ...f, industry: e.target.value }))}
-                    className="input"
-                  />
-                </Field>
-                <Field label="Website">
-                  <input
-                    type="url"
-                    value={form.website}
-                    onChange={(e) => setForm((f) => ({ ...f, website: e.target.value }))}
-                    className="input"
-                  />
-                </Field>
-                <Field label="Tags">
-                  <input
-                    type="text"
-                    value={form.tags}
-                    placeholder="comma, separated, tags"
-                    onChange={(e) => setForm((f) => ({ ...f, tags: e.target.value }))}
-                    className="input"
-                  />
-                </Field>
+                <Field label="Industry"><input type="text" value={form.industry} onChange={(e) => setForm((f) => ({ ...f, industry: e.target.value }))} className="input" /></Field>
+                <Field label="Website"><input type="url" value={form.website} onChange={(e) => setForm((f) => ({ ...f, website: e.target.value }))} className="input" /></Field>
+                <Field label="LinkedIn URL"><input type="url" value={form.linkedinUrl} placeholder="https://linkedin.com/in/..." onChange={(e) => setForm((f) => ({ ...f, linkedinUrl: e.target.value }))} className="input" /></Field>
+                <Field label="Tags"><input type="text" value={form.tags} placeholder="comma, separated, tags" onChange={(e) => setForm((f) => ({ ...f, tags: e.target.value }))} className="input" /></Field>
               </div>
             ) : (
               <div className="grid grid-cols-2 gap-y-3 gap-x-6 text-sm">
@@ -284,40 +242,125 @@ export default function ContactDetailClient({ contact: initial }: Props) {
                 <InfoRow label="Phone" value={contact.phone} />
                 <InfoRow label="Business" value={contact.businessName} />
                 <InfoRow label="Industry" value={contact.industry} />
-                <InfoRow
-                  label="Location"
-                  value={
-                    contact.city && contact.state
-                      ? `${contact.city}, ${contact.state}`
-                      : contact.city ?? contact.state
-                  }
-                />
-                <InfoRow
-                  label="Website"
-                  value={
-                    contact.website ? (
-                      <a
-                        href={contact.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-violet-400 hover:underline"
-                      >
-                        {contact.website}
-                      </a>
-                    ) : undefined
-                  }
-                />
+                <InfoRow label="Location" value={contact.city && contact.state ? `${contact.city}, ${contact.state}` : contact.city ?? contact.state} />
+                <InfoRow label="Website" value={contact.website ? <a href={contact.website} target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">{contact.website}</a> : undefined} />
+                <InfoRow label="LinkedIn" value={contact.linkedinUrl ? <a href={contact.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{contact.linkedinUrl}</a> : undefined} />
                 <InfoRow label="Source" value={contact.source} />
                 <InfoRow label="Tags" value={contact.tags} />
               </div>
             )}
           </div>
 
+          {/* Preview / Postcard */}
+          <div className="bg-slate-800 rounded-xl border border-slate-700 p-5">
+            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-4">Postcard Campaign</h2>
+            <div className="space-y-4">
+              {/* Preview URL field */}
+              <Field label="Framer Preview URL">
+                {editing ? (
+                  <input
+                    type="url"
+                    value={form.previewUrl}
+                    placeholder="https://your-site.framer.website"
+                    onChange={(e) => setForm((f) => ({ ...f, previewUrl: e.target.value }))}
+                    className="input"
+                  />
+                ) : (
+                  <div className="text-sm">
+                    {contact.previewUrl ? (
+                      <a href={contact.previewUrl} target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline break-all">{contact.previewUrl}</a>
+                    ) : (
+                      <span className="text-slate-500">Not set — click Edit to paste the Framer URL</span>
+                    )}
+                  </div>
+                )}
+              </Field>
+
+              {/* Tracking URL */}
+              {trackingUrl && (
+                <div>
+                  <p className="text-xs font-medium text-slate-400 mb-1">QR Code URL (put this on the postcard)</p>
+                  <div className="flex items-center gap-2">
+                    <code className="text-xs text-slate-300 bg-slate-700 px-2 py-1 rounded break-all flex-1">{trackingUrl}</code>
+                    <button
+                      onClick={() => navigator.clipboard.writeText(trackingUrl)}
+                      className="shrink-0 px-2 py-1 text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 rounded transition"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Postcard sent / visited status */}
+              <div className="grid grid-cols-2 gap-3 text-sm">
+                <div>
+                  <p className="text-slate-500 text-xs">Postcard sent</p>
+                  <p className="text-slate-300 mt-0.5">
+                    {contact.postcardSentAt ? formatDate(contact.postcardSentAt) : <span className="text-slate-600">—</span>}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-slate-500 text-xs">Preview visited</p>
+                  <p className={`mt-0.5 ${contact.previewVisitedAt ? "text-amber-400 font-medium" : "text-slate-600"}`}>
+                    {contact.previewVisitedAt ? formatDate(contact.previewVisitedAt) : "—"}
+                  </p>
+                </div>
+              </div>
+
+              {/* Send Postcard button */}
+              {!showPostcard ? (
+                <button
+                  onClick={() => setShowPostcard(true)}
+                  disabled={!contact.previewSlug}
+                  title={!contact.previewSlug ? "Set a preview URL first" : undefined}
+                  className="w-full py-2 bg-purple-700 hover:bg-purple-600 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition"
+                >
+                  {contact.postcardSentAt ? "Send Another Postcard" : "Send Postcard via Lob"}
+                </button>
+              ) : (
+                <form onSubmit={handleSendPostcard} className="space-y-3 border-t border-slate-700 pt-4">
+                  <p className="text-sm text-slate-300 font-medium">Mailing address</p>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Street address"
+                    value={postcardForm.line1}
+                    onChange={(e) => setPostcardForm((f) => ({ ...f, line1: e.target.value }))}
+                    className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
+                  />
+                  <div className="grid grid-cols-3 gap-2 text-xs text-slate-400">
+                    <div className="col-span-2">
+                      <p className="mb-1">City, State</p>
+                      <p className="text-slate-300">{contact.city ?? "—"}, {contact.state ?? "—"}</p>
+                    </div>
+                    <div>
+                      <label className="block mb-1">ZIP</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="02101"
+                        value={postcardForm.zip}
+                        onChange={(e) => setPostcardForm((f) => ({ ...f, zip: e.target.value }))}
+                        className="w-full px-2 py-1.5 bg-slate-700 border border-slate-600 rounded text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
+                      />
+                    </div>
+                  </div>
+                  {postcardError && <p className="text-red-400 text-xs">{postcardError}</p>}
+                  <div className="flex gap-2">
+                    <button type="button" onClick={() => { setShowPostcard(false); setPostcardError(""); }} className="flex-1 py-2 text-slate-400 hover:text-white text-sm transition">Cancel</button>
+                    <button type="submit" disabled={sendingPostcard} className="flex-1 py-2 bg-purple-700 hover:bg-purple-600 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition">
+                      {sendingPostcard ? "Sending…" : "Send Postcard"}
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
+
           {/* Notes */}
           <div className="bg-slate-800 rounded-xl border border-slate-700 p-5">
-            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-4">
-              Notes
-            </h2>
+            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-4">Notes</h2>
             <form onSubmit={handleAddNote} className="flex gap-2 mb-4">
               <input
                 type="text"
@@ -326,11 +369,7 @@ export default function ContactDetailClient({ contact: initial }: Props) {
                 placeholder="Add a note…"
                 className="flex-1 px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
               />
-              <button
-                type="submit"
-                disabled={addingNote || !noteText.trim()}
-                className="px-4 py-2 bg-violet-600 hover:bg-violet-500 disabled:opacity-40 text-white text-sm font-medium rounded-lg transition"
-              >
+              <button type="submit" disabled={addingNote || !noteText.trim()} className="px-4 py-2 bg-violet-600 hover:bg-violet-500 disabled:opacity-40 text-white text-sm font-medium rounded-lg transition">
                 {addingNote ? "…" : "Add"}
               </button>
             </form>
@@ -350,25 +389,17 @@ export default function ContactDetailClient({ contact: initial }: Props) {
 
           {/* Activity Timeline */}
           <div className="bg-slate-800 rounded-xl border border-slate-700 p-5">
-            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-4">
-              Activity
-            </h2>
+            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-4">Activity</h2>
             {contact.activities.length === 0 ? (
               <p className="text-slate-500 text-sm">No activity yet.</p>
             ) : (
               <div className="space-y-3">
                 {contact.activities.map((activity) => (
                   <div key={activity.id} className="flex gap-3">
-                    <div className="shrink-0 text-base leading-none mt-0.5">
-                      {ACTIVITY_ICONS[activity.type] ?? "•"}
-                    </div>
+                    <div className="shrink-0 text-base leading-none mt-0.5">{ACTIVITY_ICONS[activity.type] ?? "•"}</div>
                     <div>
-                      <p className="text-white text-sm">
-                        {activity.description ?? activity.type}
-                      </p>
-                      <p className="text-slate-500 text-xs mt-0.5">
-                        {formatDate(activity.createdAt)}
-                      </p>
+                      <p className="text-white text-sm">{activity.description ?? activity.type}</p>
+                      <p className="text-slate-500 text-xs mt-0.5">{formatDate(activity.createdAt)}</p>
                     </div>
                   </div>
                 ))}
@@ -381,54 +412,58 @@ export default function ContactDetailClient({ contact: initial }: Props) {
         <div className="space-y-5">
           {/* Stage */}
           <div className="bg-slate-800 rounded-xl border border-slate-700 p-5">
-            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">
-              Stage
-            </h2>
+            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">Stage</h2>
             <select
               value={contact.stage}
               onChange={(e) => handleStageChange(e.target.value)}
               className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm"
             >
-              {STAGES.map((s) => (
-                <option key={s.value} value={s.value}>
-                  {s.label}
-                </option>
-              ))}
+              {STAGES.map((s) => <option key={s.value} value={s.value}>{s.label}</option>)}
             </select>
+          </div>
+
+          {/* Website audit score */}
+          <div className="bg-slate-800 rounded-xl border border-slate-700 p-5">
+            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">Website</h2>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-slate-500">Has website</span>
+                <span className={`text-xs font-medium ${contact.hasWebsite ? "text-green-400" : "text-rose-400"}`}>
+                  {contact.hasWebsite ? "Yes" : "No"}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-slate-500">Mobile score</span>
+                <ScoreBadge score={contact.auditScore} />
+              </div>
+              {contact.website && contact.auditScore !== null && (
+                <a
+                  href={`https://pagespeed.web.dev/report?url=${encodeURIComponent(contact.website)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-xs text-violet-400 hover:underline mt-1"
+                >
+                  Full PageSpeed report →
+                </a>
+              )}
+            </div>
           </div>
 
           {/* Products */}
           <div className="bg-slate-800 rounded-xl border border-slate-700 p-5">
-            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">
-              Products
-            </h2>
+            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">Products</h2>
             {contact.products.length === 0 ? (
               <p className="text-slate-500 text-sm">No products.</p>
             ) : (
               <div className="space-y-2">
                 {contact.products.map((p) => (
-                  <div
-                    key={p.id}
-                    className="flex items-center justify-between bg-slate-700/50 rounded-lg px-3 py-2"
-                  >
-                    <div>
-                      <span
-                        className={`inline-flex text-xs px-2 py-0.5 rounded-full font-medium ${
-                          p.product === "leadpulse"
-                            ? "bg-violet-900 text-violet-200"
-                            : "bg-cyan-900 text-cyan-200"
-                        }`}
-                      >
-                        {p.product}
-                      </span>
-                    </div>
+                  <div key={p.id} className="flex items-center justify-between bg-slate-700/50 rounded-lg px-3 py-2">
+                    <span className={`inline-flex text-xs px-2 py-0.5 rounded-full font-medium ${p.product === "leadpulse" ? "bg-violet-900 text-violet-200" : "bg-cyan-900 text-cyan-200"}`}>
+                      {p.product}
+                    </span>
                     <div className="text-right">
                       <p className="text-xs text-slate-400">{p.status}</p>
-                      {p.paidAt && (
-                        <p className="text-xs text-slate-500">
-                          {new Date(p.paidAt).toLocaleDateString()}
-                        </p>
-                      )}
+                      {p.paidAt && <p className="text-xs text-slate-500">{new Date(p.paidAt).toLocaleDateString()}</p>}
                     </div>
                   </div>
                 ))}
@@ -438,18 +473,10 @@ export default function ContactDetailClient({ contact: initial }: Props) {
 
           {/* Meta */}
           <div className="bg-slate-800 rounded-xl border border-slate-700 p-5">
-            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">
-              Meta
-            </h2>
+            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">Meta</h2>
             <div className="space-y-2 text-xs text-slate-400">
-              <div>
-                <span className="text-slate-500">Created</span>
-                <p className="text-slate-300">{formatDate(contact.createdAt)}</p>
-              </div>
-              <div>
-                <span className="text-slate-500">Updated</span>
-                <p className="text-slate-300">{formatDate(contact.updatedAt)}</p>
-              </div>
+              <div><span className="text-slate-500">Created</span><p className="text-slate-300">{formatDate(contact.createdAt)}</p></div>
+              <div><span className="text-slate-500">Updated</span><p className="text-slate-300">{formatDate(contact.updatedAt)}</p></div>
             </div>
           </div>
         </div>
@@ -458,13 +485,7 @@ export default function ContactDetailClient({ contact: initial }: Props) {
   );
 }
 
-function Field({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
       <label className="block text-xs font-medium text-slate-400 mb-1">{label}</label>
@@ -475,13 +496,7 @@ function Field({
   );
 }
 
-function InfoRow({
-  label,
-  value,
-}: {
-  label: string;
-  value?: string | null | React.ReactNode;
-}) {
+function InfoRow({ label, value }: { label: string; value?: string | null | React.ReactNode }) {
   return (
     <div>
       <dt className="text-slate-500 text-xs">{label}</dt>

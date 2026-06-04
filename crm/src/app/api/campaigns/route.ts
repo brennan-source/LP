@@ -16,9 +16,10 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    if (!body.name || !body.subject || !body.body) {
+    const campaignType: string = body.type ?? "email";
+    if (!body.name || !body.body) {
       return Response.json(
-        { error: "name, subject, and body are required" },
+        { error: "name and body are required" },
         { status: 400 }
       );
     }
@@ -26,7 +27,8 @@ export async function POST(request: Request) {
     const campaign = await prisma.campaign.create({
       data: {
         name: body.name,
-        subject: body.subject,
+        type: campaignType,
+        subject: body.subject ?? "",
         body: body.body,
         status: body.status ?? "draft",
       },

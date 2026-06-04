@@ -14,4 +14,4 @@ export const stripe: Stripe = new Proxy({} as Stripe, {
   },
 });
 
-export const ASSESSMENT_PRICE_CENTS = parseInt(process.env.ASSESSMENT_PRICE_CENTS || "1900");
+export const ASSESSMENT_PRICE_CENTS = parseInt(process.env.ASSESSMENT_PRICE_CENTS || "900");

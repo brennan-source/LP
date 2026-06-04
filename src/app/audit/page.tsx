@@ -41,7 +41,7 @@ export default function AuditPage() {
           {[
             { icon: <Clock className="w-5 h-5 text-blue-500" />, label: "Report in minutes" },
             { icon: <BarChart2 className="w-5 h-5 text-blue-500" />, label: "7-category deep audit" },
-            { icon: <Shield className="w-5 h-5 text-blue-500" />, label: "100% money-back guarantee" },
+            { icon: <Shield className="w-5 h-5 text-blue-500" />, label: "Secure Stripe checkout" },
           ].map((item, i) => (
             <div key={i} className="bg-white rounded-xl border border-slate-200 p-3 text-center">
               <div className="flex justify-center mb-1.5">{item.icon}</div>

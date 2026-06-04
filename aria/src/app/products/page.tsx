@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 
 export const metadata = {
   title: "Aria Products & Pricing — AI Implementation for Small Businesses",
-  description: "From a $15 scorecard to full AI implementation. Choose the level of support that fits your business.",
+  description: "From a $9 scorecard to full AI implementation. Choose the level of support that fits your business.",
 };
 
 const TIERS = [
@@ -12,7 +12,7 @@ const TIERS = [
     color: "border-slate-200",
     headerColor: "bg-slate-800",
     items: [
-      { name: "AI Readiness Scorecard", price: "$15", desc: "Full 8-category assessment with savings calculator and custom roadmap", cta: "Get Your Scorecard", href: "/assess" },
+      { name: "AI Readiness Scorecard", price: "$9", desc: "Full 8-category assessment with savings calculator and custom roadmap", cta: "Get Your Scorecard", href: "/assess" },
       { name: "AI Basics for Business Owners", price: "$197", desc: "Self-paced course — tools, prompts, and workflows for non-technical owners", cta: "Coming Soon", href: "mailto:brennan@teamaria.ai?subject=AI Basics Course Waitlist" },
       { name: "Full Course Bundle", price: "$497", desc: "AI for Marketing, Operations & Finance — 3 courses, lifetime access", cta: "Coming Soon", href: "mailto:brennan@teamaria.ai?subject=Course Bundle Waitlist" },
     ],
@@ -45,7 +45,7 @@ const TIERS = [
     items: [
       { name: "Automation Starter Pack", price: "$6,500", desc: "1–2 workflows automated end-to-end — lead follow-up, scheduling, or invoicing", cta: "Get a Quote", href: "/consult" },
       { name: "Business AI Stack", price: "$17,500", desc: "4–6 automations across sales, ops, and marketing", cta: "Get a Quote", href: "/consult" },
-      { name: "Enterprise AI Build", price: "from $45,000", desc: "Billing, finance, HR, sales, marketing + custom dashboard", cta: "Get a Quote", href: "/consult" },
+      { name: "Enterprise AI Build", price: "from $25,000", desc: "Billing, finance, HR, sales, marketing + custom dashboard", cta: "Get a Quote", href: "/consult" },
     ],
   },
 ];
@@ -57,7 +57,7 @@ export default function ProductsPage() {
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <Link href="/" className="font-black text-slate-900 text-xl">Aria</Link>
           <Link href="/assess" className="bg-violet-600 text-white text-sm font-semibold px-5 py-2 rounded-lg hover:bg-violet-700 transition-colors">
-            Start with $15 Scorecard
+            Start with $9 Scorecard
           </Link>
         </div>
       </nav>
@@ -66,7 +66,7 @@ export default function ProductsPage() {
         <div className="text-center mb-14">
           <h1 className="text-4xl font-black text-slate-900 mb-3">Every level of AI support, in one place</h1>
           <p className="text-xl text-slate-500 max-w-2xl mx-auto">
-            Start with a $15 scorecard to find your biggest opportunities. Then choose the level of help that matches your budget and timeline.
+            Start with a $9 scorecard to find your biggest opportunities. Then choose the level of help that matches your budget and timeline.
           </p>
         </div>
 
@@ -100,11 +100,11 @@ export default function ProductsPage() {
         <div className="mt-14 bg-violet-50 border-2 border-violet-200 rounded-2xl p-10 text-center">
           <h2 className="text-2xl font-bold text-slate-900 mb-2">Not sure where to start?</h2>
           <p className="text-slate-500 mb-6 max-w-xl mx-auto">
-            Run the $15 AI Readiness Scorecard first — it takes 10 minutes and tells you exactly which tier makes sense for your business right now.
+            Run the $9 AI Readiness Scorecard first — it takes 10 minutes and tells you exactly which tier makes sense for your business right now.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/assess" className="inline-flex items-center gap-2 bg-violet-600 text-white font-bold px-8 py-3 rounded-xl hover:bg-violet-700 transition-colors">
-              Get My Scorecard — $15 <ArrowRight className="w-4 h-4" />
+              Get My Scorecard — $9 <ArrowRight className="w-4 h-4" />
             </Link>
             <Link href="/consult" className="inline-flex items-center gap-2 bg-white border-2 border-slate-200 text-slate-900 font-bold px-8 py-3 rounded-xl hover:border-slate-400 transition-colors">
               Talk to Brennan First

@@ -1,5 +1,6 @@
 import { CategoryScore } from "@/types/audit";
 import { scoreToGrade } from "@/lib/utils";
+import { serperSearch } from "@/lib/serper";
 
 const SOCIAL_PLATFORMS = [
   { name: "Facebook", key: "facebook", urlPattern: "facebook.com", weight: 20 },
@@ -10,16 +11,20 @@ const SOCIAL_PLATFORMS = [
   { name: "YouTube", key: "youtube", urlPattern: "youtube.com", weight: 10 },
 ];
 
-export async function auditSocialMedia(url: string, businessName: string): Promise<CategoryScore> {
-  const siteLinks = await extractSocialLinks(url);
+export async function auditSocialMedia(url: string, businessName: string, city: string, state: string, industry: string): Promise<CategoryScore> {
+  const [siteLinks, gbpPresent] = await Promise.all([
+    extractSocialLinks(url),
+    checkGBPPresence(businessName, city, state, industry),
+  ]);
   const details: string[] = [];
   const actions = [];
   let score = 0;
 
   for (const platform of SOCIAL_PLATFORMS) {
-    const found = siteLinks.some((link) =>
-      new RegExp(platform.urlPattern, "i").test(link)
-    );
+    const found =
+      platform.key === "google"
+        ? gbpPresent
+        : siteLinks.some((link) => new RegExp(platform.urlPattern, "i").test(link));
     if (found) {
       score += platform.weight;
       details.push(`✓ ${platform.name} profile linked`);
@@ -78,6 +83,28 @@ export async function auditSocialMedia(url: string, businessName: string): Promi
     estimatedRevenueLoss: finalScore < 50 ? Math.round((60 - finalScore) * 75) : 0,
     actions,
   };
+}
+
+function searchIndustry(industry: string): string {
+  return industry.split(/\s*\/\s*/)[0].trim();
+}
+
+async function checkGBPPresence(businessName: string, city: string, state: string, industry: string): Promise<boolean> {
+  const firstWord = businessName.toLowerCase().split(" ")[0];
+  // Category query ("HVAC Lowell MA") reliably triggers local pack with GBP listings
+  const [nameData, categoryData] = await Promise.all([
+    serperSearch(`${businessName} ${city} ${state}`),
+    serperSearch(`${searchIndustry(industry)} ${city} ${state}`),
+  ]);
+  const inCategoryLocal = (categoryData?.localResults ?? []).some((r) => r.title.toLowerCase().includes(firstWord));
+  const inNameLocal = (nameData?.localResults ?? []).some((r) => r.title.toLowerCase().includes(firstWord));
+  const inOrganic = (nameData?.organic ?? []).some(
+    (r) =>
+      (r.link.toLowerCase().includes("google.com/maps") || r.link.toLowerCase().includes("maps.google")) &&
+      (r.title.toLowerCase().includes(firstWord) || r.snippet.toLowerCase().includes(firstWord))
+  );
+  const inKG = !!nameData?.knowledgeGraph?.title?.toLowerCase().includes(firstWord);
+  return inCategoryLocal || inNameLocal || inOrganic || inKG;
 }
 
 async function extractSocialLinks(url: string): Promise<string[]> {

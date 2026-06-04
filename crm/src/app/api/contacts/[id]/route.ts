@@ -63,8 +63,10 @@ export async function PATCH(
       city,
       state,
       website,
+      linkedinUrl,
       stage,
       tags,
+      previewUrl,
     } = body;
 
     const data: Record<string, unknown> = {};
@@ -76,9 +78,24 @@ export async function PATCH(
     if (industry !== undefined) data.industry = industry;
     if (city !== undefined) data.city = city;
     if (state !== undefined) data.state = state;
-    if (website !== undefined) data.website = website;
+    if (website !== undefined) {
+      data.website = website;
+      data.hasWebsite = !!(website && website.trim().length > 0);
+    }
+    if (linkedinUrl !== undefined) data.linkedinUrl = linkedinUrl;
     if (stage !== undefined) data.stage = stage;
     if (tags !== undefined) data.tags = tags;
+    if (previewUrl !== undefined) {
+      data.previewUrl = previewUrl;
+      if (previewUrl && !body._keepSlug) {
+        const base = (businessName ?? body._currentBusinessName ?? "preview")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-|-$/g, "")
+          .slice(0, 40);
+        data.previewSlug = `${base}-${Math.random().toString(36).slice(2, 8)}`;
+      }
+    }
 
     const contact = await prisma.contact.update({
       where: { id },

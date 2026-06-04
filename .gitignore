@@ -51,3 +51,6 @@ screenshots/
 crm/.next/
 crm/node_modules/
 crm/package-lock.json
+agency/.next/
+agency/node_modules/
+agency/package-lock.json

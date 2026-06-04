@@ -143,7 +143,9 @@ export async function auditWebsite(url: string): Promise<CategoryScore> {
 
 async function fetchPageSpeedData(url: string): Promise<PageSpeedResult> {
   try {
-    const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile&category=PERFORMANCE`;
+    const key = process.env.GOOGLE_PSI_API_KEY || process.env.GOOGLE_PLACES_API_KEY || "";
+    const keyParam = key ? `&key=${key}` : "";
+    const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile&category=PERFORMANCE${keyParam}`;
     const res = await fetch(apiUrl, { signal: AbortSignal.timeout(20000) });
     if (!res.ok) throw new Error("PageSpeed API error");
     const data = await res.json();

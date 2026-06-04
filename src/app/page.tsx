@@ -69,7 +69,6 @@ export default function Home() {
             <span className="font-bold text-slate-700 text-2xl mr-1">$6</span> one-time · no subscription · instant results
           </div>
         </div>
-        <p className="text-sm text-slate-400">100% money-back guarantee if you are not satisfied</p>
       </section>
 
       {/* What you get */}

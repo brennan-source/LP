@@ -429,7 +429,7 @@ export function AssessmentFlow() {
             <input type="email" required placeholder="you@yourbusiness.com" value={biz.email} onChange={setBizField("email")} className={inputCls} />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1.5">LeadPulse invite code <span className="font-normal text-slate-400">($12 instead of $15)</span></label>
+            <label className="block text-sm font-medium text-slate-700 mb-1.5">LeadPulse invite code <span className="font-normal text-slate-400">($7 instead of $9)</span></label>
             <input type="text" placeholder="e.g. LEADPULSE" value={coupon} onChange={(e) => setCoupon(e.target.value)} className={inputCls} />
           </div>
         </div>
@@ -437,7 +437,7 @@ export function AssessmentFlow() {
         <button type="submit" disabled={loading} className="w-full bg-violet-600 hover:bg-violet-700 disabled:opacity-60 text-white font-bold py-4 rounded-xl text-lg flex items-center justify-center gap-2 transition-colors">
           {loading ? <><Loader2 className="w-5 h-5 animate-spin" />Starting...</> : <>Start Free Assessment <ArrowRight className="w-5 h-5" /></>}
         </button>
-        <p className="text-center text-xs text-slate-400">Free to complete · $15 to unlock · $12 with LeadPulse invite code</p>
+        <p className="text-center text-xs text-slate-400">Free to complete · $9 to unlock · $7 with LeadPulse invite code</p>
       </form>
     );
   }
@@ -503,7 +503,7 @@ export function AssessmentFlow() {
             className="flex-1 bg-violet-600 hover:bg-violet-700 disabled:opacity-50 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors"
           >
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle className="w-4 h-4" />}
-            Get My AI Score — $15
+            Get My AI Score — $9
           </button>
         ) : (
           <button
