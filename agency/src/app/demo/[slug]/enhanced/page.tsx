@@ -136,68 +136,34 @@ export default async function EnhancedDemoPage({ params }: Props) {
           </div>
         </header>
 
-        {/* ── OPTION A: Split Hero ── */}
-        <section className="bg-slate-900 text-white overflow-hidden">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 min-h-[520px]">
-
-            {/* Left: text (3 cols) */}
-            <div className="md:col-span-3 py-16 px-6 md:px-10 flex flex-col justify-center">
-              {d.emergencyService && (
-                <div className="inline-flex items-center gap-2 bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-full mb-5 uppercase tracking-wide w-fit">
-                  <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                  24/7 Emergency Service
-                </div>
-              )}
-              <h1 className="text-4xl md:text-5xl font-black leading-tight mb-4">{d.tagline}</h1>
-              <p className="text-slate-300 text-lg mb-5 leading-relaxed">
-                Licensed & insured {industryLabel.toLowerCase()} serving {d.city} and surrounding areas.
-                {d.reviewCount > 0 && ` Trusted by ${d.reviewCount.toLocaleString()}+ local customers.`}
-              </p>
-              {d.rating > 0 && (
-                <div className="flex items-center gap-2 mb-8">
-                  <Stars rating={d.rating} />
-                  <span className="text-yellow-400 font-bold text-lg">{d.rating.toFixed(1)}</span>
-                  <span className="text-slate-400 text-sm">({d.reviewCount.toLocaleString()} Google reviews)</span>
-                </div>
-              )}
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a href={`tel:${d.phone}`} className={`inline-flex items-center justify-center gap-2 px-7 py-4 ${accent.bg} ${accent.bgHover} text-white font-bold text-lg rounded-xl transition shadow-lg`}>
-                  📞 {d.phone}
-                </a>
-                <a href="#contact" className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/20 transition">
-                  Get a Free Quote
-                </a>
+        {/* ── Hero ── */}
+        <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20 px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            {d.emergencyService && (
+              <div className="inline-flex items-center gap-2 bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-full mb-6 uppercase tracking-wide">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                24/7 Emergency Service Available
               </div>
-            </div>
-
-            {/* Right: real industry photo panel (2 cols) */}
-            <div className="hidden md:block md:col-span-2 relative overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={unsplash(photos.hero)}
-                alt={`${industryLabel} professional at work`}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              {/* Dark gradient overlay so stats remain readable */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-              {/* Stats overlay at bottom */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                <div className="bg-black/50 backdrop-blur-sm rounded-2xl px-5 py-4 mb-3 border border-white/10 text-center">
-                  <p className="text-white font-black text-3xl mb-0.5">{d.rating.toFixed(1)}</p>
-                  <div className="text-yellow-300 text-base mb-0.5">{"★".repeat(Math.round(d.rating))}</div>
-                  <p className="text-white/70 text-xs">{d.reviewCount} Google Reviews</p>
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="bg-black/50 rounded-xl px-3 py-3 border border-white/10 text-center backdrop-blur-sm">
-                    <p className="text-white font-bold text-sm">Licensed</p>
-                    <p className="text-white/60 text-xs">& Insured</p>
-                  </div>
-                  <div className="bg-black/50 rounded-xl px-3 py-3 border border-white/10 text-center backdrop-blur-sm">
-                    <p className="text-white font-bold text-sm">24/7</p>
-                    <p className="text-white/60 text-xs">Emergency</p>
-                  </div>
-                </div>
+            )}
+            <h1 className="text-4xl md:text-6xl font-black leading-tight mb-4">{d.tagline}</h1>
+            <p className="text-gray-300 text-xl mb-4 leading-relaxed max-w-2xl mx-auto">
+              Licensed & insured {industryLabel.toLowerCase()} serving {d.city} and surrounding areas.
+              {d.reviewCount > 0 && ` Trusted by ${d.reviewCount.toLocaleString()}+ local customers.`}
+            </p>
+            {d.rating > 0 && (
+              <div className="flex items-center justify-center gap-2 mb-8">
+                <Stars rating={d.rating} />
+                <span className="text-yellow-400 font-bold text-xl">{d.rating.toFixed(1)}</span>
+                <span className="text-gray-400">({d.reviewCount.toLocaleString()} Google reviews)</span>
               </div>
+            )}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href={`tel:${d.phone}`} className={`inline-flex items-center justify-center gap-2 px-8 py-4 ${accent.bg} ${accent.bgHover} text-white font-bold text-lg rounded-xl transition shadow-lg`}>
+                📞 {d.phone}
+              </a>
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border border-white/20 transition">
+                Get a Free Quote
+              </a>
             </div>
           </div>
         </section>
