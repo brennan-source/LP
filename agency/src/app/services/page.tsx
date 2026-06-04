@@ -4,8 +4,8 @@ const GROWTH_SERVICES = [
   {
     icon: "🌐",
     title: "Website Design & Hosting",
-    tagline: "Free for the first 4 months",
-    body: "We build a professional, mobile-optimized website — fast, beautiful, and easy to update. You own it after month 4. Hosting included.",
+    tagline: "No build fee — included with any plan",
+    body: "We build a professional, mobile-optimized website — fast, beautiful, and easy to update. Included with your plan (a $2,500 value). You own it after month 4.",
     bullets: ["Custom design", "Mobile-first", "Fast loading", "Contact forms", "Google Analytics"],
   },
   {
@@ -81,7 +81,7 @@ export default function ServicesPage() {
           <div className="text-center mb-16">
             <h1 className="text-5xl font-black text-white mb-4">What we do</h1>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Two problems, one partner. We get you more jobs — then build the systems so you can actually handle them.
+              Two problems, one partner. We get you more jobs — then build the systems to handle them. Website included with every plan.
             </p>
           </div>
 

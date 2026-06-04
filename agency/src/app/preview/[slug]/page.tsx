@@ -45,9 +45,9 @@ export default async function PreviewPage({ params, searchParams }: Props) {
       {/* CTA banner */}
       <div className="bg-amber-500 px-6 py-3 text-center">
         <p className="text-slate-900 font-medium text-sm">
-          This is your free demo website from Makr.
+          This is your free demo site from Makr — keep it, included with any plan.
           <Link href="/contact" className="underline ml-2 font-bold hover:text-slate-700 transition">
-            Claim it free for 4 months →
+            Claim it — no setup fee →
           </Link>
         </p>
       </div>
@@ -60,7 +60,7 @@ export default async function PreviewPage({ params, searchParams }: Props) {
           </div>
           <h1 className="text-5xl font-black text-white mb-4">{displayName}</h1>
           <p className="text-slate-400 text-xl mb-10">
-            We built a professional website for your business — completely free for the first 4 months.
+            We built a professional website for your business — included with any marketing plan, no build fee.
           </p>
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 mb-8 text-left">
             <h2 className="text-white font-bold text-lg mb-4">What&apos;s included:</h2>
@@ -71,7 +71,7 @@ export default async function PreviewPage({ params, searchParams }: Props) {
                 "Google Business Profile optimization",
                 "2 SEO blog posts per month",
                 "Monthly rankings report",
-                "Free for 4 months — then $499/month if you want us to keep growing it",
+                "Included with any marketing plan — no build fee (a $2,500 value)",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-slate-300 text-sm">
                   <span className="text-green-400 mt-0.5 shrink-0">✓</span>
@@ -87,7 +87,7 @@ export default async function PreviewPage({ params, searchParams }: Props) {
             Claim My Free Website
           </Link>
           <p className="text-slate-600 text-sm">
-            No credit card. No contracts. You own the site after 4 months.
+            No setup fee. 4-month agreement. You own the site after month 4.
           </p>
           <p className="text-slate-700 text-xs mt-4">ref: {slug}</p>
         </div>

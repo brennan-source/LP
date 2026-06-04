@@ -4,7 +4,7 @@ const GROW = [
   {
     icon: "🌐",
     title: "Free Website",
-    description: "We build you a professional site — yours free for the first 4 months while we prove we can grow your business.",
+    description: "We build your professional website at no charge — included with any marketing plan. A $2,500 value. Yours to keep after 4 months.",
   },
   {
     icon: "📍",
@@ -75,7 +75,7 @@ export default function HomePage() {
               See Pricing
             </Link>
           </div>
-          <p className="text-slate-600 text-sm mt-4">Free for 4 months. No contracts. Cancel anytime after.</p>
+          <p className="text-slate-600 text-sm mt-4">No setup fee. 4-month agreement. Cancel with 30 days notice after.</p>
         </div>
       </section>
 
@@ -148,9 +148,9 @@ export default function HomePage() {
           </div>
           <div className="space-y-8">
             {[
-              { step: "01", title: "We build your site free", body: "We design and build a professional website for your business at no cost. You get to see it before committing to anything." },
-              { step: "02", title: "We prove we can grow your leads", body: "For the first 4 months, Makr runs your SEO, manages your Google Business Profile, and publishes content — completely free." },
-              { step: "03", title: "You decide if it's worth it", body: "After 4 months, if you've seen real results, you continue at $499/month. If not, you walk away — no fee, no hassle." },
+              { step: "01", title: "We build your site — no setup fee", body: "We design and build a professional website for your business, included with your plan. No build fee, no separate charge." },
+              { step: "02", title: "We get to work immediately", body: "From day one, Makr runs your SEO, manages your Google Business Profile, and publishes content. Your plan starts, results start." },
+              { step: "03", title: "You own the site after month 4", body: "After your 4-month agreement, the website is yours free and clear. Continue month-to-month or cancel with 30 days notice." },
               { step: "04", title: "We help you build the back end", body: "Once the leads are flowing, we build the systems — quoting, billing, scheduling, HR — so growth doesn't create new headaches." },
             ].map(({ step, title, body }) => (
               <div key={step} className="flex gap-6">

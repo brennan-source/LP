@@ -6,7 +6,7 @@ const TIERS = [
     price: 499,
     popular: false,
     includes: [
-      "Professional website (free for 4 months)",
+      "Professional website included (no build fee — $2,500 value)",
       "Google Business Profile optimization",
       "2 blog posts per month",
       "Local SEO basics",
@@ -33,6 +33,7 @@ const TIERS = [
     includes: [
       "Everything in Growth",
       "AI chat widget on your website",
+      "AI voice agent for inbound calls & booking",
       "Automated follow-up sequences",
       "CRM setup",
       "Monthly automation health check",
@@ -101,12 +102,12 @@ export default function PricingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="text-5xl font-black text-white mb-4">Simple, honest pricing</h1>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">Free website included. Cancel anytime after your 4-month agreement. You own the site after month 4.</p>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">Website build included with every plan — no setup fee. 4-month agreement. You own the site after month 4.</p>
           </div>
 
-          {/* Marketing retainers */}
+          {/* Marketing plans */}
           <div className="mb-6">
-            <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-6">Marketing retainers</p>
+            <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-6">Marketing plans</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
             {TIERS.map((tier) => (
@@ -140,7 +141,7 @@ export default function PricingPage() {
           {/* Operations projects */}
           <div className="mb-6">
             <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-2">Operations projects</p>
-            <p className="text-slate-400 text-sm">One-time build fee + optional monthly support. Can be added on top of any marketing retainer.</p>
+            <p className="text-slate-400 text-sm">One-time build fee + optional monthly support. Can be added to any marketing plan.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {OPS_TIERS.map((tier) => (
@@ -189,8 +190,8 @@ export default function PricingPage() {
           <div className="max-w-3xl mx-auto bg-slate-900 border border-slate-800 rounded-2xl p-8">
             <h2 className="text-xl font-bold text-white mb-4">Service Agreement</h2>
             <div className="space-y-3 text-slate-400 text-sm">
-              <p><span className="text-slate-200 font-medium">4-month minimum term.</span> We invest real time and money into your website and marketing upfront. The 4-month agreement covers our build costs and gives us enough time to show real results.</p>
-              <p><span className="text-slate-200 font-medium">Early exit.</span> If you leave before 4 months, the website reverts to Makr — no cash penalty. After month 4, the site is yours free and clear.</p>
+              <p><span className="text-slate-200 font-medium">4-month minimum term.</span> We build your website and invest heavily in your marketing from day one. The 4-month agreement gives us enough time to show real results — and covers the build we&apos;re doing at no charge.</p>
+              <p><span className="text-slate-200 font-medium">Early exit.</span> If you leave before 4 months, the website reverts to Makr — no cash penalty beyond the months already paid. After month 4, the site is yours free and clear.</p>
               <p><span className="text-slate-200 font-medium">Month-to-month after that.</span> Continue with 30 days notice to cancel. No tricks, no price locks.</p>
               <p><span className="text-slate-200 font-medium">Pause option.</span> Seasonal businesses can pause up to 2 months/year at a reduced rate.</p>
             </div>
