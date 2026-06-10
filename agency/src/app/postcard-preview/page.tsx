@@ -61,8 +61,8 @@ export default function PostcardPreviewPage() {
             </div>
 
             {/* Sub */}
-            <p style={{ fontSize: 16, color: "#94a3b8", margin: 0, lineHeight: 1.5, maxWidth: 380 }}>
-              No setup fee. No commitment. Scan the back to see it.
+            <p style={{ fontSize: 15, color: "#94a3b8", margin: 0, lineHeight: 1.5, whiteSpace: "nowrap" }}>
+              No setup fee.&nbsp;&nbsp;No build charge.&nbsp;&nbsp;Built to help you grow.
             </p>
 
             {/* Divider tag */}
