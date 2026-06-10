@@ -47,7 +47,7 @@ export default function ContactPage() {
       <>
         <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
           <div className="max-w-6xl mx-auto px-6 h-16 flex items-center">
-            <Link href="/" className="text-xl font-black text-amber-400 tracking-tight">Makr</Link>
+            <Link href="/" className="text-xl font-black text-amber-400 tracking-tight">Makr<span className="text-slate-500 font-medium">.ai</span></Link>
           </div>
         </nav>
         <main className="pt-32 px-6">

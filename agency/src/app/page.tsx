@@ -37,7 +37,7 @@ export default function HomePage() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-xl font-black text-amber-400 tracking-tight">Makr</span>
+          <span className="text-xl font-black text-amber-400 tracking-tight">Makr<span className="text-slate-500 font-medium">.ai</span></span>
           <div className="hidden md:flex items-center gap-6 text-sm text-slate-400">
             <Link href="/services" className="hover:text-white transition">Services</Link>
             <Link href="/pricing" className="hover:text-white transition">Pricing</Link>
@@ -182,7 +182,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="border-t border-slate-800 py-8 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-slate-500 text-sm">
-          <span className="font-black text-amber-400">Makr</span>
+          <span className="font-black text-amber-400">Makr<span className="text-slate-500 font-medium">.ai</span></span>
           <div className="flex gap-6">
             <Link href="/services" className="hover:text-slate-300 transition">Services</Link>
             <Link href="/pricing" className="hover:text-slate-300 transition">Pricing</Link>

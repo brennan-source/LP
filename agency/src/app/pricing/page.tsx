@@ -89,7 +89,7 @@ export default function PricingPage() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="text-xl font-black text-amber-400 tracking-tight">Makr</Link>
+          <Link href="/" className="text-xl font-black text-amber-400 tracking-tight">Makr<span className="text-slate-500 font-medium">.ai</span></Link>
           <div className="hidden md:flex items-center gap-6 text-sm text-slate-400">
             <Link href="/services" className="hover:text-white transition">Services</Link>
             <Link href="/pricing" className="text-white">Pricing</Link>
