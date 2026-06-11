@@ -95,7 +95,7 @@ export default async function PreviewPage({ params, searchParams }: Props) {
 
       <footer className="border-t border-slate-800 py-4 px-6 text-center">
         <p className="text-slate-600 text-sm">
-          <Link href="/" className="text-amber-400 font-bold">Makr</Link> — You built your business. We make it grow.
+          <Link href="/" className="text-amber-400 font-bold">Makr<span className="text-slate-600">.ai</span></Link> — You built your business. We make it grow.
         </p>
       </footer>
     </div>
