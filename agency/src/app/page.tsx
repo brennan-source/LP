@@ -50,10 +50,6 @@ export default function HomePage() {
       {/* Hero */}
       <section className="pt-32 pb-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-amber-900/30 border border-amber-800 rounded-full px-4 py-1.5 text-amber-300 text-sm mb-8">
-            <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
-            Built for home service businesses in New England
-          </div>
           <h1 className="text-5xl md:text-7xl font-black text-white leading-tight tracking-tight mb-6">
             You built your business.<br />
             <span className="text-amber-400">We make it grow.</span>
