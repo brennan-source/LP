@@ -1592,7 +1592,7 @@
   },
   {
     "slug": "countywide-heating-and-cooling",
-    "businessName": "Countywide Heating and Cooling",
+    "businessName": "Countywide Mechanical Services, Inc.",
     "phone": "(413) 731-6668",
     "email": "service@cmsheatandair.net",
     "address": "54 Mainline Dr Unit F, Westfield, MA 01085",
@@ -1603,19 +1603,47 @@
     "rating": 4.9,
     "reviewCount": 180,
     "reviewQuotes": [],
-    "services": [],
-    "serviceAreas": [
-      "Westfield area",
-      "Surrounding MA communities"
+    "services": [
+      "Heating Installation, Replacement & Repair",
+      "Air Conditioning Installation & Repair",
+      "Heat Pump Installation & Service",
+      "Gas & Propane Heating",
+      "Commercial Refrigeration",
+      "Air Purification Systems",
+      "HVAC Preventive Maintenance",
+      "Water Heater Replacement",
+      "Thermostat Service",
+      "Commercial & Industrial HVAC"
     ],
-    "tagline": null,
-    "yearFounded": null,
+    "serviceAreas": [
+      "Westfield",
+      "Springfield",
+      "Agawam",
+      "Chicopee",
+      "Holyoke",
+      "East Longmeadow",
+      "Longmeadow",
+      "Wilbraham",
+      "West Springfield",
+      "Southwick"
+    ],
+    "tagline": "Keeping Your Family Comfortable Since 1989.",
+    "yearFounded": 1989,
     "emergencyService": true,
     "facebook": "https://www.facebook.com/cmsheatandair/",
     "instagram": null,
     "hasWebsite": true,
     "existingWebsite": "http://www.cmsheatandair.net/",
-    "score": 7
+    "score": 7,
+    "description": "Locally owned and operated HVAC contractor based in Westfield, MA, serving residential, commercial, and industrial customers since 1989. Countywide provides heating, air conditioning, refrigeration, and air purification services — installation, replacement, repair, and maintenance — on all makes and models. Fully licensed and insured in Massachusetts and Connecticut.",
+    "brands": [
+      "Trane",
+      "RunTru by Trane"
+    ],
+    "certifications": [
+      "BBB Accredited Business",
+      "Licensed & Insured in MA & CT"
+    ]
   },
   {
     "slug": "cabans-heating-cooling",
