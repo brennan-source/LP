@@ -19,7 +19,7 @@ export default async function PreviewPage({ params, searchParams }: Props) {
         {/* Sticky CTA banner */}
         <div className="bg-amber-500 px-4 py-2.5 flex items-center justify-between gap-4 shrink-0">
           <p className="text-slate-900 text-sm font-medium truncate">
-            This is your free website from Makr — built for {displayName}
+            This is your free website from Makr.ai — built for {displayName}
           </p>
           <Link
             href="/contact"
@@ -45,7 +45,7 @@ export default async function PreviewPage({ params, searchParams }: Props) {
       {/* CTA banner */}
       <div className="bg-amber-500 px-6 py-3 text-center">
         <p className="text-slate-900 font-medium text-sm">
-          This is your free demo site from Makr — keep it, included with any plan.
+          This is your free demo site from Makr.ai — keep it, included with any plan.
           <Link href="/contact" className="underline ml-2 font-bold hover:text-slate-700 transition">
             Claim it — no setup fee →
           </Link>

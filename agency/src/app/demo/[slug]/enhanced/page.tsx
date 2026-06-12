@@ -102,7 +102,7 @@ export default async function EnhancedDemoPage({ params }: Props) {
       {/* Makr banner */}
       <div className="sticky top-0 z-50 bg-amber-500 px-4 py-2.5 flex items-center justify-between gap-4">
         <p className="text-slate-900 text-sm font-medium truncate">
-          {industryIcon} Free demo site from Makr for {d.businessName} — included with any plan, no setup fee.
+          {industryIcon} Free demo site from Makr.ai for {d.businessName} — included with any plan, no setup fee.
         </p>
         <Link
           href={`/contact?name=${encodeURIComponent(d.businessName)}`}
@@ -420,7 +420,7 @@ export default async function EnhancedDemoPage({ params }: Props) {
               <p>© {new Date().getFullYear()} {d.businessName}. All rights reserved.</p>
               <p>
                 Website by{" "}
-                <Link href="https://gomakr.ai" className="text-amber-400 hover:text-amber-300 font-semibold transition">Makr</Link>
+                <Link href="https://gomakr.ai" className="text-amber-400 hover:text-amber-300 font-semibold transition">Makr.ai</Link>
                 {" — "}
                 <Link href="/contact" className="text-amber-400 hover:text-amber-300 underline transition">Get yours free →</Link>
               </p>

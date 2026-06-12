@@ -191,7 +191,7 @@ export default function PricingPage() {
             <h2 className="text-xl font-bold text-stone-900 mb-4">Service Agreement</h2>
             <div className="space-y-3 text-stone-500 text-sm">
               <p><span className="text-stone-800 font-medium">4-month minimum term.</span> We invest heavily from day one — building your free build and launching your marketing immediately. The 4-month agreement gives us enough time to show real results and covers the build we&apos;re doing at no charge.</p>
-              <p><span className="text-stone-800 font-medium">Early exit.</span> If you leave before 4 months, the free build reverts to Makr — no cash penalty beyond the months already paid. After month 4, everything is yours free and clear.</p>
+              <p><span className="text-stone-800 font-medium">Early exit.</span> If you leave before 4 months, the free build reverts to Makr.ai — no cash penalty beyond the months already paid. After month 4, everything is yours free and clear.</p>
               <p><span className="text-stone-800 font-medium">Month-to-month after that.</span> Continue with 30 days notice to cancel. No tricks, no price locks.</p>
               <p><span className="text-stone-800 font-medium">Pause option.</span> Seasonal businesses can pause up to 2 months/year at a reduced rate.</p>
             </div>

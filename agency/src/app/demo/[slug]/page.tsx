@@ -115,7 +115,7 @@ export default async function DemoPage({ params }: Props) {
       {/* Makr sticky banner */}
       <div className="sticky top-0 z-50 bg-amber-500 px-4 py-2.5 flex items-center justify-between gap-4">
         <p className="text-slate-900 text-sm font-medium truncate">
-          {industryIcon} This is a free demo site Makr built for {d.businessName} — no setup fee, included with any plan.
+          {industryIcon} This is a free demo site Makr.ai built for {d.businessName} — no setup fee, included with any plan.
         </p>
         <Link
           href={`/contact?name=${encodeURIComponent(d.businessName)}`}
@@ -436,7 +436,7 @@ export default async function DemoPage({ params }: Props) {
               <p>
                 Website by{" "}
                 <Link href="https://gomakr.ai" className="text-amber-400 hover:text-amber-300 transition font-semibold">
-                  Makr
+                  Makr.ai
                 </Link>
                 {" "}— want a site like this?{" "}
                 <Link href="/contact" className="text-amber-400 hover:text-amber-300 transition underline">

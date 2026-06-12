@@ -145,7 +145,7 @@ export default function HomePage() {
           <div className="space-y-8">
             {[
               { step: "01", title: "You pick a free build — we deliver it", body: "Choose what your business needs most: a website, booking system, voice agent, AI chat, or first automation. Included with any plan, no setup fee." },
-              { step: "02", title: "We get to work immediately", body: "From day one, Makr runs your SEO, manages your Google Business Profile, and publishes content. Your plan starts, results start." },
+              { step: "02", title: "We get to work immediately", body: "From day one, Makr.ai runs your SEO, manages your Google Business Profile, and publishes content. Your plan starts, results start." },
               { step: "03", title: "You own your build after month 4", body: "After your 4-month agreement, everything we built is yours free and clear. Continue month-to-month or cancel with 30 days notice." },
               { step: "04", title: "We help you build the back end", body: "Once the leads are flowing, we build the systems — quoting, billing, scheduling, HR — so growth doesn't create new headaches." },
             ].map(({ step, title, body }) => (
@@ -184,7 +184,7 @@ export default function HomePage() {
             <Link href="/pricing" className="hover:text-stone-700 transition">Pricing</Link>
             <Link href="/contact" className="hover:text-stone-700 transition">Contact</Link>
           </div>
-          <span>© {new Date().getFullYear()} Makr. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Makr.ai. All rights reserved.</span>
         </div>
       </footer>
     </>

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Makr — You built your business. We make it grow.",
-  description: "Makr is an AI-powered growth agency for local businesses. We handle your website, SEO, ads, and automation so you can focus on the work you're actually good at.",
+  title: "Makr.ai — You built your business. We make it grow.",
+  description: "Makr.ai is the growth partner for home service businesses. We handle your website, SEO, ads, and automation so you can focus on the work you're actually good at.",
 };
 
 export default function RootLayout({
