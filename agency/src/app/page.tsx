@@ -2,9 +2,9 @@ import Link from "next/link";
 
 const GROW = [
   {
-    icon: "🌐",
-    title: "Free Website",
-    description: "We build your professional website at no charge — included with any marketing plan. A $2,500 value. Yours to keep after 4 months.",
+    icon: "🎁",
+    title: "Free Build — Your Choice",
+    description: "Sign up for any plan and pick one free build at no charge: a website, online booking system, voice agent, AI chat widget, first automation, or SEO setup. You choose what your business needs most.",
   },
   {
     icon: "📍",
@@ -62,7 +62,7 @@ export default function HomePage() {
               href="/contact"
               className="px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-green-900/20"
             >
-              Get a Free Website
+              Claim Your Free Build
             </Link>
             <Link
               href="/pricing"
@@ -144,9 +144,9 @@ export default function HomePage() {
           </div>
           <div className="space-y-8">
             {[
-              { step: "01", title: "We build your site — no setup fee", body: "We design and build a professional website for your business, included with your plan. No build fee, no separate charge." },
+              { step: "01", title: "You pick a free build — we deliver it", body: "Choose what your business needs most: a website, booking system, voice agent, AI chat, or first automation. Included with any plan, no setup fee." },
               { step: "02", title: "We get to work immediately", body: "From day one, Makr runs your SEO, manages your Google Business Profile, and publishes content. Your plan starts, results start." },
-              { step: "03", title: "You own the site after month 4", body: "After your 4-month agreement, the website is yours free and clear. Continue month-to-month or cancel with 30 days notice." },
+              { step: "03", title: "You own your build after month 4", body: "After your 4-month agreement, everything we built is yours free and clear. Continue month-to-month or cancel with 30 days notice." },
               { step: "04", title: "We help you build the back end", body: "Once the leads are flowing, we build the systems — quoting, billing, scheduling, HR — so growth doesn't create new headaches." },
             ].map(({ step, title, body }) => (
               <div key={step} className="flex gap-6">
@@ -164,13 +164,13 @@ export default function HomePage() {
       {/* CTA */}
       <section className="py-24 px-6 bg-stone-50">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-black text-stone-900 mb-4">Ready to see what your new website looks like?</h2>
-          <p className="text-stone-500 text-lg mb-8">Fill out the form and we&apos;ll build a demo site for your business — free, no commitment.</p>
+          <h2 className="text-4xl font-black text-stone-900 mb-4">Ready to claim your free build?</h2>
+          <p className="text-stone-500 text-lg mb-8">Tell us about your business and we&apos;ll put together a free demo — no commitment, no setup fee.</p>
           <Link
             href="/contact"
             className="inline-block px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-green-900/20"
           >
-            Get My Free Website
+            Claim Your Free Build
           </Link>
         </div>
       </section>

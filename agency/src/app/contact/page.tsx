@@ -77,8 +77,8 @@ export default function ContactPage() {
       <main className="pt-32 pb-24 px-6 bg-white">
         <div className="max-w-xl mx-auto">
           <div className="text-center mb-10">
-            <h1 className="text-4xl font-black text-stone-900 mb-3">Get your free website</h1>
-            <p className="text-stone-500">Fill this out and we&apos;ll build a free demo site — then pick a plan to keep it. No setup fee, no build charge.</p>
+            <h1 className="text-4xl font-black text-stone-900 mb-3">Claim your free build</h1>
+            <p className="text-stone-500">Tell us about your business and pick what you need most — website, booking system, voice agent, or automation. Included with any plan, no setup fee.</p>
           </div>
 
           <div className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm">
@@ -118,7 +118,7 @@ export default function ContactPage() {
               </div>
               {error && <p className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg px-3 py-2">{error}</p>}
               <button type="submit" disabled={submitting} className="w-full py-4 bg-green-700 hover:bg-green-600 disabled:opacity-50 text-white font-bold rounded-xl transition text-lg">
-                {submitting ? "Sending…" : "Get My Free Website"}
+                {submitting ? "Sending…" : "Claim My Free Build"}
               </button>
               <p className="text-stone-400 text-xs text-center">No setup fee. 4-month agreement. You own the site after month 4.</p>
             </form>

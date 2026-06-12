@@ -6,7 +6,7 @@ const TIERS = [
     price: 499,
     popular: false,
     includes: [
-      "Professional website included (no build fee — $2,500 value)",
+      "One free build included — website, booking system, voice agent, AI chat, or automation (your choice)",
       "Google Business Profile optimization",
       "2 blog posts per month",
       "Local SEO basics",
@@ -18,7 +18,7 @@ const TIERS = [
     price: 999,
     popular: true,
     includes: [
-      "Everything in Starter",
+      "Everything in Starter (incl. free build)",
       "Google Ads ($300 ad spend managed)",
       "Social media (2 posts/week)",
       "Monthly email newsletter",
@@ -102,7 +102,7 @@ export default function PricingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="text-5xl font-black text-stone-900 mb-4">Simple, honest pricing</h1>
-            <p className="text-stone-500 text-lg max-w-2xl mx-auto">Website build included with every plan — no setup fee. 4-month agreement. You own the site after month 4.</p>
+            <p className="text-stone-500 text-lg max-w-2xl mx-auto">One free build included with every plan — you choose. No setup fee. 4-month agreement. You own it after month 4.</p>
           </div>
 
           {/* Marketing plans */}
@@ -190,8 +190,8 @@ export default function PricingPage() {
           <div className="max-w-3xl mx-auto bg-stone-50 border border-stone-200 rounded-2xl p-8">
             <h2 className="text-xl font-bold text-stone-900 mb-4">Service Agreement</h2>
             <div className="space-y-3 text-stone-500 text-sm">
-              <p><span className="text-stone-800 font-medium">4-month minimum term.</span> We build your website and invest heavily in your marketing from day one. The 4-month agreement gives us enough time to show real results — and covers the build we&apos;re doing at no charge.</p>
-              <p><span className="text-stone-800 font-medium">Early exit.</span> If you leave before 4 months, the website reverts to Makr — no cash penalty beyond the months already paid. After month 4, the site is yours free and clear.</p>
+              <p><span className="text-stone-800 font-medium">4-month minimum term.</span> We invest heavily from day one — building your free build and launching your marketing immediately. The 4-month agreement gives us enough time to show real results and covers the build we&apos;re doing at no charge.</p>
+              <p><span className="text-stone-800 font-medium">Early exit.</span> If you leave before 4 months, the free build reverts to Makr — no cash penalty beyond the months already paid. After month 4, everything is yours free and clear.</p>
               <p><span className="text-stone-800 font-medium">Month-to-month after that.</span> Continue with 30 days notice to cancel. No tricks, no price locks.</p>
               <p><span className="text-stone-800 font-medium">Pause option.</span> Seasonal businesses can pause up to 2 months/year at a reduced rate.</p>
             </div>

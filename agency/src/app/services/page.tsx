@@ -2,11 +2,11 @@ import Link from "next/link";
 
 const GROWTH_SERVICES = [
   {
-    icon: "🌐",
-    title: "Website Design & Hosting",
-    tagline: "No build fee — included with any plan",
-    body: "We build a professional, mobile-optimized website — fast, beautiful, and easy to update. Included with your plan (a $2,500 value). You own it after month 4.",
-    bullets: ["Custom design", "Mobile-first", "Fast loading", "Contact forms", "Google Analytics"],
+    icon: "🎁",
+    title: "Free Build — Your Choice",
+    tagline: "Pick one, no setup fee, included with any plan",
+    body: "Sign up for any plan and choose one free build: a professional website, online booking system, voice agent, AI chat widget, first automation, or SEO/GBP setup. We deliver it, you own it after month 4.",
+    bullets: ["Professional website", "Online booking system", "AI voice agent", "AI chat widget", "First automation (quotes, invoices, or follow-up)", "Local SEO / GBP optimization"],
   },
   {
     icon: "📍",
