@@ -26,27 +26,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-function getServiceIcon(name: string): string {
-  const l = name.toLowerCase();
-  if (l.includes("air condition") || (l.includes("ac") && !l.includes("place")) || l.includes("cooling")) return "❄️";
-  if (l.includes("furnace")) return "🔥";
-  if (l.includes("heat pump") || l.includes("mini-split") || l.includes("ductless")) return "🔄";
-  if (l.includes("heat") || l.includes("warm")) return "♨️";
-  if (l.includes("duct") || l.includes("airflow") || l.includes("ventil")) return "💨";
-  if (l.includes("air quality") || l.includes("indoor")) return "🌿";
-  if (l.includes("maintenance") || l.includes("tune") || l.includes("plan")) return "📋";
-  if (l.includes("emergency")) return "🚨";
-  if (l.includes("drain") || l.includes("clog")) return "🚿";
-  if (l.includes("water heater") || l.includes("tankless")) return "🌡️";
-  if (l.includes("leak") || l.includes("detect")) return "💧";
-  if (l.includes("septic")) return "⚙️";
-  if (l.includes("sewer")) return "🔩";
-  if (l.includes("pipe") || l.includes("replac")) return "🔧";
-  if (l.includes("fixture") || l.includes("faucet")) return "🚰";
-  if (l.includes("water quality") || l.includes("filter")) return "🫧";
-  if (l.includes("bathroom") || l.includes("kitchen")) return "🏠";
-  return "✅";
-}
 
 function Stars({ rating }: { rating: number }) {
   const full = Math.floor(rating);
@@ -62,16 +41,16 @@ function Stars({ rating }: { rating: number }) {
 const PHOTOS = {
   hvac: {
     hero: "photo-1621905251189-08b45d6a269e",      // HVAC technician working
-    work1: "photo-1558618666-fcd25c85cd64",         // AC unit outdoor
-    work2: "photo-1504328345606-18bbc8c9d7d1",      // furnace/heating
-    work3: "photo-1621905252507-b35492cc74b4",      // HVAC duct work
-    cta:   "photo-1504328345606-18bbc8c9d7d1",
+    work1: "photo-1558618666-fcd25c85cd64",         // outdoor AC condenser unit
+    work2: "photo-1621905252507-b35492cc74b4",      // indoor air handler / ductwork
+    work3: "photo-1504328345606-18bbc8c9d7d1",      // furnace / boiler room
+    cta:   "photo-1621905251189-08b45d6a269e",      // tech on job — matches hero
   },
   plumbing: {
     hero: "photo-1585771724684-38269d6639fd",       // plumber working under sink
-    work1: "photo-1558618047-3c8c76ca7d13",         // pipes / drain
-    work2: "photo-1607400201515-c2c41c07d307",      // water heater
-    work3: "photo-1581092918056-0c4c3acd3789",      // emergency repair
+    work1: "photo-1607400201515-c2c41c07d307",      // water heater install
+    work2: "photo-1558618047-3c8c76ca7d13",         // drain / pipe repair
+    work3: "photo-1581092918056-0c4c3acd3789",      // septic / outdoor excavation
     cta:   "photo-1585771724684-38269d6639fd",
   },
 };
@@ -215,20 +194,17 @@ export default async function EnhancedDemoPage({ params }: Props) {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {d.services.map((service) => {
-                const icon = getServiceIcon(service);
-                return (
-                  <div
-                    key={service}
-                    className={`bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md rounded-2xl p-5 flex items-center gap-4 transition group`}
-                  >
-                    <div className={`w-12 h-12 shrink-0 ${accent.bgLight} border ${accent.border} rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform`}>
-                      {icon}
-                    </div>
-                    <p className="font-semibold text-gray-900 leading-tight">{service}</p>
+              {d.services.map((service) => (
+                <div
+                  key={service}
+                  className={`bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md rounded-2xl p-5 flex items-center gap-4 transition group`}
+                >
+                  <div className={`w-10 h-10 shrink-0 ${accent.bgLight} border ${accent.border} rounded-xl flex items-center justify-center ${accent.text} font-bold text-lg group-hover:scale-110 transition-transform`}>
+                    ✓
                   </div>
-                );
-              })}
+                  <p className="font-semibold text-gray-900 leading-tight">{service}</p>
+                </div>
+              ))}
             </div>
 
             <div className="text-center mt-10">
@@ -250,9 +226,9 @@ export default async function EnhancedDemoPage({ params }: Props) {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {([
-                { label: isHvac ? "AC Installation" : "Drain Cleaning", photo: photos.work1, desc: "Fast, clean, and done right" },
-                { label: isHvac ? "Furnace Replacement" : "Water Heater Install", photo: photos.work2, desc: "Efficient, up-to-code installs" },
-                { label: isHvac ? "Emergency Repair" : "Emergency Plumbing", photo: photos.work3, desc: "Here when you need us most" },
+                { label: isHvac ? "AC & Cooling Systems" : "Water Heater Service", photo: photos.work1, desc: "Expert installs and repairs" },
+                { label: isHvac ? "Ductwork & Air Handling" : "Drain & Pipe Repair", photo: photos.work2, desc: "Clean, efficient, up to code" },
+                { label: isHvac ? "Furnace & Boiler Service" : "Septic & Sewer Work", photo: photos.work3, desc: "Here when you need us most" },
               ] as { label: string; photo: string; desc: string }[]).map((item) => (
                 <div key={item.label} className="relative rounded-2xl overflow-hidden aspect-video flex items-end p-5">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
