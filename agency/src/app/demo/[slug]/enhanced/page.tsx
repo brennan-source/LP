@@ -289,10 +289,29 @@ export default async function EnhancedDemoPage({ params }: Props) {
               {d.brands && d.brands.length > 0 && (
                 <div className="mb-6">
                   <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Authorized Dealer</p>
-                  <div className="flex flex-wrap gap-2">
-                    {d.brands.map((b) => (
-                      <span key={b} className={`px-3 py-1 ${accent.bgLight} border ${accent.border} ${accent.text} rounded-lg text-sm font-semibold`}>{b}</span>
-                    ))}
+                  <div className="flex flex-wrap gap-3">
+                    {d.brands.map((b) => {
+                      const logoMap: Record<string, string> = {
+                        "Mitsubishi Electric": "https://logo.clearbit.com/mitsubishielectric.com",
+                        "Trane": "https://logo.clearbit.com/trane.com",
+                        "Carrier": "https://logo.clearbit.com/carrier.com",
+                        "Lennox": "https://logo.clearbit.com/lennox.com",
+                        "Rheem": "https://logo.clearbit.com/rheem.com",
+                        "American Standard": "https://logo.clearbit.com/americanstandardair.com",
+                        "Bosch": "https://logo.clearbit.com/bosch.com",
+                        "Daikin": "https://logo.clearbit.com/daikin.com",
+                      };
+                      const logo = logoMap[b];
+                      return (
+                        <div key={b} className="flex items-center gap-2 bg-white border border-gray-200 rounded-xl px-3 py-2 shadow-sm">
+                          {logo && (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={logo} alt={b} className="w-6 h-6 object-contain rounded" />
+                          )}
+                          <span className="text-sm font-semibold text-gray-700">{b}</span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
