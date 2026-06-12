@@ -23,7 +23,7 @@ const FRONT_HTML = `
 </style></head>
 <body>
   <div class="wrap">
-    <div class="brand">Makr</div>
+    <div class="brand">Makr.ai</div>
     <div class="tagline">We built a free website<br>for your business.</div>
     <div class="hook">Scan the QR code on the back to see it.</div>
   </div>
@@ -55,7 +55,7 @@ function backHtml(contact: PostcardContact, trackingUrl: string): string {
   <div class="right">
     <img class="qr" src="${qrUrl}" alt="QR code" />
     <div class="scan">Scan to see your website</div>
-    <div class="brand">Makr</div>
+    <div class="brand">Makr.ai</div>
   </div>
 </body>
 </html>`;
@@ -76,11 +76,11 @@ export async function sendPostcard(
     "to[address_state]": toAddress.state,
     "to[address_zip]": toAddress.zip,
     "to[address_country]": "US",
-    "from[name]": "Makr",
-    "from[address_line1]": "123 Main St",
-    "from[address_city]": "Boston",
+    "from[name]": "Brennan Burks / Makr.ai",
+    "from[address_line1]": "35 Cold Spring Rd",
+    "from[address_city]": "Westford",
     "from[address_state]": "MA",
-    "from[address_zip]": "02101",
+    "from[address_zip]": "01886",
     "from[address_country]": "US",
     front: FRONT_HTML,
     back: backHtml(contact, trackingUrl),
