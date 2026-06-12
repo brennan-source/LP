@@ -434,7 +434,20 @@
         "rating": 5
       }
     ],
-    "services": [],
+    "services": [
+      "Emergency HVAC Repair (24/7)",
+      "Furnace Repair & Installation",
+      "Boiler Repair & Installation",
+      "Heat Pump Repair & Installation",
+      "Ductless Mini-Split Installation",
+      "Central AC Repair & Installation",
+      "Hot Water Heater Replacement",
+      "Forced Hot Air Furnace Cleaning",
+      "Air Duct Repair & Cleaning",
+      "HVAC Tune-Up & Maintenance",
+      "High-Efficiency System Upgrades",
+      "Commercial HVAC Services"
+    ],
     "serviceAreas": [
       "Cambridge",
       "Somerville",
@@ -442,10 +455,15 @@
       "Newton",
       "Quincy",
       "Medford",
-      "Malden"
+      "Malden",
+      "Revere",
+      "Everett",
+      "Waltham",
+      "Watertown",
+      "Lynn"
     ],
-    "tagline": null,
-    "yearFounded": null,
+    "tagline": "Boston's 24/7 HVAC Experts — We Answer Every Call.",
+    "yearFounded": 2013,
     "emergencyService": true,
     "facebook": null,
     "instagram": null,
