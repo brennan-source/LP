@@ -65,43 +65,43 @@ const OPS_SERVICES = [
 export default function ServicesPage() {
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-stone-200">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="text-xl font-black text-amber-400 tracking-tight">Makr<span className="text-slate-500 font-medium">.ai</span></Link>
-          <div className="hidden md:flex items-center gap-6 text-sm text-slate-400">
-            <Link href="/services" className="text-white">Services</Link>
-            <Link href="/pricing" className="hover:text-white transition">Pricing</Link>
-            <Link href="/contact" className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-900 rounded-lg transition font-medium">Get Started</Link>
+          <Link href="/" className="text-xl font-black text-green-800 tracking-tight">Makr<span className="text-stone-400 font-medium">.ai</span></Link>
+          <div className="hidden md:flex items-center gap-6 text-sm text-stone-500">
+            <Link href="/services" className="text-stone-900 font-medium">Services</Link>
+            <Link href="/pricing" className="hover:text-stone-900 transition">Pricing</Link>
+            <Link href="/contact" className="px-4 py-2 bg-green-700 hover:bg-green-600 text-white rounded-lg transition font-medium">Get Started</Link>
           </div>
         </div>
       </nav>
 
-      <main className="pt-32 pb-24 px-6">
+      <main className="pt-32 pb-24 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-black text-white mb-4">What we do</h1>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            <h1 className="text-5xl font-black text-stone-900 mb-4">What we do</h1>
+            <p className="text-stone-500 text-lg max-w-2xl mx-auto">
               Two problems, one partner. We get you more jobs — then build the systems to handle them. Website included with every plan.
             </p>
           </div>
 
           {/* Growth services */}
           <div className="mb-16">
-            <div className="mb-8 pb-4 border-b border-slate-800">
-              <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-1">Get more jobs</p>
-              <h2 className="text-2xl font-black text-white">Marketing & Growth</h2>
+            <div className="mb-8 pb-4 border-b border-stone-200">
+              <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-1">Get more jobs</p>
+              <h2 className="text-2xl font-black text-stone-900">Marketing & Growth</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {GROWTH_SERVICES.map((service) => (
-                <div key={service.title} className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                <div key={service.title} className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm hover:border-green-300 hover:shadow-md transition">
                   <div className="text-4xl mb-4">{service.icon}</div>
-                  <h2 className="text-xl font-bold text-white mb-1">{service.title}</h2>
-                  <p className="text-amber-400 text-sm font-medium mb-3">{service.tagline}</p>
-                  <p className="text-slate-400 mb-4 leading-relaxed">{service.body}</p>
+                  <h2 className="text-xl font-bold text-stone-900 mb-1">{service.title}</h2>
+                  <p className="text-green-700 text-sm font-medium mb-3">{service.tagline}</p>
+                  <p className="text-stone-500 mb-4 leading-relaxed">{service.body}</p>
                   <ul className="space-y-1.5">
                     {service.bullets.map((b) => (
-                      <li key={b} className="flex items-center gap-2 text-sm text-slate-300">
-                        <span className="text-green-400 shrink-0">✓</span>
+                      <li key={b} className="flex items-center gap-2 text-sm text-stone-600">
+                        <span className="text-green-600 shrink-0">✓</span>
                         {b}
                       </li>
                     ))}
@@ -113,21 +113,21 @@ export default function ServicesPage() {
 
           {/* Ops services */}
           <div className="mb-16">
-            <div className="mb-8 pb-4 border-b border-slate-800">
-              <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-1">Run your business</p>
-              <h2 className="text-2xl font-black text-white">Operations & Automation</h2>
+            <div className="mb-8 pb-4 border-b border-stone-200">
+              <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-1">Run your business</p>
+              <h2 className="text-2xl font-black text-stone-900">Operations & Automation</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {OPS_SERVICES.map((service) => (
-                <div key={service.title} className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                <div key={service.title} className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm hover:border-green-300 hover:shadow-md transition">
                   <div className="text-4xl mb-4">{service.icon}</div>
-                  <h2 className="text-xl font-bold text-white mb-1">{service.title}</h2>
-                  <p className="text-amber-400 text-sm font-medium mb-3">{service.tagline}</p>
-                  <p className="text-slate-400 mb-4 leading-relaxed">{service.body}</p>
+                  <h2 className="text-xl font-bold text-stone-900 mb-1">{service.title}</h2>
+                  <p className="text-green-700 text-sm font-medium mb-3">{service.tagline}</p>
+                  <p className="text-stone-500 mb-4 leading-relaxed">{service.body}</p>
                   <ul className="space-y-1.5">
                     {service.bullets.map((b) => (
-                      <li key={b} className="flex items-center gap-2 text-sm text-slate-300">
-                        <span className="text-green-400 shrink-0">✓</span>
+                      <li key={b} className="flex items-center gap-2 text-sm text-stone-600">
+                        <span className="text-green-600 shrink-0">✓</span>
                         {b}
                       </li>
                     ))}
@@ -138,7 +138,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="text-center">
-            <Link href="/pricing" className="inline-block px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition">
+            <Link href="/pricing" className="inline-block px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-green-900/20">
               See Pricing
             </Link>
           </div>
