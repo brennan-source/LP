@@ -120,7 +120,7 @@ export default function ContactPage() {
               <button type="submit" disabled={submitting} className="w-full py-4 bg-green-700 hover:bg-green-600 disabled:opacity-50 text-white font-bold rounded-xl transition text-lg">
                 {submitting ? "Sending…" : "Claim My Free Build"}
               </button>
-              <p className="text-stone-400 text-xs text-center">No setup fee. 4-month agreement. You own the site after month 4.</p>
+              <p className="text-stone-400 text-xs text-center">No setup fee. 4-month agreement. You own the build after month 4.</p>
             </form>
           </div>
         </div>

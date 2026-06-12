@@ -94,16 +94,21 @@ export default async function DemoPage({ params }: Props) {
   if (!raw) notFound();
   const d = resolveDemo(raw);
 
-  const accentColor = d.industry === "hvac" ? "blue" : "teal";
-  const accent = {
-    bg: accentColor === "blue" ? "bg-blue-700" : "bg-teal-700",
-    bgHover: accentColor === "blue" ? "hover:bg-blue-600" : "hover:bg-teal-600",
-    bgLight: accentColor === "blue" ? "bg-blue-50" : "bg-teal-50",
-    border: accentColor === "blue" ? "border-blue-200" : "border-teal-200",
-    text: accentColor === "blue" ? "text-blue-700" : "text-teal-700",
-    textLight: accentColor === "blue" ? "text-blue-600" : "text-teal-600",
-    ring: accentColor === "blue" ? "ring-blue-600" : "ring-teal-600",
-  };
+  // Deterministic palette per business — avoids every site looking identical
+  function slugHash(s: string) {
+    let h = 0;
+    for (const c of s) h = (h * 31 + c.charCodeAt(0)) & 0xffff;
+    return h;
+  }
+  const PALETTES = [
+    { heroGrad: "from-blue-600 to-blue-800",    bg: "bg-blue-700",    bgHover: "hover:bg-blue-600",    bgLight: "bg-blue-50",    border: "border-blue-200",    text: "text-blue-700",    footerBg: "bg-blue-950"  },
+    { heroGrad: "from-teal-600 to-teal-800",    bg: "bg-teal-700",    bgHover: "hover:bg-teal-600",    bgLight: "bg-teal-50",    border: "border-teal-200",    text: "text-teal-700",    footerBg: "bg-teal-950"  },
+    { heroGrad: "from-indigo-600 to-slate-700", bg: "bg-indigo-700",  bgHover: "hover:bg-indigo-600",  bgLight: "bg-indigo-50",  border: "border-indigo-200",  text: "text-indigo-700",  footerBg: "bg-slate-900" },
+    { heroGrad: "from-amber-500 to-orange-600", bg: "bg-amber-600",   bgHover: "hover:bg-amber-500",   bgLight: "bg-amber-50",   border: "border-amber-200",   text: "text-amber-700",   footerBg: "bg-stone-900" },
+    { heroGrad: "from-emerald-600 to-green-800",bg: "bg-emerald-700", bgHover: "hover:bg-emerald-600", bgLight: "bg-emerald-50", border: "border-emerald-200", text: "text-emerald-700", footerBg: "bg-emerald-950"},
+  ] as const;
+  const palette = PALETTES[slugHash(slug) % PALETTES.length];
+  const accent = { ...palette, textLight: palette.text, ring: palette.border };
 
   const industryLabel = d.industry === "hvac" ? "HVAC" : "Plumbing & Septic";
   const industryIcon = d.industry === "hvac" ? "❄️" : "🔧";
@@ -156,7 +161,7 @@ export default async function DemoPage({ params }: Props) {
         </header>
 
         {/* Hero */}
-        <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20 px-4">
+        <section className={`bg-gradient-to-br ${palette.heroGrad} text-white py-20 px-4`}>
           <div className="max-w-6xl mx-auto">
             <div className="max-w-3xl">
               {d.emergencyService && (
@@ -400,7 +405,7 @@ export default async function DemoPage({ params }: Props) {
         </section>
 
         {/* Footer */}
-        <footer className="bg-gray-900 text-gray-400 py-10 px-4">
+        <footer className={`${palette.footerBg} text-gray-400 py-10 px-4`}>
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <div>
@@ -433,7 +438,7 @@ export default async function DemoPage({ params }: Props) {
                 </div>
               </div>
             </div>
-            <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+            <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
               <p>© {new Date().getFullYear()} {d.businessName}. All rights reserved.</p>
               <p>
                 Website by{" "}

@@ -91,11 +91,20 @@ export default async function EnhancedDemoPage({ params }: Props) {
   const industryLabel = isHvac ? "HVAC" : "Plumbing & Septic";
   const industryIcon = isHvac ? "❄️" : "🔧";
 
-  const accent = isHvac
-    ? { bg: "bg-blue-700", bgHover: "hover:bg-blue-600", bgLight: "bg-blue-50", bgPanel: "bg-blue-800",
-        border: "border-blue-200", text: "text-blue-700", hex: "#1d4ed8", panelGrad: "from-blue-900 to-blue-700" }
-    : { bg: "bg-teal-700", bgHover: "hover:bg-teal-600", bgLight: "bg-teal-50", bgPanel: "bg-teal-800",
-        border: "border-teal-200", text: "text-teal-700", hex: "#0f766e", panelGrad: "from-teal-900 to-teal-700" };
+  function slugHash(s: string) {
+    let h = 0;
+    for (const c of s) h = (h * 31 + c.charCodeAt(0)) & 0xffff;
+    return h;
+  }
+  const PALETTES = [
+    { heroGrad: "from-blue-600 to-blue-800",     bg: "bg-blue-700",    bgHover: "hover:bg-blue-600",    bgLight: "bg-blue-50",    border: "border-blue-200",    text: "text-blue-700",    footerBg: "bg-blue-950"   },
+    { heroGrad: "from-teal-600 to-teal-800",     bg: "bg-teal-700",    bgHover: "hover:bg-teal-600",    bgLight: "bg-teal-50",    border: "border-teal-200",    text: "text-teal-700",    footerBg: "bg-teal-950"   },
+    { heroGrad: "from-indigo-600 to-slate-700",  bg: "bg-indigo-700",  bgHover: "hover:bg-indigo-600",  bgLight: "bg-indigo-50",  border: "border-indigo-200",  text: "text-indigo-700",  footerBg: "bg-slate-900"  },
+    { heroGrad: "from-amber-500 to-orange-600",  bg: "bg-amber-600",   bgHover: "hover:bg-amber-500",   bgLight: "bg-amber-50",   border: "border-amber-200",   text: "text-amber-700",   footerBg: "bg-stone-900"  },
+    { heroGrad: "from-emerald-600 to-green-800", bg: "bg-emerald-700", bgHover: "hover:bg-emerald-600", bgLight: "bg-emerald-50", border: "border-emerald-200", text: "text-emerald-700", footerBg: "bg-emerald-950"},
+  ] as const;
+  const palette = PALETTES[slugHash(slug) % PALETTES.length];
+  const accent = { ...palette, bgPanel: palette.bg, panelGrad: palette.heroGrad, hex: "" };
 
   return (
     <>
@@ -139,7 +148,7 @@ export default async function EnhancedDemoPage({ params }: Props) {
         </header>
 
         {/* ── Hero ── */}
-        <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20 px-4">
+        <section className={`bg-gradient-to-br ${palette.heroGrad} text-white py-20 px-4`}>
           <div className="max-w-4xl mx-auto text-center">
             {d.emergencyService && (
               <div className="inline-flex items-center gap-2 bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-full mb-6 uppercase tracking-wide">
@@ -386,7 +395,7 @@ export default async function EnhancedDemoPage({ params }: Props) {
         </section>
 
         {/* ── Footer ── */}
-        <footer className="bg-slate-950 text-slate-400 py-10 px-4">
+        <footer className={`${palette.footerBg} text-slate-300 py-10 px-4`}>
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <div>
@@ -410,7 +419,7 @@ export default async function EnhancedDemoPage({ params }: Props) {
                 <p className="font-bold text-white text-sm mb-3">Service Area</p>
                 <p className="text-sm">{d.city}, {d.state} and surrounding areas</p>
                 {d.serviceAreas.length > 0 && (
-                  <p className="text-sm mt-1 text-slate-500">{d.serviceAreas.slice(0, 4).join(" • ")}</p>
+                  <p className="text-sm mt-1 text-white/40">{d.serviceAreas.slice(0, 4).join(" • ")}</p>
                 )}
                 <div className="flex gap-3 mt-4">
                   {d.facebook && <a href={d.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-white text-sm transition">Facebook</a>}
@@ -418,7 +427,7 @@ export default async function EnhancedDemoPage({ params }: Props) {
                 </div>
               </div>
             </div>
-            <div className="border-t border-slate-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+            <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
               <p>© {new Date().getFullYear()} {d.businessName}. All rights reserved.</p>
               <p>
                 Website by{" "}

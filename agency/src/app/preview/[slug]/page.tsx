@@ -87,7 +87,7 @@ export default async function PreviewPage({ params, searchParams }: Props) {
             Claim My Free Website
           </Link>
           <p className="text-slate-600 text-sm">
-            No setup fee. 4-month agreement. You own the site after month 4.
+            No setup fee. 4-month agreement. You own the build after month 4.
           </p>
           <p className="text-slate-700 text-xs mt-4">ref: {slug}</p>
         </div>
