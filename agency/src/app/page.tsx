@@ -55,7 +55,7 @@ export default function HomePage() {
             <span className="text-green-700">We make it grow.</span>
           </h1>
           <p className="text-xl text-stone-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Makr is a growth partner for home service businesses. We get you more jobs, then build the systems — quoting, billing, scheduling, operations — so you can actually handle them.
+            <span className="text-green-700 font-semibold">Makr.ai</span> is the growth partner for home service businesses. We get you more jobs, then build the systems — quoting, billing, scheduling, operations — so you can actually handle them.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
