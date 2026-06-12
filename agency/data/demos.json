@@ -203,7 +203,7 @@
   },
   {
     "slug": "tbros-trethewey-brothers-inc",
-    "businessName": "TBros - Trethewey Brothers Inc",
+    "businessName": "TBros / Trethewey Brothers Inc",
     "phone": "(617) 325-3283",
     "email": "becca_clegg@yahoo.com",
     "address": "4280 Washington St, Roslindale, MA 02131",
@@ -230,21 +230,41 @@
         "rating": 5
       }
     ],
-    "services": [],
+    "services": [
+      "Plumbing",
+      "Heating",
+      "Cooling & Air Conditioning",
+      "Ductless Mini-Split Heat Pumps",
+      "Water Filtration",
+      "Kitchen & Bathroom Remodeling",
+      "24-Hour Emergency Service"
+    ],
     "serviceAreas": [
+      "Boston",
+      "South Boston",
+      "Roslindale",
       "Jamaica Plain",
       "West Roxbury",
-      "Hyde Park",
-      "Dedham"
+      "Newton",
+      "Brookline",
+      "Dedham",
+      "Milton",
+      "Needham"
     ],
-    "tagline": null,
-    "yearFounded": null,
+    "tagline": "Four Generations of Expert Plumbing, Heating & Cooling in Boston.",
+    "yearFounded": 1902,
     "emergencyService": true,
     "facebook": "https://www.facebook.com/tbrosma/",
     "instagram": "https://www.instagram.com/tbros_plumbing_inc/",
     "hasWebsite": true,
     "existingWebsite": "http://www.tbros.com/",
-    "score": 6
+    "score": 6,
+    "description": "A fourth-generation, family-owned business headquartered in Roslindale, MA, Trethewey Brothers has delivered expert plumbing, heating, cooling, and remodeling services to Eastern Massachusetts homeowners since 1902. They offer 24-hour service across Boston and more than 30 surrounding towns.",
+    "certifications": [
+      "MA Master Plumber #7836",
+      "MA Home Improvement Contractor #102399",
+      "EPA Lead-Safe Certified"
+    ]
   },
   {
     "slug": "scituate-cesspool-inc",
@@ -259,19 +279,42 @@
     "rating": 4.8,
     "reviewCount": 57,
     "reviewQuotes": [],
-    "services": [],
-    "serviceAreas": [
-      "Johnston area",
-      "Surrounding RI communities"
+    "services": [
+      "Cesspool Pumping & Cleaning",
+      "Septic Tank Pumping",
+      "Septic System Installation",
+      "Grease Trap Cleaning",
+      "Camper Holding Tank Pumping",
+      "Portable Restroom Rental",
+      "Septic System Maintenance",
+      "Commercial Waste Removal"
     ],
-    "tagline": null,
-    "yearFounded": null,
+    "serviceAreas": [
+      "Johnston",
+      "Providence",
+      "Cranston",
+      "Warwick",
+      "Coventry",
+      "North Providence",
+      "Smithfield",
+      "Lincoln",
+      "Cumberland",
+      "East Providence",
+      "Woonsocket",
+      "Scituate",
+      "West Greenwich",
+      "North Smithfield",
+      "Pawtucket"
+    ],
+    "tagline": "Over 50 Years of Trusted Septic & Cesspool Service Across Rhode Island.",
+    "yearFounded": 1972,
     "emergencyService": true,
     "facebook": "https://www.facebook.com/pages/",
     "instagram": null,
     "hasWebsite": true,
     "existingWebsite": "https://goscituate.com/cesspool-and-septic-tank-pumping",
-    "score": 6
+    "score": 6,
+    "description": "Scituate Cesspool, Inc. has been serving Rhode Island since 1972, specializing in cesspool and septic tank pumping, cleaning, installation, and maintenance for residential and commercial customers statewide. They also offer portable restroom rentals and pump camper holding tanks and commercial kitchen grease traps."
   },
   {
     "slug": "schofield-sanitation",
@@ -362,7 +405,7 @@
   },
   {
     "slug": "northboro-curtis-septic-service",
-    "businessName": "Northboro / Curtis Septic Service",
+    "businessName": "Northboro Septic Service, Inc.",
     "phone": "(508) 393-7234",
     "email": "sachin@mobiuso.com",
     "address": "124 Main St, Northborough, MA 01532",
@@ -373,19 +416,43 @@
     "rating": 4.9,
     "reviewCount": 62,
     "reviewQuotes": [],
-    "services": [],
-    "serviceAreas": [
-      "Northborough area",
-      "Surrounding MA communities"
+    "services": [
+      "Septic System Installation",
+      "Septic Tank Pumping & Cleaning",
+      "Title V Inspections",
+      "Septic System Repair",
+      "Drain Cleaning",
+      "Video Pipe Inspections",
+      "Electronic Locating",
+      "Ground Thaw Services",
+      "Excavation Services"
     ],
-    "tagline": null,
-    "yearFounded": null,
+    "serviceAreas": [
+      "Northborough",
+      "Stow",
+      "Littleton",
+      "Framingham",
+      "Wayland",
+      "Concord",
+      "Acton",
+      "Westford",
+      "Sudbury",
+      "Lincoln",
+      "Hudson",
+      "Marlborough",
+      "Westborough",
+      "Hopkinton",
+      "Shrewsbury"
+    ],
+    "tagline": "Over 40 Years of Septic Installation, Pumping & Title V Inspections in Central MA.",
+    "yearFounded": 1982,
     "emergencyService": true,
     "facebook": null,
     "instagram": null,
     "hasWebsite": true,
     "existingWebsite": "http://www.northboroseptic.com/",
-    "score": 6
+    "score": 6,
+    "description": "Northboro Septic Service is a full-service septic company based in Northborough, MA with over 40 years of experience providing septic system installation, repair, pumping, and Title V inspections. Operating from three locations — Northboro, Stow, and Littleton — they service more than 86 towns across central Massachusetts."
   },
   {
     "slug": "stevens-and-sons-septic-pumping",
@@ -477,7 +544,7 @@
   },
   {
     "slug": "curtis-septic-service",
-    "businessName": "Curtis Septic Service",
+    "businessName": "Curtis Septic Service, Inc.",
     "phone": "(978) 897-3222",
     "email": "info@curtisseptic.com",
     "address": "128 Great Rd, Stow, MA 01775",
@@ -488,19 +555,42 @@
     "rating": 4.7,
     "reviewCount": 71,
     "reviewQuotes": [],
-    "services": [],
-    "serviceAreas": [
-      "Stow area",
-      "Surrounding MA communities"
+    "services": [
+      "Septic System Installation",
+      "Septic Tank Pumping & Cleaning",
+      "Title V Inspections",
+      "Septic System Repair",
+      "Drain Cleaning",
+      "Sewer Hookups",
+      "Video Pipe Inspections",
+      "Electronic Locating"
     ],
-    "tagline": null,
-    "yearFounded": null,
+    "serviceAreas": [
+      "Stow",
+      "Northborough",
+      "Framingham",
+      "Wayland",
+      "Concord",
+      "Westford",
+      "Marlborough",
+      "Hopkinton",
+      "Shrewsbury",
+      "Westborough",
+      "Grafton",
+      "Millbury",
+      "Auburn",
+      "Oxford",
+      "Hudson"
+    ],
+    "tagline": "Locally Owned Septic Pumping, Installation & Title V Inspections Since 1983.",
+    "yearFounded": 1983,
     "emergencyService": true,
     "facebook": "https://www.facebook.com/CurtisSeptic",
     "instagram": null,
     "hasWebsite": true,
     "existingWebsite": "http://www.curtisseptic.com/",
-    "score": 6
+    "score": 6,
+    "description": "Curtis Septic Service is a locally owned, full-service septic company based in Stow, MA with over 40 years of experience. Founded by Andy Curtis, the company provides septic installation, repair, pumping, Title V inspections, and drain cleaning across more than 86 towns in Worcester and Middlesex Counties."
   },
   {
     "slug": "presidential-hvac",
@@ -594,7 +684,7 @@
   },
   {
     "slug": "ehc-inc-electrical-heating-cooling",
-    "businessName": "EHC Inc Electrical Heating Cooling",
+    "businessName": "EHC Inc. — Electrical | Heating | Cooling",
     "phone": "(774) 353-2828",
     "email": "office@callehc.com",
     "address": "398 Columbus Ave #47, Boston, MA 02116",
@@ -621,24 +711,41 @@
         "rating": 5
       }
     ],
-    "services": [],
-    "serviceAreas": [
-      "Cambridge",
-      "Somerville",
-      "Brookline",
-      "Newton",
-      "Quincy",
-      "Medford",
-      "Malden"
+    "services": [
+      "Electrical Installation & Repair",
+      "HVAC Installation & Repair",
+      "Ductless Mini-Split Heat Pump Installation",
+      "Air Conditioning",
+      "Heating Systems",
+      "EV Charger Installation",
+      "Smart Home Technology",
+      "LED Lighting",
+      "Fire Alarm & Security Systems",
+      "Home Electrical Inspections"
     ],
-    "tagline": null,
-    "yearFounded": null,
+    "serviceAreas": [
+      "Foxborough",
+      "Boston",
+      "North Attleborough",
+      "Wrentham",
+      "Mansfield",
+      "Plainville",
+      "Attleboro",
+      "Greater Boston",
+      "Connecticut"
+    ],
+    "tagline": "Greater Boston & Connecticut Electrical and HVAC — Available 24/7.",
+    "yearFounded": 2015,
     "emergencyService": true,
     "facebook": null,
     "instagram": null,
     "hasWebsite": true,
     "existingWebsite": "http://www.callehc.com/",
-    "score": 6
+    "score": 6,
+    "description": "EHC Inc. is a family-owned electrical and HVAC contractor based in Foxborough, MA, serving Greater Boston and Connecticut since 2015. They provide full-service electrical work alongside heating, cooling, mini-split installation, EV charger installation, and smart home technology.",
+    "brands": [
+      "Honeywell"
+    ]
   },
   {
     "slug": "boston-hvac-contractors-heating-air-conditioning-inc",
@@ -696,19 +803,45 @@
     "rating": 4.9,
     "reviewCount": 118,
     "reviewQuotes": [],
-    "services": [],
-    "serviceAreas": [
-      "Dorchester area",
-      "Surrounding MA communities"
+    "services": [
+      "AC Repair & Installation",
+      "Furnace Repair & Replacement",
+      "Boiler Service",
+      "HVAC Maintenance",
+      "Heat Pump Installation",
+      "Ductwork Services",
+      "24/7 Emergency Service",
+      "Light Commercial HVAC"
     ],
-    "tagline": null,
+    "serviceAreas": [
+      "Boston",
+      "Dorchester",
+      "Roxbury",
+      "Cambridge",
+      "Somerville",
+      "Brookline",
+      "Newton",
+      "Quincy",
+      "South Boston",
+      "Medford"
+    ],
+    "tagline": "Boston HVAC Contractor — 25+ Years of Quality Heating & Cooling Service.",
     "yearFounded": null,
     "emergencyService": true,
     "facebook": null,
     "instagram": null,
     "hasWebsite": true,
     "existingWebsite": "https://servicerightllc.com/",
-    "score": 6
+    "score": 6,
+    "description": "Service Right, LLC is a Boston-based HVAC contractor with over 25 years of experience providing quality design, installation, and service for heating, ventilation, and air conditioning equipment for residential and light commercial customers. They offer 24/7 emergency service throughout the Greater Boston metro area.",
+    "brands": [
+      "Lennox"
+    ],
+    "certifications": [
+      "MA Journeyman Plumber #33101",
+      "MA Refrigeration Contractor #RT-118884",
+      "MA Oil Burner Technician #BU-120865"
+    ]
   },
   {
     "slug": "universal-hvac-contractors-boston",
@@ -841,7 +974,7 @@
   },
   {
     "slug": "back-bay-mechanical-ac-repair-heating",
-    "businessName": "Back Bay Mechanical AC Repair & Heating",
+    "businessName": "Back Bay Mechanical",
     "phone": "(617) 397-4409",
     "email": "james@backbaymechanical.com",
     "address": "654 Washington St, Braintree, MA 02184",
@@ -852,19 +985,39 @@
     "rating": 5,
     "reviewCount": 113,
     "reviewQuotes": [],
-    "services": [],
-    "serviceAreas": [
-      "Braintree area",
-      "Surrounding MA communities"
+    "services": [
+      "AC Repair & Installation",
+      "Heat Pump Installation & Service",
+      "Furnace Repair & Replacement",
+      "HVAC Maintenance",
+      "Snowmelt & Heated Driveway Systems",
+      "24/7 Emergency HVAC Service",
+      "Ductless Mini-Split Installation"
     ],
-    "tagline": null,
-    "yearFounded": null,
+    "serviceAreas": [
+      "Boston",
+      "Back Bay",
+      "South Boston",
+      "Braintree",
+      "Rockland",
+      "Quincy",
+      "Weymouth",
+      "Hingham",
+      "Milton",
+      "Norwood"
+    ],
+    "tagline": "24/7 Heating & Air Conditioning Service Across Greater Boston.",
+    "yearFounded": 2009,
     "emergencyService": true,
     "facebook": null,
     "instagram": null,
     "hasWebsite": true,
     "existingWebsite": "https://www.backbaymechanical.com/ac-repair/%3Futm_source%3Dgoogle%26utm_medium%3Dorganic%26utm_campaign%3Dgbp_braintree",
-    "score": 6
+    "score": 6,
+    "description": "Back Bay Mechanical is an experienced Boston-area HVAC company established in 2009, specializing in air conditioning repair and replacement, heating systems, and heat pumps. With locations in Braintree and Rockland, they serve the entire Greater Boston area with 24/7 emergency service and Mass Save financing.",
+    "certifications": [
+      "Mass Save Participating Contractor"
+    ]
   },
   {
     "slug": "fire-ice-hvac-llc",
@@ -879,24 +1032,41 @@
     "rating": 4.9,
     "reviewCount": 52,
     "reviewQuotes": [],
-    "services": [],
+    "services": [
+      "AC Installation & Repair",
+      "Ductless Mini-Split Heat Pump Installation",
+      "Central Air Conditioning",
+      "Gas & Oil Furnace Service",
+      "Hydronic Boiler Systems",
+      "HVAC Maintenance & Tune-Up"
+    ],
     "serviceAreas": [
+      "Boston",
+      "Brighton",
+      "Brookline",
       "Cambridge",
       "Somerville",
-      "Brookline",
       "Newton",
-      "Quincy",
-      "Medford",
-      "Malden"
+      "Dedham",
+      "Watertown",
+      "Allston",
+      "Jamaica Plain"
     ],
-    "tagline": null,
-    "yearFounded": null,
+    "tagline": "Boston HVAC Specialists — Locally Owned, Award-Winning Service Since 2008.",
+    "yearFounded": 2008,
     "emergencyService": true,
     "facebook": null,
     "instagram": null,
     "hasWebsite": true,
     "existingWebsite": "https://www.fireandicehvac-boston.com/",
-    "score": 6
+    "score": 6,
+    "description": "Fire & Ice HVAC, LLC is a locally owned and operated HVAC company based in Brighton, MA, in business since 2008. Operated by technicians Arthur and Jon, the company installs and services ductless mini-splits, central AC, gas and oil furnaces, and hydronic boiler systems, earning Angi Super Service Awards every year since 2010.",
+    "certifications": [
+      "NATE Member",
+      "RSES Member",
+      "ACCA Member",
+      "Angi Super Service Award (2010–present)"
+    ]
   },
   {
     "slug": "hvac-improvement-inc",
@@ -944,7 +1114,7 @@
   },
   {
     "slug": "we-clean-heat-pumps-greater-boston-coastal-new-england",
-    "businessName": "We Clean Heat Pumps – Greater Boston & Coastal New England",
+    "businessName": "We Clean Heat Pumps, LLC",
     "phone": "(800) 586-9643",
     "email": "info@wecleanheatpumps.com",
     "address": "39 Boylston St, Jamaica Plain, MA 02130",
@@ -955,19 +1125,48 @@
     "rating": 4.9,
     "reviewCount": 176,
     "reviewQuotes": [],
-    "services": [],
-    "serviceAreas": [
-      "Jamaica Plain area",
-      "Surrounding MA communities"
+    "services": [
+      "Mini-Split & Heat Pump Deep Cleaning",
+      "Heat Pump Maintenance & Tune-Up",
+      "Indoor Air Quality Improvement",
+      "Warranty-Compliant System Cleaning",
+      "Coil & Filter Cleaning",
+      "Drain Pan & Line Flushing"
     ],
-    "tagline": null,
+    "serviceAreas": [
+      "Boston",
+      "Cambridge",
+      "Somerville",
+      "Brookline",
+      "Newton",
+      "Arlington",
+      "Medford",
+      "Waltham",
+      "Watertown",
+      "Belmont",
+      "Lexington",
+      "Quincy",
+      "MetroWest",
+      "North Shore",
+      "South Shore"
+    ],
+    "tagline": "Specialized Heat Pump Cleaning & Maintenance Across Greater Boston.",
     "yearFounded": null,
     "emergencyService": true,
     "facebook": "https://www.facebook.com/ReimerHVAC",
     "instagram": null,
     "hasWebsite": true,
     "existingWebsite": "https://wecleanheatpumps.com/locations/heat-pump-cleaning-greater-boston/",
-    "score": 6
+    "score": 6,
+    "description": "We Clean Heat Pumps is a specialized service company focused exclusively on deep cleaning of mini-split and heat pump systems — restoring airflow, improving indoor air quality, and keeping your system running at peak efficiency. Certified technicians serving Greater Boston, the North Shore, South Shore, Cape Cod, and beyond.",
+    "brands": [
+      "Mitsubishi",
+      "Daikin",
+      "Fujitsu",
+      "Haier",
+      "LG",
+      "Panasonic"
+    ]
   },
   {
     "slug": "heating-and-cooling",
@@ -1015,7 +1214,7 @@
   },
   {
     "slug": "accutemp-engineering-llc",
-    "businessName": "Accutemp Engineering LLC.",
+    "businessName": "Accutemp Engineering, LLC",
     "phone": "(617) 926-1221",
     "email": "rwebster@accutech.ca",
     "address": "100 Maple St Building b, Stoneham, MA 02180",
@@ -1026,19 +1225,43 @@
     "rating": 4.8,
     "reviewCount": 125,
     "reviewQuotes": [],
-    "services": [],
-    "serviceAreas": [
-      "Stoneham area",
-      "Surrounding MA communities"
+    "services": [
+      "Residential HVAC Installation & Service",
+      "Commercial & Industrial HVAC",
+      "New Construction HVAC Design",
+      "System Upgrades & Retrofits",
+      "Preventive Maintenance Plans",
+      "24-Hour Emergency Service",
+      "Sheet Metal Fabrication",
+      "Pipefitting"
     ],
-    "tagline": null,
-    "yearFounded": null,
+    "serviceAreas": [
+      "Stoneham",
+      "Woburn",
+      "Newton",
+      "Watertown",
+      "Natick",
+      "Tewksbury",
+      "North Andover",
+      "Salem",
+      "Pelham",
+      "Greater Boston"
+    ],
+    "tagline": "Greater Boston HVAC Experts Since 1978 — Residential, Commercial & Industrial.",
+    "yearFounded": 1978,
     "emergencyService": true,
     "facebook": "https://www.facebook.com/accutempengineering/",
     "instagram": "https://www.instagram.com/accutempengineering/",
     "hasWebsite": true,
     "existingWebsite": "https://www.accutemp-eng.com/",
-    "score": 6
+    "score": 6,
+    "description": "Accutemp Engineering has grown from a small residential contractor into one of the most respected HVAC firms in Greater Boston, offering design, installation, maintenance, and 24-hour emergency service for residential, commercial, and industrial systems. Carrier Factory Authorized Dealer serving MA, NH, RI, and ME.",
+    "brands": [
+      "Carrier"
+    ],
+    "certifications": [
+      "Carrier Factory Authorized Dealer"
+    ]
   },
   {
     "slug": "vip-hvac",
@@ -1053,23 +1276,48 @@
     "rating": 5,
     "reviewCount": 85,
     "reviewQuotes": [],
-    "services": [],
-    "serviceAreas": [
-      "Malden area",
-      "Surrounding MA communities"
+    "services": [
+      "AC Repair & Installation",
+      "Furnace Installation & Repair",
+      "Boiler & Water Heater Installation",
+      "Ductless Mini-Split Installation",
+      "Ductwork Installation",
+      "HVAC Maintenance & Tune-Up",
+      "Energy Efficiency Upgrades",
+      "Mass Save Rebate Assistance"
     ],
-    "tagline": null,
+    "serviceAreas": [
+      "Malden",
+      "Medford",
+      "Cambridge",
+      "Somerville",
+      "Arlington",
+      "Needham",
+      "Melrose",
+      "Natick",
+      "Stoneham",
+      "Lynnfield",
+      "Winchester",
+      "Wellesley",
+      "Newton",
+      "Wakefield"
+    ],
+    "tagline": "VIP Heating & Cooling — Licensed, Mass Save Partner, Serving Greater Boston.",
     "yearFounded": null,
     "emergencyService": true,
     "facebook": null,
     "instagram": "https://www.instagram.com/vipprohvac",
     "hasWebsite": true,
     "existingWebsite": "https://www.viphvac.com/",
-    "score": 6
+    "score": 6,
+    "description": "VIP HVAC is a licensed and insured heating and cooling contractor based in Malden, MA, serving Greater Boston with full-service HVAC installation, repair, and maintenance. As a Mass Save partner, they help customers access energy efficiency rebates on ductless mini-splits, furnaces, and boilers.",
+    "certifications": [
+      "Mass Save Partner"
+    ]
   },
   {
     "slug": "furnace-and-duct-supply-company",
-    "businessName": "Furnace and Duct Supply Company",
+    "businessName": "Furnace & Duct Supply Company",
     "phone": "(401) 941-3800",
     "email": "cwiney@furnaceandduct.com",
     "address": "635 Elmwood Ave, Providence, RI 02907",
@@ -1080,21 +1328,39 @@
     "rating": 4.8,
     "reviewCount": 70,
     "reviewQuotes": [],
-    "services": [],
-    "serviceAreas": [
-      "Cranston",
-      "Pawtucket",
-      "Warwick",
-      "North Providence"
+    "services": [
+      "HVAC Equipment Supply (Wholesale)",
+      "Heating Systems & Parts",
+      "Air Conditioning Equipment",
+      "Ductwork & Sheet Metal Products",
+      "Registers & Grilles",
+      "Insulation Products",
+      "Flexible Duct",
+      "Same-Day Delivery to Contractors"
     ],
-    "tagline": null,
-    "yearFounded": null,
+    "serviceAreas": [
+      "Providence",
+      "Cranston",
+      "Warwick",
+      "Pawtucket",
+      "Woonsocket",
+      "Newport",
+      "Rhode Island",
+      "Southern New England"
+    ],
+    "tagline": "Rhode Island's #1 HVAC Supply — Serving New England Contractors Since 1957.",
+    "yearFounded": 1957,
     "emergencyService": true,
     "facebook": null,
     "instagram": null,
     "hasWebsite": true,
     "existingWebsite": "https://furnaceandduct.com/",
-    "score": 6
+    "score": 6,
+    "description": "Founded in 1957, Furnace & Duct Supply is a leading HVAC wholesale supplier operating from a 55,000 sq. ft. facility in Providence, RI. They stock a comprehensive range of heating, cooling, and ventilation products for contractors across Southern New England, with same-day delivery and expert counter staff.",
+    "brands": [
+      "Armstrong Air",
+      "Panasonic"
+    ]
   },
   {
     "slug": "clean-air-mechanical",
@@ -1109,23 +1375,45 @@
     "rating": 4.7,
     "reviewCount": 61,
     "reviewQuotes": [],
-    "services": [],
+    "services": [
+      "Heating & AC Installation",
+      "Furnace Service & Repair",
+      "Boiler Service & Repair",
+      "Heat Pump Installation & Service",
+      "Ductless Mini-Split Installation",
+      "Plumbing Services",
+      "Preventive Maintenance",
+      "Emergency HVAC Service"
+    ],
     "serviceAreas": [
+      "West Springfield",
+      "Springfield",
+      "Agawam",
+      "Longmeadow",
+      "East Longmeadow",
+      "Wilbraham",
+      "Westfield",
       "Chicopee",
       "Holyoke",
-      "Agawam",
-      "Westfield",
-      "East Longmeadow",
-      "Ludlow"
+      "Northampton"
     ],
-    "tagline": null,
+    "tagline": "Western Massachusetts HVAC & Plumbing — Locally Owned, Fully Licensed.",
     "yearFounded": null,
     "emergencyService": true,
     "facebook": "https://www.facebook.com/105810128883555",
     "instagram": null,
     "hasWebsite": true,
     "existingWebsite": "https://cleanairmech.com/",
-    "score": 6
+    "score": 6,
+    "description": "Founded by Jon Weibel, Clean Air Mechanical is a locally owned HVAC and plumbing contractor based in West Springfield, MA, servicing all makes and models of furnaces, boilers, heat pumps, and AC equipment for residential and commercial clients across Western Massachusetts and Northern Connecticut.",
+    "brands": [
+      "American Standard",
+      "Mitsubishi Electric"
+    ],
+    "certifications": [
+      "Mass Save Rebate Program",
+      "Energy Star Certified Installer"
+    ]
   },
   {
     "slug": "aaron-lee-llc",
@@ -1171,7 +1459,7 @@
   },
   {
     "slug": "hampden-county-hvac-inc-mass-save-certified-installer",
-    "businessName": "Hampden County HVAC Inc. | Mass Save Certified Installer",
+    "businessName": "Hampden County HVAC Inc.",
     "phone": "(413) 219-1119",
     "email": "info@hampdenhvac.com",
     "address": "387 Main St, Indian Orchard, MA 01105",
@@ -1182,19 +1470,40 @@
     "rating": 4.8,
     "reviewCount": 107,
     "reviewQuotes": [],
-    "services": [],
-    "serviceAreas": [
-      "Indian Orchard area",
-      "Surrounding MA communities"
+    "services": [
+      "HVAC New Installation",
+      "System Repair",
+      "Scheduled Maintenance",
+      "Emergency HVAC Service",
+      "Heat Pump Installation",
+      "Central AC Installation",
+      "Smart Thermostat Installation",
+      "Energy Efficiency Upgrades"
     ],
-    "tagline": null,
+    "serviceAreas": [
+      "Indian Orchard",
+      "Springfield",
+      "Ludlow",
+      "Chicopee",
+      "Holyoke",
+      "Agawam",
+      "Westfield",
+      "Wilbraham",
+      "East Longmeadow",
+      "Longmeadow"
+    ],
+    "tagline": "Mass Save Certified HVAC Installers Serving Hampden County & Beyond.",
     "yearFounded": null,
     "emergencyService": true,
     "facebook": "http://www.facebook.com/people/Hampden-County-HVAC-Inc/100093457296819",
     "instagram": "hampdencountyhvac",
     "hasWebsite": true,
     "existingWebsite": "https://hampdenhvac.com/",
-    "score": 6
+    "score": 6,
+    "description": "Hampden County HVAC Inc. is a premier HVAC contractor in Indian Orchard, MA offering new installations, system repairs, scheduled maintenance, and emergency service for residential and commercial customers throughout Hampden County. As a Mass Save Certified Installer, they help customers access significant energy efficiency rebates.",
+    "certifications": [
+      "Mass Save Certified Installer"
+    ]
   },
   {
     "slug": "mcneill-heating-air-conditioning",

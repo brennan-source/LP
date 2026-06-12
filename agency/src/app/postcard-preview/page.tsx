@@ -1,147 +1,63 @@
 import Link from "next/link";
+import { getAllDemos, resolveDemo } from "@/lib/demo-data";
 
-const SAMPLE = {
-  businessName: "Presidential HVAC",
-  city: "Boston",
-  state: "MA",
-  phone: "(857) 895-1220",
-  rating: 4.9,
-  reviewCount: 210,
-  trackingUrl: "https://gomakr.ai/demo/presidential-hvac",
-  hasWebsite: true,
-};
+export default async function PostcardPreviewIndexPage() {
+  const allDemos = await getAllDemos();
+  const top30 = [...allDemos].sort((a, b) => (b.score ?? 0) - (a.score ?? 0)).slice(0, 30).map(resolveDemo);
 
-const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(SAMPLE.trackingUrl)}&bgcolor=ffffff&color=14532d&margin=10`;
-
-export default function PostcardPreviewPage() {
   return (
-    <div className="min-h-screen bg-stone-100 flex flex-col items-center justify-center p-10 gap-12 font-sans">
-      <div className="text-center mb-2">
-        <h1 className="text-2xl font-black text-stone-800">Postcard Mockup — 6×4"</h1>
-        <p className="text-stone-500 text-sm mt-1">Printed at 900×600px by Lob. Shown at 75% scale.</p>
-      </div>
+    <div className="min-h-screen bg-stone-100 p-8 font-sans">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-8">
+          <Link href="/" className="text-green-700 hover:text-green-600 text-sm font-medium transition">← Back to Makr.ai</Link>
+          <h1 className="text-3xl font-black text-stone-800 mt-3">Postcard & Demo Directory</h1>
+          <p className="text-stone-500 mt-1">Top 30 targets — postcard preview and live demo site for each.</p>
+        </div>
 
-      {/* ── FRONT ── */}
-      <div className="flex flex-col items-center gap-3">
-        <p className="text-xs font-bold uppercase tracking-widest text-stone-400">Front</p>
-        {/* 900×600 → 675×450 at 75% */}
-        <div
-          className="relative overflow-hidden shadow-2xl rounded-lg"
-          style={{ width: 675, height: 450, background: "#14532d" }}
-        >
-          {/* Subtle dot grid */}
-          <svg className="absolute inset-0 w-full h-full opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
-                <circle cx="12" cy="12" r="1.5" fill="#bbf7d0" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#dots)" />
-          </svg>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {top30.map((d, i) => (
+            <div key={d.slug} className="bg-white rounded-2xl border border-stone-200 p-5 shadow-sm hover:shadow-md transition">
+              <div className="flex items-start justify-between gap-2 mb-3">
+                <div>
+                  <span className="text-xs font-bold text-stone-400 uppercase tracking-wider">#{i + 1}</span>
+                  <h2 className="font-bold text-stone-900 text-base leading-tight mt-0.5">{d.businessName}</h2>
+                  <p className="text-stone-500 text-sm">{d.city}, {d.state}</p>
+                </div>
+                <div className="shrink-0 text-right">
+                  {d.rating > 0 && (
+                    <p className="text-sm font-bold text-green-700">★ {d.rating.toFixed(1)}</p>
+                  )}
+                  <p className="text-xs text-stone-400">{d.reviewCount > 0 ? `${d.reviewCount} reviews` : "No reviews"}</p>
+                </div>
+              </div>
 
-          {/* Decorative arcs */}
-          <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-green-400/10" />
-          <div className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-green-400/5" />
+              <div className="flex items-center gap-2 mb-4">
+                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${d.hasWebsite ? "bg-blue-50 text-blue-700" : "bg-amber-50 text-amber-700"}`}>
+                  {d.hasWebsite ? "Has website" : "No website"}
+                </span>
+                <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-stone-100 text-stone-600">
+                  {d.industry === "hvac" ? "HVAC" : "Plumbing / Septic"}
+                </span>
+              </div>
 
-          {/* Content — centered */}
-          <div className="relative z-10 h-full flex flex-col items-center justify-center px-16 text-center gap-5">
-            {/* Logo */}
-            <div className="flex items-baseline gap-0.5">
-              <span style={{ fontSize: 52, fontWeight: 900, color: "#86efac", letterSpacing: "-2px", lineHeight: 1 }}>Makr</span>
-              <span style={{ fontSize: 28, fontWeight: 500, color: "#4ade80", letterSpacing: "-1px" }}>.ai</span>
+              <div className="flex gap-2">
+                <Link
+                  href={`/demo/${d.slug}`}
+                  className="flex-1 text-center text-sm font-semibold text-white bg-green-700 hover:bg-green-600 px-3 py-2 rounded-lg transition"
+                >
+                  View Demo
+                </Link>
+                <Link
+                  href={`/postcard-preview/${d.slug}`}
+                  className="flex-1 text-center text-sm font-semibold text-green-700 bg-green-50 hover:bg-green-100 border border-green-200 px-3 py-2 rounded-lg transition"
+                >
+                  View Postcard
+                </Link>
+              </div>
             </div>
-
-            {/* Headline */}
-            <div>
-              <p style={{ fontSize: 26, fontWeight: 700, color: "#ffffff", lineHeight: 1.25, margin: 0 }}>
-                We built a new website
-              </p>
-              <p style={{ fontSize: 26, fontWeight: 700, color: "#86efac", lineHeight: 1.25, margin: 0 }}>
-                for your business.
-              </p>
-            </div>
-
-            {/* Sub */}
-            <p style={{ fontSize: 15, color: "#bbf7d0", margin: 0, lineHeight: 1.5, whiteSpace: "nowrap" }}>
-              No setup fee.&nbsp;&nbsp;No build charge.&nbsp;&nbsp;Built to help you grow.
-            </p>
-
-            {/* Pill */}
-            <div style={{ background: "#86efac", borderRadius: 999, paddingLeft: 20, paddingRight: 20, paddingTop: 8, paddingBottom: 8 }}>
-              <p style={{ fontSize: 13, fontWeight: 700, color: "#14532d", margin: 0, letterSpacing: "0.05em", textTransform: "uppercase" }}>
-                Included with any plan — you choose
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-
-      {/* ── BACK ── */}
-      <div className="flex flex-col items-center gap-3">
-        <p className="text-xs font-bold uppercase tracking-widest text-stone-400">Back</p>
-        <div
-          className="relative overflow-hidden shadow-2xl rounded-lg"
-          style={{ width: 675, height: 450, background: "#ffffff", display: "flex" }}
-        >
-          {/* Left: message column */}
-          <div style={{ flex: 1, padding: "40px 36px", display: "flex", flexDirection: "column", justifyContent: "center", gap: 16 }}>
-            {/* Logo small */}
-            <div style={{ display: "flex", alignItems: "baseline", gap: 1, marginBottom: 4 }}>
-              <span style={{ fontSize: 20, fontWeight: 900, color: "#15803d", letterSpacing: "-1px" }}>Makr</span>
-              <span style={{ fontSize: 13, fontWeight: 500, color: "#6b7280" }}>.ai</span>
-            </div>
-
-            {/* Business name */}
-            <p style={{ fontSize: 22, fontWeight: 800, color: "#111827", lineHeight: 1.2, margin: 0 }}>
-              {SAMPLE.businessName}
-            </p>
-
-            {/* Stars + review count */}
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ color: "#15803d", fontSize: 14 }}>{"★".repeat(Math.round(SAMPLE.rating))}</span>
-              <span style={{ fontSize: 13, color: "#4b5563", fontWeight: 600 }}>{SAMPLE.rating} · {SAMPLE.reviewCount.toLocaleString()} Google reviews</span>
-            </div>
-
-            {/* Message — varies by has-website */}
-            <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.6, margin: 0 }}>
-              {SAMPLE.hasWebsite
-                ? <>Hey — we built <strong>{SAMPLE.businessName}</strong> a new SEO-optimized website. It&apos;s designed to rank higher on Google and drive more leads — at no cost to you. Scan to see it.</>
-                : <>Hey — we built a professional website for <strong>{SAMPLE.businessName}</strong> at no cost. Scan to see it, and claim it free for the first 4 months with any plan.</>
-              }
-            </p>
-
-            {/* CTA line */}
-            <p style={{ fontSize: 13, color: "#15803d", fontWeight: 700, margin: 0 }}>
-              gomakr.ai — You built your business. We make it grow.
-            </p>
-          </div>
-
-          {/* Divider */}
-          <div style={{ width: 1, background: "#e5e7eb", margin: "32px 0" }} />
-
-          {/* Right: QR + address block */}
-          <div style={{ width: 220, padding: "36px 28px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between" }}>
-            <div style={{ textAlign: "center" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={qrUrl} alt="QR code" width={160} height={160} style={{ borderRadius: 8, border: "2px solid #e5e7eb" }} />
-              <p style={{ fontSize: 11, color: "#9ca3af", marginTop: 8, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                Scan to see your site
-              </p>
-            </div>
-
-            {/* Address area placeholder (Lob fills this) */}
-            <div style={{ width: "100%", borderTop: "1px dashed #d1d5db", paddingTop: 14 }}>
-              <p style={{ fontSize: 10, color: "#d1d5db", margin: "0 0 6px", textTransform: "uppercase", letterSpacing: "0.08em" }}>Delivered to</p>
-              <p style={{ fontSize: 13, fontWeight: 700, color: "#111827", margin: "0 0 2px" }}>{SAMPLE.businessName}</p>
-              <p style={{ fontSize: 12, color: "#6b7280", margin: 0 }}>{SAMPLE.city}, {SAMPLE.state}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <Link href="/" className="text-green-700 hover:text-green-600 text-sm font-medium transition">
-        ← Back to Makr.ai
-      </Link>
     </div>
   );
 }

@@ -30,6 +30,7 @@ export interface DemoCompany {
   existingWebsite?: string | null;
   description?: string;
   brands?: string[];
+  score?: number;
 }
 
 const DEFAULT_SERVICES: Record<Industry, string[]> = {
