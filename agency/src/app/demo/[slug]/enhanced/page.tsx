@@ -100,13 +100,15 @@ export default async function EnhancedDemoPage({ params }: Props) {
   return (
     <>
       {/* Makr banner */}
-      <div className="sticky top-0 z-50 bg-amber-500 px-4 py-2.5 flex items-center justify-between gap-4">
-        <p className="text-slate-900 text-sm font-medium truncate">
-          {industryIcon} Free demo site from Makr.ai for {d.businessName} — included with any plan, no setup fee.
+      <div className="sticky top-0 z-50 bg-green-800 px-4 py-2.5 flex items-center justify-between gap-4">
+        <p className="text-white text-sm font-medium truncate">
+          {industryIcon} {d.hasWebsite
+            ? `Makr.ai built ${d.businessName} a new SEO-optimized website — designed to rank higher and drive more leads. No setup fee.`
+            : `This is a free website Makr.ai built for ${d.businessName} — no setup fee, included with any plan.`}
         </p>
         <Link
           href={`/contact?name=${encodeURIComponent(d.businessName)}`}
-          className="shrink-0 bg-slate-900 text-amber-400 font-bold text-sm px-4 py-1.5 rounded-lg hover:bg-slate-800 transition whitespace-nowrap"
+          className="shrink-0 bg-white text-green-800 font-bold text-sm px-4 py-1.5 rounded-lg hover:bg-green-50 transition whitespace-nowrap"
         >
           Claim it →
         </Link>

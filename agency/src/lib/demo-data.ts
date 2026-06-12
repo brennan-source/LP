@@ -26,6 +26,8 @@ export interface DemoCompany {
   emergencyService: boolean;
   facebook?: string;
   instagram?: string;
+  hasWebsite?: boolean;
+  existingWebsite?: string | null;
 }
 
 const DEFAULT_SERVICES: Record<Industry, string[]> = {
