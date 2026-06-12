@@ -60,7 +60,7 @@ export default async function PostcardPreviewSlugPage({ params }: Props) {
               </p>
             </div>
             <p style={{ fontSize: 15, color: "#bbf7d0", margin: 0, lineHeight: 1.5, whiteSpace: "nowrap" }}>
-              No setup fee.&nbsp;&nbsp;No build charge.&nbsp;&nbsp;Built to help you grow.
+              No setup fee.&nbsp;&nbsp;No upfront cost.&nbsp;&nbsp;Built to make you grow.
             </p>
             <div style={{ background: "#86efac", borderRadius: 999, paddingLeft: 20, paddingRight: 20, paddingTop: 8, paddingBottom: 8 }}>
               <p style={{ fontSize: 13, fontWeight: 700, color: "#14532d", margin: 0, letterSpacing: "0.05em", textTransform: "uppercase" }}>

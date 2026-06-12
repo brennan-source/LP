@@ -27,7 +27,7 @@ const FRONT_HTML = `
   <div class="wrap">
     <div class="brand">Makr.ai</div>
     <div class="tagline">We built a new website<br>for your business.</div>
-    <div class="sub">No setup fee.&nbsp;&nbsp;No build charge.&nbsp;&nbsp;Built to help you grow.</div>
+    <div class="sub">No setup fee.&nbsp;&nbsp;No upfront cost.&nbsp;&nbsp;Built to make you grow.</div>
     <div class="pill">Included with any plan — you choose</div>
   </div>
 </body>
