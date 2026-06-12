@@ -401,21 +401,36 @@
     "zip": "02109",
     "industry": "hvac",
     "rating": 4.9,
-    "reviewCount": 210,
+    "reviewCount": 211,
     "reviewQuotes": [
       {
-        "text": "Presidential replaced our ancient boiler last winter. The crew was in and out in one day, clean and professional. The new system is running perfectly.",
-        "author": "Angela M.",
+        "text": "Our HVAC broke at 7 PM, and after calling five different companies, no one could come out until the next morning — except these guys. Paul arrived by 8 PM, and we had heat back on by 9 PM. I truly appreciate the fast turnaround.",
+        "author": "Natalia M.",
         "rating": 5
       },
       {
-        "text": "Called at 7am with no heat — someone was at my door by 10am. Diagnosed the issue quickly and had it fixed before noon. Incredible response time.",
-        "author": "Sean O.",
+        "text": "Our heat went out in the middle of the crazy snowstorm and freezing cold weather. Adi came after hours to look into it and was able to get it up and running again within the hour. He was very friendly and very respectful.",
+        "author": "Emily Rose",
         "rating": 5
       },
       {
-        "text": "Been using Presidential for annual tune-ups for four years. Consistent, reliable, honest pricing. They are not trying to upsell you on things you don't need.",
-        "author": "Laura C.",
+        "text": "Adi is a true life saver. Our heat went out during negative temps in Boston. Adi came extremely quickly, was more than polite and accommodating, diagnosed and fixed the issue in no time. Cannot thank him enough.",
+        "author": "Nick J.",
+        "rating": 5
+      },
+      {
+        "text": "I called 2 companies and they couldn't fix the boiler. Presidential fixed my 20 year old boiler and I am very happy with it. These guys are awesome.",
+        "author": "CARLO Castillo",
+        "rating": 5
+      },
+      {
+        "text": "Our AC broke in the middle of moving day and our condo was 85 degrees. We called several places that couldn't send someone on such short notice. Then we called Presidential. Adi picked up immediately and was at our place within 20 minutes.",
+        "author": "Emma Tobin",
+        "rating": 5
+      },
+      {
+        "text": "Excellent service. Adi was incredibly helpful and talked me through the solution over the phone even on Thanksgiving. Kind, patient, and truly went above and beyond. Highly recommend.",
+        "author": "Andrew Wang",
         "rating": 5
       }
     ],
