@@ -268,10 +268,24 @@ export default async function DemoPage({ params }: Props) {
                   About {d.businessName}
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                  {d.businessName} is a local {industryLabel.toLowerCase()} company serving {d.city}, {d.state}{d.serviceAreas.length > 0 ? ` and ${d.serviceAreas.slice(0, 3).join(", ")}` : ""}.
-                  {d.yearFounded ? ` In business since ${d.yearFounded}.` : ""}
-                  {" "}We're licensed, insured, and committed to doing the job right the first time.
+                  {d.description ?? (
+                    <>
+                      {d.businessName} is a local {industryLabel.toLowerCase()} company serving {d.city}, {d.state}{d.serviceAreas.length > 0 ? ` and ${d.serviceAreas.slice(0, 3).join(", ")}` : ""}.
+                      {d.yearFounded ? ` In business since ${d.yearFounded}.` : ""}
+                      {" "}We&apos;re licensed, insured, and committed to doing the job right the first time.
+                    </>
+                  )}
                 </p>
+                {d.brands && d.brands.length > 0 && (
+                  <div className="mb-6">
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Authorized Dealer</p>
+                    <div className="flex flex-wrap gap-2">
+                      {d.brands.map((b) => (
+                        <span key={b} className={`px-3 py-1 ${accent.bgLight} border ${accent.border} ${accent.text} rounded-lg text-sm font-semibold`}>{b}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 <ul className="space-y-3">
                   {[
                     "Licensed & fully insured",

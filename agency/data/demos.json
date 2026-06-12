@@ -392,7 +392,7 @@
   },
   {
     "slug": "presidential-hvac",
-    "businessName": "Presidential HVAC",
+    "businessName": "Presidential Electrical & HVAC",
     "phone": "(857) 895-1220",
     "email": "info@peboston.com",
     "address": "31 Milk St, Boston, MA 02109",
@@ -435,17 +435,17 @@
       }
     ],
     "services": [
-      "Emergency HVAC Repair (24/7)",
-      "Furnace Repair & Installation",
       "Boiler Repair & Installation",
+      "Furnace Repair & Installation",
       "Heat Pump Repair & Installation",
       "Ductless Mini-Split Installation",
       "Central AC Repair & Installation",
       "Hot Water Heater Replacement",
+      "Tankless Water Heater Installation",
+      "Emergency HVAC Repair (24/7)",
       "Forced Hot Air Furnace Cleaning",
-      "Air Duct Repair & Cleaning",
-      "HVAC Tune-Up & Maintenance",
       "High-Efficiency System Upgrades",
+      "Air Duct Repair & Cleaning",
       "Commercial HVAC Services"
     ],
     "serviceAreas": [
@@ -460,16 +460,25 @@
       "Everett",
       "Waltham",
       "Watertown",
-      "Lynn"
+      "Lynn",
+      "Salem",
+      "Lexington",
+      "Arlington",
+      "Burlington"
     ],
-    "tagline": "Boston's 24/7 HVAC Experts — We Answer Every Call.",
-    "yearFounded": 2013,
+    "tagline": "Heating, Cooling & Heat Pumps — 24/7 Emergency Service Across Greater Boston.",
+    "yearFounded": 2012,
     "emergencyService": true,
     "facebook": null,
     "instagram": null,
     "hasWebsite": true,
     "existingWebsite": "https://www.peboston.com/",
-    "score": 6
+    "score": 6,
+    "description": "Presidential Electrical & HVAC provides superior heating, ventilation, air conditioning, and electrical services across Greater Boston. We repair and install all makes and models of furnaces, boilers, AC systems, heat pumps, and hot water heaters — available 24/7, 365 days a year. With over 10 years of experience and hundreds of units in stock, there is no waiting weeks for your new system.",
+    "brands": [
+      "Mitsubishi Electric",
+      "Trane"
+    ]
   },
   {
     "slug": "ehc-inc-electrical-heating-cooling",

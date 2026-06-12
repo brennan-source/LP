@@ -28,6 +28,8 @@ export interface DemoCompany {
   instagram?: string;
   hasWebsite?: boolean;
   existingWebsite?: string | null;
+  description?: string;
+  brands?: string[];
 }
 
 const DEFAULT_SERVICES: Record<Industry, string[]> = {
