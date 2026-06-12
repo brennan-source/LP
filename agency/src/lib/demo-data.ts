@@ -78,6 +78,10 @@ export async function getAllDemos(): Promise<DemoCompany[]> {
   return cache;
 }
 
+export function bustDemoCache() {
+  cache = null;
+}
+
 export async function getDemoBySlug(slug: string): Promise<DemoCompany | null> {
   const all = await getAllDemos();
   return all.find((d) => d.slug === slug) ?? null;
