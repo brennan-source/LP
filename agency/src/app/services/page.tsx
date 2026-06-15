@@ -81,7 +81,7 @@ export default function ServicesPage() {
           <div className="text-center mb-16">
             <h1 className="text-5xl font-black text-stone-900 mb-4">What we do</h1>
             <p className="text-stone-500 text-lg max-w-2xl mx-auto">
-              Two problems, one partner. We get you more jobs — then build the systems to handle them. One free build included with every plan — you choose.
+              You're great at the work. We handle everything around it — more leads, better systems, less admin. One free build included with every plan — you choose what you need most.
             </p>
           </div>
 
@@ -134,6 +134,47 @@ export default function ServicesPage() {
                   </ul>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* AI journey */}
+          <div className="mb-16">
+            <div className="mb-8 pb-4 border-b border-stone-200">
+              <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-1">The AI path</p>
+              <h2 className="text-2xl font-black text-stone-900">From first look to fully automated</h2>
+              <p className="text-stone-500 mt-2 text-sm max-w-2xl">Every business is at a different stage. We meet you where you are and move at your pace — from spotting opportunities to building out the systems that run your business.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-stone-50 border border-stone-200 rounded-2xl p-6">
+                <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-3">Stage 1 — Understand</p>
+                <h3 className="text-lg font-bold text-stone-900 mb-2">Know your opportunities</h3>
+                <p className="text-stone-500 text-sm leading-relaxed mb-3">Start with a free AI scan — zero commitment. When you&apos;re ready to go deeper, our Readiness Assessment maps every gap and gives you a clear, prioritized action plan with ROI estimates.</p>
+                <ul className="space-y-1.5">
+                  {["Free AI scan", "AI Readiness Assessment", "Workflow audit", "Priority roadmap"].map((b) => (
+                    <li key={b} className="flex items-center gap-2 text-sm text-stone-600"><span className="text-green-600 shrink-0">✓</span>{b}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-stone-50 border border-stone-200 rounded-2xl p-6">
+                <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-3">Stage 2 — Build</p>
+                <h3 className="text-lg font-bold text-stone-900 mb-2">Automate the right things</h3>
+                <p className="text-stone-500 text-sm leading-relaxed mb-3">Train your team to use AI tools that actually matter for trades. Then let us build your first automation — or the full front-of-house and back-office stack. Built once, maintained monthly.</p>
+                <ul className="space-y-1.5">
+                  {["AI Training Workshop", "Quick Win automation build", "Ops Core (quoting, scheduling, payments)", "Back Office (HR, payroll, reporting)"].map((b) => (
+                    <li key={b} className="flex items-center gap-2 text-sm text-stone-600"><span className="text-green-600 shrink-0">✓</span>{b}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-stone-50 border border-stone-200 rounded-2xl p-6">
+                <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-3">Stage 3 — Scale</p>
+                <h3 className="text-lg font-bold text-stone-900 mb-2">Run a systemized business</h3>
+                <p className="text-stone-500 text-sm leading-relaxed mb-3">Enterprise-level systems for multi-location operators and teams that are outgrowing off-the-shelf tools. Custom dashboards, ERP integrations, and ongoing consulting — built around how you actually work.</p>
+                <ul className="space-y-1.5">
+                  {["Custom dashboards & reporting", "Multi-location operations", "ERP & software integrations", "Ongoing AI consulting"].map((b) => (
+                    <li key={b} className="flex items-center gap-2 text-sm text-stone-600"><span className="text-green-600 shrink-0">✓</span>{b}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
