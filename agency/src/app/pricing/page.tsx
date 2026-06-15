@@ -45,30 +45,16 @@ const TIERS = [
 const AI_TIERS = [
   {
     name: "AI Readiness Assessment",
-    price: "$497",
-    priceNote: "one-time",
+    price: "Free",
+    priceNote: "",
     monthly: null,
-    description: "We audit your current tools, workflows, and pain points — then map out exactly where AI can save you time and money. You walk away with a clear, prioritized action plan.",
+    description: "We audit your tools, workflows, and pain points — then map out exactly where AI can save you time and money. Zero commitment, zero cost.",
     includes: [
       "Full workflow & tech stack audit",
-      "Identify top 3–5 automation opportunities",
+      "Top 3–5 automation opportunities identified",
       "Estimated ROI for each recommendation",
       "Written action plan + priority roadmap",
       "30-min walkthrough call",
-    ],
-  },
-  {
-    name: "AI Training Workshop",
-    price: "$1,500",
-    priceNote: "one-time",
-    monthly: null,
-    description: "A hands-on session for you and your team. Learn which AI tools actually matter for a trades business and how to use them to win back hours every week.",
-    includes: [
-      "Half-day virtual or on-site workshop",
-      "Tools covered: AI chat, voice agents, scheduling AI, quoting AI",
-      "Live demos with your real workflows",
-      "Recorded for your team to revisit",
-      "30 days of follow-up Q&A",
     ],
   },
   {
@@ -113,6 +99,39 @@ const OPS_TIERS = [
       "Document management",
       "Monthly support & updates",
     ],
+  },
+];
+
+const TRAINING_OPTIONS = [
+  {
+    name: "1:1 Session",
+    price: "$199",
+    duration: "90 min · virtual",
+    description: "One-on-one with the owner or a key employee. Pick a specific tool or workflow and we'll get you confident using it.",
+  },
+  {
+    name: "Half-Day Workshop",
+    price: "$597",
+    duration: "4 hrs · virtual or on-site",
+    description: "Covers AI chat, voice agents, scheduling tools, and quoting AI — all tailored to your trade. Great for a small team.",
+  },
+  {
+    name: "Full-Day Workshop",
+    price: "$997",
+    duration: "8 hrs · virtual or on-site",
+    description: "Deep dive into your real workflows. Build an action plan together and leave with tools running and your team trained.",
+  },
+  {
+    name: "Multi-Day Workshop",
+    price: "$1,797",
+    duration: "2–3 days · virtual or on-site",
+    description: "Comprehensive training plus hands-on implementation. Best for teams who want to move fast and embed AI across the whole business.",
+  },
+  {
+    name: "On-Site Collaboration",
+    price: "Custom",
+    duration: "Flexible · your location",
+    description: "We come to you. Shadow your team, map your operations in real time, and build systems on the spot. Ideal for growing companies ready to systematize everything.",
   },
 ];
 
@@ -182,7 +201,7 @@ export default function PricingPage() {
             <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
               {[
                 { step: "1", label: "Free AI Scan", sub: "Spot your biggest gaps" },
-                { step: "2", label: "Readiness Assessment", sub: "Full audit + action plan" },
+                { step: "2", label: "Readiness Assessment", sub: "Free — full audit + roadmap" },
                 { step: "3", label: "Training Workshop", sub: "Your team learns to use AI" },
                 { step: "4", label: "Quick Win Build", sub: "First automation live in days" },
                 { step: "5", label: "Ops Core / Back Office", sub: "Full systems built & managed" },
@@ -227,6 +246,29 @@ export default function PricingPage() {
                 >
                   Get Started
                 </Link>
+              </div>
+            ))}
+          </div>
+
+          {/* Training options */}
+          <div className="mb-6 mt-4">
+            <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-2">AI Training</p>
+            <p className="text-stone-500 text-sm">Pick the format that fits your team — from a quick 1:1 to full on-site collaboration.</p>
+          </div>
+          <div className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm mb-10">
+            {TRAINING_OPTIONS.map((opt, i) => (
+              <div key={opt.name} className={`flex items-start gap-6 px-8 py-6 hover:bg-stone-50 transition ${i < TRAINING_OPTIONS.length - 1 ? "border-b border-stone-100" : ""}`}>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5 mb-1">
+                    <span className="text-base font-bold text-stone-900">{opt.name}</span>
+                    <span className="text-xs text-stone-400 font-medium">{opt.duration}</span>
+                  </div>
+                  <p className="text-sm text-stone-500 leading-relaxed">{opt.description}</p>
+                </div>
+                <div className="shrink-0 text-right">
+                  <p className="text-xl font-black text-stone-900">{opt.price}</p>
+                  <Link href="/contact" className="mt-2 inline-block text-xs font-semibold text-green-700 hover:text-green-600 transition">Book →</Link>
+                </div>
               </div>
             ))}
           </div>
