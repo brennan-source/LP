@@ -81,7 +81,7 @@ export default function ServicesPage() {
           <div className="text-center mb-16">
             <h1 className="text-5xl font-black text-stone-900 mb-4">What we do</h1>
             <p className="text-stone-500 text-lg max-w-2xl mx-auto">
-              Two problems, one partner. We get you more jobs — then build the systems to handle them. Website included with every plan.
+              Two problems, one partner. We get you more jobs — then build the systems to handle them. One free build included with every plan — you choose.
             </p>
           </div>
 

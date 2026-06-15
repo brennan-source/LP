@@ -8,6 +8,16 @@ const INDUSTRIES = [
   "Painting", "Pest Control", "Pressure Washing", "Pool Service", "Handyman", "Other",
 ];
 
+const FREE_BUILDS = [
+  "Professional website",
+  "Online booking system",
+  "AI voice agent",
+  "AI chat widget",
+  "First automation (quotes, invoices, or follow-up)",
+  "Local SEO / GBP optimization",
+  "Not sure yet — help me decide",
+];
+
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
@@ -15,6 +25,7 @@ export default function ContactPage() {
     phone: "",
     city: "",
     industry: "",
+    freeBuild: "",
     website: "",
     message: "",
   });
@@ -54,7 +65,7 @@ export default function ContactPage() {
           <div className="max-w-xl mx-auto text-center">
             <div className="text-5xl mb-6">🎉</div>
             <h1 className="text-3xl font-black text-stone-900 mb-4">You&apos;re on the list!</h1>
-            <p className="text-stone-500 text-lg mb-6">We&apos;ll reach out within 24 hours with your free demo website. Keep an eye on your phone.</p>
+            <p className="text-stone-500 text-lg mb-6">We&apos;ll reach out within 24 hours with your free demo. Keep an eye on your phone.</p>
             <Link href="/" className="text-green-700 hover:text-green-600 transition">← Back to home</Link>
           </div>
         </main>
@@ -107,6 +118,13 @@ export default function ContactPage() {
                     {INDUSTRIES.map((i) => <option key={i} value={i}>{i}</option>)}
                   </select>
                 </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-stone-700 mb-1.5">What free build interests you most? <span className="text-green-700">*</span></label>
+                <select required value={form.freeBuild} onChange={(e) => setForm((f) => ({ ...f, freeBuild: e.target.value }))} className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl text-stone-900 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm">
+                  <option value="">Select…</option>
+                  {FREE_BUILDS.map((b) => <option key={b} value={b}>{b}</option>)}
+                </select>
               </div>
               <div>
                 <label className="block text-sm font-medium text-stone-700 mb-1.5">Current Website (if any)</label>
