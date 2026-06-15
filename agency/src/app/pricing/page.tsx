@@ -76,7 +76,7 @@ const OPS_TIERS = [
   {
     name: "Ops Core",
     setup: 4500,
-    monthly: 299,
+    monthly: 499,
     description: "The full front-of-house stack. Quoting, scheduling, payment collection, and lead follow-up — all connected and managed monthly.",
     includes: [
       "Digital quoting & estimate delivery",
@@ -89,7 +89,7 @@ const OPS_TIERS = [
   {
     name: "Back Office",
     setup: 9500,
-    monthly: 499,
+    monthly: 799,
     description: "Everything in Ops Core plus the systems behind the scenes — HR, payroll workflows, job costing, and reporting.",
     includes: [
       "Everything in Ops Core",
@@ -111,19 +111,19 @@ const TRAINING_OPTIONS = [
   },
   {
     name: "Half-Day Workshop",
-    price: "$597",
+    price: "$999",
     duration: "4 hrs · virtual or on-site",
     description: "Covers AI chat, voice agents, scheduling tools, and quoting AI — all tailored to your trade. Great for a small team.",
   },
   {
     name: "Full-Day Workshop",
-    price: "$997",
+    price: "$1,499",
     duration: "8 hrs · virtual or on-site",
     description: "Deep dive into your real workflows. Build an action plan together and leave with tools running and your team trained.",
   },
   {
     name: "Multi-Day Workshop",
-    price: "$1,797",
+    price: "$2,499",
     duration: "2–3 days · virtual or on-site",
     description: "Comprehensive training plus hands-on implementation. Best for teams who want to move fast and embed AI across the whole business.",
   },
