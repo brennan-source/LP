@@ -47,27 +47,42 @@ const AI_TIERS = [
     name: "AI Readiness Assessment",
     price: "Free",
     priceNote: "",
-    monthly: null,
-    description: "We audit your tools, workflows, and pain points — then map out exactly where AI can save you time and money. Zero commitment, zero cost.",
+    badge: null,
+    description: "A high-level scan of your business to spot where AI can help. We identify your biggest gaps and opportunities — no deliverable, no deep dive, just a clear-eyed first look.",
+    includes: [
+      "30–45 min discovery call",
+      "Top 3–5 opportunity areas identified",
+      "Verbal summary + next-step recommendations",
+      "Zero cost, zero commitment",
+    ],
+  },
+  {
+    name: "AI Action Plan",
+    price: "$299",
+    priceNote: "one-time",
+    badge: "Most popular first step",
+    description: "A detailed, written blueprint for your business — not just what to automate, but exactly how to do it. You get a document you can hand to anyone (including us) and execute.",
     includes: [
       "Full workflow & tech stack audit",
-      "Top 3–5 automation opportunities identified",
-      "Estimated ROI for each recommendation",
-      "Written action plan + priority roadmap",
-      "30-min walkthrough call",
+      "Top automation opportunities with ROI estimates",
+      "Specific tool recommendations (Jobber, Zapier, etc.)",
+      "Step-by-step implementation roadmap",
+      "60-min walkthrough call + recorded",
+      "$299 credited toward any Ops project",
     ],
   },
   {
     name: "Quick Win Build",
     price: "$1,500",
     priceNote: "one-time",
-    monthly: null,
-    description: "One automation, built and running fast. Pick your biggest time-waster and we'll eliminate it.",
+    badge: null,
+    description: "One automation, built and running fast. Pick the single biggest time-waster in your business and we'll eliminate it.",
     includes: [
       "One workflow automated end-to-end",
       "Quote follow-up, invoice reminders, or booking confirmations",
       "Setup, testing & handoff training",
       "30-day post-launch check-in",
+      "$1,500 credited toward Ops Core or Back Office setup",
     ],
   },
 ];
@@ -200,10 +215,10 @@ export default function PricingPage() {
             <p className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-5">How it works</p>
             <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
               {[
-                { step: "1", label: "Free AI Scan", sub: "Spot your biggest gaps" },
-                { step: "2", label: "Readiness Assessment", sub: "Free — full audit + roadmap" },
+                { step: "1", label: "Free Assessment", sub: "Spot your biggest gaps" },
+                { step: "2", label: "AI Action Plan", sub: "$299 — written blueprint" },
                 { step: "3", label: "Training Workshop", sub: "Your team learns to use AI" },
-                { step: "4", label: "Quick Win Build", sub: "First automation live in days" },
+                { step: "4", label: "Quick Win Build", sub: "$1,500 — credited to Ops" },
                 { step: "5", label: "Ops Core / Back Office", sub: "Full systems built & managed" },
                 { step: "6", label: "Enterprise", sub: "Custom stack at scale" },
               ].map((s, i, arr) => (
@@ -223,28 +238,31 @@ export default function PricingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             {AI_TIERS.map((tier) => (
-              <div key={tier.name} className="bg-white border border-stone-200 rounded-2xl p-8 flex flex-col shadow-sm hover:border-green-300 hover:shadow-md transition">
+              <div key={tier.name} className={`relative bg-white border rounded-2xl p-8 flex flex-col shadow-sm hover:shadow-md transition ${tier.badge ? "border-green-300 hover:border-green-400" : "border-stone-200 hover:border-green-300"}`}>
+                {tier.badge && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-700 text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">{tier.badge}</div>
+                )}
                 <h2 className="text-xl font-bold text-stone-900 mb-1">{tier.name}</h2>
                 <div className="mb-4">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-black text-stone-900">{tier.price}</span>
-                    <span className="text-stone-400 text-sm">{tier.priceNote}</span>
+                    <span className={`font-black text-stone-900 ${tier.price === "Free" ? "text-3xl text-green-700" : "text-3xl"}`}>{tier.price}</span>
+                    {tier.priceNote && <span className="text-stone-400 text-sm">{tier.priceNote}</span>}
                   </div>
                 </div>
                 <p className="text-stone-500 text-sm leading-relaxed mb-4">{tier.description}</p>
                 <ul className="space-y-2 mb-8 flex-1">
                   {tier.includes.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-stone-600">
-                      <span className="text-green-600 mt-0.5 shrink-0">✓</span>
+                    <li key={item} className={`flex items-start gap-2 text-sm ${item.includes("credited") ? "text-green-700 font-medium" : "text-stone-600"}`}>
+                      <span className={`mt-0.5 shrink-0 ${item.includes("credited") ? "text-green-600" : "text-green-600"}`}>✓</span>
                       {item}
                     </li>
                   ))}
                 </ul>
                 <Link
                   href="/contact"
-                  className="block w-full text-center py-3 bg-white hover:bg-stone-50 text-stone-800 border border-stone-300 rounded-xl font-semibold transition"
+                  className={`block w-full text-center py-3 rounded-xl font-semibold transition ${tier.badge ? "bg-green-700 hover:bg-green-600 text-white" : "bg-white hover:bg-stone-50 text-stone-800 border border-stone-300"}`}
                 >
-                  Get Started
+                  {tier.price === "Free" ? "Get My Free Assessment" : "Get Started"}
                 </Link>
               </div>
             ))}
