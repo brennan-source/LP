@@ -9,7 +9,6 @@ async function fetchReviews(businessName, city, state, limit = 6) {
   url.searchParams.set("query", query);
   url.searchParams.set("reviewsLimit", String(limit));
   url.searchParams.set("async", "false");
-  url.searchParams.set("fields", "author_title,review_rating,review_text,review_datetime_utc");
   url.searchParams.set("ignoreEmpty", "true");
 
   const res = await fetch(url.toString(), {
@@ -22,7 +21,9 @@ async function fetchReviews(businessName, city, state, limit = 6) {
   }
 
   const data = await res.json();
-  const reviewsData = (data.data ?? []).flat().flatMap((b) => b.reviews_data ?? []);
+  const businesses = (data.data ?? []).flat();
+  if (businesses.length === 0) console.log("  [debug] no businesses matched query");
+  const reviewsData = businesses.flatMap((b) => b.reviews_data ?? []);
 
   return reviewsData
     .filter((r) => r.review_text && r.review_text.trim().length > 20)
