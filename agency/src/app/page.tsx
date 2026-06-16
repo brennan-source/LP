@@ -55,7 +55,7 @@ export default function HomePage() {
             <span className="text-green-700">We make it grow.</span>
           </h1>
           <p className="text-xl text-stone-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-            The average home service business loses $50,000 a year to missed calls and slow follow-up. We fix that — and get you more jobs while we&apos;re at it.
+            The average home service business loses $50,000 a year to missed calls and slow follow-up — then loses more to slow billing and back-office headaches. We fix both.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -73,7 +73,7 @@ export default function HomePage() {
           </div>
           <p className="text-stone-400 text-sm mt-4">No setup fee. 4-month agreement. Cancel with 30 days notice after.</p>
           <div className="flex flex-wrap justify-center gap-3 mt-6">
-            {["Real humans, not software", "No contracts after month 4", "Transparent pricing"].map((chip) => (
+            {["You own the build after month 4", "No contracts after month 4", "Transparent pricing"].map((chip) => (
               <span key={chip} className="px-4 py-2 bg-green-50 border border-green-200 rounded-full text-green-800 text-sm font-medium">
                 {chip}
               </span>
