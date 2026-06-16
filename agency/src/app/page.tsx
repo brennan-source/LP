@@ -9,7 +9,7 @@ const GROW = [
   {
     icon: "📍",
     title: "Local SEO & Ads",
-    description: "Rank higher on Google Maps, run smarter ad campaigns. Your customers are looking — we make sure they find you first.",
+    description: "PE-backed brands are outranking you on Google. We close that gap — better Maps rankings, smarter ad campaigns, more calls.",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function HomePage() {
             <span className="text-green-700">We make it grow.</span>
           </h1>
           <p className="text-xl text-stone-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-            <span className="text-green-700 font-semibold">Makr.ai</span> is the growth partner for home service businesses. We get you more jobs, then build the systems — quoting, billing, scheduling, operations — so you can actually handle them.
+            The average home service business loses $50,000 a year to missed calls and slow follow-up. We fix that — and get you more jobs while we&apos;re at it.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -72,13 +72,37 @@ export default function HomePage() {
             </Link>
           </div>
           <p className="text-stone-400 text-sm mt-4">No setup fee. 4-month agreement. Cancel with 30 days notice after.</p>
+          <div className="flex flex-wrap justify-center gap-3 mt-6">
+            {["Real humans, not software", "No contracts after month 4", "Transparent pricing"].map((chip) => (
+              <span key={chip} className="px-4 py-2 bg-green-50 border border-green-200 rounded-full text-green-800 text-sm font-medium">
+                {chip}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats band */}
+      <section className="py-16 px-6 bg-green-900">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+          {[
+            { stat: "62%", label: "of contractor calls go unanswered", implication: "Missed calls = missed jobs" },
+            { stat: "78%", label: "of customers hire the first to respond", implication: "Speed wins the job" },
+            { stat: "1 in 3", label: "owners have time to do their own marketing", implication: "That's why we exist" },
+          ].map((s) => (
+            <div key={s.stat}>
+              <p className="text-5xl font-black text-white mb-2">{s.stat}</p>
+              <p className="text-green-200 text-sm mb-1">{s.label}</p>
+              <p className="text-green-400 text-xs font-semibold uppercase tracking-widest">{s.implication}</p>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Industries */}
       <section className="py-12 px-6 border-y border-stone-200 bg-stone-50">
         <div className="max-w-6xl mx-auto">
-          <p className="text-center text-stone-400 text-sm mb-6">We work with home service businesses across New England</p>
+          <p className="text-center text-stone-400 text-sm mb-6">We work with home service businesses nationwide</p>
           <div className="flex flex-wrap justify-center gap-3">
             {INDUSTRIES.map((ind) => (
               <span key={ind} className="px-4 py-2 bg-white border border-stone-200 rounded-full text-stone-600 text-sm shadow-sm">
@@ -165,7 +189,8 @@ export default function HomePage() {
       <section className="py-24 px-6 bg-stone-50">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl font-black text-stone-900 mb-4">Ready to claim your free build?</h2>
-          <p className="text-stone-500 text-lg mb-8">Tell us about your business and we&apos;ll put together a free demo — no commitment, no setup fee.</p>
+          <p className="text-stone-500 text-lg mb-4">Tell us about your business and we&apos;ll put together a free demo — no commitment, no setup fee.</p>
+          <p className="text-stone-400 text-sm mb-8">24-hr response. No setup fee. No contracts after month 4.</p>
           <Link
             href="/contact"
             className="inline-block px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-green-900/20"

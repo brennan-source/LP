@@ -76,13 +76,12 @@ const AI_TIERS = [
     price: "$1,500",
     priceNote: "one-time",
     badge: null,
-    description: "One automation, built and running fast. Pick the single biggest time-waster in your business and we'll eliminate it.",
+    description: "One automation, built and running fast. Pick the single biggest time-waster in your business and we'll eliminate it. The full $1,500 credits toward Ops Core or Back Office if you want to keep going.",
     includes: [
       "One workflow automated end-to-end",
       "Quote follow-up, invoice reminders, or booking confirmations",
       "Setup, testing & handoff training",
       "30-day post-launch check-in",
-      "$1,500 credited toward Ops Core or Back Office setup",
     ],
   },
 ];
@@ -169,6 +168,7 @@ export default function PricingPage() {
           <div className="text-center mb-16">
             <h1 className="text-5xl font-black text-stone-900 mb-4">Simple, honest pricing</h1>
             <p className="text-stone-500 text-lg max-w-2xl mx-auto">One free build included with every plan — you choose. No setup fee. 4-month agreement. You own it after month 4.</p>
+            <p className="text-stone-400 text-sm max-w-xl mx-auto mt-3">Everything your competitors pay $2,000–$10,000/month for elsewhere — at a price built for small businesses.</p>
           </div>
 
           {/* Marketing plans */}
@@ -207,30 +207,24 @@ export default function PricingPage() {
           {/* AI & Automation — entry-level */}
           <div className="mb-6 mt-4">
             <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-2">AI & Automation</p>
-            <p className="text-stone-500 text-sm max-w-2xl">Start with a free scan, then move at your own pace — from understanding your opportunities all the way to a fully automated business.</p>
+            <p className="text-stone-500 text-sm max-w-2xl">Most home service businesses are leaving $50K/year on the table in missed calls and slow follow-up. Start free — we&apos;ll show you exactly where.</p>
           </div>
 
           {/* AI journey steps */}
           <div className="mb-8 bg-stone-50 border border-stone-200 rounded-2xl p-6 md:p-8">
             <p className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-5">How it works</p>
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-stretch gap-4">
               {[
-                { step: "1", label: "Free Assessment", sub: "Spot your biggest gaps" },
-                { step: "2", label: "AI Action Plan", sub: "$299 — written blueprint" },
-                { step: "3", label: "Training Workshop", sub: "Your team learns to use AI" },
-                { step: "4", label: "Quick Win Build", sub: "$1,500 — credited to Ops" },
-                { step: "5", label: "Ops Core / Back Office", sub: "Full systems built & managed" },
-                { step: "6", label: "Enterprise", sub: "Custom stack at scale" },
-              ].map((s, i, arr) => (
-                <div key={s.step} className="flex md:flex-col items-center gap-3 md:gap-2 flex-1">
-                  <div className="w-8 h-8 rounded-full bg-green-700 text-white text-xs font-bold flex items-center justify-center shrink-0">{s.step}</div>
-                  <div className="md:text-center">
-                    <p className="text-sm font-semibold text-stone-800 leading-tight">{s.label}</p>
-                    <p className="text-xs text-stone-400 mt-0.5">{s.sub}</p>
+                { label: "Start free", sub: "Free assessment — spot your biggest gaps, zero commitment" },
+                { label: "Get your blueprint", sub: "$299 — a written action plan with ROI estimates you can actually use" },
+                { label: "Build the system", sub: "Quick Win → Ops Core → Back Office, as far as you want to go" },
+              ].map((s, i) => (
+                <div key={s.label} className="flex-1 flex flex-col gap-1">
+                  <div className="flex items-center gap-2">
+                    <p className="text-base font-bold text-green-700">{s.label}</p>
+                    {i < 2 && <span className="hidden sm:block text-stone-300 font-light text-xl">→</span>}
                   </div>
-                  {i < arr.length - 1 && (
-                    <div className="hidden md:block flex-1 h-px bg-stone-300 mx-1" style={{ minWidth: 12 }} />
-                  )}
+                  <p className="text-sm text-stone-500 leading-relaxed">{s.sub}</p>
                 </div>
               ))}
             </div>
