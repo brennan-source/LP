@@ -73,7 +73,7 @@ export default function HomePage() {
           </div>
           <p className="text-stone-400 text-sm mt-4">No setup fee. 4-month agreement. Cancel with 30 days notice after.</p>
           <div className="flex flex-wrap justify-center gap-3 mt-6">
-            {["Results in 30 days or we revisit the plan", "No contracts after month 4", "Transparent pricing"].map((chip) => (
+            {["Results in 30 Days", "No contracts after month 4", "Transparent pricing"].map((chip) => (
               <span key={chip} className="px-4 py-2 bg-green-50 border border-green-200 rounded-full text-green-800 text-sm font-medium">
                 {chip}
               </span>
