@@ -1602,7 +1602,38 @@
     "industry": "hvac",
     "rating": 4.9,
     "reviewCount": 180,
-    "reviewQuotes": [],
+    "reviewQuotes": [
+      {
+        "text": "Furnace stopped working on a Friday afternoon in single digits. Matt came within an hour, fixed the unit, and spent time explaining how things work. Very knowledgeable.",
+        "author": "Laurie",
+        "rating": 5
+      },
+      {
+        "text": "This was the third estimate I received for a furnace replacement, and I knew right away I'd found the right company. Matt showed up on time and looked over my project with real confidence.",
+        "author": "Jim Y.",
+        "rating": 5
+      },
+      {
+        "text": "We are totally blown away by Matt's thoroughness, expertise and thoughtfulness. He treats you like you're part of his family. I could not recommend this gentleman more highly.",
+        "author": "Tom",
+        "rating": 5
+      },
+      {
+        "text": "Garrett did a great job. He explained what he was doing and answered all of my questions. He was very polite and I will recommend Countywide to everyone I know.",
+        "author": "Nesser Y.",
+        "rating": 5
+      },
+      {
+        "text": "Matt installed a new heating/cooling system and it works perfectly. Very knowledgeable — shared a lot of tips and went through the pluses and minuses of each option.",
+        "author": "Chester F.",
+        "rating": 5
+      },
+      {
+        "text": "Arrived punctually, very courteous and professional, explained the problem and options clearly. Replaced a leaking condensate pump and all is running perfectly.",
+        "author": "Mark R.",
+        "rating": 5
+      }
+    ],
     "services": [
       "Heating Installation, Replacement & Repair",
       "Air Conditioning Installation & Repair",
