@@ -73,7 +73,7 @@ export default function HomePage() {
           </div>
           <p className="text-stone-400 text-sm mt-4">No setup fee. 4-month agreement. Cancel with 30 days notice after.</p>
           <div className="flex flex-wrap justify-center gap-3 mt-6">
-            {["Results in 30 Days", "No contracts after month 4", "Transparent pricing"].map((chip) => (
+            {["Results in 30 Days", "No Contracts", "Transparent pricing"].map((chip) => (
               <span key={chip} className="px-4 py-2 bg-green-50 border border-green-200 rounded-full text-green-800 text-sm font-medium">
                 {chip}
               </span>
@@ -190,7 +190,7 @@ export default function HomePage() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl font-black text-stone-900 mb-4">Ready to claim your free build?</h2>
           <p className="text-stone-500 text-lg mb-4">Tell us about your business and we&apos;ll put together a free demo — no commitment, no setup fee.</p>
-          <p className="text-stone-400 text-sm mb-8">24-hr response. No setup fee. No contracts after month 4.</p>
+          <p className="text-stone-400 text-sm mb-8">24-hr response. No setup fee. No Contracts.</p>
           <Link
             href="/contact"
             className="inline-block px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-green-900/20"
