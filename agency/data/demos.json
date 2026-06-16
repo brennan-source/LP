@@ -1275,7 +1275,38 @@
     "industry": "hvac",
     "rating": 5,
     "reviewCount": 85,
-    "reviewQuotes": [],
+    "reviewQuotes": [
+      {
+        "text": "The service on my system was excellent and the entire team was professional and knowledgeable from start to finish. They took the time to explain everything clearly.",
+        "author": "Henry N.",
+        "rating": 5
+      },
+      {
+        "text": "Called up and got an appointment right away. Luke and Max came out late Friday, did a thorough inspection of the whole unit, and had everything sorted. Great experience.",
+        "author": "Robert M.",
+        "rating": 5
+      },
+      {
+        "text": "Professional, punctual, and explained everything clearly. My heating system is running perfectly now. Highly recommend for anyone in Massachusetts.",
+        "author": "Matheus A.",
+        "rating": 5
+      },
+      {
+        "text": "Super friendly and easy to work with. Showed up on time, figured out the problem fast, and had everything fixed before I knew it. No stress, no surprises — just solid work.",
+        "author": "Arthur G.",
+        "rating": 5
+      },
+      {
+        "text": "They responded quickly, diagnosed the issue with my AC, and fixed it the same day. Fair pricing and very professional service.",
+        "author": "Matheus",
+        "rating": 5
+      },
+      {
+        "text": "From start to finish they were professional, on time, and very knowledgeable. Explained everything clearly and made sure everything was running perfectly before they left.",
+        "author": "Marsel L.",
+        "rating": 5
+      }
+    ],
     "services": [
       "AC Repair & Installation",
       "Furnace Installation & Repair",
