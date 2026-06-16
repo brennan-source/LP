@@ -12,7 +12,7 @@ const GROWTH_SERVICES = [
     icon: "📍",
     title: "Local SEO",
     tagline: "Get found on Google Maps",
-    body: "PE-backed brands are outranking you on Google. We optimize your Google Business Profile, build local citations, and publish keyword-targeted content every month. We close that gap.",
+    body: "We optimize your Google Business Profile, build local citations, and publish keyword-targeted content every month. Your competitors are doing this — you should be too.",
     bullets: ["Google Business Profile optimization", "Local keyword targeting", "Monthly blog posts", "Citation building", "Rankings tracking"],
   },
   {
@@ -147,8 +147,8 @@ export default function ServicesPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-stone-50 border border-stone-200 rounded-2xl p-6">
                 <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-3">Stage 1 — Understand</p>
-                <h3 className="text-lg font-bold text-stone-900 mb-2">Not sure where to start?</h3>
-                <p className="text-stone-500 text-sm leading-relaxed mb-3">We&apos;ll tell you exactly what&apos;s costing you money — for free. A plain-English scan of your business: where jobs are slipping, what&apos;s eating your time, and what to fix first.</p>
+                <h3 className="text-lg font-bold text-stone-900 mb-2">Know your opportunities</h3>
+                <p className="text-stone-500 text-sm leading-relaxed mb-3">Start with a free AI scan — zero commitment. When you&apos;re ready to go deeper, our Readiness Assessment maps every gap and gives you a clear, prioritized action plan with ROI estimates.</p>
                 <ul className="space-y-1.5">
                   {["Free AI scan", "AI Readiness Assessment", "Workflow audit", "Priority roadmap"].map((b) => (
                     <li key={b} className="flex items-center gap-2 text-sm text-stone-600"><span className="text-green-600 shrink-0">✓</span>{b}</li>
@@ -157,8 +157,8 @@ export default function ServicesPage() {
               </div>
               <div className="bg-stone-50 border border-stone-200 rounded-2xl p-6">
                 <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-3">Stage 2 — Build</p>
-                <h3 className="text-lg font-bold text-stone-900 mb-2">Pick one thing to fix first.</h3>
-                <p className="text-stone-500 text-sm leading-relaxed mb-3">See results in days, not months. We build and launch the single biggest time-saver in your business — then keep going until the whole operation runs itself.</p>
+                <h3 className="text-lg font-bold text-stone-900 mb-2">Automate the right things</h3>
+                <p className="text-stone-500 text-sm leading-relaxed mb-3">Train your team to use AI tools that actually matter for trades. Then let us build your first automation — or the full front-of-house and back-office stack. Built once, maintained monthly.</p>
                 <ul className="space-y-1.5">
                   {["AI Training Workshop", "Quick Win automation build", "Ops Core (quoting, scheduling, payments)", "Back Office (HR, payroll, reporting)"].map((b) => (
                     <li key={b} className="flex items-center gap-2 text-sm text-stone-600"><span className="text-green-600 shrink-0">✓</span>{b}</li>
@@ -167,8 +167,8 @@ export default function ServicesPage() {
               </div>
               <div className="bg-stone-50 border border-stone-200 rounded-2xl p-6">
                 <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-3">Stage 3 — Scale</p>
-                <h3 className="text-lg font-bold text-stone-900 mb-2">Ready to run a fully automated business?</h3>
-                <p className="text-stone-500 text-sm leading-relaxed mb-3">We build the whole stack. Custom dashboards, multi-location operations, ERP integrations, and ongoing consulting — the kind of back-end that big contractors pay millions for, built for your size.</p>
+                <h3 className="text-lg font-bold text-stone-900 mb-2">Run a systemized business</h3>
+                <p className="text-stone-500 text-sm leading-relaxed mb-3">Enterprise-level systems for multi-location operators and teams that are outgrowing off-the-shelf tools. Custom dashboards, ERP integrations, and ongoing consulting — built around how you actually work.</p>
                 <ul className="space-y-1.5">
                   {["Custom dashboards & reporting", "Multi-location operations", "ERP & software integrations", "Ongoing AI consulting"].map((b) => (
                     <li key={b} className="flex items-center gap-2 text-sm text-stone-600"><span className="text-green-600 shrink-0">✓</span>{b}</li>

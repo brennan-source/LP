@@ -63,9 +63,9 @@ export default function ContactPage() {
         </nav>
         <main className="pt-32 px-6 bg-white min-h-screen">
           <div className="max-w-xl mx-auto text-center">
-            <div className="text-5xl mb-6">✓</div>
-            <h1 className="text-3xl font-black text-stone-900 mb-4">You&apos;re all set.</h1>
-            <p className="text-stone-500 text-lg mb-6">We&apos;ll review your info and reach out within 24 hours — usually faster. Before we call, we&apos;ll pull a quick audit of your online presence so we come prepared.</p>
+            <div className="text-5xl mb-6">🎉</div>
+            <h1 className="text-3xl font-black text-stone-900 mb-4">You&apos;re on the list!</h1>
+            <p className="text-stone-500 text-lg mb-6">We&apos;ll reach out within 24 hours with your free demo. Keep an eye on your phone.</p>
             <Link href="/" className="text-green-700 hover:text-green-600 transition">← Back to home</Link>
           </div>
         </main>
