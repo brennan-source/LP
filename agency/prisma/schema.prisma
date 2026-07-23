@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model GrowthScoreSubmission {
+  id           String   @id @default(cuid())
+  status       String   @default("pending") // pending | running | complete | failed
+  businessName String
+  websiteUrl   String
+  phoneNumber  String?
+  industry     String
+  city         String
+  state        String
+  email        String
+  revenueRange String?
+  results      String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
