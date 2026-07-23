@@ -1,0 +1,228 @@
+import { CategoryScore } from "@/types/growth-score";
+import { scoreToGrade } from "@/lib/utils";
+import { serperSearch } from "@/lib/serper";
+
+export async function auditDigitalFootprint(
+  businessName: string,
+  city: string,
+  state: string,
+  industry: string
+): Promise<CategoryScore> {
+  const directoryResult = await checkDirectoryPresence(businessName, city, state, industry).catch(() => ({ score: 0, details: [], categoryLocalResults: [] as Array<{ title: string; rating?: number; ratingCount?: number }> }));
+  const categoryLocals: Array<{ title: string; rating?: number; ratingCount?: number }> = directoryResult.categoryLocalResults ?? [];
+  const reviewResult = await checkReviewPresence(businessName, city, categoryLocals).catch(() => ({ score: 0, details: [] }));
+
+  const directoryData = directoryResult;
+  const reviewData = reviewResult;
+
+  const details = [...directoryData.details, ...reviewData.details];
+  const actions = [];
+  let score = directoryData.score + reviewData.score;
+
+  // Directory presence scoring (60 pts total)
+  if (directoryData.score < 30) {
+    actions.push({
+      priority: "high" as const,
+      title: "Get listed in local business directories",
+      description: "Yelp, BBB, and industry-specific directories send you free traffic and improve local SEO. Being missing hurts your search rankings.",
+      estimatedImpact: "Local citation building = #3 local ranking factor",
+    });
+  }
+
+  // Review scoring (40 pts total)
+  if (reviewData.score < 20) {
+    actions.push({
+      priority: "critical" as const,
+      title: "Build your online review presence",
+      description: "88% of consumers trust online reviews as much as personal recommendations. No reviews = lost sales.",
+      estimatedImpact: "4-star businesses earn 28% more revenue than 3-star",
+    });
+  } else if (reviewData.score < 35) {
+    actions.push({
+      priority: "high" as const,
+      title: "Systematically collect more reviews",
+      description: "You have some reviews but need more. Businesses with 50+ reviews significantly outconvert those with fewer.",
+      estimatedImpact: "Each additional review increases conversion rate",
+    });
+  }
+
+  const finalScore = Math.min(100, Math.round(score));
+
+  return {
+    score: finalScore,
+    grade: scoreToGrade(finalScore),
+    label: "Digital Footprint",
+    summary: getFootprintSummary(finalScore),
+    details,
+    competitorAvg: 50,
+    estimatedRevenueLoss: finalScore < 55 ? Math.round((65 - finalScore) * 90) : 0,
+    actions,
+  };
+}
+
+function searchIndustry(industry: string): string {
+  return industry.split(/\s*\/\s*/)[0].trim();
+}
+
+async function checkDirectoryPresence(businessName: string, city: string, state: string, industry: string) {
+  const directories = [
+    { name: "Google Business Profile", domains: ["google.com/maps", "maps.google", "g.co"] },
+    { name: "Yelp", domains: ["yelp.com"] },
+    { name: "BBB", domains: ["bbb.org"] },
+    { name: "Industry Directory", domains: ["angi.com", "homeadvisor.com", "yellowpages.com", "avvo.com", "healthgrades.com", "vitals.com"] },
+    { name: "Facebook", domains: ["facebook.com"] },
+  ];
+
+  const details: string[] = [];
+  let score = 0;
+
+  // Three queries: name+reviews (Yelp/BBB), name only, and category (triggers local pack for GBP)
+  const [reviewData, localData, categoryData] = await Promise.all([
+    serperSearch(`${businessName} ${city} ${state} reviews`),
+    serperSearch(`${businessName} ${city} ${state}`),
+    serperSearch(`${searchIndustry(industry)} ${city} ${state}`),
+  ]);
+
+  if (!reviewData && !localData) {
+    directories.forEach((d) => details.push(`⚠ Could not verify ${d.name} listing`));
+    return { score: 18, details };
+  }
+
+  const allLinks = [
+    ...(reviewData?.organic ?? []),
+    ...(localData?.organic ?? []),
+  ].map((r) => r.link.toLowerCase());
+
+  const firstWord = businessName.toLowerCase().split(" ")[0];
+
+  // GBP: check local results from category query (most reliable), name queries, and organic Maps links
+  const hasGBP =
+    [...(categoryData?.localResults ?? []), ...(reviewData?.localResults ?? []), ...(localData?.localResults ?? [])].some(
+      (r) => r.title.toLowerCase().includes(firstWord)
+    ) ||
+    [...(reviewData?.organic ?? []), ...(localData?.organic ?? [])].some(
+      (r) =>
+        (r.link.toLowerCase().includes("google.com/maps") || r.link.toLowerCase().includes("maps.google")) &&
+        (r.title.toLowerCase().includes(firstWord) || r.snippet.toLowerCase().includes(firstWord))
+    );
+
+  for (const dir of directories) {
+    const found =
+      dir.name === "Google Business Profile"
+        ? hasGBP
+        : allLinks.some((link) => dir.domains.some((d) => link.includes(d)));
+
+    if (found) {
+      score += 12;
+      details.push(`✓ Found on ${dir.name}`);
+    } else {
+      details.push(`✗ Not found on ${dir.name}`);
+    }
+  }
+
+  return { score: Math.min(60, score), details, categoryLocalResults: categoryData?.localResults ?? [] };
+}
+
+async function checkReviewPresence(businessName: string, city: string, categoryLocalResults: Array<{ title: string; rating?: number; ratingCount?: number }>) {
+  const details: string[] = [];
+  let score = 0;
+  const firstWord = businessName.toLowerCase().split(" ")[0];
+
+  // Category local results (from "HVAC City State" query) have the most reliable review counts
+  const categoryMatch = categoryLocalResults.find((r) => r.title.toLowerCase().includes(firstWord));
+  if (categoryMatch?.ratingCount) {
+    const count = categoryMatch.ratingCount;
+    const rating = categoryMatch.rating ?? 0;
+    if (count > 100) {
+      score += 40;
+      details.push(`✓ Strong review presence — ${count.toLocaleString()} Google reviews (${rating}★)`);
+    } else if (count > 25) {
+      score += 28;
+      details.push(`⚠ ${count} Google reviews (${rating}★) — need more to compete`);
+    } else {
+      score += 15;
+      details.push(`⚠ Only ${count} Google reviews — well below competitive threshold`);
+    }
+    return { score: Math.min(40, score), details };
+  }
+
+  const data = await serperSearch(`${businessName} ${city} reviews`);
+
+  if (!data) {
+    details.push("⚠ Could not fully verify review presence");
+    return { score: 10, details };
+  }
+
+  // Serper returns a knowledgeGraph for branded queries — most accurate review data
+  const kg = data.knowledgeGraph;
+  const kgMatch = kg?.rating && kg?.ratingCount && kg.title?.toLowerCase().includes(firstWord);
+  if (kgMatch) {
+    const count = kg!.ratingCount!;
+    const rating = kg!.rating!;
+    if (count > 100) {
+      score += 40;
+      details.push(`✓ Strong review presence — ${count.toLocaleString()} Google reviews (${rating}★)`);
+    } else if (count > 25) {
+      score += 28;
+      details.push(`⚠ ${count} Google reviews (${rating}★) — need more to compete`);
+    } else {
+      score += 15;
+      details.push(`⚠ Only ${count} Google reviews — well below competitive threshold`);
+    }
+    return { score: Math.min(40, score), details };
+  }
+
+  // Fall back to structured local results (Google Business Profile data)
+  const localMatch = (data.localResults ?? []).find((r) =>
+    r.title.toLowerCase().includes(firstWord)
+  );
+
+  if (localMatch?.ratingCount) {
+    const count = localMatch.ratingCount;
+    const rating = localMatch.rating ?? 0;
+    if (count > 100) {
+      score += 40;
+      details.push(`✓ Strong review presence — ${count.toLocaleString()} Google reviews (${rating}★)`);
+    } else if (count > 25) {
+      score += 28;
+      details.push(`⚠ ${count} Google reviews (${rating}★) — need more to compete`);
+    } else {
+      score += 15;
+      details.push(`⚠ Only ${count} Google reviews — well below competitive threshold`);
+    }
+    return { score: Math.min(40, score), details };
+  }
+
+  // Fall back to organic snippet parsing — require business name nearby to avoid false positives
+  const snippets = data.organic
+    .filter((r) => r.snippet.toLowerCase().includes(firstWord) || r.title.toLowerCase().includes(firstWord))
+    .map((r) => r.snippet)
+    .join(" ");
+
+  const reviewCountMatch = snippets.match(/(\d[\d,]+)\s+(?:Google\s+)?reviews?/i);
+  const rawCount = reviewCountMatch ? parseInt(reviewCountMatch[1].replace(/,/g, "")) : 0;
+  // Cap at 5000 to reject aggregate directory counts (e.g. "10,796 Yelp reviews in Lowell")
+  const reviewCount = rawCount > 5000 ? 0 : rawCount;
+
+  if (reviewCount > 50) {
+    score += 40;
+    details.push(`✓ Strong review presence (~${reviewCount} reviews found)`);
+  } else if (reviewCount > 10) {
+    score += 25;
+    details.push(`⚠ Some reviews (~${reviewCount}) — need more to compete`);
+  } else if (data.organic.some((r) => r.snippet.toLowerCase().includes("review"))) {
+    score += 15;
+    details.push("⚠ Reviews exist but count is low");
+  } else {
+    details.push("✗ Few or no reviews found online");
+  }
+
+  return { score: Math.min(40, score), details };
+}
+
+function getFootprintSummary(score: number): string {
+  if (score >= 80) return "Strong directory and review presence across the web.";
+  if (score >= 55) return "Moderate digital footprint — some key directories and reviews missing.";
+  if (score >= 35) return "Weak digital footprint — significantly less visible than top competitors.";
+  return "Minimal digital footprint — almost invisible outside your own website.";
+}

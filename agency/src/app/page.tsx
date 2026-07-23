@@ -59,10 +59,10 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/growth-score"
               className="px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-green-900/20"
             >
-              Claim Your Free Build
+              Get Your Free AI Growth Score
             </Link>
             <Link
               href="/pricing"
@@ -188,14 +188,14 @@ export default function HomePage() {
       {/* CTA */}
       <section className="py-24 px-6 bg-stone-50">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-black text-stone-900 mb-4">Ready to claim your free build?</h2>
-          <p className="text-stone-500 text-lg mb-4">Tell us about your business and we&apos;ll put together a free demo — no commitment, no setup fee.</p>
-          <p className="text-stone-400 text-sm mb-8">24-hr response. No setup fee. No Contracts.</p>
+          <h2 className="text-4xl font-black text-stone-900 mb-4">Ready to find out where you stand?</h2>
+          <p className="text-stone-500 text-lg mb-4">Get your free AI Growth Score — see your website, SEO, and lead capture scored against real local competitors.</p>
+          <p className="text-stone-400 text-sm mb-8">Instant results. No cost. No commitment.</p>
           <Link
-            href="/contact"
+            href="/growth-score"
             className="inline-block px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-green-900/20"
           >
-            Claim Your Free Build
+            Get Your Free AI Growth Score
           </Link>
         </div>
       </section>
