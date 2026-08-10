@@ -81,8 +81,30 @@ export default function ServicesPage() {
           <div className="text-center mb-16">
             <h1 className="text-5xl font-black text-stone-900 mb-4">What we do</h1>
             <p className="text-stone-500 text-lg max-w-2xl mx-auto">
-              You're great at the work. We handle everything around it — more leads, better systems, less admin. One free build included with every plan — you choose what you need most.
+              Start with the phone. Every other system we build works better because the call is handled first. One free build included with every plan — you choose what you need most.
             </p>
+          </div>
+
+          {/* AI call answering — the wedge */}
+          <div className="mb-16 bg-green-50 border border-green-200 rounded-2xl p-8 md:p-10">
+            <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-3">Start here</p>
+            <div className="flex flex-col md:flex-row md:items-start gap-6">
+              <div className="text-5xl shrink-0">📞</div>
+              <div>
+                <h2 className="text-2xl font-black text-stone-900 mb-1">AI Call Answering & Booking</h2>
+                <p className="text-green-700 text-sm font-medium mb-3">Every call answered. Every lead booked. 24/7.</p>
+                <p className="text-stone-600 leading-relaxed mb-4">
+                  Our AI voice agent answers your phone around the clock, qualifies leads, and books appointments — even while you&apos;re on a job. Most home service businesses miss 1 in 3 calls. We make sure yours gets answered every time.
+                </p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
+                  {["AI voice receptionist — 24/7", "Lead qualification & job booking", "Missed call text-back", "Automated confirmations & reminders", "AI chat widget for your website", "CRM setup & lead tracking"].map((b) => (
+                    <li key={b} className="flex items-center gap-2 text-sm text-stone-600">
+                      <span className="text-green-600 shrink-0">✓</span>{b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
           {/* Growth services */}

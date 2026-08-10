@@ -1,55 +1,36 @@
 import Link from "next/link";
 
-const GROW = [
+const INDUSTRIES = [
+  "HVAC", "Plumbing", "Roofing", "Electrical", "Pest Control",
+  "Garage Door", "Landscaping", "Painting", "Pool Service",
+  "Pressure Washing", "Handyman", "Cleaning Service",
+];
+
+const REVENUE_ENGINE = [
   {
-    icon: "🎁",
-    title: "Free Build — Your Choice",
-    description: "Sign up for any plan and pick one free build at no charge: a website, online booking system, voice agent, AI chat widget, first automation, or SEO setup. You choose what your business needs most.",
+    icon: "📞",
+    title: "Every call answered",
+    description: "Our AI voice agent answers 24/7, qualifies the lead, and books the appointment — even while you're on a job. No more missed calls, no more lost revenue.",
+  },
+  {
+    icon: "📅",
+    title: "Every job booked",
+    description: "Automated confirmations, reminders, and no-show follow-up. Zero leads lost to slow response. The job is locked in before you hang up.",
+  },
+  {
+    icon: "💵",
+    title: "Get paid faster",
+    description: "Automated quotes, invoices, and payment collection sent the moment the job is done. Stop chasing customers for money you already earned.",
+  },
+  {
+    icon: "⭐",
+    title: "Reviews on autopilot",
+    description: "Post-job review requests go out automatically. Your Google rating climbs without you lifting a finger. More reviews, more trust, more calls.",
   },
   {
     icon: "📍",
-    title: "Local SEO & Ads",
-    description: "PE-backed brands are outranking you on Google. We close that gap — better Maps rankings, smarter ad campaigns, more calls.",
-  },
-];
-
-const RUN = [
-  {
-    icon: "📋",
-    title: "Quoting & Billing",
-    description: "Automated estimates, invoices, and payment collection. Stop chasing customers and losing jobs to slow follow-up.",
-  },
-  {
-    icon: "⚙️",
-    title: "Operations & Back Office",
-    description: "Scheduling, HR onboarding, payroll workflows, and reporting. Systems that run your business so you don't have to babysit it.",
-  },
-];
-
-const INDUSTRY_CATEGORIES = [
-  {
-    label: "Home Services",
-    items: ["HVAC", "Plumbing", "Roofing", "Electrical", "Landscaping", "Painting", "Pressure Washing", "Pest Control", "Pool Service", "Handyman", "Cleaning Service", "Moving & Storage"],
-  },
-  {
-    label: "Health & Wellness",
-    items: ["Dental Office", "Chiropractic", "Med Spa", "Physical Therapy", "Gym & Fitness", "Salon & Barbershop", "Massage Therapy", "Optometry", "Urgent Care"],
-  },
-  {
-    label: "Auto & Transport",
-    items: ["Auto Repair", "Auto Detailing", "Towing & Recovery", "Auto Body", "Oil Change"],
-  },
-  {
-    label: "Professional Services",
-    items: ["Law Office", "Accounting & CPA", "Insurance Agency", "Real Estate", "Financial Advisor", "IT & Tech Support", "Marketing Agency"],
-  },
-  {
-    label: "Food & Hospitality",
-    items: ["Restaurant", "Catering", "Food Truck", "Bakery", "Coffee Shop"],
-  },
-  {
-    label: "Other Local Businesses",
-    items: ["Pet Grooming", "Veterinary", "Childcare & Daycare", "Photography", "Event Planning", "Tutoring & Education"],
+    title: "Stay #1 on Google",
+    description: "Local SEO, Google Business Profile management, and monthly content — so you're the first result when someone in your area needs a contractor.",
   },
 ];
 
@@ -77,14 +58,14 @@ export default function HomePage() {
             <span className="text-green-700">We make it grow.</span>
           </h1>
           <p className="text-xl text-stone-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-            The average small business loses $50,000 a year to missed calls and slow follow-up — then loses more to slow billing and back-office chaos. We fix both.
+            Home service businesses lose an average of $50,000 a year to missed calls and slow follow-up. We answer every call, book every job, and automate everything after.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/growth-score"
               className="px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-green-900/20"
             >
-              Claim Your Free Build
+              Get Your Free Growth Score
             </Link>
             <Link
               href="/pricing"
@@ -93,9 +74,9 @@ export default function HomePage() {
               See Pricing
             </Link>
           </div>
-          <p className="text-stone-400 text-sm mt-4">No setup fee. 4-month agreement. Cancel with 30 days notice after.</p>
+          <p className="text-stone-400 text-sm mt-4">Free assessment. No commitment. See exactly what you&apos;re losing.</p>
           <div className="flex flex-wrap justify-center gap-3 mt-6">
-            {["Results in 30 Days", "No Contracts", "Transparent pricing"].map((chip) => (
+            {["Every Call Answered", "Results in 30 Days", "No Setup Fee"].map((chip) => (
               <span key={chip} className="px-4 py-2 bg-green-50 border border-green-200 rounded-full text-green-800 text-sm font-medium">
                 {chip}
               </span>
@@ -108,9 +89,9 @@ export default function HomePage() {
       <section className="py-16 px-6 bg-green-900">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
           {[
-            { stat: "62%", label: "of small business calls go unanswered", implication: "Missed calls = missed revenue" },
+            { stat: "62%", label: "of home service calls go unanswered", implication: "Missed calls = missed revenue" },
             { stat: "78%", label: "of customers hire the first to respond", implication: "Speed wins the job" },
-            { stat: "1 in 3", label: "owners have time to do their own marketing", implication: "That's why we exist" },
+            { stat: "$50K", label: "avg. annual revenue lost to missed calls", implication: "One fix pays for itself" },
           ].map((s) => (
             <div key={s.stat}>
               <p className="text-5xl font-black text-white mb-2">{s.stat}</p>
@@ -122,66 +103,37 @@ export default function HomePage() {
       </section>
 
       {/* Industries */}
-      <section className="py-16 px-6 border-y border-stone-200 bg-stone-50">
+      <section className="py-12 px-6 border-y border-stone-200 bg-stone-50">
         <div className="max-w-6xl mx-auto">
-          <p className="text-center text-stone-900 font-bold text-lg mb-2">Built for small and medium-sized businesses</p>
-          <p className="text-center text-stone-400 text-sm mb-10">If you run a local business and want more customers, more revenue, and less chaos — we can help.</p>
-          <div className="space-y-6">
-            {INDUSTRY_CATEGORIES.map((cat) => (
-              <div key={cat.label}>
-                <p className="text-xs font-semibold text-stone-400 uppercase tracking-widest mb-3">{cat.label}</p>
-                <div className="flex flex-wrap gap-2">
-                  {cat.items.map((ind) => (
-                    <span key={ind} className="px-3 py-1.5 bg-white border border-stone-200 rounded-full text-stone-600 text-sm shadow-sm">
-                      {ind}
-                    </span>
-                  ))}
-                </div>
-              </div>
+          <p className="text-center text-stone-900 font-bold text-base mb-1">Built for home service businesses</p>
+          <p className="text-center text-stone-400 text-sm mb-6">The trades where one missed call costs $500–$5,000.</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {INDUSTRIES.map((ind) => (
+              <span key={ind} className="px-4 py-2 bg-white border border-stone-200 rounded-full text-stone-600 text-sm shadow-sm">
+                {ind}
+              </span>
             ))}
           </div>
-          <p className="text-center text-stone-400 text-xs mt-8">Don&apos;t see your industry? <a href="/contact" className="text-green-700 underline underline-offset-2">Reach out — we likely serve it.</a></p>
         </div>
       </section>
 
-      {/* Services — two value props */}
+      {/* Revenue engine */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-
-          {/* Get more jobs */}
-          <div className="mb-16">
-            <div className="mb-8">
-              <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-2">Get more jobs</p>
-              <h2 className="text-3xl font-black text-stone-900">More calls. More booked work.</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {GROW.map((service) => (
-                <div key={service.title} className="bg-white border border-stone-200 rounded-2xl p-8 hover:border-green-300 hover:shadow-md transition shadow-sm">
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-bold text-stone-900 mb-2">{service.title}</h3>
-                  <p className="text-stone-500 leading-relaxed">{service.description}</p>
-                </div>
-              ))}
-            </div>
+          <div className="mb-12 text-center">
+            <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-2">How it works</p>
+            <h2 className="text-4xl font-black text-stone-900">One call. One engine. More revenue.</h2>
+            <p className="text-stone-500 mt-3 max-w-xl mx-auto">Every service we build connects to a single goal: turn more calls into booked, paid, reviewed jobs.</p>
           </div>
-
-          {/* Run your business */}
-          <div>
-            <div className="mb-8">
-              <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-2">Run your business</p>
-              <h2 className="text-3xl font-black text-stone-900">Less chaos. More margin.</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {RUN.map((service) => (
-                <div key={service.title} className="bg-white border border-stone-200 rounded-2xl p-8 hover:border-green-300 hover:shadow-md transition shadow-sm">
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-bold text-stone-900 mb-2">{service.title}</h3>
-                  <p className="text-stone-500 leading-relaxed">{service.description}</p>
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {REVENUE_ENGINE.map((step) => (
+              <div key={step.title} className="bg-white border border-stone-200 rounded-2xl p-8 hover:border-green-300 hover:shadow-md transition shadow-sm">
+                <div className="text-4xl mb-4">{step.icon}</div>
+                <h3 className="text-xl font-bold text-stone-900 mb-2">{step.title}</h3>
+                <p className="text-stone-500 leading-relaxed">{step.description}</p>
+              </div>
+            ))}
           </div>
-
           <div className="text-center mt-10">
             <Link href="/services" className="text-green-700 hover:text-green-600 font-medium transition">
               See everything we do →
@@ -190,19 +142,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How it works */}
+      {/* How it works — steps */}
       <section className="py-24 px-6 bg-green-900 border-y border-green-800">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-white mb-4">How it works</h2>
+            <h2 className="text-4xl font-black text-white mb-4">From first call to fully automated</h2>
             <p className="text-green-200 text-lg">We do the work. You do the jobs.</p>
           </div>
           <div className="space-y-8">
             {[
-              { step: "01", title: "You pick a free build — we deliver it", body: "Choose what your business needs most: a website, booking system, voice agent, AI chat, or first automation. Included with any plan, no setup fee." },
-              { step: "02", title: "We get to work immediately", body: "From day one, Makr.ai runs your SEO, manages your Google Business Profile, and publishes content. Your plan starts, results start." },
-              { step: "03", title: "You own your build after month 4", body: "After your 4-month agreement, everything we built is yours free and clear. Continue month-to-month or cancel with 30 days notice." },
-              { step: "04", title: "We help you build the back end", body: "Once the leads are flowing, we build the systems — quoting, billing, scheduling, HR — so growth doesn't create new headaches." },
+              { step: "01", title: "A call comes in — we answer it", body: "Our AI receptionist picks up 24/7, asks the right questions, and books the job. You stop losing work to voicemail." },
+              { step: "02", title: "The job gets confirmed automatically", body: "Automated confirmations, reminders, and follow-ups go out. No-shows drop. Your schedule fills." },
+              { step: "03", title: "You get paid without chasing", body: "Quotes go out the moment the job is done. Invoice reminders run on autopilot. Payment lands in your account." },
+              { step: "04", title: "Your reputation grows while you sleep", body: "Post-job review requests, Google Business Profile management, and local SEO compound month after month." },
             ].map(({ step, title, body }) => (
               <div key={step} className="flex gap-6">
                 <div className="shrink-0 w-12 h-12 bg-green-800 border border-green-700 rounded-xl flex items-center justify-center text-green-300 font-black text-sm">{step}</div>
@@ -219,15 +171,16 @@ export default function HomePage() {
       {/* CTA */}
       <section className="py-24 px-6 bg-stone-50">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-black text-stone-900 mb-4">Ready to claim your free build?</h2>
-          <p className="text-stone-500 text-lg mb-4">Tell us about your business and we&apos;ll put together a custom growth plan — no commitment, no setup fee.</p>
-          <p className="text-stone-400 text-sm mb-8">24-hr response. No setup fee. No Contracts.</p>
+          <h2 className="text-4xl font-black text-stone-900 mb-4">Find out what you&apos;re losing</h2>
+          <p className="text-stone-500 text-lg mb-4">Our free AI Growth Score audits your business and tells you exactly how much revenue you&apos;re leaving on the table — and how to fix it.</p>
+          <p className="text-stone-400 text-sm mb-8">Free. No commitment. Results in minutes.</p>
           <Link
-            href="/contact"
+            href="/growth-score"
             className="inline-block px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-green-900/20"
           >
-            Claim Your Free Build
+            Get Your Free Growth Score
           </Link>
+          <p className="text-stone-400 text-xs mt-4">Or <Link href="/contact" className="underline underline-offset-2 hover:text-stone-600 transition">talk to us directly</Link> — 24-hr response, no setup fee.</p>
         </div>
       </section>
 
