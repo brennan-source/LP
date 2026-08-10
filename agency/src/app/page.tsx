@@ -26,9 +26,31 @@ const RUN = [
   },
 ];
 
-const INDUSTRIES = [
-  "HVAC", "Plumbing", "Roofing", "Electrical", "Landscaping",
-  "Painting", "Pressure Washing", "Pest Control", "Pool Service", "Handyman",
+const INDUSTRY_CATEGORIES = [
+  {
+    label: "Home Services",
+    items: ["HVAC", "Plumbing", "Roofing", "Electrical", "Landscaping", "Painting", "Pressure Washing", "Pest Control", "Pool Service", "Handyman", "Cleaning Service", "Moving & Storage"],
+  },
+  {
+    label: "Health & Wellness",
+    items: ["Dental Office", "Chiropractic", "Med Spa", "Physical Therapy", "Gym & Fitness", "Salon & Barbershop", "Massage Therapy", "Optometry", "Urgent Care"],
+  },
+  {
+    label: "Auto & Transport",
+    items: ["Auto Repair", "Auto Detailing", "Towing & Recovery", "Auto Body", "Oil Change"],
+  },
+  {
+    label: "Professional Services",
+    items: ["Law Office", "Accounting & CPA", "Insurance Agency", "Real Estate", "Financial Advisor", "IT & Tech Support", "Marketing Agency"],
+  },
+  {
+    label: "Food & Hospitality",
+    items: ["Restaurant", "Catering", "Food Truck", "Bakery", "Coffee Shop"],
+  },
+  {
+    label: "Other Local Businesses",
+    items: ["Pet Grooming", "Veterinary", "Childcare & Daycare", "Photography", "Event Planning", "Tutoring & Education"],
+  },
 ];
 
 export default function HomePage() {
@@ -55,7 +77,7 @@ export default function HomePage() {
             <span className="text-green-700">We make it grow.</span>
           </h1>
           <p className="text-xl text-stone-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-            The average home service business loses $50,000 a year to missed calls and slow follow-up — then loses more to slow billing and back-office headaches. We fix both.
+            The average small business loses $50,000 a year to missed calls and slow follow-up — then loses more to slow billing and back-office chaos. We fix both.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -86,7 +108,7 @@ export default function HomePage() {
       <section className="py-16 px-6 bg-green-900">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
           {[
-            { stat: "62%", label: "of contractor calls go unanswered", implication: "Missed calls = missed jobs" },
+            { stat: "62%", label: "of small business calls go unanswered", implication: "Missed calls = missed revenue" },
             { stat: "78%", label: "of customers hire the first to respond", implication: "Speed wins the job" },
             { stat: "1 in 3", label: "owners have time to do their own marketing", implication: "That's why we exist" },
           ].map((s) => (
@@ -100,16 +122,25 @@ export default function HomePage() {
       </section>
 
       {/* Industries */}
-      <section className="py-12 px-6 border-y border-stone-200 bg-stone-50">
+      <section className="py-16 px-6 border-y border-stone-200 bg-stone-50">
         <div className="max-w-6xl mx-auto">
-          <p className="text-center text-stone-400 text-sm mb-6">We work with home service businesses nationwide</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {INDUSTRIES.map((ind) => (
-              <span key={ind} className="px-4 py-2 bg-white border border-stone-200 rounded-full text-stone-600 text-sm shadow-sm">
-                {ind}
-              </span>
+          <p className="text-center text-stone-900 font-bold text-lg mb-2">Built for small and medium-sized businesses</p>
+          <p className="text-center text-stone-400 text-sm mb-10">If you run a local business and want more customers, more revenue, and less chaos — we can help.</p>
+          <div className="space-y-6">
+            {INDUSTRY_CATEGORIES.map((cat) => (
+              <div key={cat.label}>
+                <p className="text-xs font-semibold text-stone-400 uppercase tracking-widest mb-3">{cat.label}</p>
+                <div className="flex flex-wrap gap-2">
+                  {cat.items.map((ind) => (
+                    <span key={ind} className="px-3 py-1.5 bg-white border border-stone-200 rounded-full text-stone-600 text-sm shadow-sm">
+                      {ind}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
+          <p className="text-center text-stone-400 text-xs mt-8">Don&apos;t see your industry? <a href="/contact" className="text-green-700 underline underline-offset-2">Reach out — we likely serve it.</a></p>
         </div>
       </section>
 
@@ -189,7 +220,7 @@ export default function HomePage() {
       <section className="py-24 px-6 bg-stone-50">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl font-black text-stone-900 mb-4">Ready to claim your free build?</h2>
-          <p className="text-stone-500 text-lg mb-4">Tell us about your business and we&apos;ll put together a free demo — no commitment, no setup fee.</p>
+          <p className="text-stone-500 text-lg mb-4">Tell us about your business and we&apos;ll put together a custom growth plan — no commitment, no setup fee.</p>
           <p className="text-stone-400 text-sm mb-8">24-hr response. No setup fee. No Contracts.</p>
           <Link
             href="/contact"
