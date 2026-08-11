@@ -9,16 +9,6 @@ const INDUSTRIES = [
   "Painting", "Pest Control", "Pressure Washing", "Pool Service", "Handyman", "Other",
 ];
 
-const FREE_BUILDS = [
-  "Professional website",
-  "Online booking system",
-  "AI voice agent",
-  "AI chat widget",
-  "First automation (quotes, invoices, or follow-up)",
-  "Local SEO / GBP optimization",
-  "Not sure yet — help me decide",
-];
-
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
@@ -26,7 +16,6 @@ export default function ContactPage() {
     phone: "",
     city: "",
     industry: "",
-    freeBuild: "",
     website: "",
     message: "",
   });
@@ -109,13 +98,6 @@ export default function ContactPage() {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-stone-700 mb-1.5">What free build interests you most? <span className="text-green-700">*</span></label>
-                <select required value={form.freeBuild} onChange={(e) => setForm((f) => ({ ...f, freeBuild: e.target.value }))} className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl text-stone-900 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm">
-                  <option value="">Select…</option>
-                  {FREE_BUILDS.map((b) => <option key={b} value={b}>{b}</option>)}
-                </select>
-              </div>
-              <div>
                 <label className="block text-sm font-medium text-stone-700 mb-1.5">Current Website (if any)</label>
                 <input type="url" value={form.website} onChange={(e) => setForm((f) => ({ ...f, website: e.target.value }))} placeholder="https://yoursite.com or leave blank" className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm" />
               </div>
@@ -125,9 +107,9 @@ export default function ContactPage() {
               </div>
               {error && <p className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg px-3 py-2">{error}</p>}
               <button type="submit" disabled={submitting} className="w-full py-4 bg-green-700 hover:bg-green-600 disabled:opacity-50 text-white font-bold rounded-xl transition text-lg">
-                {submitting ? "Sending…" : "Claim My Free Build"}
+                {submitting ? "Sending…" : "Book My Revenue Assessment"}
               </button>
-              <p className="text-stone-400 text-xs text-center">No setup fee. 4-month agreement. You own the build after month 4.</p>
+              <p className="text-stone-400 text-xs text-center">Free. No commitment. We&apos;ll reach out within 24 hours.</p>
             </form>
           </div>
         </div>

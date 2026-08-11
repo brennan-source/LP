@@ -38,13 +38,12 @@ export default function HomePage() {
       {/* Hero */}
       <section className="pt-32 pb-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-4">AI Receptionist for Home Service Businesses</p>
           <h1 className="text-5xl md:text-7xl font-black text-stone-900 leading-tight tracking-tight mb-6">
             Never Miss Another<br />
             <span className="text-green-700">Customer Call.</span>
           </h1>
           <p className="text-xl text-stone-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Makr helps home service businesses answer every lead, book more jobs, and grow revenue with practical AI.
+            Makr helps home service businesses answer every lead, book more jobs, automate follow-up, and grow revenue — with practical AI built for the trades.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -54,10 +53,10 @@ export default function HomePage() {
               Book a Revenue Assessment
             </Link>
             <Link
-              href="/contact"
+              href="/services"
               className="px-8 py-4 bg-white hover:bg-stone-50 text-stone-800 font-medium text-lg rounded-xl border border-stone-300 transition"
             >
-              Watch Demo
+              See How It Works
             </Link>
           </div>
           <p className="text-stone-400 text-sm mt-4">Free assessment. No commitment. See exactly what you&apos;re losing.</p>
@@ -140,7 +139,7 @@ export default function HomePage() {
 
           <div className="text-center mt-10">
             <Link href="/services" className="text-green-700 hover:text-green-600 font-medium transition">
-              See all features →
+              See all solutions →
             </Link>
           </div>
         </div>
