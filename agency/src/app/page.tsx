@@ -13,28 +13,24 @@ const REVENUE_LEAKS = [
 const JOURNEY = [
   {
     stage: "Capture",
-    color: "green",
     outcome: "Never miss another opportunity.",
     goal: "Capture every opportunity.",
     capabilities: ["AI receptionist", "Missed-call recovery", "Web chat", "Lead qualification", "SMS follow-up", "After-hours coverage", "Emergency routing"],
   },
   {
     stage: "Book",
-    color: "green",
     outcome: "Convert more leads into booked jobs.",
     goal: "Increase booked revenue.",
     capabilities: ["Appointment booking", "CRM integration", "Calendar automation", "Estimate follow-up", "Review requests", "Google Business Profile optimization", "Lead routing"],
   },
   {
     stage: "Operate",
-    color: "green",
     outcome: "Run a more efficient business.",
     goal: "Reduce administrative work.",
     capabilities: ["Billing automation", "Scheduling workflows", "Document processing", "Knowledge assistant", "Reporting", "Back-office automation"],
   },
   {
     stage: "Grow",
-    color: "green",
     outcome: "Create a predictable growth engine.",
     goal: "Long-term business growth.",
     capabilities: ["Marketing automation", "Customer reactivation", "AI reporting", "Growth dashboards", "Quarterly optimization", "Continuous improvements"],
@@ -55,13 +51,12 @@ export default function HomePage() {
       {/* Hero */}
       <section className="pt-32 pb-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-black text-stone-900 leading-tight tracking-tight mb-6">
-            AI Revenue Operations<br />
-            <span className="text-green-700">for Home Service Businesses</span>
+          <h1 className="text-6xl md:text-7xl font-black text-stone-900 leading-tight tracking-tight mb-5">
+            More revenue.<br />
+            <span className="text-green-700">Less busywork.</span>
           </h1>
           <p className="text-xl text-stone-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Capture more leads. Book more jobs.<br />
-            Automate office work. Grow with practical AI.
+            The AI Revenue Operations platform built for home service businesses.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-green-900/20">
@@ -72,6 +67,23 @@ export default function HomePage() {
             </Link>
           </div>
           <p className="text-stone-400 text-sm mt-4">Free assessment. No commitment. See exactly where you&apos;re leaving money on the table.</p>
+        </div>
+      </section>
+
+      {/* Stats band */}
+      <section className="py-16 px-6 bg-green-900">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+          {[
+            { stat: "62%", label: "of home service calls go unanswered industry-wide", implication: "Your competition is losing too" },
+            { stat: "78%", label: "of customers hire whoever responds first", implication: "Speed wins jobs" },
+            { stat: "$50K+", label: "avg. annual revenue lost to missed opportunities", implication: "One fix pays for itself" },
+          ].map((s) => (
+            <div key={s.stat}>
+              <p className="text-5xl font-black text-white mb-2">{s.stat}</p>
+              <p className="text-green-200 text-sm mb-1">{s.label}</p>
+              <p className="text-green-400 text-xs font-semibold uppercase tracking-widest">{s.implication}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -116,7 +128,7 @@ export default function HomePage() {
 
           <div className="space-y-6">
             {JOURNEY.map((stage, i) => (
-              <div key={stage.stage} className="relative">
+              <div key={stage.stage}>
                 <div className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm">
                   <div className="flex flex-col md:flex-row md:items-start gap-6">
                     <div className="shrink-0">
