@@ -6,13 +6,15 @@ const TIERS = [
     name: "Capture",
     price: 399,
     popular: false,
+    outcome: "Never miss another opportunity.",
     tagline: "Answer every call. Qualify every lead.",
-    description: "Perfect for owner-operated businesses that need the phone handled. AI answering with no booking or CRM required.",
+    description: "For owner-operated businesses ready to stop losing jobs to unanswered calls. Everything you need to capture every opportunity that comes your way.",
     includes: [
-      "AI voice receptionist — 24/7",
+      "AI receptionist — 24/7 call answering",
       "Lead qualification",
       "After-hours coverage",
       "Emergency call routing",
+      "Missed-call text-back",
       "SMS summaries after every call",
     ],
   },
@@ -20,16 +22,17 @@ const TIERS = [
     name: "Book",
     price: 699,
     popular: true,
+    outcome: "Book more jobs.",
     tagline: "Answer, qualify, and book the job.",
-    description: "Our most popular plan. Everything in Capture plus appointment booking and CRM integration — the complete revenue capture engine.",
+    description: "Our most popular plan. Capture every opportunity and convert it into a booked appointment — with CRM integration, calendar sync, and automated follow-up.",
     includes: [
       "Everything in Capture",
       "Appointment booking",
       "CRM & calendar integration",
-      "Missed-call text-back",
+      "Estimate follow-up sequences",
       "Lead routing",
       "Custom qualification scripts",
-      "Business-hours logic",
+      "Review request automation",
       "Monthly reporting",
     ],
   },
@@ -37,16 +40,19 @@ const TIERS = [
     name: "Grow",
     price: 1099,
     popular: false,
-    tagline: "Full revenue automation — from first call to repeat customer.",
-    description: "Everything in Book plus automated follow-up, reviews, reactivation, and a dedicated dashboard.",
+    outcome: "Scale your business.",
+    tagline: "Full revenue operations — from first call to repeat customer.",
+    description: "Everything in Book plus the systems to turn your business into a growth engine: reactivation campaigns, marketing automation, dashboards, and quarterly strategy.",
     includes: [
       "Everything in Book",
-      "Lead & estimate follow-up",
-      "Review automation",
       "Customer reactivation campaigns",
-      "Advanced workflows",
+      "Marketing automation",
       "Revenue dashboard",
+      "AI reporting",
+      "Advanced workflows",
+      "Back-office automation",
       "Monthly optimization call",
+      "Quarterly strategy session",
     ],
   },
 ];
@@ -65,15 +71,14 @@ export default function PricingPage() {
 
           <div className="text-center mb-16">
             <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-3">Pricing</p>
-            <h1 className="text-5xl font-black text-stone-900 mb-4">Simple, transparent pricing</h1>
+            <h1 className="text-5xl font-black text-stone-900 mb-4">Stop paying for software.<br />Start investing in outcomes.</h1>
             <p className="text-stone-500 text-lg max-w-2xl mx-auto mb-2">
-              Compete against missed revenue, not commodity software. Every plan includes standard setup at no extra charge.
+              Every plan includes standard setup. No hidden fees. Transparent pricing.
             </p>
-            <p className="text-stone-400 text-sm max-w-xl mx-auto">
-              90-day launch period. Month-to-month afterward.
-            </p>
+            <p className="text-stone-400 text-sm">90-day launch period. Month-to-month afterward.</p>
           </div>
 
+          {/* Tiers */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {TIERS.map((tier) => (
               <div
@@ -91,7 +96,10 @@ export default function PricingPage() {
                   <h2 className={`text-xl font-bold mb-1 ${tier.popular ? "text-white" : "text-stone-900"}`}>
                     {tier.name}
                   </h2>
-                  <p className={`text-sm mb-4 ${tier.popular ? "text-green-300" : "text-green-700"}`}>
+                  <p className={`text-lg font-black mb-1 ${tier.popular ? "text-green-300" : "text-green-700"}`}>
+                    {tier.outcome}
+                  </p>
+                  <p className={`text-xs mb-4 ${tier.popular ? "text-green-400" : "text-stone-400"}`}>
                     {tier.tagline}
                   </p>
                   <div className="flex items-baseline gap-1 mb-3">
@@ -126,35 +134,35 @@ export default function PricingPage() {
             ))}
           </div>
 
+          {/* Setup & commitment */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
             <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8">
               <h2 className="text-lg font-bold text-stone-900 mb-2">Setup</h2>
-              <p className="text-stone-500 text-sm mb-4">Standard setup is included with every plan. We configure your AI receptionist, train it on your business, and get it live — typically within a week.</p>
+              <p className="text-stone-500 text-sm mb-4">Standard setup is included with every plan. We configure your systems, train the AI on your business, and get everything live — typically within a week.</p>
               <p className="text-stone-600 text-sm font-medium">Custom integrations starting at $500:</p>
               <div className="flex flex-wrap gap-2 mt-3">
                 {INTEGRATIONS.map((i) => (
-                  <span key={i} className="px-3 py-1 bg-white border border-stone-200 rounded-full text-stone-600 text-xs">
-                    {i}
-                  </span>
+                  <span key={i} className="px-3 py-1 bg-white border border-stone-200 rounded-full text-stone-600 text-xs">{i}</span>
                 ))}
               </div>
             </div>
             <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8">
               <h2 className="text-lg font-bold text-stone-900 mb-2">Commitment</h2>
               <div className="space-y-3 text-sm text-stone-500">
-                <p><span className="text-stone-800 font-medium">90-day launch period.</span> We invest time upfront to configure, train, and optimize your AI receptionist. The 90-day period gives us enough runway to show real results.</p>
+                <p><span className="text-stone-800 font-medium">90-day launch period.</span> We invest time upfront to configure, train, and optimize your AI systems. The 90-day period gives us enough runway to show real results.</p>
                 <p><span className="text-stone-800 font-medium">Month-to-month after that.</span> Cancel with 30 days notice. No price locks, no tricks.</p>
               </div>
             </div>
           </div>
 
+          {/* AI Readiness Assessment */}
           <div className="bg-green-50 border border-green-200 rounded-2xl p-8 md:p-10 mb-16">
             <div className="flex flex-col md:flex-row md:items-start gap-8">
               <div className="flex-1">
-                <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-2">Free for qualified prospects</p>
+                <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-2">Free for qualified contractors</p>
                 <h2 className="text-2xl font-black text-stone-900 mb-2">AI Readiness Assessment</h2>
                 <p className="text-stone-500 leading-relaxed mb-4">
-                  A detailed look at where AI can help your business — and how much revenue you&apos;re currently leaving on the table. We review your operations, identify your biggest gaps, and give you a clear roadmap.
+                  Not sure where to start? We&apos;ll audit your business, identify your biggest revenue gaps, and give you a clear roadmap — before you spend a dollar.
                 </p>
                 <ul className="space-y-1.5">
                   {["AI maturity score", "Operations score", "Revenue opportunities identified", "Automation roadmap", "Priority recommendations"].map((b) => (
@@ -175,10 +183,11 @@ export default function PricingPage() {
             </div>
           </div>
 
+          {/* Custom */}
           <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h2 className="text-xl font-bold text-stone-900 mb-1">Custom / Enterprise</h2>
-              <p className="text-stone-500 text-sm max-w-xl">Multi-location businesses, complex integrations, or anything that doesn&apos;t fit neatly into a plan. Let&apos;s scope it together.</p>
+              <p className="text-stone-500 text-sm max-w-xl">Multi-location businesses, complex integrations, or anything beyond the standard plans. Let&apos;s scope it together.</p>
             </div>
             <Link href="/contact" className="shrink-0 px-6 py-3 bg-white hover:bg-stone-50 border border-stone-300 text-stone-800 rounded-xl font-medium transition">
               Let&apos;s Talk

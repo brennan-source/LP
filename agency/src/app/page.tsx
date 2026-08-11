@@ -1,33 +1,50 @@
 import Link from "next/link";
 import Nav from "@/components/Nav";
 
-const PROBLEMS = [
-  { icon: "📵", title: "Missed calls while on the job", body: "You're in a crawlspace or on a roof. The phone rings. You can't answer. That lead is gone." },
-  { icon: "🌙", title: "After-hours calls sent to voicemail", body: "Emergencies don't wait for business hours. If you don't answer, the next contractor will." },
-  { icon: "⏱️", title: "Slow response loses jobs to competitors", body: "78% of customers hire the first business to call back. Every hour of delay costs you jobs." },
-  { icon: "🔇", title: "No follow-up on unclosed leads", body: "Leads that don't book on the first call rarely hear from you again. That revenue disappears." },
+const REVENUE_LEAKS = [
+  { icon: "📵", title: "Missed calls", body: "You're on a job. The phone rings. The lead goes to your competitor." },
+  { icon: "⏱️", title: "Slow response", body: "78% of customers hire whoever calls back first. Every hour of delay costs you jobs." },
+  { icon: "📋", title: "Missed follow-up", body: "Estimates sent. No response. No reminder. The job was yours — then it wasn't." },
+  { icon: "📝", title: "Manual office work", body: "Hours spent on paperwork that AI could handle in minutes." },
+  { icon: "💬", title: "Poor customer communication", body: "Customers don't hear back. They leave a bad review. You lose the next job too." },
+  { icon: "📊", title: "No visibility", body: "You don't know which leads are slipping through the cracks until it's too late." },
 ];
 
-const FLOW_STEPS = [
-  "Customer calls",
-  "Makr answers",
-  "Qualifies the lead",
-  "Books the appointment",
-  "Updates your CRM",
-  "You get a summary",
+const JOURNEY = [
+  {
+    stage: "Capture",
+    color: "green",
+    outcome: "Never miss another opportunity.",
+    goal: "Capture every opportunity.",
+    capabilities: ["AI receptionist", "Missed-call recovery", "Web chat", "Lead qualification", "SMS follow-up", "After-hours coverage", "Emergency routing"],
+  },
+  {
+    stage: "Book",
+    color: "green",
+    outcome: "Convert more leads into booked jobs.",
+    goal: "Increase booked revenue.",
+    capabilities: ["Appointment booking", "CRM integration", "Calendar automation", "Estimate follow-up", "Review requests", "Google Business Profile optimization", "Lead routing"],
+  },
+  {
+    stage: "Operate",
+    color: "green",
+    outcome: "Run a more efficient business.",
+    goal: "Reduce administrative work.",
+    capabilities: ["Billing automation", "Scheduling workflows", "Document processing", "Knowledge assistant", "Reporting", "Back-office automation"],
+  },
+  {
+    stage: "Grow",
+    color: "green",
+    outcome: "Create a predictable growth engine.",
+    goal: "Long-term business growth.",
+    capabilities: ["Marketing automation", "Customer reactivation", "AI reporting", "Growth dashboards", "Quarterly optimization", "Continuous improvements"],
+  },
 ];
 
-const INDUSTRIES = [
-  { icon: "🌡️", name: "HVAC", hook: "Every emergency call answered, day or night" },
-  { icon: "🔧", name: "Plumbing", hook: "Capture urgent calls before they call the next plumber" },
-  { icon: "🏠", name: "Roofing", hook: "Qualify storm leads fast and book estimates automatically" },
-  { icon: "⚡", name: "Electrical", hook: "Never lose a job because your line was busy" },
-];
-
-const RESOURCES = [
-  { label: "AI Readiness Assessment", sub: "Find out where AI can help your business", href: "/resources" },
-  { label: "AI Workshops", sub: "Practical training for owners and teams", href: "/resources" },
-  { label: "Guides & Webinars", sub: "Free resources to help you grow", href: "/resources" },
+const ROI_EXAMPLES = [
+  { action: "Recover 2 missed service calls per month", result: "Makr pays for itself.", detail: "One HVAC repair or emergency plumbing call covers the subscription." },
+  { action: "Reduce 10 hours of office work per week", result: "Higher productivity.", detail: "Billing, follow-up, and scheduling handled automatically." },
+  { action: "Automate review requests after every job", result: "More inbound business.", detail: "More 5-star reviews means more calls from Google." },
 ];
 
 export default function HomePage() {
@@ -39,203 +56,168 @@ export default function HomePage() {
       <section className="pt-32 pb-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-black text-stone-900 leading-tight tracking-tight mb-6">
-            Never Miss Another<br />
-            <span className="text-green-700">Customer Call.</span>
+            AI Revenue Operations<br />
+            <span className="text-green-700">for Home Service Businesses</span>
           </h1>
           <p className="text-xl text-stone-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Makr helps home service businesses answer every lead, book more jobs, automate follow-up, and grow revenue — with practical AI built for the trades.
+            Capture more leads. Book more jobs.<br />
+            Automate office work. Grow with practical AI.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-green-900/20"
-            >
+            <Link href="/contact" className="px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition shadow-lg shadow-green-900/20">
               Book a Revenue Assessment
             </Link>
-            <Link
-              href="/services"
-              className="px-8 py-4 bg-white hover:bg-stone-50 text-stone-800 font-medium text-lg rounded-xl border border-stone-300 transition"
-            >
+            <Link href="/services" className="px-8 py-4 bg-white hover:bg-stone-50 text-stone-800 font-medium text-lg rounded-xl border border-stone-300 transition">
               See How It Works
             </Link>
           </div>
-          <p className="text-stone-400 text-sm mt-4">Free assessment. No commitment. See exactly what you&apos;re losing.</p>
+          <p className="text-stone-400 text-sm mt-4">Free assessment. No commitment. See exactly where you&apos;re leaving money on the table.</p>
         </div>
       </section>
 
-      {/* Stats band */}
-      <section className="py-16 px-6 bg-green-900">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-          {[
-            { stat: "100%", label: "of calls answered by Makr AI", implication: "No more missed revenue" },
-            { stat: "62%", label: "of home service calls go unanswered industry-wide", implication: "Your competition is losing too" },
-            { stat: "$50K+", label: "avg. annual revenue lost to missed calls", implication: "One fix pays for itself" },
-          ].map((s) => (
-            <div key={s.stat}>
-              <p className="text-5xl font-black text-white mb-2">{s.stat}</p>
-              <p className="text-green-200 text-sm mb-1">{s.label}</p>
-              <p className="text-green-400 text-xs font-semibold uppercase tracking-widest">{s.implication}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Problem */}
+      {/* Revenue Leaks */}
       <section className="py-24 px-6 bg-stone-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-2">The real problem</p>
-            <h2 className="text-4xl font-black text-stone-900 mb-3">Why contractors lose revenue every month</h2>
-            <p className="text-stone-500 text-lg max-w-xl mx-auto">Not because they lack AI. Because the phone isn&apos;t handled.</p>
+            <h2 className="text-4xl font-black text-stone-900 mb-3">Home service companies lose revenue every month.</h2>
+            <p className="text-stone-500 text-lg max-w-2xl mx-auto">Not because they lack technology. Because of gaps in how their business captures and converts opportunities.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {PROBLEMS.map((p) => (
-              <div key={p.title} className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm">
-                <div className="text-4xl mb-4">{p.icon}</div>
-                <h3 className="text-lg font-bold text-stone-900 mb-2">{p.title}</h3>
-                <p className="text-stone-500 leading-relaxed">{p.body}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {REVENUE_LEAKS.map((leak) => (
+              <div key={leak.title} className="bg-white border border-stone-200 rounded-2xl p-7 shadow-sm">
+                <div className="text-3xl mb-3">{leak.icon}</div>
+                <h3 className="text-lg font-bold text-stone-900 mb-2">{leak.title}</h3>
+                <p className="text-stone-500 leading-relaxed text-sm">{leak.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Solution */}
-      <section className="py-24 px-6 bg-white">
+      {/* Platform intro */}
+      <section className="py-20 px-6 bg-white border-y border-stone-100">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-3">The platform</p>
+          <h2 className="text-4xl font-black text-stone-900 mb-4">Your AI Revenue Operations Platform</h2>
+          <p className="text-stone-500 text-lg leading-relaxed">
+            Makr deploys practical AI across your business to help capture more leads, convert more customers, and reduce administrative work — so you can focus on the work, not the office.
+          </p>
+        </div>
+      </section>
+
+      {/* Revenue Journey */}
+      <section className="py-24 px-6 bg-stone-50">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-2">The solution</p>
-            <h2 className="text-4xl font-black text-stone-900 mb-3">The Makr AI Receptionist</h2>
-            <p className="text-stone-500 text-lg max-w-xl mx-auto">One system that answers every call, qualifies every lead, and books every job — automatically.</p>
+          <div className="text-center mb-16">
+            <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-2">How it works</p>
+            <h2 className="text-4xl font-black text-stone-900">The Revenue Journey</h2>
           </div>
 
-          <div className="flex flex-wrap justify-center items-center gap-2 mb-12">
-            {FLOW_STEPS.map((step, i) => (
-              <div key={step} className="flex items-center gap-2">
-                <div className="px-4 py-2 bg-green-50 border border-green-200 rounded-lg text-green-800 text-sm font-medium">
-                  {step}
+          <div className="space-y-6">
+            {JOURNEY.map((stage, i) => (
+              <div key={stage.stage} className="relative">
+                <div className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm">
+                  <div className="flex flex-col md:flex-row md:items-start gap-6">
+                    <div className="shrink-0">
+                      <div className="w-12 h-12 rounded-xl bg-green-700 text-white font-black text-lg flex items-center justify-center">
+                        {i + 1}
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex flex-col md:flex-row md:items-baseline gap-2 mb-1">
+                        <h3 className="text-2xl font-black text-stone-900">{stage.stage}</h3>
+                        <span className="text-green-700 font-semibold text-sm md:ml-3">{stage.outcome}</span>
+                      </div>
+                      <p className="text-stone-400 text-xs uppercase tracking-widest mb-4">Goal: {stage.goal}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {stage.capabilities.map((cap) => (
+                          <span key={cap} className="px-3 py-1 bg-stone-50 border border-stone-200 rounded-full text-stone-600 text-xs font-medium">
+                            {cap}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                {i < FLOW_STEPS.length - 1 && (
-                  <span className="text-stone-300 font-light text-xl">→</span>
+                {i < JOURNEY.length - 1 && (
+                  <div className="flex justify-center my-2">
+                    <span className="text-green-300 text-2xl font-light">↓</span>
+                  </div>
                 )}
-              </div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: "📞", title: "Answers 24/7", body: "Live AI voice agent handles every call — business hours, after-hours, weekends, emergencies." },
-              { icon: "✅", title: "Qualifies every lead", body: "Asks the right questions to understand the job, location, urgency, and budget." },
-              { icon: "📅", title: "Books the job", body: "Schedules the appointment directly into your calendar. No back-and-forth." },
-              { icon: "📋", title: "Sends you a summary", body: "You get a clean summary of every call — what was said, what was booked, what needs follow-up." },
-            ].map((f) => (
-              <div key={f.title} className="bg-stone-50 border border-stone-200 rounded-2xl p-6 text-center">
-                <div className="text-3xl mb-3">{f.icon}</div>
-                <h3 className="font-bold text-stone-900 mb-2">{f.title}</h3>
-                <p className="text-stone-500 text-sm leading-relaxed">{f.body}</p>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-10">
             <Link href="/services" className="text-green-700 hover:text-green-600 font-medium transition">
-              See all solutions →
+              Explore all capabilities →
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Industries */}
-      <section className="py-24 px-6 bg-green-900">
-        <div className="max-w-6xl mx-auto">
+      {/* Why Makr */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-green-300 text-sm font-semibold uppercase tracking-widest mb-2">Industries</p>
-            <h2 className="text-4xl font-black text-white mb-3">Built for the trades</h2>
-            <p className="text-green-200 text-lg max-w-xl mx-auto">Where one missed call costs $500–$5,000.</p>
+            <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-2">Why Makr</p>
+            <h2 className="text-4xl font-black text-stone-900 mb-4">We Deploy AI That Produces Business Results</h2>
+            <p className="text-stone-500 text-lg max-w-2xl mx-auto">
+              Not AI experiments. Not generic chatbots. Not disconnected software.<br />
+              Business systems. Business outcomes.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {INDUSTRIES.map((ind) => (
-              <div key={ind.name} className="bg-green-800 border border-green-700 rounded-2xl p-6 hover:bg-green-700 transition">
-                <div className="text-3xl mb-3">{ind.icon}</div>
-                <h3 className="font-bold text-white mb-2">{ind.name}</h3>
-                <p className="text-green-300 text-sm leading-relaxed">{ind.hook}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { icon: "🔧", title: "Practical, not theoretical", body: "Every capability we deploy has a clear business outcome. We don't add AI for its own sake." },
+              { icon: "📍", title: "Local, not remote", body: "Built in New England. We know your market, your seasonality, your customers. Relationships matter." },
+              { icon: "📈", title: "Measured in revenue", body: "We track what matters — calls captured, jobs booked, hours saved. Not dashboards full of vanity metrics." },
+            ].map((w) => (
+              <div key={w.title} className="bg-stone-50 border border-stone-200 rounded-2xl p-7">
+                <div className="text-3xl mb-3">{w.icon}</div>
+                <h3 className="font-bold text-stone-900 mb-2">{w.title}</h3>
+                <p className="text-stone-500 text-sm leading-relaxed">{w.body}</p>
               </div>
             ))}
-          </div>
-          <div className="text-center">
-            <Link href="/industries" className="text-green-300 hover:text-white font-medium transition">
-              See all industries →
-            </Link>
           </div>
         </div>
       </section>
 
       {/* ROI */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-2">Return on investment</p>
-          <h2 className="text-4xl font-black text-stone-900 mb-6">How quickly does it pay for itself?</h2>
-          <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8 mb-8">
-            <p className="text-stone-600 text-lg leading-relaxed mb-6">
-              Recovering just <strong className="text-stone-900">2–3 missed jobs per month</strong> often covers the full monthly subscription. One HVAC repair, one roofing estimate, one emergency plumbing call — that&apos;s all it takes.
-            </p>
-            <div className="grid grid-cols-3 gap-6 text-center">
-              {[
-                { trade: "HVAC repair", value: "$600–$3,000" },
-                { trade: "Roofing estimate", value: "$8,000–$25,000" },
-                { trade: "Emergency plumbing", value: "$300–$1,500" },
-              ].map((r) => (
-                <div key={r.trade}>
-                  <p className="text-2xl font-black text-green-700">{r.value}</p>
-                  <p className="text-stone-500 text-sm mt-1">{r.trade}</p>
-                </div>
-              ))}
-            </div>
+      <section className="py-24 px-6 bg-green-900">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-green-300 text-sm font-semibold uppercase tracking-widest mb-2">Return on investment</p>
+            <h2 className="text-4xl font-black text-white mb-3">It pays for itself fast.</h2>
+            <p className="text-green-200 text-lg max-w-xl mx-auto">Two or three recovered jobs per month typically covers the full subscription. Everything after that is profit.</p>
           </div>
-          <Link
-            href="/pricing"
-            className="text-green-700 hover:text-green-600 font-medium transition"
-          >
-            See pricing →
-          </Link>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {ROI_EXAMPLES.map((ex) => (
+              <div key={ex.action} className="bg-green-800 border border-green-700 rounded-2xl p-7">
+                <p className="text-green-300 text-sm mb-3">{ex.action}</p>
+                <p className="text-white font-black text-xl mb-2">→ {ex.result}</p>
+                <p className="text-green-300 text-xs leading-relaxed">{ex.detail}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link href="/pricing" className="text-green-300 hover:text-white font-medium transition">
+              See pricing →
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 px-6 bg-green-900">
+      <section className="py-24 px-6 bg-stone-900">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-black text-white mb-4">Ready to stop losing revenue to missed calls?</h2>
-          <p className="text-green-200 text-lg mb-8">Book a free revenue assessment and we&apos;ll show you exactly how many calls you&apos;re missing and what they&apos;re worth.</p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-4 bg-white hover:bg-green-50 text-green-900 font-bold text-lg rounded-xl transition shadow-lg"
-          >
+          <h2 className="text-4xl font-black text-white mb-4">Ready to stop losing revenue?</h2>
+          <p className="text-stone-400 text-lg mb-8">Book a free revenue assessment and we&apos;ll show you exactly where your business is leaking money — and how to fix it.</p>
+          <Link href="/contact" className="inline-block px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition shadow-lg">
             Book Your Revenue Assessment
           </Link>
-          <p className="text-green-400 text-sm mt-4">Free. No commitment. 24-hr response.</p>
-        </div>
-      </section>
-
-      {/* Resources teaser */}
-      <section className="py-16 px-6 bg-stone-50 border-t border-stone-200">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8">
-            <div>
-              <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-1">Resources</p>
-              <h2 className="text-2xl font-black text-stone-900">Learn before you buy</h2>
-            </div>
-            <Link href="/resources" className="text-green-700 hover:text-green-600 font-medium transition text-sm">
-              See all resources →
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {RESOURCES.map((r) => (
-              <Link key={r.label} href={r.href} className="bg-white border border-stone-200 rounded-xl p-5 hover:border-green-300 hover:shadow-sm transition">
-                <p className="font-semibold text-stone-900 mb-1">{r.label}</p>
-                <p className="text-stone-500 text-sm">{r.sub}</p>
-              </Link>
-            ))}
-          </div>
+          <p className="text-stone-500 text-sm mt-4">Free. No commitment. We&apos;ll reach out within 24 hours.</p>
         </div>
       </section>
 

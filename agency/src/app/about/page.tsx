@@ -14,59 +14,83 @@ export default function AboutPage() {
       <main className="pt-32 pb-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
 
-          <div className="mb-16">
+          <div className="mb-12">
             <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-3">About</p>
             <h1 className="text-5xl font-black text-stone-900 mb-6">We make AI work for growing businesses.</h1>
             <p className="text-xl text-stone-500 leading-relaxed mb-6">
-              Makr is an AI software and services company focused on one thing: helping home service businesses capture more revenue through practical AI.
+              Makr is an AI Revenue Operations company focused on one thing: helping home service businesses capture more revenue and operate more efficiently with practical AI.
             </p>
             <p className="text-stone-500 leading-relaxed">
-              We&apos;re not an AI agency. We&apos;re not a digital marketing firm. We&apos;re the AI partner for contractors who want more calls answered, more jobs booked, and more revenue — without hiring more people.
+              We don&apos;t sell AI. We don&apos;t sell software. We don&apos;t sell marketing. We deploy AI across your business to help you grow — and we measure success in revenue, not features.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          {/* Local positioning — prominent */}
+          <div className="bg-green-900 rounded-2xl p-8 md:p-10 mb-12">
+            <div className="flex flex-col md:flex-row items-start gap-6">
+              <div className="text-4xl">📍</div>
+              <div>
+                <h2 className="text-2xl font-black text-white mb-3">Built in New England</h2>
+                <p className="text-green-200 leading-relaxed mb-4">
+                  We&apos;re not a remote SaaS vendor. We&apos;re a local company serving contractors across Massachusetts, New Hampshire, and beyond. We know the market, the seasons, and the customers you&apos;re trying to reach.
+                </p>
+                <p className="text-green-300 text-sm font-semibold">Local matters. Relationships matter.</p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {GEOGRAPHY.map((g) => (
+                    <span key={g} className="px-3 py-1 bg-green-800 border border-green-700 rounded-full text-green-200 text-xs font-medium">
+                      {g}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8">
               <h2 className="text-xl font-bold text-stone-900 mb-4">Our brand promise</h2>
               <p className="text-stone-600 leading-relaxed mb-4">
-                <strong>Makr helps businesses grow by making AI practical.</strong>
+                <strong>Makr helps home service businesses capture more revenue and operate more efficiently with practical AI.</strong>
               </p>
               <p className="text-stone-500 text-sm leading-relaxed">
-                AI isn&apos;t magic. It&apos;s a tool. We focus on the specific applications that have measurable, immediate impact for home service businesses — starting with the phone.
+                AI isn&apos;t magic. It&apos;s a tool. We focus on the specific applications that produce measurable, immediate impact for home service businesses.
               </p>
             </div>
             <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8">
-              <h2 className="text-xl font-bold text-stone-900 mb-4">Our market position</h2>
+              <h2 className="text-xl font-bold text-stone-900 mb-4">Our philosophy</h2>
               <p className="text-stone-600 leading-relaxed mb-4">
-                <strong>We help home service businesses capture more revenue through practical AI.</strong>
+                <strong>Business outcomes first. Technology second.</strong>
               </p>
               <p className="text-stone-500 text-sm leading-relaxed">
-                We start with the phone — the single biggest revenue leak in home services — and expand from there into booking, billing, reviews, and back-office automation.
+                Every capability we deploy maps to a measurable business outcome — more leads captured, more jobs booked, fewer hours wasted. If it doesn&apos;t move a number, we don&apos;t add it.
               </p>
             </div>
           </div>
 
-          <div className="mb-16">
-            <h2 className="text-2xl font-black text-stone-900 mb-6">Where we work</h2>
-            <p className="text-stone-500 mb-6">We currently serve home service businesses across Greater Boston and New England, with plans to expand nationally.</p>
-            <div className="flex flex-wrap gap-3">
-              {GEOGRAPHY.map((g) => (
-                <span key={g} className="px-4 py-2 bg-green-50 border border-green-200 rounded-full text-green-800 text-sm font-medium">
-                  {g}
-                </span>
+          <div className="mb-12">
+            <h2 className="text-2xl font-black text-stone-900 mb-4">The four pillars</h2>
+            <p className="text-stone-500 mb-6">Every capability Makr deploys fits into one of four pillars. This keeps the platform focused while allowing it to grow with your business.</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { name: "Capture", desc: "Never miss an opportunity" },
+                { name: "Book", desc: "Convert leads into jobs" },
+                { name: "Operate", desc: "Eliminate office work" },
+                { name: "Grow", desc: "Build a growth engine" },
+              ].map((p) => (
+                <div key={p.name} className="bg-green-50 border border-green-200 rounded-xl p-5 text-center">
+                  <p className="font-black text-green-800 text-lg mb-1">{p.name}</p>
+                  <p className="text-stone-500 text-xs">{p.desc}</p>
+                </div>
               ))}
             </div>
           </div>
 
-          <div className="bg-green-900 rounded-2xl p-10 text-center">
-            <h2 className="text-3xl font-black text-white mb-3">Ready to work together?</h2>
-            <p className="text-green-200 text-lg mb-6 max-w-xl mx-auto">
-              Book a free revenue assessment and we&apos;ll show you exactly what AI can do for your business.
+          <div className="bg-stone-50 border border-stone-200 rounded-2xl p-10 text-center">
+            <h2 className="text-3xl font-black text-stone-900 mb-3">Ready to work together?</h2>
+            <p className="text-stone-500 text-lg mb-6 max-w-xl mx-auto">
+              Book a free revenue assessment and we&apos;ll show you exactly where your business is leaving money on the table.
             </p>
-            <Link
-              href="/contact"
-              className="inline-block px-8 py-4 bg-white hover:bg-green-50 text-green-900 font-bold text-lg rounded-xl transition"
-            >
+            <Link href="/contact" className="inline-block px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition">
               Book a Revenue Assessment
             </Link>
           </div>

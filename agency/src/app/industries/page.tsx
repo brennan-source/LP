@@ -5,18 +5,18 @@ const INDUSTRIES = [
   {
     icon: "🌡️",
     name: "HVAC",
-    hook: "Every emergency call answered, day or night",
+    hook: "Capture every emergency call and fill your schedule year-round.",
     bullets: [
       "Emergency calls answered 24/7 — even at 2am",
       "Seasonal demand handled without extra staff",
-      "Qualify jobs before dispatching a tech",
-      "Automated follow-up on estimates",
+      "Pre-qualify jobs before dispatching a tech",
+      "Automated estimate follow-up",
     ],
   },
   {
     icon: "🔧",
     name: "Plumbing",
-    hook: "Capture urgent calls before they call the next plumber",
+    hook: "Capture urgent calls before the customer dials the next plumber.",
     bullets: [
       "Urgent and emergency calls answered immediately",
       "Lead qualification by job type and location",
@@ -27,7 +27,7 @@ const INDUSTRIES = [
   {
     icon: "🏠",
     name: "Roofing",
-    hook: "Qualify storm leads fast and book estimates automatically",
+    hook: "Qualify storm leads fast and fill your estimate calendar automatically.",
     bullets: [
       "Storm surge call volume handled automatically",
       "Insurance vs. cash-pay lead qualification",
@@ -38,40 +38,40 @@ const INDUSTRIES = [
   {
     icon: "⚡",
     name: "Electrical",
-    hook: "Never lose a job because your line was busy",
+    hook: "Never lose a job because your line was busy or the office was closed.",
     bullets: [
       "Residential and commercial calls handled",
       "Safety-first qualification for urgent jobs",
       "Appointment booking by service area",
-      "Callback summaries sent after every call",
+      "Call summaries sent after every interaction",
     ],
   },
   {
     icon: "🌿",
     name: "Landscaping",
-    hook: "Book seasonal work before competitors pick up the phone",
+    hook: "Book seasonal work before your competitors pick up the phone.",
     bullets: [
       "Seasonal inquiry handling at scale",
       "Estimate appointments booked on first contact",
       "Recurring service scheduling automated",
-      "Customer reactivation for spring/fall cleanups",
+      "Customer reactivation for spring and fall",
     ],
   },
   {
     icon: "🐛",
     name: "Pest Control",
-    hook: "Respond to urgent calls faster than any human could",
+    hook: "Respond to urgent calls faster than any human could.",
     bullets: [
       "Immediate response to infestation calls",
       "Service area and job-type qualification",
-      "Recurring plan upsell built into the script",
+      "Recurring plan upsell built into qualification",
       "Automated follow-up for booked appointments",
     ],
   },
   {
     icon: "🚪",
     name: "Garage Door",
-    hook: "Turn emergency calls into same-day booked jobs",
+    hook: "Turn emergency calls into same-day booked jobs.",
     bullets: [
       "Emergency repair calls answered 24/7",
       "Same-day appointment booking",
@@ -89,12 +89,21 @@ export default function IndustriesPage() {
       <main className="pt-32 pb-24 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
 
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-3">Industries</p>
-            <h1 className="text-5xl font-black text-stone-900 mb-4">Built for the trades that run on phone calls</h1>
+            <h1 className="text-5xl font-black text-stone-900 mb-4">AI Revenue Operations for the trades</h1>
             <p className="text-stone-500 text-lg max-w-2xl mx-auto">
-              Home service businesses live and die by the phone. We make sure yours never goes unanswered.
+              Home service businesses live and die by how well they capture and convert opportunities. We make sure none slip through.
             </p>
+          </div>
+
+          {/* Local positioning banner */}
+          <div className="bg-green-50 border border-green-200 rounded-2xl px-8 py-6 mb-14 flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+            <div className="text-3xl">📍</div>
+            <div>
+              <p className="font-bold text-stone-900">Built in New England. Serving contractors across Massachusetts, New Hampshire, and beyond.</p>
+              <p className="text-stone-500 text-sm mt-1">Local matters. We know your market, your seasons, and your customers. Relationships matter.</p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
@@ -114,7 +123,7 @@ export default function IndustriesPage() {
                   href="/contact"
                   className="block text-center py-2.5 border border-green-700 text-green-700 hover:bg-green-700 hover:text-white rounded-xl text-sm font-semibold transition"
                 >
-                  Book a Demo →
+                  Book a Revenue Assessment →
                 </Link>
               </div>
             ))}
@@ -123,12 +132,9 @@ export default function IndustriesPage() {
           <div className="bg-green-900 rounded-2xl p-10 text-center">
             <h2 className="text-3xl font-black text-white mb-3">Don&apos;t see your trade?</h2>
             <p className="text-green-200 text-lg mb-6 max-w-xl mx-auto">
-              If your business runs on phone calls and booked appointments, Makr can help. Reach out and we&apos;ll tell you exactly how.
+              If your business runs on phone calls and booked appointments, Makr can help. Reach out and we&apos;ll show you exactly how.
             </p>
-            <Link
-              href="/contact"
-              className="inline-block px-8 py-4 bg-white hover:bg-green-50 text-green-900 font-bold text-lg rounded-xl transition"
-            >
+            <Link href="/contact" className="inline-block px-8 py-4 bg-white hover:bg-green-50 text-green-900 font-bold text-lg rounded-xl transition">
               Book a Revenue Assessment
             </Link>
           </div>
