@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Nav from "@/components/Nav";
 
 const INDUSTRIES = [
   "HVAC", "Plumbing", "Roofing", "Electrical", "Landscaping",
@@ -56,11 +57,7 @@ export default function ContactPage() {
   if (submitted) {
     return (
       <>
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-stone-200">
-          <div className="max-w-6xl mx-auto px-6 h-16 flex items-center">
-            <Link href="/" className="text-xl font-black text-green-800 tracking-tight">Makr<span className="text-stone-400 font-medium">.ai</span></Link>
-          </div>
-        </nav>
+        <Nav />
         <main className="pt-32 px-6 bg-white min-h-screen">
           <div className="max-w-xl mx-auto text-center">
             <div className="text-5xl mb-6">✅</div>
@@ -75,21 +72,13 @@ export default function ContactPage() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-stone-200">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="text-xl font-black text-green-800 tracking-tight">Makr<span className="text-stone-400 font-medium">.ai</span></Link>
-          <div className="hidden md:flex items-center gap-6 text-sm text-stone-500">
-            <Link href="/services" className="hover:text-stone-900 transition">Services</Link>
-            <Link href="/pricing" className="hover:text-stone-900 transition">Pricing</Link>
-          </div>
-        </div>
-      </nav>
+      <Nav />
 
       <main className="pt-32 pb-24 px-6 bg-white">
         <div className="max-w-xl mx-auto">
           <div className="text-center mb-10">
-            <h1 className="text-4xl font-black text-stone-900 mb-3">Claim your free build</h1>
-            <p className="text-stone-500">Tell us about your business and pick what you need most — website, booking system, voice agent, or automation. Included with any plan, no setup fee.</p>
+            <h1 className="text-4xl font-black text-stone-900 mb-3">Book a Revenue Assessment</h1>
+            <p className="text-stone-500">Tell us about your business and we&apos;ll show you exactly how many calls you&apos;re missing and what they&apos;re worth. Free, no commitment.</p>
           </div>
 
           <div className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm">
