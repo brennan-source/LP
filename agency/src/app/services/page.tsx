@@ -1,201 +1,102 @@
 import Link from "next/link";
+import Nav from "@/components/Nav";
 
-const GROWTH_SERVICES = [
-  {
-    icon: "🎁",
-    title: "Free Build — Your Choice",
-    tagline: "Pick one, no setup fee, included with any plan",
-    body: "Sign up for any plan and choose one free build: a professional website, online booking system, voice agent, AI chat widget, first automation, or SEO/GBP setup. We deliver it, you own it after month 4.",
-    bullets: ["Professional website", "Online booking system", "AI voice agent", "AI chat widget", "First automation (quotes, invoices, or follow-up)", "Local SEO / GBP optimization"],
-  },
-  {
-    icon: "📍",
-    title: "Local SEO",
-    tagline: "Get found on Google Maps",
-    body: "We optimize your Google Business Profile, build local citations, and publish keyword-targeted content every month. Your competitors are doing this — you should be too.",
-    bullets: ["Google Business Profile optimization", "Local keyword targeting", "Monthly blog posts", "Citation building", "Rankings tracking"],
-  },
-  {
-    icon: "📣",
-    title: "Google Ads Management",
-    tagline: "Every dollar working harder",
-    body: "We set up and manage your Google Ads campaigns — no wasted spend, no guesswork. $300 of your ad budget managed in the Growth plan.",
-    bullets: ["Campaign setup", "Keyword research", "Ad copywriting", "Bid management", "Monthly reporting"],
-  },
-  {
-    icon: "📱",
-    title: "Social & Email",
-    tagline: "Stay visible without the work",
-    body: "2 social posts per week plus a monthly email newsletter to your customer list. Seasonal promotions, before/after photos, review requests — handled.",
-    bullets: ["Content creation", "2 social posts/week", "Monthly email newsletter", "Seasonal promotions", "Review request sequences"],
-  },
+const RECEPTIONIST_FEATURES = [
+  { icon: "📞", title: "AI Voice Receptionist", body: "Answers every call 24/7 with a natural, professional voice. Handles after-hours, weekends, and emergencies." },
+  { icon: "✅", title: "Lead Qualification", body: "Asks the right questions — job type, location, urgency, budget — so every lead is pre-qualified before you call back." },
+  { icon: "📅", title: "Appointment Booking", body: "Books directly into your calendar. No back-and-forth, no double-booking, no manual entry." },
+  { icon: "💬", title: "Missed-Call Text-Back", body: "If a call isn't answered, an automated text goes out within seconds to keep the lead warm." },
+  { icon: "🔗", title: "CRM & Calendar Integration", body: "Syncs with ServiceTitan, Housecall Pro, Jobber, and other field service platforms." },
+  { icon: "📋", title: "Call Summaries", body: "After every call you get a clean summary — what was said, what was booked, what needs follow-up." },
 ];
 
-const OPS_SERVICES = [
-  {
-    icon: "💬",
-    title: "Lead & Booking Automation",
-    tagline: "Never lose a lead to slow follow-up",
-    body: "AI chat widget on your site that answers questions and books appointments 24/7. Automated follow-up sequences so leads don't go cold while you're on a job.",
-    bullets: ["AI chat widget", "Automated lead follow-up", "Online booking integration", "Missed call text-back", "CRM setup"],
-  },
-  {
-    icon: "📋",
-    title: "Quoting & Billing",
-    tagline: "Get paid faster with less friction",
-    body: "Automated estimate delivery, invoice follow-up, and payment collection. Stop manually chasing customers — the system does it.",
-    bullets: ["Digital quote templates", "Automated invoice reminders", "Online payment collection", "Job approval workflows", "QuickBooks / accounting sync"],
-  },
-  {
-    icon: "📅",
-    title: "Scheduling & Dispatch",
-    tagline: "Stop playing phone tag with your crew",
-    body: "Job scheduling, crew assignments, and dispatch — all automated. Customers get confirmations and reminders. Your team always knows where to be.",
-    bullets: ["Online customer scheduling", "Crew job assignments", "Automated confirmations & reminders", "Route optimization", "Field updates via mobile"],
-  },
-  {
-    icon: "🏢",
-    title: "Back Office & HR",
-    tagline: "Run your business, not paperwork",
-    body: "HR onboarding workflows, payroll integrations, time tracking, and reporting dashboards. Built for small teams that don't have an office manager.",
-    bullets: ["Employee onboarding automation", "Payroll workflow setup", "Time tracking integration", "Job costing & margin reporting", "Document management"],
-  },
+const AUTOMATION_FEATURES = [
+  { icon: "🔁", title: "Lead Follow-Up", body: "Automated sequences that follow up on unclosed leads. Most booked jobs come from follow-up, not first contact." },
+  { icon: "📝", title: "Estimate Follow-Up", body: "Quotes sent. No response? Automated reminders go out until the job is won or lost — not forgotten." },
+  { icon: "⭐", title: "Review Automation", body: "Post-job review requests sent automatically. Your Google rating climbs without you lifting a finger." },
+  { icon: "🔔", title: "Customer Reactivation", body: "Win back past customers with targeted outreach tied to seasonal demand or service intervals." },
 ];
 
-export default function ServicesPage() {
+export default function SolutionsPage() {
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-stone-200">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="text-xl font-black text-green-800 tracking-tight">Makr<span className="text-stone-400 font-medium">.ai</span></Link>
-          <div className="hidden md:flex items-center gap-6 text-sm text-stone-500">
-            <Link href="/services" className="text-stone-900 font-medium">Services</Link>
-            <Link href="/pricing" className="hover:text-stone-900 transition">Pricing</Link>
-            <Link href="/contact" className="px-4 py-2 bg-green-700 hover:bg-green-600 text-white rounded-lg transition font-medium">Get Started</Link>
-          </div>
-        </div>
-      </nav>
+      <Nav activePath="/services" />
 
       <main className="pt-32 pb-24 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
+
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-black text-stone-900 mb-4">What we do</h1>
+            <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-3">Solutions</p>
+            <h1 className="text-5xl font-black text-stone-900 mb-4">Everything starts with the phone</h1>
             <p className="text-stone-500 text-lg max-w-2xl mx-auto">
-              Start with the phone. Every other system we build works better because the call is handled first. One free build included with every plan — you choose what you need most.
+              Start with call answering. Build from there. Every solution we offer is designed to capture more revenue from the leads you&apos;re already getting.
             </p>
           </div>
 
-          {/* AI call answering — the wedge */}
-          <div className="mb-16 bg-green-50 border border-green-200 rounded-2xl p-8 md:p-10">
-            <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-3">Start here</p>
-            <div className="flex flex-col md:flex-row md:items-start gap-6">
-              <div className="text-5xl shrink-0">📞</div>
+          {/* AI Receptionist — primary */}
+          <div className="mb-16">
+            <div className="mb-8 pb-4 border-b border-stone-200 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
               <div>
-                <h2 className="text-2xl font-black text-stone-900 mb-1">AI Call Answering & Booking</h2>
-                <p className="text-green-700 text-sm font-medium mb-3">Every call answered. Every lead booked. 24/7.</p>
-                <p className="text-stone-600 leading-relaxed mb-4">
-                  Our AI voice agent answers your phone around the clock, qualifies leads, and books appointments — even while you&apos;re on a job. Most home service businesses miss 1 in 3 calls. We make sure yours gets answered every time.
+                <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-1">Core product</p>
+                <h2 className="text-3xl font-black text-stone-900">AI Receptionist</h2>
+                <p className="text-stone-500 mt-1">Answer every call. Qualify every lead. Book every job.</p>
+              </div>
+              <Link href="/pricing" className="text-sm text-green-700 font-medium hover:text-green-600 transition shrink-0">
+                See pricing →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {RECEPTIONIST_FEATURES.map((f) => (
+                <div key={f.title} className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:border-green-300 hover:shadow-md transition">
+                  <div className="text-3xl mb-3">{f.icon}</div>
+                  <h3 className="font-bold text-stone-900 mb-2">{f.title}</h3>
+                  <p className="text-stone-500 text-sm leading-relaxed">{f.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Revenue Automation */}
+          <div className="mb-16">
+            <div className="mb-8 pb-4 border-b border-stone-200">
+              <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-1">Grow plan</p>
+              <h2 className="text-3xl font-black text-stone-900">Revenue Automation</h2>
+              <p className="text-stone-500 mt-1">What happens after the call is answered — and after the job is done.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {AUTOMATION_FEATURES.map((f) => (
+                <div key={f.title} className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:border-green-300 hover:shadow-md transition">
+                  <div className="text-3xl mb-3">{f.icon}</div>
+                  <h3 className="font-bold text-stone-900 mb-2">{f.title}</h3>
+                  <p className="text-stone-500 text-sm leading-relaxed">{f.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* AI Readiness Assessment */}
+          <div className="mb-16 bg-green-50 border border-green-200 rounded-2xl p-8 md:p-10">
+            <div className="flex flex-col md:flex-row md:items-start gap-8">
+              <div className="flex-1">
+                <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-2">Education entry point</p>
+                <h2 className="text-2xl font-black text-stone-900 mb-2">AI Readiness Assessment</h2>
+                <p className="text-stone-500 leading-relaxed mb-4">
+                  Not sure where to start? We&apos;ll audit your operations, identify your biggest gaps, and give you a clear roadmap — before you spend a dollar.
                 </p>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
-                  {["AI voice receptionist — 24/7", "Lead qualification & job booking", "Missed call text-back", "Automated confirmations & reminders", "AI chat widget for your website", "CRM setup & lead tracking"].map((b) => (
+                <ul className="space-y-1.5">
+                  {["AI maturity score", "Revenue opportunity analysis", "Operations audit", "Automation roadmap", "Priority recommendations"].map((b) => (
                     <li key={b} className="flex items-center gap-2 text-sm text-stone-600">
                       <span className="text-green-600 shrink-0">✓</span>{b}
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
-          </div>
-
-          {/* Growth services */}
-          <div className="mb-16">
-            <div className="mb-8 pb-4 border-b border-stone-200">
-              <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-1">Get more jobs</p>
-              <h2 className="text-2xl font-black text-stone-900">Marketing & Growth</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {GROWTH_SERVICES.map((service) => (
-                <div key={service.title} className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm hover:border-green-300 hover:shadow-md transition">
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h2 className="text-xl font-bold text-stone-900 mb-1">{service.title}</h2>
-                  <p className="text-green-700 text-sm font-medium mb-3">{service.tagline}</p>
-                  <p className="text-stone-500 mb-4 leading-relaxed">{service.body}</p>
-                  <ul className="space-y-1.5">
-                    {service.bullets.map((b) => (
-                      <li key={b} className="flex items-center gap-2 text-sm text-stone-600">
-                        <span className="text-green-600 shrink-0">✓</span>
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Ops services */}
-          <div className="mb-16">
-            <div className="mb-8 pb-4 border-b border-stone-200">
-              <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-1">Run your business</p>
-              <h2 className="text-2xl font-black text-stone-900">Operations & Automation</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {OPS_SERVICES.map((service) => (
-                <div key={service.title} className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm hover:border-green-300 hover:shadow-md transition">
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h2 className="text-xl font-bold text-stone-900 mb-1">{service.title}</h2>
-                  <p className="text-green-700 text-sm font-medium mb-3">{service.tagline}</p>
-                  <p className="text-stone-500 mb-4 leading-relaxed">{service.body}</p>
-                  <ul className="space-y-1.5">
-                    {service.bullets.map((b) => (
-                      <li key={b} className="flex items-center gap-2 text-sm text-stone-600">
-                        <span className="text-green-600 shrink-0">✓</span>
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* AI journey */}
-          <div className="mb-16">
-            <div className="mb-8 pb-4 border-b border-stone-200">
-              <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-1">The AI path</p>
-              <h2 className="text-2xl font-black text-stone-900">From first look to fully automated</h2>
-              <p className="text-stone-500 mt-2 text-sm max-w-2xl">Every business is at a different stage. We meet you where you are — from spotting what&apos;s costing you money to building the systems that run your whole business.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-stone-50 border border-stone-200 rounded-2xl p-6">
-                <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-3">Stage 1 — Understand</p>
-                <h3 className="text-lg font-bold text-stone-900 mb-2">Not sure where to start?</h3>
-                <p className="text-stone-500 text-sm leading-relaxed mb-3">We&apos;ll tell you exactly what&apos;s costing you money — for free. A quick scan spots your biggest gaps and gives you a clear picture before you spend a dollar.</p>
-                <ul className="space-y-1.5">
-                  {["Free AI scan", "AI Readiness Assessment", "Workflow audit", "Priority roadmap"].map((b) => (
-                    <li key={b} className="flex items-center gap-2 text-sm text-stone-600"><span className="text-green-600 shrink-0">✓</span>{b}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="bg-stone-50 border border-stone-200 rounded-2xl p-6">
-                <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-3">Stage 2 — Build</p>
-                <h3 className="text-lg font-bold text-stone-900 mb-2">Pick one thing to fix first.</h3>
-                <p className="text-stone-500 text-sm leading-relaxed mb-3">See results in days, not months. We build your first automation, train your team, and prove it works before you commit to more.</p>
-                <ul className="space-y-1.5">
-                  {["AI Training Workshop", "Quick Win automation build", "Ops Core (quoting, scheduling, payments)", "Back Office (HR, payroll, reporting)"].map((b) => (
-                    <li key={b} className="flex items-center gap-2 text-sm text-stone-600"><span className="text-green-600 shrink-0">✓</span>{b}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="bg-stone-50 border border-stone-200 rounded-2xl p-6">
-                <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-3">Stage 3 — Scale</p>
-                <h3 className="text-lg font-bold text-stone-900 mb-2">Ready to run a fully automated business?</h3>
-                <p className="text-stone-500 text-sm leading-relaxed mb-3">We build the whole stack — quoting, scheduling, payments, HR, payroll, and reporting. Custom dashboards, ERP integrations, and ongoing management so you can focus on growing.</p>
-                <ul className="space-y-1.5">
-                  {["Custom dashboards & reporting", "Multi-location operations", "ERP & software integrations", "Ongoing AI consulting"].map((b) => (
-                    <li key={b} className="flex items-center gap-2 text-sm text-stone-600"><span className="text-green-600 shrink-0">✓</span>{b}</li>
-                  ))}
-                </ul>
+              <div className="shrink-0">
+                <p className="text-2xl font-black text-green-700 mb-1">Free</p>
+                <p className="text-stone-400 text-xs mb-4">for qualified contractors</p>
+                <Link href="/contact" className="inline-block px-5 py-2.5 bg-green-700 hover:bg-green-600 text-white rounded-xl font-semibold transition text-sm">
+                  Book Assessment
+                </Link>
               </div>
             </div>
           </div>
@@ -205,8 +106,24 @@ export default function ServicesPage() {
               See Pricing
             </Link>
           </div>
+
         </div>
       </main>
+
+      <footer className="border-t border-stone-200 py-8 px-6 bg-white">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-stone-400 text-sm">
+          <span className="font-black text-green-800">Makr<span className="text-stone-400 font-medium">.ai</span></span>
+          <div className="flex gap-6">
+            <Link href="/services" className="hover:text-stone-700 transition">Solutions</Link>
+            <Link href="/industries" className="hover:text-stone-700 transition">Industries</Link>
+            <Link href="/resources" className="hover:text-stone-700 transition">Resources</Link>
+            <Link href="/pricing" className="hover:text-stone-700 transition">Pricing</Link>
+            <Link href="/about" className="hover:text-stone-700 transition">About</Link>
+            <Link href="/contact" className="hover:text-stone-700 transition">Contact</Link>
+          </div>
+          <span>© {new Date().getFullYear()} Makr.ai. All rights reserved.</span>
+        </div>
+      </footer>
     </>
   );
 }
