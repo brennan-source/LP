@@ -63,7 +63,6 @@ export default function PricingPage() {
       <main className="pt-32 pb-24 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
 
-          {/* Header */}
           <div className="text-center mb-16">
             <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-3">Pricing</p>
             <h1 className="text-5xl font-black text-stone-900 mb-4">Simple, transparent pricing</h1>
@@ -75,7 +74,6 @@ export default function PricingPage() {
             </p>
           </div>
 
-          {/* Tiers */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {TIERS.map((tier) => (
               <div
@@ -128,7 +126,6 @@ export default function PricingPage() {
             ))}
           </div>
 
-          {/* Setup & integrations */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
             <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8">
               <h2 className="text-lg font-bold text-stone-900 mb-2">Setup</h2>
@@ -151,7 +148,6 @@ export default function PricingPage() {
             </div>
           </div>
 
-          {/* AI Readiness Assessment */}
           <div className="bg-green-50 border border-green-200 rounded-2xl p-8 md:p-10 mb-16">
             <div className="flex flex-col md:flex-row md:items-start gap-8">
               <div className="flex-1">
@@ -179,7 +175,6 @@ export default function PricingPage() {
             </div>
           </div>
 
-          {/* Custom */}
           <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h2 className="text-xl font-bold text-stone-900 mb-1">Custom / Enterprise</h2>

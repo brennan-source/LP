@@ -33,7 +33,6 @@ export default function SolutionsPage() {
             </p>
           </div>
 
-          {/* AI Receptionist — primary */}
           <div className="mb-16">
             <div className="mb-8 pb-4 border-b border-stone-200 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
               <div>
@@ -56,7 +55,6 @@ export default function SolutionsPage() {
             </div>
           </div>
 
-          {/* Revenue Automation */}
           <div className="mb-16">
             <div className="mb-8 pb-4 border-b border-stone-200">
               <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-1">Grow plan</p>
@@ -74,7 +72,6 @@ export default function SolutionsPage() {
             </div>
           </div>
 
-          {/* AI Readiness Assessment */}
           <div className="mb-16 bg-green-50 border border-green-200 rounded-2xl p-8 md:p-10">
             <div className="flex flex-col md:flex-row md:items-start gap-8">
               <div className="flex-1">

@@ -110,7 +110,6 @@ export default function HomePage() {
             <p className="text-stone-500 text-lg max-w-xl mx-auto">One system that answers every call, qualifies every lead, and books every job — automatically.</p>
           </div>
 
-          {/* Flow diagram */}
           <div className="flex flex-wrap justify-center items-center gap-2 mb-12">
             {FLOW_STEPS.map((step, i) => (
               <div key={step} className="flex items-center gap-2">

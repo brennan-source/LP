@@ -32,7 +32,6 @@ export default function ResourcesPage() {
             </p>
           </div>
 
-          {/* AI Readiness Assessment */}
           <div className="bg-green-50 border border-green-200 rounded-2xl p-8 md:p-10 mb-16">
             <div className="flex flex-col md:flex-row md:items-start gap-8">
               <div className="flex-1">
@@ -68,7 +67,6 @@ export default function ResourcesPage() {
             </div>
           </div>
 
-          {/* Workshops */}
           <div className="mb-16">
             <div className="mb-8 pb-4 border-b border-stone-200">
               <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-1">Workshops</p>
@@ -90,7 +88,6 @@ export default function ResourcesPage() {
             </div>
           </div>
 
-          {/* Guides */}
           <div className="mb-16">
             <div className="mb-8 pb-4 border-b border-stone-200">
               <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-1">Guides</p>
@@ -111,7 +108,6 @@ export default function ResourcesPage() {
             </div>
           </div>
 
-          {/* Webinars placeholder */}
           <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8 text-center">
             <h2 className="text-xl font-bold text-stone-900 mb-2">Webinars & Recordings</h2>
             <p className="text-stone-500 text-sm max-w-xl mx-auto mb-4">Live webinars and recorded sessions on AI for local businesses — coming soon. Sign up to be notified.</p>
