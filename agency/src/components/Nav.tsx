@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Nav({ activePath }: { activePath?: string }) {
+export function Nav({ activePath }: { activePath?: string }) {
   const links = [
     { href: "/", label: "Home" },
     { href: "/services", label: "Solutions" },
@@ -40,3 +40,5 @@ export default function Nav({ activePath }: { activePath?: string }) {
     </nav>
   );
 }
+
+export default Nav;
