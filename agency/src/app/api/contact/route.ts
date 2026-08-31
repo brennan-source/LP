@@ -1,46 +1,51 @@
 import { Resend } from "resend";
+import { NextRequest, NextResponse } from "next/server";
 
-const TO_EMAIL = process.env.CONTACT_EMAIL ?? "brennan@gomakr.ai";
+const resend = new Resend(process.env.RESEND_API_KEY);
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "brennan@gomakr.ai";
 
-export async function POST(request: Request) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
+export async function POST(req: NextRequest) {
   try {
-    const body = await request.json() as {
-      name?: string;
-      businessName?: string;
-      phone?: string;
-      city?: string;
-      industry?: string;
-      website?: string;
-      message?: string;
-    };
+    const body = await req.json();
+    const { name, businessName, phone, email, industry } = body;
 
-    if (!body.name || !body.businessName || !body.phone || !body.city || !body.industry) {
-      return Response.json({ error: "Missing required fields" }, { status: 400 });
+    if (!name || !businessName || !phone || !email || !industry) {
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
+      );
     }
 
+    const optionalFields = [
+      body.serviceCategory && `Service category: ${body.serviceCategory}`,
+      body.revenue && `Annual revenue: ${body.revenue}`,
+      body.website && `Website: ${body.website}`,
+      body.message && `Message: ${body.message}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
     await resend.emails.send({
-      from: "Makr Website <noreply@gomakr.ai>",
-      to: [TO_EMAIL],
-      subject: `New lead: ${body.businessName} (${body.industry}, ${body.city})`,
-      text: `
-New lead from gomakr.ai
-
-Name: ${body.name}
-Business: ${body.businessName}
-Phone: ${body.phone}
-City: ${body.city}
-Industry: ${body.industry}
-Website: ${body.website || "none"}
-
-Message:
-${body.message || "(none)"}
-      `.trim(),
+      from: "noreply@gomakr.ai",
+      to: CONTACT_EMAIL,
+      subject: `New assessment request: ${businessName} (${industry})`,
+      text: [
+        `Name: ${name}`,
+        `Business: ${businessName}`,
+        `Phone: ${phone}`,
+        `Email: ${email}`,
+        `Industry: ${industry}`,
+        optionalFields,
+      ]
+        .filter(Boolean)
+        .join("\n"),
     });
 
-    return Response.json({ ok: true });
-  } catch (err) {
-    const message = err instanceof Error ? err.message : "Internal server error";
-    return Response.json({ error: message }, { status: 500 });
+    return NextResponse.json({ ok: true });
+  } catch {
+    return NextResponse.json(
+      { error: "Failed to send. Please email brennan@gomakr.ai directly." },
+      { status: 500 }
+    );
   }
 }

@@ -5,7 +5,7 @@ export function Nav({ activePath }: { activePath?: string }) {
     { href: "/", label: "Home" },
     { href: "/services", label: "Solutions" },
     { href: "/industries", label: "Industries" },
-    { href: "/resources", label: "Resources" },
+    { href: "/how-it-works", label: "How It Works" },
     { href: "/pricing", label: "Pricing" },
     { href: "/about", label: "About" },
   ];
@@ -30,11 +30,11 @@ export function Nav({ activePath }: { activePath?: string }) {
             href="/contact"
             className="px-4 py-2 bg-green-700 hover:bg-green-600 text-white rounded-lg transition font-medium"
           >
-            Book a Demo
+            Book an Assessment
           </Link>
         </div>
         <Link href="/contact" className="md:hidden px-3 py-1.5 bg-green-700 text-white text-sm rounded-lg font-medium">
-          Book a Demo
+          Book an Assessment
         </Link>
       </div>
     </nav>
