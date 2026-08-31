@@ -4,7 +4,7 @@ import Nav from "@/components/Nav";
 const RETAINERS = [
   {
     name: "Essentials",
-    price: "$1,800",
+    price: "$1,500",
     period: "/month",
     tagline: "Core AI capture running 24/7.",
     description:
@@ -44,7 +44,7 @@ const RETAINERS = [
 const PROJECTS_AND_CUSTOM = [
   {
     name: "Projects",
-    price: "$5,000–$25,000+",
+    price: "$4,000–$10,000+",
     period: "one-time, per project",
     tagline: "Scoped builds. No monthly commitment.",
     description:
@@ -79,11 +79,40 @@ const PROJECTS_AND_CUSTOM = [
   },
 ];
 
-const PILLAR_COVERAGE = [
-  { name: "Essentials", grow: true, operate: false, enable: false },
-  { name: "Growth", grow: true, operate: true, enable: true },
-  { name: "Projects", grow: true, operate: true, enable: false },
-  { name: "Enterprise", grow: true, operate: true, enable: true },
+const DECISION_CARDS = [
+  {
+    label: "Start with Essentials",
+    accent: "border-green-700",
+    badge: "bg-green-700",
+    fit: "You're losing revenue from missed calls and slow follow-up, and want to prove the ROI before going deeper.",
+    signs: [
+      "Calls go to voicemail after hours",
+      "Leads slip through without follow-up",
+      "You want results before a bigger commitment",
+    ],
+  },
+  {
+    label: "Start with Growth",
+    accent: "border-green-800",
+    badge: "bg-green-800",
+    fit: "You're ready to run your revenue operations end to end and want a dedicated partner managing it.",
+    signs: [
+      "You're already capturing leads but losing them later",
+      "Estimates go unfollowed, reviews go unrequested",
+      "You want someone accountable for outcomes",
+    ],
+  },
+  {
+    label: "Start with a Project",
+    accent: "border-brass",
+    badge: "bg-brass",
+    fit: "You have a specific system to build and don't want a monthly commitment.",
+    signs: [
+      "CRM buildout, scheduling automation, billing workflow",
+      "You want to own it outright",
+      "You'll manage it internally after handoff",
+    ],
+  },
 ];
 
 export default function PricingPage() {
@@ -122,7 +151,7 @@ export default function PricingPage() {
                 {t.featured && (
                   <div className="px-7 pt-5 pb-0">
                     <span className="text-xs font-bold uppercase tracking-widest text-green-200">
-                      Flagship · Most Popular
+                      Flagship &middot; Most Popular
                     </span>
                   </div>
                 )}
@@ -184,7 +213,7 @@ export default function PricingPage() {
       {/* Projects + Enterprise */}
       <section className="py-16 px-6 bg-white border-y border-brass-light">
         <div className="max-w-6xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-brass mb-8">One-time & custom</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-brass mb-8">One-time &amp; custom</p>
           <div className="grid md:grid-cols-2 gap-6">
             {PROJECTS_AND_CUSTOM.map((t) => (
               <div key={t.name} className="bg-canvas border border-brass-light rounded-sm flex flex-col">
@@ -224,40 +253,28 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Pillar coverage */}
+      {/* Which tier fits? */}
       <section className="py-16 px-6 bg-canvas">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-display font-bold text-3xl text-ink mb-2">Pillar coverage by tier</h2>
-          <p className="text-ink-mid text-sm mb-8">
-            Makr&apos;s three pillars — Grow, Operate, Enable — each map to different engagement types.
-          </p>
-          <div className="bg-white border border-brass-light rounded-sm overflow-hidden">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-brass-light">
-                  <th className="text-left py-3 px-5 font-semibold text-ink-mid">Tier</th>
-                  <th className="text-center py-3 px-4 font-semibold text-green-700">Grow</th>
-                  <th className="text-center py-3 px-4 font-semibold text-green-800">Operate</th>
-                  <th className="text-center py-3 px-4 font-semibold text-brass">Enable</th>
-                </tr>
-              </thead>
-              <tbody>
-                {PILLAR_COVERAGE.map((row, i) => (
-                  <tr key={row.name} className={i < PILLAR_COVERAGE.length - 1 ? "border-b border-brass-light" : ""}>
-                    <td className="py-3 px-5 text-ink font-medium">{row.name}</td>
-                    <td className="text-center py-3 px-4">
-                      {row.grow ? <span className="text-green-600 font-bold">✓</span> : <span className="text-ink-light">—</span>}
-                    </td>
-                    <td className="text-center py-3 px-4">
-                      {row.operate ? <span className="text-green-600 font-bold">✓</span> : <span className="text-ink-light">—</span>}
-                    </td>
-                    <td className="text-center py-3 px-4">
-                      {row.enable ? <span className="text-brass font-bold">✓</span> : <span className="text-ink-light">—</span>}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-display font-bold text-3xl text-ink mb-2">Which tier fits your situation?</h2>
+          <p className="text-ink-mid text-sm mb-10">Most clients know within the first conversation. Here&apos;s a quick read.</p>
+          <div className="grid md:grid-cols-3 gap-5">
+            {DECISION_CARDS.map((card) => (
+              <div key={card.label} className={`bg-white border-l-4 ${card.accent} rounded-sm p-6`}>
+                <div className={`inline-block ${card.badge} text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-4`}>
+                  {card.label}
+                </div>
+                <p className="text-ink-mid text-sm leading-relaxed mb-5">{card.fit}</p>
+                <ul className="space-y-2">
+                  {card.signs.map((s) => (
+                    <li key={s} className="text-xs text-ink-mid flex items-start gap-2">
+                      <span className="text-green-600 mt-0.5 shrink-0">→</span>
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -294,7 +311,7 @@ export default function PricingPage() {
             Ready to get started?
           </h2>
           <p className="mt-6 text-green-200 text-lg max-w-lg">
-            Book an AI Opportunity Assessment. We&apos;ll identify where AI creates the most value for your business and give you a clear plan.
+            Book an AI Opportunity Assessment. We'll identify where AI creates the most value for your business and give you a clear plan.
           </p>
           <div className="mt-10 flex flex-wrap gap-4 items-center">
             <Link
