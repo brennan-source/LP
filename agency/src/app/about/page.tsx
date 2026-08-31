@@ -1,117 +1,141 @@
 import Link from "next/link";
 import Nav from "@/components/Nav";
 
+const PILLARS = [
+  {
+    name: "Grow",
+    body: "Capture more leads, book more jobs, and reactivate lapsed customers with AI systems that work around the clock.",
+  },
+  {
+    name: "Operate",
+    body: "Automate the repetitive administrative work that consumes hours every week — scheduling, billing, follow-up, reporting.",
+  },
+  {
+    name: "Enable",
+    body: "Build AI into how your team works — with practical training, the right tools, and prompt frameworks built for your workflows.",
+  },
+];
+
 const GEOGRAPHY = [
-  "Greater Boston", "North Shore", "Merrimack Valley",
-  "Southern New Hampshire", "MetroWest", "Expanding across New England",
+  "Greater Boston", "North Shore MA", "Merrimack Valley", "Southern NH", "MetroWest", "Expanding across New England",
 ];
 
 export default function AboutPage() {
   return (
-    <>
-      <Nav activePath="/about" />
+    <div className="min-h-screen bg-stone-50 text-stone-800">
+      <Nav />
 
-      <main className="pt-32 pb-24 px-6 bg-white">
+      {/* Header */}
+      <section className="bg-white pt-24 pb-16 px-6 text-center">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-sm font-semibold uppercase tracking-widest text-green-700 mb-4">About Makr</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-stone-900 mb-6">
+            We help service businesses grow by making AI practical.
+          </h1>
+          <p className="text-xl text-stone-600">
+            Not AI experiments. Not generic chatbots. Not disconnected software tools.
+            Business systems. Business outcomes.
+          </p>
+        </div>
+      </section>
+
+      {/* Built in New England */}
+      <section className="py-16 px-6 bg-green-800 text-white">
         <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4">Built in New England.</h2>
+          <p className="text-green-100 text-lg mb-6 max-w-2xl">
+            Makr is based in New England, and that matters. We work with local contractors and service businesses
+            — not as a distant SaaS vendor, but as a real partner who shows up, picks up the phone, and builds
+            things that actually fit your operation.
+          </p>
+          <p className="text-green-200 mb-8">
+            Local relationships are how we learn what works. When an HVAC company in Andover tells us something
+            isn&apos;t landing the way they expected, we fix it — fast. That feedback loop is part of what we offer.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {GEOGRAPHY.map((g) => (
+              <span key={g} className="text-sm bg-green-700 text-white px-4 py-2 rounded-full">
+                {g}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <div className="mb-12">
-            <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-3">About</p>
-            <h1 className="text-5xl font-black text-stone-900 mb-6">We make AI work for growing businesses.</h1>
-            <p className="text-xl text-stone-500 leading-relaxed mb-6">
-              Makr is an AI Revenue Operations company focused on one thing: helping home service businesses capture more revenue and operate more efficiently with practical AI.
+      {/* Brand promise */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold mb-8">What we believe</h2>
+          <div className="space-y-6 text-stone-600 text-lg">
+            <p>
+              Most service businesses aren&apos;t losing money from one big failure. They&apos;re leaking it
+              across six smaller ones — unanswered calls, slow follow-up, manual admin, disconnected software,
+              unsold estimates, teams underusing tools they already pay for.
             </p>
-            <p className="text-stone-500 leading-relaxed">
-              We don&apos;t sell AI. We don&apos;t sell software. We don&apos;t sell marketing. We deploy AI across your business to help you grow — and we measure success in revenue, not features.
+            <p>
+              AI can close most of those gaps. But only if it&apos;s designed for your business, implemented
+              correctly, and managed over time. That&apos;s not what most software vendors do. It&apos;s exactly
+              what Makr does.
+            </p>
+            <p>
+              We don&apos;t sell software subscriptions. We build business systems — and we measure success in
+              revenue captured, hours saved, and growth generated.
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* Local positioning — prominent */}
-          <div className="bg-green-900 rounded-2xl p-8 md:p-10 mb-12">
-            <div className="flex flex-col md:flex-row items-start gap-6">
-              <div className="text-4xl">📍</div>
-              <div>
-                <h2 className="text-2xl font-black text-white mb-3">Built in New England</h2>
-                <p className="text-green-200 leading-relaxed mb-4">
-                  We&apos;re not a remote SaaS vendor. We&apos;re a local company serving contractors across Massachusetts, New Hampshire, and beyond. We know the market, the seasons, and the customers you&apos;re trying to reach.
-                </p>
-                <p className="text-green-300 text-sm font-semibold">Local matters. Relationships matter.</p>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {GEOGRAPHY.map((g) => (
-                    <span key={g} className="px-3 py-1 bg-green-800 border border-green-700 rounded-full text-green-200 text-xs font-medium">
-                      {g}
-                    </span>
-                  ))}
+      {/* Pillars */}
+      <section className="py-16 px-6 bg-stone-100">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-8 text-center">Three pillars. One platform.</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {PILLARS.map((p) => (
+              <div key={p.name} className="bg-white rounded-xl p-6 shadow-sm">
+                <div className="inline-block bg-green-700 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
+                  {p.name}
                 </div>
+                <p className="text-stone-600 text-sm">{p.body}</p>
               </div>
-            </div>
+            ))}
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8">
-              <h2 className="text-xl font-bold text-stone-900 mb-4">Our brand promise</h2>
-              <p className="text-stone-600 leading-relaxed mb-4">
-                <strong>Makr helps home service businesses capture more revenue and operate more efficiently with practical AI.</strong>
-              </p>
-              <p className="text-stone-500 text-sm leading-relaxed">
-                AI isn&apos;t magic. It&apos;s a tool. We focus on the specific applications that produce measurable, immediate impact for home service businesses.
-              </p>
-            </div>
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8">
-              <h2 className="text-xl font-bold text-stone-900 mb-4">Our philosophy</h2>
-              <p className="text-stone-600 leading-relaxed mb-4">
-                <strong>Business outcomes first. Technology second.</strong>
-              </p>
-              <p className="text-stone-500 text-sm leading-relaxed">
-                Every capability we deploy maps to a measurable business outcome — more leads captured, more jobs booked, fewer hours wasted. If it doesn&apos;t move a number, we don&apos;t add it.
-              </p>
-            </div>
-          </div>
-
-          <div className="mb-12">
-            <h2 className="text-2xl font-black text-stone-900 mb-4">The four pillars</h2>
-            <p className="text-stone-500 mb-6">Every capability Makr deploys fits into one of four pillars. This keeps the platform focused while allowing it to grow with your business.</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { name: "Capture", desc: "Never miss an opportunity" },
-                { name: "Book", desc: "Convert leads into jobs" },
-                { name: "Operate", desc: "Eliminate office work" },
-                { name: "Grow", desc: "Build a growth engine" },
-              ].map((p) => (
-                <div key={p.name} className="bg-green-50 border border-green-200 rounded-xl p-5 text-center">
-                  <p className="font-black text-green-800 text-lg mb-1">{p.name}</p>
-                  <p className="text-stone-500 text-xs">{p.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-stone-50 border border-stone-200 rounded-2xl p-10 text-center">
-            <h2 className="text-3xl font-black text-stone-900 mb-3">Ready to work together?</h2>
-            <p className="text-stone-500 text-lg mb-6 max-w-xl mx-auto">
-              Book a free revenue assessment and we&apos;ll show you exactly where your business is leaving money on the table.
-            </p>
-            <Link href="/contact" className="inline-block px-8 py-4 bg-green-700 hover:bg-green-600 text-white font-bold text-lg rounded-xl transition">
-              Book a Revenue Assessment
-            </Link>
-          </div>
-
         </div>
-      </main>
+      </section>
 
-      <footer className="border-t border-stone-200 py-8 px-6 bg-white">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-stone-400 text-sm">
-          <span className="font-black text-green-800">Makr<span className="text-stone-400 font-medium">.ai</span></span>
-          <div className="flex gap-6">
-            <Link href="/services" className="hover:text-stone-700 transition">Solutions</Link>
-            <Link href="/industries" className="hover:text-stone-700 transition">Industries</Link>
-            <Link href="/resources" className="hover:text-stone-700 transition">Resources</Link>
-            <Link href="/pricing" className="hover:text-stone-700 transition">Pricing</Link>
-            <Link href="/about" className="hover:text-stone-700 transition">About</Link>
-            <Link href="/contact" className="hover:text-stone-700 transition">Contact</Link>
-          </div>
-          <span>© {new Date().getFullYear()} Makr.ai. All rights reserved.</span>
+      {/* Who we work with */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6">Who we work with</h2>
+          <p className="text-stone-600 mb-4">
+            Our sweet spot is established service businesses — typically $2M–$15M in revenue, 10–50 employees —
+            that are ready to build AI into their operations in a serious, accountable way.
+          </p>
+          <p className="text-stone-600 mb-4">
+            We work primarily with home service businesses (HVAC, plumbing, roofing, electrical, restoration,
+            landscaping), and are expanding into professional services and personal services.
+          </p>
+          <p className="text-stone-600">
+            If you want a real partner — not another tool to manage — we&apos;re the right fit.
+          </p>
         </div>
-      </footer>
-    </>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 px-6 bg-green-900 text-white text-center">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4">Ready to talk?</h2>
+          <p className="text-green-200 mb-8">
+            Book an AI Opportunity Assessment. We&apos;ll tell you honestly where AI can help your business —
+            and what the opportunity looks like before you commit to anything.
+          </p>
+          <Link
+            href="/contact"
+            className="bg-white text-green-900 px-10 py-4 rounded-lg font-bold text-lg hover:bg-green-50 transition inline-block"
+          >
+            Book an AI Opportunity Assessment
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 }

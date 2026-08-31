@@ -1,175 +1,156 @@
-// Makr Evidence Library
-// All statistics displayed on the website, with full sourcing.
-// Review and update at least every 6–12 months.
-// URLs marked [VERIFY] should be confirmed before publication.
-
 export interface EvidenceItem {
   id: string;
   vertical: "home-services" | "professional-services" | "personal-services" | "general";
-  industry?: string;
   stat: string;
   context: string;
   source: string;
   report: string;
   year: number;
   url: string;
-  verified: string; // ISO date last verified
+  verified: string;
   pagesUsed: string[];
   notes?: string;
 }
 
 export const EVIDENCE: EvidenceItem[] = [
-  // ─── HOME SERVICES ──────────────────────────────────────────────────────
+  // Home Services — Invoca 2026
   {
     id: "hs-answer-rate",
     vertical: "home-services",
-    stat: "52% of callers to home-service businesses speak with a person",
-    context: "Nearly half of all inbound calls go unanswered — direct revenue leakage at the top of the funnel.",
+    stat: "52% answer rate",
+    context: "Home service businesses answer only about half of inbound calls on average.",
     source: "Invoca",
-    report: "2026 Home Services Lead Conversion Benchmarks",
+    report: "Home Services Industry Benchmark Report 2026",
     year: 2026,
-    url: "https://www.invoca.com/resources/home-services-lead-conversion-benchmarks", // [VERIFY]
-    verified: "2026-08-31",
+    url: "https://www.invoca.com/blog/home-services-call-analytics-benchmarks", // [VERIFY]
+    verified: "pending",
     pagesUsed: ["/industries/home-services"],
-    notes: "Based on analysis of more than 70 million calls and 600 million minutes of conversation.",
+    notes: "Benchmark across home service verticals. Exact sample size not published.",
   },
   {
     id: "hs-lead-rate",
     vertical: "home-services",
-    stat: "38% of answered calls to home-service businesses are qualified leads",
-    context: "More than one in three answered calls represents a genuine revenue opportunity.",
+    stat: "38% lead conversion rate on answered calls",
+    context: "Of the calls that do get answered, only 38% result in a qualified lead.",
     source: "Invoca",
-    report: "2026 Home Services Lead Conversion Benchmarks",
+    report: "Home Services Industry Benchmark Report 2026",
     year: 2026,
-    url: "https://www.invoca.com/resources/home-services-lead-conversion-benchmarks", // [VERIFY]
-    verified: "2026-08-31",
+    url: "https://www.invoca.com/blog/home-services-call-analytics-benchmarks", // [VERIFY]
+    verified: "pending",
     pagesUsed: ["/industries/home-services"],
   },
   {
     id: "hs-call-conversion",
     vertical: "home-services",
-    stat: "45% of qualified home-service leads convert on the call",
-    context: "More than half of qualified leads don't convert on first contact — systematic follow-up is essential.",
+    stat: "45% call-to-appointment conversion",
+    context: "Less than half of inbound calls result in a booked appointment.",
     source: "Invoca",
-    report: "2026 Home Services Lead Conversion Benchmarks",
+    report: "Home Services Industry Benchmark Report 2026",
     year: 2026,
-    url: "https://www.invoca.com/resources/home-services-lead-conversion-benchmarks", // [VERIFY]
-    verified: "2026-08-31",
+    url: "https://www.invoca.com/blog/home-services-call-analytics-benchmarks", // [VERIFY]
+    verified: "pending",
     pagesUsed: ["/industries/home-services"],
   },
   {
-    id: "hs-no-ask",
+    id: "hs-no-ask-to-book",
     vertical: "home-services",
-    stat: "55% of home-service businesses don't ask leads to buy or book on the call",
-    context: "More than half of answered calls end without any attempt to convert — a structural conversion failure.",
+    stat: "55% of agents never ask the caller to book",
+    context: "More than half of call handlers fail to actively ask for the appointment.",
     source: "Invoca",
-    report: "2026 Home Services Lead Conversion Benchmarks",
+    report: "Home Services Industry Benchmark Report 2026",
     year: 2026,
-    url: "https://www.invoca.com/resources/home-services-lead-conversion-benchmarks", // [VERIFY]
-    verified: "2026-08-31",
+    url: "https://www.invoca.com/blog/home-services-call-analytics-benchmarks", // [VERIFY]
+    verified: "pending",
     pagesUsed: ["/industries/home-services"],
-  },
-  {
-    id: "hs-5pp-model",
-    vertical: "home-services",
-    stat: "Improving answer rate, lead rate, and call conversion each by 5 percentage points produces approximately 38% more conversions",
-    context: "Small, compounding improvements across the call funnel produce significant revenue impact.",
-    source: "Invoca",
-    report: "2026 Home Services Lead Conversion Benchmarks",
-    year: 2026,
-    url: "https://www.invoca.com/resources/home-services-lead-conversion-benchmarks", // [VERIFY]
-    verified: "2026-08-31",
-    pagesUsed: ["/industries/home-services"],
-    notes: "Modeled benchmark scenario from Invoca data. Not a guaranteed customer result.",
+    notes: "Refers to human agents failing to complete the conversion step.",
   },
 
-  // ─── PROFESSIONAL SERVICES ──────────────────────────────────────────────
+  // Professional Services — Thomson Reuters 2026
   {
-    id: "ps-genai-adoption",
+    id: "ps-org-genai-use",
     vertical: "professional-services",
-    stat: "Organization-wide GenAI use in professional services reached approximately 40% in 2026, up from 22% the prior year",
-    context: "AI adoption is accelerating rapidly — but most firms are still in early deployment.",
+    stat: "~40% of professional service organizations using GenAI (up from 22%)",
+    context: "Adoption has nearly doubled year-over-year but most firms are still early.",
     source: "Thomson Reuters",
-    report: "2026 AI in Professional Services Report",
+    report: "Future of Professionals Report 2026",
     year: 2026,
-    url: "https://www.thomsonreuters.com/en/reports/ai-in-professional-services.html", // [VERIFY]
-    verified: "2026-08-31",
-    pagesUsed: ["/industries/professional-services"],
-    notes: "Research covers more than 1,500 professionals across legal, tax, accounting, risk, fraud, and government.",
-  },
-  {
-    id: "ps-weekly-use",
-    vertical: "professional-services",
-    stat: "More than 80% of professional-services GenAI users use it weekly",
-    context: "Those who have adopted AI rely on it consistently — the gap is between adopters and the rest of the firm.",
-    source: "Thomson Reuters",
-    report: "2026 AI in Professional Services Report",
-    year: 2026,
-    url: "https://www.thomsonreuters.com/en/reports/ai-in-professional-services.html", // [VERIFY]
-    verified: "2026-08-31",
+    url: "https://www.thomsonreuters.com/en/reports/future-of-professionals.html", // [VERIFY]
+    verified: "pending",
     pagesUsed: ["/industries/professional-services"],
   },
   {
-    id: "ps-central-to-workflows",
+    id: "ps-weekly-users",
     vertical: "professional-services",
-    stat: "More than 90% of professional-services GenAI users expect AI to become central to workflows within five years",
-    context: "AI is becoming core infrastructure in professional services — not a passing experiment.",
+    stat: ">80% of AI-using professionals use it weekly",
+    context: "Among those who have adopted AI tools, usage is already habitual.",
     source: "Thomson Reuters",
-    report: "2026 AI in Professional Services Report",
+    report: "Future of Professionals Report 2026",
     year: 2026,
-    url: "https://www.thomsonreuters.com/en/reports/ai-in-professional-services.html", // [VERIFY]
-    verified: "2026-08-31",
+    url: "https://www.thomsonreuters.com/en/reports/future-of-professionals.html", // [VERIFY]
+    verified: "pending",
+    pagesUsed: ["/industries/professional-services"],
+  },
+  {
+    id: "ps-central-expectation",
+    vertical: "professional-services",
+    stat: ">90% expect AI to be central to their workflows within 5 years",
+    context: "Near-universal expectation of AI becoming core infrastructure.",
+    source: "Thomson Reuters",
+    report: "Future of Professionals Report 2026",
+    year: 2026,
+    url: "https://www.thomsonreuters.com/en/reports/future-of-professionals.html", // [VERIFY]
+    verified: "pending",
     pagesUsed: ["/industries/professional-services"],
   },
   {
     id: "ps-roi-tracking",
     vertical: "professional-services",
-    stat: "Only approximately 18% of professional-services organizations track AI ROI",
-    context: "Most firms are spending on AI without measuring its impact — a significant governance and value-realization gap.",
+    stat: "Only ~18% of firms track AI ROI",
+    context: "Most firms using AI cannot measure what it's actually delivering.",
     source: "Thomson Reuters",
-    report: "2026 AI in Professional Services Report",
+    report: "Future of Professionals Report 2026",
     year: 2026,
-    url: "https://www.thomsonreuters.com/en/reports/ai-in-professional-services.html", // [VERIFY]
-    verified: "2026-08-31",
+    url: "https://www.thomsonreuters.com/en/reports/future-of-professionals.html", // [VERIFY]
+    verified: "pending",
     pagesUsed: ["/industries/professional-services"],
+    notes: "This is the core problem Makr solves for professional services: connecting AI to measurable outcomes.",
   },
   {
     id: "ps-agentic-adoption",
     vertical: "professional-services",
-    stat: "Agentic AI adoption in professional services is approximately 15%; another 53% are planning or considering it",
-    context: "Most professional-services firms see agentic AI as a priority but have not yet implemented it.",
+    stat: "~15% have adopted agentic AI; ~53% planning or considering it",
+    context: "Agentic AI (systems that act, not just answer) is the next wave — most firms haven't started.",
     source: "Thomson Reuters",
-    report: "2026 AI in Professional Services Report",
+    report: "Future of Professionals Report 2026",
     year: 2026,
-    url: "https://www.thomsonreuters.com/en/reports/ai-in-professional-services.html", // [VERIFY]
-    verified: "2026-08-31",
+    url: "https://www.thomsonreuters.com/en/reports/future-of-professionals.html", // [VERIFY]
+    verified: "pending",
     pagesUsed: ["/industries/professional-services"],
   },
 
-  // ─── PERSONAL / CONSUMER SERVICES ───────────────────────────────────────
+  // Personal Services — Invoca 2026
   {
     id: "cs-lead-rate",
     vertical: "personal-services",
-    stat: "34% of answered calls in consumer services are qualified leads",
-    context: "More than one in three answered calls represents a genuine booking opportunity.",
+    stat: "34% lead rate on answered calls",
+    context: "Personal service businesses convert roughly 1 in 3 answered calls to a lead.",
     source: "Invoca",
-    report: "2026 Consumer Services Lead Conversion Benchmarks",
+    report: "Consumer Services Industry Benchmark Report 2026",
     year: 2026,
-    url: "https://www.invoca.com/resources/consumer-services-lead-conversion-benchmarks", // [VERIFY]
-    verified: "2026-08-31",
+    url: "https://www.invoca.com/blog/consumer-services-call-analytics-benchmarks", // [VERIFY]
+    verified: "pending",
     pagesUsed: ["/industries/personal-services"],
-    notes: "Covers veterinary, tutoring/childcare, legal, storage, funeral services, and waste treatment.",
   },
   {
     id: "cs-call-conversion",
     vertical: "personal-services",
-    stat: "40% of qualified leads in consumer services convert on the call",
-    context: "60% of qualified leads don't book on first contact — follow-up and reactivation systems are critical.",
+    stat: "40% call-to-appointment conversion",
+    context: "4 in 10 answered calls result in a booked appointment in personal services.",
     source: "Invoca",
-    report: "2026 Consumer Services Lead Conversion Benchmarks",
+    report: "Consumer Services Industry Benchmark Report 2026",
     year: 2026,
-    url: "https://www.invoca.com/resources/consumer-services-lead-conversion-benchmarks", // [VERIFY]
-    verified: "2026-08-31",
+    url: "https://www.invoca.com/blog/consumer-services-call-analytics-benchmarks", // [VERIFY]
+    verified: "pending",
     pagesUsed: ["/industries/personal-services"],
   },
 ];
@@ -178,8 +159,6 @@ export function getEvidence(id: string): EvidenceItem | undefined {
   return EVIDENCE.find((e) => e.id === id);
 }
 
-export function getEvidenceByVertical(
-  vertical: EvidenceItem["vertical"]
-): EvidenceItem[] {
+export function getEvidenceByVertical(vertical: EvidenceItem["vertical"]): EvidenceItem[] {
   return EVIDENCE.filter((e) => e.vertical === vertical);
 }

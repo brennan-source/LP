@@ -1,12 +1,28 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import Nav from "@/components/Nav";
 
 const INDUSTRIES = [
-  "HVAC", "Plumbing", "Roofing", "Electrical", "Landscaping",
-  "Painting", "Pest Control", "Pressure Washing", "Pool Service", "Handyman", "Other",
+  "HVAC", "Plumbing", "Roofing", "Electrical", "Restoration",
+  "Landscaping", "Pest Control", "Accounting / Tax", "Legal",
+  "Consulting", "Dental", "Veterinary", "Med Spa / Aesthetics",
+  "Wellness / Therapy", "Fitness", "Beauty / Salon", "Other",
+];
+
+const SERVICE_CATEGORIES = [
+  { value: "home-services", label: "Home Services" },
+  { value: "professional-services", label: "Professional Services" },
+  { value: "personal-services", label: "Personal Services" },
+];
+
+const REVENUE_RANGES = [
+  { value: "under-500k", label: "Under $500K" },
+  { value: "500k-1m", label: "$500K – $1M" },
+  { value: "1m-3m", label: "$1M – $3M" },
+  { value: "3m-10m", label: "$3M – $10M" },
+  { value: "10m-30m", label: "$10M – $30M" },
+  { value: "over-30m", label: "Over $30M" },
 ];
 
 export default function ContactPage() {
@@ -14,106 +30,212 @@ export default function ContactPage() {
     name: "",
     businessName: "",
     phone: "",
-    city: "",
+    email: "",
+    serviceCategory: "",
     industry: "",
+    revenue: "",
     website: "",
     message: "",
   });
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setError("");
-    setSubmitting(true);
-
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
-
-    if (res.ok) {
-      setSubmitted(true);
-    } else {
-      const data = await res.json();
-      setError(data.error ?? "Something went wrong. Try emailing brennan@gomakr.ai directly.");
+    setStatus("loading");
+    setErrorMsg("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Something went wrong.");
+      }
+      setStatus("success");
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
     }
-    setSubmitting(false);
   }
 
-  if (submitted) {
+  if (status === "success") {
     return (
-      <>
+      <div className="min-h-screen bg-stone-50 text-stone-800">
         <Nav />
-        <main className="pt-32 px-6 bg-white min-h-screen">
-          <div className="max-w-xl mx-auto text-center">
-            <div className="text-5xl mb-6">✅</div>
-            <h1 className="text-3xl font-black text-stone-900 mb-4">You&apos;re all set.</h1>
-            <p className="text-stone-500 text-lg mb-6">We&apos;ll review your info and reach out within 24 hours — usually faster. Before we call, we&apos;ll pull a quick audit of your online presence so we come prepared.</p>
-            <Link href="/" className="text-green-700 hover:text-green-600 transition">← Back to home</Link>
-          </div>
-        </main>
-      </>
+        <div className="pt-32 pb-20 px-6 text-center max-w-xl mx-auto">
+          <div className="text-5xl mb-6">✓</div>
+          <h1 className="text-3xl font-bold mb-4">We&apos;ll be in touch soon.</h1>
+          <p className="text-stone-600 text-lg">
+            Thanks for reaching out. We review every request and will follow up within one business day.
+          </p>
+        </div>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className="min-h-screen bg-stone-50 text-stone-800">
       <Nav />
-
-      <main className="pt-32 pb-24 px-6 bg-white">
-        <div className="max-w-xl mx-auto">
-          <div className="text-center mb-10">
-            <h1 className="text-4xl font-black text-stone-900 mb-3">Book a Revenue Assessment</h1>
-            <p className="text-stone-500">Tell us about your business and we&apos;ll show you exactly how many calls you&apos;re missing and what they&apos;re worth. Free, no commitment.</p>
+      <section className="pt-24 pb-20 px-6">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold uppercase tracking-widest text-green-700 mb-4">Get Started</p>
+            <h1 className="text-4xl font-bold text-stone-900 mb-4">Book an AI Opportunity Assessment</h1>
+            <p className="text-stone-600 text-lg">
+              Tell us about your business. We&apos;ll review your submission and follow up to schedule a conversation.
+            </p>
           </div>
 
-          <div className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm">
-            <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm p-8 space-y-5">
+            <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-stone-700 mb-1.5">Your Name <span className="text-green-700">*</span></label>
-                <input type="text" required value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))} placeholder="John Smith" className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-stone-700 mb-1.5">Business Name <span className="text-green-700">*</span></label>
-                <input type="text" required value={form.businessName} onChange={(e) => setForm((f) => ({ ...f, businessName: e.target.value }))} placeholder="Smith's Plumbing" className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-stone-700 mb-1.5">Phone Number <span className="text-green-700">*</span></label>
-                <input type="tel" required value={form.phone} onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))} placeholder="(617) 555-0100" className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm" />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-1.5">City <span className="text-green-700">*</span></label>
-                  <input type="text" required value={form.city} onChange={(e) => setForm((f) => ({ ...f, city: e.target.value }))} placeholder="Boston" className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-1.5">Industry <span className="text-green-700">*</span></label>
-                  <select required value={form.industry} onChange={(e) => setForm((f) => ({ ...f, industry: e.target.value }))} className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl text-stone-900 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm">
-                    <option value="">Select…</option>
-                    {INDUSTRIES.map((i) => <option key={i} value={i}>{i}</option>)}
-                  </select>
-                </div>
+                <label className="block text-sm font-medium text-stone-700 mb-1">Name *</label>
+                <input
+                  name="name"
+                  required
+                  value={form.name}
+                  onChange={handleChange}
+                  className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  placeholder="Your name"
+                />
               </div>
               <div>
-                <label className="block text-sm font-medium text-stone-700 mb-1.5">Current Website (if any)</label>
-                <input type="url" value={form.website} onChange={(e) => setForm((f) => ({ ...f, website: e.target.value }))} placeholder="https://yoursite.com or leave blank" className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm" />
+                <label className="block text-sm font-medium text-stone-700 mb-1">Business Name *</label>
+                <input
+                  name="businessName"
+                  required
+                  value={form.businessName}
+                  onChange={handleChange}
+                  className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  placeholder="Your company"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-stone-700 mb-1">Phone *</label>
+                <input
+                  name="phone"
+                  type="tel"
+                  required
+                  value={form.phone}
+                  onChange={handleChange}
+                  className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  placeholder="(555) 555-5555"
+                />
               </div>
               <div>
-                <label className="block text-sm font-medium text-stone-700 mb-1.5">Anything else?</label>
-                <textarea rows={3} value={form.message} onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))} placeholder="Tell us about your business, goals, or any questions…" className="w-full px-4 py-3 bg-white border border-stone-300 rounded-xl text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-green-600 text-sm resize-none" />
+                <label className="block text-sm font-medium text-stone-700 mb-1">Email *</label>
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={handleChange}
+                  className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  placeholder="you@company.com"
+                />
               </div>
-              {error && <p className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg px-3 py-2">{error}</p>}
-              <button type="submit" disabled={submitting} className="w-full py-4 bg-green-700 hover:bg-green-600 disabled:opacity-50 text-white font-bold rounded-xl transition text-lg">
-                {submitting ? "Sending…" : "Book My Revenue Assessment"}
-              </button>
-              <p className="text-stone-400 text-xs text-center">Free. No commitment. We&apos;ll reach out within 24 hours.</p>
-            </form>
-          </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-stone-700 mb-1">Type of service business *</label>
+              <select
+                name="serviceCategory"
+                required
+                value={form.serviceCategory}
+                onChange={handleChange}
+                className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              >
+                <option value="">Select category</option>
+                {SERVICE_CATEGORIES.map((c) => (
+                  <option key={c.value} value={c.value}>{c.label}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-stone-700 mb-1">Industry *</label>
+              <select
+                name="industry"
+                required
+                value={form.industry}
+                onChange={handleChange}
+                className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              >
+                <option value="">Select industry</option>
+                {INDUSTRIES.map((i) => (
+                  <option key={i} value={i}>{i}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-stone-700 mb-1">Annual revenue (approximate) *</label>
+              <select
+                name="revenue"
+                required
+                value={form.revenue}
+                onChange={handleChange}
+                className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              >
+                <option value="">Select range</option>
+                {REVENUE_RANGES.map((r) => (
+                  <option key={r.value} value={r.value}>{r.label}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-stone-700 mb-1">Website (optional)</label>
+              <input
+                name="website"
+                type="url"
+                value={form.website}
+                onChange={handleChange}
+                className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                placeholder="https://yourcompany.com"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-stone-700 mb-1">Anything else you&apos;d like us to know? (optional)</label>
+              <textarea
+                name="message"
+                rows={4}
+                value={form.message}
+                onChange={handleChange}
+                className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
+                placeholder="Tell us about your biggest challenge, or what you're hoping to accomplish."
+              />
+            </div>
+
+            {status === "error" && (
+              <p className="text-red-600 text-sm">{errorMsg}</p>
+            )}
+
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="w-full bg-green-700 text-white py-3.5 rounded-lg font-semibold text-base hover:bg-green-800 transition disabled:opacity-60"
+            >
+              {status === "loading" ? "Submitting..." : "Book My Assessment"}
+            </button>
+
+            <p className="text-center text-xs text-stone-400">
+              Complimentary for qualified service businesses. Based in New England, serving contractors across MA, NH, and beyond.
+            </p>
+          </form>
         </div>
-      </main>
-    </>
+      </section>
+    </div>
   );
 }
