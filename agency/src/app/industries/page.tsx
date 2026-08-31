@@ -1,155 +1,155 @@
 import Link from "next/link";
 import Nav from "@/components/Nav";
 
-const INDUSTRIES = [
+const VERTICALS = [
   {
-    icon: "🌡️",
-    name: "HVAC",
-    hook: "Every emergency call answered, day or night",
-    bullets: [
-      "Emergency calls answered 24/7 — even at 2am",
-      "Seasonal demand handled without extra staff",
-      "Qualify jobs before dispatching a tech",
-      "Automated follow-up on estimates",
-    ],
+    name: "Home Services",
+    href: "/industries/home-services",
+    number: "01",
+    description:
+      "HVAC, plumbing, roofing, electrical, restoration, landscaping, pest control. Every call is a revenue opportunity. Speed-to-lead determines who wins the job.",
+    trades: ["HVAC", "Plumbing", "Roofing", "Electrical", "Restoration", "Landscaping", "Pest Control"],
+    stat: "52%",
+    statLabel: "average call answer rate industry-wide",
+    statDetail: "Nearly half of all inbound calls go unanswered. Every missed call is a lead a competitor captured.",
+    source: "Invoca 2026",
+    accentBg: "bg-green-700",
+    accentText: "text-green-700",
   },
   {
-    icon: "🔧",
-    name: "Plumbing",
-    hook: "Capture urgent calls before they call the next plumber",
-    bullets: [
-      "Urgent and emergency calls answered immediately",
-      "Lead qualification by job type and location",
-      "After-hours booking without an answering service",
-      "Automated review requests after each job",
-    ],
+    name: "Professional Services",
+    href: "/industries/professional-services",
+    number: "02",
+    description:
+      "Accounting, legal, consulting, engineering. AI can compress billable work, sharpen client experience, and build measurable productivity gains across the team.",
+    trades: ["Accounting & Tax", "Legal", "Consulting", "Engineering", "Architecture", "Financial Advisory"],
+    stat: "18%",
+    statLabel: "of professional service firms track AI ROI",
+    statDetail: "Most firms are using AI tools but can't measure what they're delivering. That's the gap we close.",
+    source: "Thomson Reuters 2026",
+    accentBg: "bg-brass",
+    accentText: "text-brass",
   },
   {
-    icon: "🏠",
-    name: "Roofing",
-    hook: "Qualify storm leads fast and book estimates automatically",
-    bullets: [
-      "Storm surge call volume handled automatically",
-      "Insurance vs. cash-pay lead qualification",
-      "Estimate appointments booked on the call",
-      "Follow-up sequences for unbooked estimates",
-    ],
-  },
-  {
-    icon: "⚡",
-    name: "Electrical",
-    hook: "Never lose a job because your line was busy",
-    bullets: [
-      "Residential and commercial calls handled",
-      "Safety-first qualification for urgent jobs",
-      "Appointment booking by service area",
-      "Callback summaries sent after every call",
-    ],
-  },
-  {
-    icon: "🌿",
-    name: "Landscaping",
-    hook: "Book seasonal work before competitors pick up the phone",
-    bullets: [
-      "Seasonal inquiry handling at scale",
-      "Estimate appointments booked on first contact",
-      "Recurring service scheduling automated",
-      "Customer reactivation for spring/fall cleanups",
-    ],
-  },
-  {
-    icon: "🐛",
-    name: "Pest Control",
-    hook: "Respond to urgent calls faster than any human could",
-    bullets: [
-      "Immediate response to infestation calls",
-      "Service area and job-type qualification",
-      "Recurring plan upsell built into the script",
-      "Automated follow-up for booked appointments",
-    ],
-  },
-  {
-    icon: "🚪",
-    name: "Garage Door",
-    hook: "Turn emergency calls into same-day booked jobs",
-    bullets: [
-      "Emergency repair calls answered 24/7",
-      "Same-day appointment booking",
-      "Parts and availability questions handled",
-      "Estimate follow-up for replacement jobs",
-    ],
+    name: "Personal Services",
+    href: "/industries/personal-services",
+    number: "03",
+    description:
+      "Dental, veterinary, wellness, med spa, fitness, beauty. Appointment-driven businesses where utilization, no-show reduction, and retention drive profitability.",
+    trades: ["Dental", "Veterinary", "Med Spa", "Wellness", "Fitness", "Beauty", "Senior Services"],
+    stat: "40%",
+    statLabel: "average call-to-appointment conversion",
+    statDetail: "Systematic follow-up and reactivation campaigns move that number meaningfully.",
+    source: "Invoca 2026",
+    accentBg: "bg-green-700",
+    accentText: "text-green-700",
   },
 ];
 
 export default function IndustriesPage() {
   return (
-    <>
-      <Nav activePath="/industries" />
+    <div className="min-h-screen bg-canvas text-ink">
+      <Nav />
 
-      <main className="pt-32 pb-24 px-6 bg-white">
+      {/* Header */}
+      <section className="bg-white pt-28 pb-20 px-6 border-b border-brass-light">
         <div className="max-w-6xl mx-auto">
-
-          <div className="text-center mb-16">
-            <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-3">Industries</p>
-            <h1 className="text-5xl font-black text-stone-900 mb-4">Built for the trades that run on phone calls</h1>
-            <p className="text-stone-500 text-lg max-w-2xl mx-auto">
-              Home service businesses live and die by the phone. We make sure yours never goes unanswered.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {INDUSTRIES.map((ind) => (
-              <div key={ind.name} className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm hover:border-green-300 hover:shadow-md transition flex flex-col">
-                <div className="text-4xl mb-4">{ind.icon}</div>
-                <h2 className="text-xl font-bold text-stone-900 mb-1">{ind.name}</h2>
-                <p className="text-green-700 text-sm font-medium mb-4">{ind.hook}</p>
-                <ul className="space-y-2 flex-1 mb-6">
-                  {ind.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-sm text-stone-600">
-                      <span className="text-green-600 shrink-0 mt-0.5">✓</span>{b}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/contact"
-                  className="block text-center py-2.5 border border-green-700 text-green-700 hover:bg-green-700 hover:text-white rounded-xl text-sm font-semibold transition"
-                >
-                  Book a Demo →
-                </Link>
-              </div>
+          <h1 className="font-display font-extrabold text-5xl md:text-7xl text-ink leading-none tracking-tight">
+            Built for service businesses.
+          </h1>
+          <p className="mt-6 text-ink-mid text-xl max-w-2xl leading-relaxed">
+            The economics, workflows, and growth levers are different for each market we serve.
+            Our approach reflects that.
+          </p>
+          <div className="mt-10 flex flex-wrap gap-6">
+            {VERTICALS.map((v) => (
+              <a key={v.name} href={`#${v.number}`} className="group flex items-center gap-3">
+                <span className="font-display font-bold text-4xl md:text-5xl text-brass-light group-hover:text-brass transition-colors leading-none">{v.number}</span>
+                <span className="text-ink-mid text-sm font-medium group-hover:text-ink transition-colors">{v.name}</span>
+              </a>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="bg-green-900 rounded-2xl p-10 text-center">
-            <h2 className="text-3xl font-black text-white mb-3">Don&apos;t see your trade?</h2>
-            <p className="text-green-200 text-lg mb-6 max-w-xl mx-auto">
-              If your business runs on phone calls and booked appointments, Makr can help. Reach out and we&apos;ll tell you exactly how.
-            </p>
+      {/* New England banner */}
+      <div className="bg-ink px-6 py-4">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sm text-canvas-warm">
+            <span className="text-brass font-semibold">Built in New England.</span>{" "}
+            Serving contractors and service businesses across Massachusetts, New Hampshire, and beyond.
+          </p>
+        </div>
+      </div>
+
+      {/* Verticals */}
+      {VERTICALS.map((v, i) => (
+        <section
+          key={v.name}
+          id={v.number}
+          className={`py-24 px-6 border-b border-brass-light ${i % 2 === 0 ? "bg-canvas" : "bg-white"}`}
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className={`grid md:grid-cols-2 gap-12 items-start ${i % 2 === 1 ? "" : ""}`}>
+
+              {/* Left: content */}
+              <div className={i % 2 === 1 ? "md:order-2" : ""}>
+                <div className="flex items-baseline gap-4 mb-6">
+                  <span className="font-display font-bold text-6xl text-brass-light leading-none">{v.number}</span>
+                  <h2 className="font-display font-extrabold text-4xl md:text-5xl text-ink leading-tight">{v.name}</h2>
+                </div>
+                <p className="text-ink-mid leading-relaxed mb-8 text-lg">{v.description}</p>
+                <div className="flex flex-wrap gap-2 mb-10">
+                  {v.trades.map((t) => (
+                    <span key={t} className="text-xs bg-canvas-warm border border-brass-light text-ink-mid px-3 py-1.5 rounded-sm">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  href={v.href}
+                  className="inline-block bg-ink text-white hover:bg-green-700 transition-colors px-6 py-3 rounded-sm font-semibold text-sm"
+                >
+                  Learn more about {v.name} →
+                </Link>
+              </div>
+
+              {/* Right: stat */}
+              <div className={`${i % 2 === 1 ? "md:order-1" : ""} flex flex-col justify-start`}>
+                <div className="bg-white border border-brass-light rounded-sm p-8">
+                  <div className={`font-display font-extrabold text-7xl md:text-8xl ${v.accentText} leading-none mb-3`}>
+                    {v.stat}
+                  </div>
+                  <p className="font-semibold text-ink mb-3 leading-snug">{v.statLabel}</p>
+                  <p className="text-ink-mid text-sm leading-relaxed">{v.statDetail}</p>
+                  <p className="text-brass text-xs mt-4 font-medium">Source: {v.source}</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      ))}
+
+      {/* CTA */}
+      <section className="py-24 px-6 bg-green-900">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-display font-extrabold text-4xl md:text-6xl text-white leading-tight max-w-2xl">
+            Not sure if Makr is a fit?
+          </h2>
+          <p className="mt-6 text-green-200 text-lg max-w-lg">
+            Book an AI Opportunity Assessment. We&apos;ll tell you honestly whether we can help — and what the opportunity looks like for your specific business.
+          </p>
+          <div className="mt-10">
             <Link
               href="/contact"
-              className="inline-block px-8 py-4 bg-white hover:bg-green-50 text-green-900 font-bold text-lg rounded-xl transition"
+              className="inline-block bg-white text-green-900 hover:bg-green-50 px-8 py-4 rounded font-bold text-lg transition-colors"
             >
-              Book a Revenue Assessment
+              Book an AI Opportunity Assessment
             </Link>
           </div>
-
         </div>
-      </main>
-
-      <footer className="border-t border-stone-200 py-8 px-6 bg-white">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-stone-400 text-sm">
-          <span className="font-black text-green-800">Makr<span className="text-stone-400 font-medium">.ai</span></span>
-          <div className="flex gap-6">
-            <Link href="/services" className="hover:text-stone-700 transition">Solutions</Link>
-            <Link href="/industries" className="hover:text-stone-700 transition">Industries</Link>
-            <Link href="/resources" className="hover:text-stone-700 transition">Resources</Link>
-            <Link href="/pricing" className="hover:text-stone-700 transition">Pricing</Link>
-            <Link href="/about" className="hover:text-stone-700 transition">About</Link>
-            <Link href="/contact" className="hover:text-stone-700 transition">Contact</Link>
-          </div>
-          <span>© {new Date().getFullYear()} Makr.ai. All rights reserved.</span>
-        </div>
-      </footer>
-    </>
+      </section>
+    </div>
   );
 }
