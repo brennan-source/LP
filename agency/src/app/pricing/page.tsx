@@ -44,7 +44,7 @@ const RETAINERS = [
 const PROJECTS_AND_CUSTOM = [
   {
     name: "Projects",
-    price: "$5,000–$25,000+",
+    price: "$4,000–$10,000+",
     period: "one-time, per project",
     tagline: "Scoped builds. No monthly commitment.",
     description:
