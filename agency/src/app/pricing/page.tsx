@@ -1,212 +1,329 @@
 import Link from "next/link";
 import Nav from "@/components/Nav";
 
-const TIERS = [
+const RETAINERS = [
   {
-    name: "Capture",
-    price: 399,
-    popular: false,
-    tagline: "Answer every call. Qualify every lead.",
-    description: "Perfect for owner-operated businesses that need the phone handled. AI answering with no booking or CRM required.",
+    name: "Essentials",
+    price: "$1,500",
+    period: "/month",
+    tagline: "Core AI capture running 24/7.",
+    description:
+      "The fundamentals: every call answered, every lead captured, your CRM kept current. The starting point for businesses ready to stop missing revenue.",
     includes: [
-      "AI voice receptionist — 24/7",
-      "Lead qualification",
-      "After-hours coverage",
-      "Emergency call routing",
-      "SMS summaries after every call",
+      "AI receptionist — 24/7 call handling",
+      "Missed-call recovery automation",
+      "Web chat & lead capture",
+      "CRM integration & data sync",
+      "Monthly performance report",
     ],
+    note: "Implementation fee applies. Scoped per business.",
+    featured: false,
   },
   {
-    name: "Book",
-    price: 699,
-    popular: true,
-    tagline: "Answer, qualify, and book the job.",
-    description: "Our most popular plan. Everything in Capture plus appointment booking and CRM integration — the complete revenue capture engine.",
+    name: "Growth",
+    price: "$3,500",
+    period: "/month",
+    tagline: "Full revenue operations, managed.",
+    description:
+      "Our flagship. We run your AI systems end to end — capturing leads, booking jobs, following up on estimates, generating reviews, and reporting on what it's producing.",
     includes: [
-      "Everything in Capture",
-      "Appointment booking",
-      "CRM & calendar integration",
-      "Missed-call text-back",
-      "Lead routing",
-      "Custom qualification scripts",
-      "Business-hours logic",
-      "Monthly reporting",
+      "Everything in Essentials",
+      "Appointment booking automation",
+      "Estimate follow-up system",
+      "Review generation & management",
+      "Scheduling & dispatch workflows",
+      "Back-office reporting",
+      "Dedicated account management",
+      "Continuous optimization",
     ],
-  },
-  {
-    name: "Grow",
-    price: 1099,
-    popular: false,
-    tagline: "Full revenue automation — from first call to repeat customer.",
-    description: "Everything in Book plus automated follow-up, reviews, reactivation, and a dedicated dashboard.",
-    includes: [
-      "Everything in Book",
-      "Lead & estimate follow-up",
-      "Review automation",
-      "Customer reactivation campaigns",
-      "Advanced workflows",
-      "Revenue dashboard",
-      "Monthly optimization call",
-    ],
+    note: "Implementation fee applies. Scoped per business.",
+    featured: true,
   },
 ];
 
-const INTEGRATIONS = [
-  "ServiceTitan", "Housecall Pro", "Jobber", "Custom CRM", "Advanced routing",
+const PROJECTS_AND_CUSTOM = [
+  {
+    name: "Projects",
+    price: "$5,000–$25,000+",
+    period: "one-time, per project",
+    tagline: "Scoped builds. No monthly commitment.",
+    description:
+      "AI receptionist setups, CRM buildouts, scheduling automation, billing workflows — scoped and priced before work begins. Own it outright.",
+    includes: [
+      "Scoped requirements & architecture",
+      "Build, configuration, and integration",
+      "Testing and QA",
+      "Team handoff & training",
+      "30-day post-launch support",
+    ],
+    note: "Scope defined upfront. No surprises.",
+    featured: false,
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    period: "let’s scope it",
+    tagline: "For complex or multi-location operations.",
+    description:
+      "Full-stack AI operations for businesses with multiple locations, large teams, or complex workflows. Scope and pricing after discovery.",
+    includes: [
+      "All Growth capabilities",
+      "Custom workflow development",
+      "Team AI adoption program",
+      "Multi-location support",
+      "Quarterly business reviews",
+      "Priority support",
+    ],
+    note: "Start with an AI Opportunity Assessment.",
+    featured: false,
+  },
+];
+
+const DECISION_CARDS = [
+  {
+    label: "Start with Essentials",
+    accent: "border-green-700",
+    badge: "bg-green-700",
+    fit: "You're losing revenue from missed calls and slow follow-up, and want to prove the ROI before going deeper.",
+    signs: [
+      "Calls go to voicemail after hours",
+      "Leads slip through without follow-up",
+      "You want results before a bigger commitment",
+    ],
+  },
+  {
+    label: "Start with Growth",
+    accent: "border-green-800",
+    badge: "bg-green-800",
+    fit: "You’re ready to run your revenue operations end to end and want a dedicated partner managing it.",
+    signs: [
+      "You’re already capturing leads but losing them later",
+      "Estimates go unfollowed, reviews go unrequested",
+      "You want someone accountable for outcomes",
+    ],
+  },
+  {
+    label: "Start with a Project",
+    accent: "border-brass",
+    badge: "bg-brass",
+    fit: "You have a specific system to build and don’t want a monthly commitment.",
+    signs: [
+      "CRM buildout, scheduling automation, billing workflow",
+      "You want to own it outright",
+      "You’ll manage it internally after handoff",
+    ],
+  },
 ];
 
 export default function PricingPage() {
   return (
-    <>
-      <Nav activePath="/pricing" />
+    <div className="min-h-screen bg-canvas text-ink">
+      <Nav />
 
-      <main className="pt-32 pb-24 px-6 bg-white">
+      {/* Header */}
+      <section className="bg-white pt-28 pb-16 px-6 border-b border-brass-light">
         <div className="max-w-6xl mx-auto">
+          <h1 className="font-display font-extrabold text-5xl md:text-7xl text-ink leading-none tracking-tight">
+            Transparent pricing.
+            <br />
+            No surprises.
+          </h1>
+          <p className="mt-6 text-ink-mid text-xl max-w-2xl leading-relaxed">
+            We publish our numbers because you shouldn&apos;t have to get on a sales call to find out if something is in your budget. Monthly retainers, one-time projects, or custom scope — you pick the model that fits.
+          </p>
+        </div>
+      </section>
 
-          {/* Header */}
-          <div className="text-center mb-16">
-            <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-3">Pricing</p>
-            <h1 className="text-5xl font-black text-stone-900 mb-4">Simple, transparent pricing</h1>
-            <p className="text-stone-500 text-lg max-w-2xl mx-auto mb-2">
-              Compete against missed revenue, not commodity software. Every plan includes standard setup at no extra charge.
-            </p>
-            <p className="text-stone-400 text-sm max-w-xl mx-auto">
-              90-day launch period. Month-to-month afterward.
-            </p>
-          </div>
-
-          {/* Tiers */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            {TIERS.map((tier) => (
+      {/* Monthly Retainers */}
+      <section className="py-16 px-6 bg-canvas">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-xs font-bold uppercase tracking-widest text-brass mb-8">Monthly retainers</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {RETAINERS.map((t) => (
               <div
-                key={tier.name}
-                className={`rounded-2xl border p-8 relative flex flex-col shadow-sm ${
-                  tier.popular ? "bg-green-900 border-green-700" : "bg-white border-stone-200"
+                key={t.name}
+                className={`rounded-sm flex flex-col ${
+                  t.featured
+                    ? "bg-green-700 ring-2 ring-green-600"
+                    : "bg-white border border-brass-light"
                 }`}
               >
-                {tier.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    Most Popular
+                {t.featured && (
+                  <div className="px-7 pt-5 pb-0">
+                    <span className="text-xs font-bold uppercase tracking-widest text-green-200">
+                      Flagship &middot; Most Popular
+                    </span>
                   </div>
                 )}
-                <div className="mb-6">
-                  <h2 className={`text-xl font-bold mb-1 ${tier.popular ? "text-white" : "text-stone-900"}`}>
-                    {tier.name}
-                  </h2>
-                  <p className={`text-sm mb-4 ${tier.popular ? "text-green-300" : "text-green-700"}`}>
-                    {tier.tagline}
-                  </p>
-                  <div className="flex items-baseline gap-1 mb-3">
-                    <span className={`text-4xl font-black ${tier.popular ? "text-white" : "text-stone-900"}`}>
-                      ${tier.price}
-                    </span>
-                    <span className={tier.popular ? "text-green-300" : "text-stone-400"}>/month</span>
+                <div className="p-7 flex-1">
+                  <div className="flex items-end justify-between mb-4">
+                    <h2 className={`font-display font-bold text-3xl ${t.featured ? "text-white" : "text-ink"}`}>
+                      {t.name}
+                    </h2>
+                    <div className="text-right">
+                      <span className={`text-3xl font-bold ${t.featured ? "text-white" : "text-green-700"}`}>
+                        {t.price}
+                      </span>
+                      <span className={`text-sm ml-1 ${t.featured ? "text-green-200" : "text-ink-light"}`}>
+                        {t.period}
+                      </span>
+                    </div>
                   </div>
-                  <p className={`text-sm leading-relaxed ${tier.popular ? "text-green-200" : "text-stone-500"}`}>
-                    {tier.description}
+                  <p className={`font-medium mb-2 ${t.featured ? "text-green-100" : "text-green-700"}`}>
+                    {t.tagline}
                   </p>
+                  <p className={`text-sm leading-relaxed mb-6 ${t.featured ? "text-green-100" : "text-ink-mid"}`}>
+                    {t.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {t.includes.map((item) => (
+                      <li
+                        key={item}
+                        className={`text-sm flex items-start gap-2 ${t.featured ? "text-green-100" : "text-ink-mid"}`}
+                      >
+                        <span className={`mt-0.5 shrink-0 ${t.featured ? "text-green-300" : "text-green-600"}`}>✓</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  {t.note && (
+                    <p className={`text-xs mt-4 italic ${t.featured ? "text-green-300" : "text-ink-light"}`}>
+                      {t.note}
+                    </p>
+                  )}
                 </div>
-                <ul className="space-y-2.5 mb-8 flex-1">
-                  {tier.includes.map((item) => (
-                    <li key={item} className={`flex items-start gap-2 text-sm ${tier.popular ? "text-green-100" : "text-stone-600"}`}>
-                      <span className={`mt-0.5 shrink-0 ${tier.popular ? "text-green-300" : "text-green-600"}`}>✓</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/contact"
-                  className={`block w-full text-center py-3 rounded-xl font-semibold transition ${
-                    tier.popular
-                      ? "bg-white hover:bg-green-50 text-green-900"
-                      : "bg-green-700 hover:bg-green-600 text-white"
-                  }`}
-                >
-                  Get Started
-                </Link>
+                <div className="px-7 pb-7">
+                  <Link
+                    href="/contact"
+                    className={`block text-center py-3 rounded font-semibold transition-colors ${
+                      t.featured
+                        ? "bg-white text-green-700 hover:bg-green-50"
+                        : "bg-ink text-white hover:bg-green-700"
+                    }`}
+                  >
+                    Get started
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Setup & integrations */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8">
-              <h2 className="text-lg font-bold text-stone-900 mb-2">Setup</h2>
-              <p className="text-stone-500 text-sm mb-4">Standard setup is included with every plan. We configure your AI receptionist, train it on your business, and get it live — typically within a week.</p>
-              <p className="text-stone-600 text-sm font-medium">Custom integrations starting at $500:</p>
-              <div className="flex flex-wrap gap-2 mt-3">
-                {INTEGRATIONS.map((i) => (
-                  <span key={i} className="px-3 py-1 bg-white border border-stone-200 rounded-full text-stone-600 text-xs">
-                    {i}
-                  </span>
-                ))}
+      {/* Projects + Enterprise */}
+      <section className="py-16 px-6 bg-white border-y border-brass-light">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-xs font-bold uppercase tracking-widest text-brass mb-8">One-time &amp; custom</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {PROJECTS_AND_CUSTOM.map((t) => (
+              <div key={t.name} className="bg-canvas border border-brass-light rounded-sm flex flex-col">
+                <div className="p-7 flex-1">
+                  <div className="flex items-end justify-between mb-4">
+                    <h2 className="font-display font-bold text-3xl text-ink">{t.name}</h2>
+                    <div className="text-right">
+                      <span className="text-xl font-bold text-green-700">{t.price}</span>
+                      <div className="text-xs text-ink-light mt-0.5">{t.period}</div>
+                    </div>
+                  </div>
+                  <p className="font-medium text-green-700 mb-2">{t.tagline}</p>
+                  <p className="text-sm text-ink-mid leading-relaxed mb-6">{t.description}</p>
+                  <ul className="space-y-2">
+                    {t.includes.map((item) => (
+                      <li key={item} className="text-sm text-ink-mid flex items-start gap-2">
+                        <span className="text-green-600 mt-0.5 shrink-0">✓</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  {t.note && (
+                    <p className="text-xs mt-4 italic text-ink-light">{t.note}</p>
+                  )}
+                </div>
+                <div className="px-7 pb-7">
+                  <Link
+                    href="/contact"
+                    className="block text-center py-3 rounded font-semibold bg-ink text-white hover:bg-green-700 transition-colors"
+                  >
+                    Get started
+                  </Link>
+                </div>
               </div>
-            </div>
-            <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8">
-              <h2 className="text-lg font-bold text-stone-900 mb-2">Commitment</h2>
-              <div className="space-y-3 text-sm text-stone-500">
-                <p><span className="text-stone-800 font-medium">90-day launch period.</span> We invest time upfront to configure, train, and optimize your AI receptionist. The 90-day period gives us enough runway to show real results.</p>
-                <p><span className="text-stone-800 font-medium">Month-to-month after that.</span> Cancel with 30 days notice. No price locks, no tricks.</p>
-              </div>
-            </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* AI Readiness Assessment */}
-          <div className="bg-green-50 border border-green-200 rounded-2xl p-8 md:p-10 mb-16">
-            <div className="flex flex-col md:flex-row md:items-start gap-8">
-              <div className="flex-1">
-                <p className="text-green-700 text-xs font-bold uppercase tracking-widest mb-2">Free for qualified prospects</p>
-                <h2 className="text-2xl font-black text-stone-900 mb-2">AI Readiness Assessment</h2>
-                <p className="text-stone-500 leading-relaxed mb-4">
-                  A detailed look at where AI can help your business — and how much revenue you&apos;re currently leaving on the table. We review your operations, identify your biggest gaps, and give you a clear roadmap.
-                </p>
-                <ul className="space-y-1.5">
-                  {["AI maturity score", "Operations score", "Revenue opportunities identified", "Automation roadmap", "Priority recommendations"].map((b) => (
-                    <li key={b} className="flex items-center gap-2 text-sm text-stone-600">
-                      <span className="text-green-600 shrink-0">✓</span>{b}
+      {/* Which tier fits? */}
+      <section className="py-16 px-6 bg-canvas">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-display font-bold text-3xl text-ink mb-2">Which tier fits your situation?</h2>
+          <p className="text-ink-mid text-sm mb-10">Most clients know within the first conversation. Here&apos;s a quick read.</p>
+          <div className="grid md:grid-cols-3 gap-5">
+            {DECISION_CARDS.map((card) => (
+              <div key={card.label} className={`bg-white border-l-4 ${card.accent} rounded-sm p-6`}>
+                <div className={`inline-block ${card.badge} text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-4`}>
+                  {card.label}
+                </div>
+                <p className="text-ink-mid text-sm leading-relaxed mb-5">{card.fit}</p>
+                <ul className="space-y-2">
+                  {card.signs.map((s) => (
+                    <li key={s} className="text-xs text-ink-mid flex items-start gap-2">
+                      <span className="text-green-600 mt-0.5 shrink-0">→</span>
+                      {s}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="shrink-0 text-center md:text-right">
-                <p className="text-xs text-stone-400 uppercase tracking-widest mb-1">For qualified contractors</p>
-                <p className="text-3xl font-black text-green-700 mb-1">Included</p>
-                <p className="text-xs text-stone-400 mb-4">For other businesses: $495</p>
-                <Link href="/contact" className="inline-block px-6 py-3 bg-green-700 hover:bg-green-600 text-white rounded-xl font-semibold transition text-sm">
-                  Book Your Assessment
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* Custom */}
-          <div className="bg-stone-50 border border-stone-200 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h2 className="text-xl font-bold text-stone-900 mb-1">Custom / Enterprise</h2>
-              <p className="text-stone-500 text-sm max-w-xl">Multi-location businesses, complex integrations, or anything that doesn&apos;t fit neatly into a plan. Let&apos;s scope it together.</p>
+      {/* FAQ */}
+      <section className="py-16 px-6 bg-white border-t border-brass-light">
+        <div className="max-w-3xl mx-auto space-y-7">
+          {[
+            {
+              q: "Why publish prices publicly?",
+              a: "Because you shouldn’t have to get on a sales call to know if something fits your budget. These are real numbers. Project pricing depends on scope, which we define and agree on before any work begins.",
+            },
+            {
+              q: "What’s the implementation fee?",
+              a: "Implementation fees for managed retainers are scoped per business based on what needs to be built. We quote it upfront — no surprises after you sign.",
+            },
+            {
+              q: "Where should I start?",
+              a: "Most clients start with a quick conversation. We’ll look at your business, tell you honestly where AI creates the most value, and recommend a starting point — no obligation.",
+            },
+          ].map((faq) => (
+            <div key={faq.q} className="border-l-2 border-brass pl-5">
+              <h3 className="font-semibold text-ink mb-1">{faq.q}</h3>
+              <p className="text-ink-mid text-sm leading-relaxed">{faq.a}</p>
             </div>
-            <Link href="/contact" className="shrink-0 px-6 py-3 bg-white hover:bg-stone-50 border border-stone-300 text-stone-800 rounded-xl font-medium transition">
-              Let&apos;s Talk
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 px-6 bg-green-900">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-display font-extrabold text-4xl md:text-6xl text-white leading-tight max-w-2xl">
+            Ready to get started?
+          </h2>
+          <p className="mt-6 text-green-200 text-lg max-w-lg">
+            Book an AI Opportunity Assessment. We’ll identify where AI creates the most value for your business and give you a clear plan.
+          </p>
+          <div className="mt-10 flex flex-wrap gap-4 items-center">
+            <Link
+              href="/contact"
+              className="bg-white text-green-900 hover:bg-green-50 px-8 py-4 rounded font-bold text-lg transition-colors"
+            >
+              Book an AI Opportunity Assessment
             </Link>
+            <span className="text-green-400 text-sm">Complimentary for qualified service businesses.</span>
           </div>
-
         </div>
-      </main>
-
-      <footer className="border-t border-stone-200 py-8 px-6 bg-white">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-stone-400 text-sm">
-          <span className="font-black text-green-800">Makr<span className="text-stone-400 font-medium">.ai</span></span>
-          <div className="flex gap-6">
-            <Link href="/services" className="hover:text-stone-700 transition">Solutions</Link>
-            <Link href="/industries" className="hover:text-stone-700 transition">Industries</Link>
-            <Link href="/resources" className="hover:text-stone-700 transition">Resources</Link>
-            <Link href="/pricing" className="hover:text-stone-700 transition">Pricing</Link>
-            <Link href="/about" className="hover:text-stone-700 transition">About</Link>
-            <Link href="/contact" className="hover:text-stone-700 transition">Contact</Link>
-          </div>
-          <span>© {new Date().getFullYear()} Makr.ai. All rights reserved.</span>
-        </div>
-      </footer>
-    </>
+      </section>
+    </div>
   );
 }
