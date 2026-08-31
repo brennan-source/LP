@@ -16,12 +16,8 @@ export default function HowItWorksPage() {
       <Nav />
       <section className="bg-white pt-28 pb-16 px-6 border-b border-brass-light">
         <div className="max-w-6xl mx-auto">
-          <h1 className="font-display font-extrabold text-5xl md:text-7xl text-ink leading-none tracking-tight">
-            How an engagement works.
-          </h1>
-          <p className="mt-6 text-ink-mid text-xl max-w-2xl leading-relaxed">
-            From first conversation to running systems — here's exactly what to expect. Every step connects to the next.
-          </p>
+          <h1 className="font-display font-extrabold text-5xl md:text-7xl text-ink leading-none tracking-tight">How an engagement works.</h1>
+          <p className="mt-6 text-ink-mid text-xl max-w-2xl leading-relaxed">From first conversation to running systems — here's exactly what to expect. Every step connects to the next.</p>
         </div>
       </section>
       <section className="py-20 px-6 bg-canvas">
@@ -39,13 +35,13 @@ export default function HowItWorksPage() {
                     </div>
                     <div className="flex-1 bg-white border border-brass-light rounded-sm p-8">
                       <div className="flex items-center gap-4 mb-4">
-                        <span className="md:hidden font-display font-bold text-2xl text-brass">{step.number}</span>
-                        <span className="text-xs font-bold uppercase tracking-widest text-brass">{step.name}</span>
+                        <span className="md:hidden font-display font-bold text-2xl text-ink-mid">{step.number}</span>
+                        <span className="text-xs font-bold uppercase tracking-widest text-ink-mid">{step.name}</span>
                       </div>
                       <h2 className="font-display font-bold text-2xl md:text-3xl text-ink mb-3 leading-snug">{step.headline}</h2>
                       <p className="text-ink-mid leading-relaxed mb-6">{step.body}</p>
                       <div className="flex items-start gap-3 bg-canvas-warm border border-brass-light rounded-sm px-4 py-3">
-                        <span className="text-brass font-bold text-sm shrink-0 mt-0.5">→</span>
+                        <span className="text-ink-mid font-bold text-sm shrink-0 mt-0.5">→</span>
                         <p className="text-ink-mid text-sm">{step.output}</p>
                       </div>
                     </div>

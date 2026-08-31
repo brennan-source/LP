@@ -32,133 +32,48 @@ const MARKETS = [
 ];
 
 const PROBLEMS = [
-  {
-    title: "Revenue left uncaptured",
-    body: "Calls go unanswered. Web leads sit cold. After-hours inquiries disappear. Every gap is revenue someone else captured.",
-  },
-  {
-    title: "Slow speed-to-lead",
-    body: "The business that responds first usually wins the job. Manual follow-up creates delays that cost you work.",
-  },
-  {
-    title: "Unsold proposals",
-    body: "Estimates go out. No follow-up happens. Jobs that were close are forgotten instead of closed.",
-  },
-  {
-    title: "Manual administrative work",
-    body: "Scheduling, data entry, billing, reporting — hours every week on tasks that could run on their own.",
-  },
-  {
-    title: "Disconnected software",
-    body: "Your CRM, phone, scheduling, and billing tools don't talk to each other. You pay the gap in time and errors.",
-  },
-  {
-    title: "Teams underusing AI",
-    body: "AI tools are available. Most teams haven't been shown how to use them well. Productivity gains stay theoretical.",
-  },
+  { title: "Revenue left uncaptured", body: "Calls go unanswered. Web leads sit cold. After-hours inquiries disappear. Every gap is revenue someone else captured." },
+  { title: "Slow speed-to-lead", body: "The business that responds first usually wins the job. Manual follow-up creates delays that cost you work." },
+  { title: "Unsold proposals", body: "Estimates go out. No follow-up happens. Jobs that were close are forgotten instead of closed." },
+  { title: "Manual administrative work", body: "Scheduling, data entry, billing, reporting — hours every week on tasks that could run on their own." },
+  { title: "Disconnected software", body: "Your CRM, phone, scheduling, and billing tools don't talk to each other. You pay the gap in time and errors." },
+  { title: "Teams underusing AI", body: "AI tools are available. Most teams haven't been shown how to use them well. Productivity gains stay theoretical." },
 ];
 
 const PILLARS = [
   {
-    name: "Grow",
-    tagline: "Capture more revenue",
-    accent: "border-green-700",
-    label: "bg-green-700",
-    capabilities: [
-      "AI receptionist — every call answered",
-      "Missed-call recovery",
-      "Web chat & lead qualification",
-      "Estimate follow-up automation",
-      "Review generation",
-      "Customer reactivation",
-    ],
+    name: "Grow", tagline: "Capture more revenue", accent: "border-green-700", label: "bg-green-700",
+    capabilities: ["AI receptionist — every call answered", "Missed-call recovery", "Web chat & lead qualification", "Estimate follow-up automation", "Review generation", "Customer reactivation"],
   },
   {
-    name: "Operate",
-    tagline: "Run a more efficient business",
-    accent: "border-green-800",
-    label: "bg-green-800",
-    capabilities: [
-      "Scheduling & dispatch automation",
-      "Billing & invoicing workflows",
-      "CRM data automation",
-      "Document processing",
-      "Back-office reporting",
-      "Knowledge assistant for your team",
-    ],
+    name: "Operate", tagline: "Run a more efficient business", accent: "border-green-800", label: "bg-green-800",
+    capabilities: ["Scheduling & dispatch automation", "Billing & invoicing workflows", "CRM data automation", "Document processing", "Back-office reporting", "Knowledge assistant for your team"],
   },
   {
-    name: "Enable",
-    tagline: "Build AI into your team",
-    accent: "border-brass",
-    label: "bg-brass",
-    capabilities: [
-      "AI readiness assessment",
-      "Team training & adoption",
-      "Prompt frameworks for your workflows",
-      "Tool selection & integration",
-      "Ongoing optimization",
-      "Quarterly performance reviews",
-    ],
+    name: "Enable", tagline: "Build AI into your team", accent: "border-brass", label: "bg-brass",
+    capabilities: ["AI readiness assessment", "Team training & adoption", "Prompt frameworks for your workflows", "Tool selection & integration", "Ongoing optimization", "Quarterly performance reviews"],
   },
 ];
 
 const TIERS = [
   {
-    name: "Essentials",
-    price: "$1,800",
-    period: "/month",
-    tagline: "Core AI capture running 24/7.",
-    includes: [
-      "AI receptionist",
-      "Missed-call recovery",
-      "Web lead capture",
-      "CRM sync",
-      "Monthly performance report",
-    ],
+    name: "Essentials", price: "$1,500", period: "/month", tagline: "Core AI capture running 24/7.",
+    includes: ["AI receptionist", "Missed-call recovery", "Web lead capture", "CRM sync", "Monthly performance report"],
     featured: false,
   },
   {
-    name: "Growth",
-    price: "$3,500",
-    period: "/month",
-    tagline: "Full revenue operations — managed.",
-    includes: [
-      "Everything in Essentials",
-      "Appointment booking automation",
-      "Estimate follow-up system",
-      "Review generation",
-      "Scheduling workflows",
-      "Dedicated account management",
-    ],
+    name: "Growth", price: "$3,500", period: "/month", tagline: "Full revenue operations — managed.",
+    includes: ["Everything in Essentials", "Appointment booking automation", "Estimate follow-up system", "Review generation", "Scheduling workflows", "Dedicated account management"],
     featured: true,
   },
   {
-    name: "Projects",
-    price: "$5,000–$25,000+",
-    period: "per project",
-    tagline: "One-time builds, scoped upfront.",
-    includes: [
-      "AI receptionist setup",
-      "CRM buildout & automation",
-      "Custom workflow builds",
-      "System integrations",
-      "No monthly commitment",
-    ],
+    name: "Projects", price: "$4,000–$10,000+", period: "per project", tagline: "One-time builds, scoped upfront.",
+    includes: ["AI receptionist setup", "CRM buildout & automation", "Custom workflow builds", "System integrations", "No monthly commitment"],
     featured: false,
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    period: "let's scope it",
-    tagline: "For complex or multi-location operations.",
-    includes: [
-      "Full-stack AI operations",
-      "Custom workflow development",
-      "Team enablement program",
-      "Multi-location support",
-      "Quarterly business reviews",
-    ],
+    name: "Enterprise", price: "Custom", period: "let’s scope it", tagline: "For complex or multi-location operations.",
+    includes: ["Full-stack AI operations", "Custom workflow development", "Team enablement program", "Multi-location support", "Quarterly business reviews"],
     featured: false,
   },
 ];
@@ -181,16 +96,10 @@ export default function HomePage() {
             capture more revenue, automate operations, and build teams that use AI well.
           </p>
           <div className="mt-10 flex flex-wrap gap-4 items-center">
-            <Link
-              href="/contact"
-              className="bg-green-700 hover:bg-green-800 text-white px-7 py-3.5 rounded font-semibold text-base transition-colors"
-            >
+            <Link href="/contact" className="bg-green-700 hover:bg-green-800 text-white px-7 py-3.5 rounded font-semibold text-base transition-colors">
               Book an AI Opportunity Assessment
             </Link>
-            <Link
-              href="/services"
-              className="text-ink-mid hover:text-ink font-semibold text-base transition-colors underline underline-offset-4 decoration-brass"
-            >
+            <Link href="/services" className="text-ink-mid hover:text-ink font-semibold text-base transition-colors underline underline-offset-4 decoration-brass">
               See how we work →
             </Link>
           </div>
@@ -200,27 +109,17 @@ export default function HomePage() {
       {/* Three Service Markets */}
       <section className="py-20 px-6 bg-canvas">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-display font-bold text-4xl md:text-5xl text-ink mb-2">
-            Three markets. One platform.
-          </h2>
-          <p className="text-ink-mid text-lg mb-12">
-            We work with established service businesses across home, professional, and personal services.
-          </p>
+          <h2 className="font-display font-bold text-4xl md:text-5xl text-ink mb-2">Three markets. One platform.</h2>
+          <p className="text-ink-mid text-lg mb-12">We work with established service businesses across home, professional, and personal services.</p>
           <div className="grid md:grid-cols-3 gap-6">
             {MARKETS.map((m) => (
-              <Link
-                key={m.name}
-                href={m.href}
-                className="group bg-white border border-brass-light rounded-sm p-6 hover:border-brass transition-colors flex flex-col"
-              >
-                <h3 className="font-display font-bold text-2xl text-ink mb-3 group-hover:text-green-700 transition-colors">
-                  {m.name}
-                </h3>
+              <Link key={m.name} href={m.href} className="group bg-white border border-brass-light rounded-sm p-6 hover:border-brass transition-colors flex flex-col">
+                <h3 className="font-display font-bold text-2xl text-ink mb-3 group-hover:text-green-700 transition-colors">{m.name}</h3>
                 <p className="text-ink-mid text-sm leading-relaxed flex-1">{m.description}</p>
                 <div className="mt-5 pt-4 border-t border-brass-light">
                   <p className="text-sm text-ink font-medium">{m.stat}</p>
                   <p className="text-xs text-ink-light mt-1">{m.statDetail}</p>
-                  <p className="text-xs text-brass mt-2 font-medium">Source: {m.source}</p>
+                  <p className="text-xs text-ink-light mt-1">Source: {m.source}</p>
                 </div>
               </Link>
             ))}
@@ -232,12 +131,8 @@ export default function HomePage() {
       <section className="py-20 px-6 bg-white border-y border-brass-light">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-xl mb-12">
-            <h2 className="font-display font-bold text-4xl md:text-5xl text-ink leading-tight">
-              Six ways service businesses leak revenue every month.
-            </h2>
-            <p className="mt-4 text-ink-mid">
-              Most businesses aren&apos;t losing money from one big failure. They&apos;re leaking it across smaller gaps that compound every week.
-            </p>
+            <h2 className="font-display font-bold text-4xl md:text-5xl text-ink leading-tight">Six ways service businesses leak revenue every month.</h2>
+            <p className="mt-4 text-ink-mid">Most businesses aren&apos;t losing money from one big failure. They&apos;re leaking it across smaller gaps that compound every week.</p>
           </div>
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
             {PROBLEMS.map((p) => (
@@ -254,8 +149,7 @@ export default function HomePage() {
       <section className="py-16 px-6 bg-green-800">
         <div className="max-w-6xl mx-auto">
           <p className="font-display font-bold text-3xl md:text-4xl text-white leading-snug max-w-2xl">
-            The businesses that close these gaps grow faster than their competitors.
-            Makr&apos;s job is to close them.
+            The businesses that close these gaps grow faster than their competitors. Makr&apos;s job is to close them.
           </p>
         </div>
       </section>
@@ -263,25 +157,18 @@ export default function HomePage() {
       {/* Three Pillars */}
       <section className="py-20 px-6 bg-canvas">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-display font-bold text-4xl md:text-5xl text-ink mb-2">
-            Three ways Makr works.
-          </h2>
-          <p className="text-ink-mid text-lg mb-12">
-            Every engagement draws from one or more of these capability pillars.
-          </p>
+          <h2 className="font-display font-bold text-4xl md:text-5xl text-ink mb-2">Three ways Makr works.</h2>
+          <p className="text-ink-mid text-lg mb-12">Every engagement draws from one or more of these capability pillars.</p>
           <div className="grid md:grid-cols-3 gap-6">
             {PILLARS.map((p) => (
               <div key={p.name} className={`bg-white border-l-4 ${p.accent} rounded-sm`}>
                 <div className="p-6">
-                  <div className={`inline-block ${p.label} text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-4`}>
-                    {p.name}
-                  </div>
+                  <div className={`inline-block ${p.label} text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-4`}>{p.name}</div>
                   <p className="text-ink-mid text-sm mb-5">{p.tagline}</p>
                   <ul className="space-y-2">
                     {p.capabilities.map((c) => (
                       <li key={c} className="text-sm text-ink-mid flex items-start gap-2">
-                        <span className="text-green-600 mt-0.5 shrink-0">✓</span>
-                        {c}
+                        <span className="text-green-600 mt-0.5 shrink-0">✓</span>{c}
                       </li>
                     ))}
                   </ul>
@@ -296,72 +183,34 @@ export default function HomePage() {
       <section className="py-20 px-6 bg-white border-t border-brass-light">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
-            <h2 className="font-display font-bold text-4xl md:text-5xl text-ink mb-2">
-              Transparent pricing.
-            </h2>
-            <p className="text-ink-mid text-lg">
-              Monthly retainers, one-time projects, or custom scope — you pick the model that fits.
-            </p>
+            <h2 className="font-display font-bold text-4xl md:text-5xl text-ink mb-2">Transparent pricing.</h2>
+            <p className="text-ink-mid text-lg">Monthly retainers, one-time projects, or custom scope — you pick the model that fits.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {TIERS.map((t) => (
-              <div
-                key={t.name}
-                className={`rounded-sm flex flex-col ${
-                  t.featured
-                    ? "bg-green-700 text-white"
-                    : "bg-canvas border border-brass-light"
-                }`}
-              >
-                {t.featured && (
-                  <div className="text-xs font-bold uppercase tracking-widest text-green-200 px-5 pt-4">
-                    Most Popular
-                  </div>
-                )}
+              <div key={t.name} className={`rounded-sm flex flex-col ${t.featured ? "bg-green-700 text-white" : "bg-canvas border border-brass-light"}`}>
+                {t.featured && <div className="text-xs font-bold uppercase tracking-widest text-green-200 px-5 pt-4">Most Popular</div>}
                 <div className="p-5 flex-1">
-                  <h3 className={`font-display font-bold text-xl mb-1 ${t.featured ? "text-white" : "text-ink"}`}>
-                    {t.name}
-                  </h3>
-                  <div className={`text-2xl font-bold mb-0.5 ${t.featured ? "text-white" : "text-green-700"}`}>
-                    {t.price}
-                  </div>
-                  <div className={`text-xs mb-3 ${t.featured ? "text-green-200" : "text-ink-light"}`}>
-                    {t.period}
-                  </div>
-                  <p className={`text-sm mb-4 ${t.featured ? "text-green-100" : "text-ink-mid"}`}>
-                    {t.tagline}
-                  </p>
+                  <h3 className={`font-display font-bold text-xl mb-1 ${t.featured ? "text-white" : "text-ink"}`}>{t.name}</h3>
+                  <div className={`text-2xl font-bold mb-0.5 ${t.featured ? "text-white" : "text-green-700"}`}>{t.price}</div>
+                  <div className={`text-xs mb-3 ${t.featured ? "text-green-200" : "text-ink-light"}`}>{t.period}</div>
+                  <p className={`text-sm mb-4 ${t.featured ? "text-green-100" : "text-ink-mid"}`}>{t.tagline}</p>
                   <ul className="space-y-1.5">
                     {t.includes.map((item) => (
-                      <li
-                        key={item}
-                        className={`text-xs flex items-start gap-2 ${t.featured ? "text-green-100" : "text-ink-mid"}`}
-                      >
-                        <span className={`mt-0.5 shrink-0 ${t.featured ? "text-green-300" : "text-green-600"}`}>✓</span>
-                        {item}
+                      <li key={item} className={`text-xs flex items-start gap-2 ${t.featured ? "text-green-100" : "text-ink-mid"}`}>
+                        <span className={`mt-0.5 shrink-0 ${t.featured ? "text-green-300" : "text-green-600"}`}>✓</span>{item}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div className="px-5 pb-5">
-                  <Link
-                    href="/contact"
-                    className={`block text-center py-2.5 rounded text-sm font-semibold transition-colors ${
-                      t.featured
-                        ? "bg-white text-green-700 hover:bg-green-50"
-                        : "bg-ink text-white hover:bg-green-700"
-                    }`}
-                  >
-                    Get started
-                  </Link>
+                  <Link href="/contact" className={`block text-center py-2.5 rounded text-sm font-semibold transition-colors ${t.featured ? "bg-white text-green-700 hover:bg-green-50" : "bg-ink text-white hover:bg-green-700"}`}>Get started</Link>
                 </div>
               </div>
             ))}
           </div>
           <p className="mt-6 text-center">
-            <Link href="/pricing" className="text-ink-mid text-sm hover:text-ink underline underline-offset-4 decoration-brass">
-              See full pricing details →
-            </Link>
+            <Link href="/pricing" className="text-ink-mid text-sm hover:text-ink underline underline-offset-4 decoration-brass">See full pricing details →</Link>
           </p>
         </div>
       </section>
@@ -369,19 +218,10 @@ export default function HomePage() {
       {/* Bottom CTA */}
       <section className="py-24 px-6 bg-green-900">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-display font-extrabold text-4xl md:text-6xl text-white leading-tight max-w-2xl">
-            Ready to find out what AI can actually do for your business?
-          </h2>
-          <p className="mt-6 text-green-200 text-lg max-w-lg">
-            Start with an AI Opportunity Assessment. We&apos;ll map the gaps, size the opportunity, and give you a clear roadmap — before you commit to anything.
-          </p>
+          <h2 className="font-display font-extrabold text-4xl md:text-6xl text-white leading-tight max-w-2xl">Ready to find out what AI can actually do for your business?</h2>
+          <p className="mt-6 text-green-200 text-lg max-w-lg">Start with an AI Opportunity Assessment. We&apos;ll map the gaps, size the opportunity, and give you a clear roadmap — before you commit to anything.</p>
           <div className="mt-10 flex flex-wrap gap-4 items-center">
-            <Link
-              href="/contact"
-              className="bg-white text-green-900 hover:bg-green-50 px-8 py-4 rounded font-bold text-lg transition-colors"
-            >
-              Book an AI Opportunity Assessment
-            </Link>
+            <Link href="/contact" className="bg-white text-green-900 hover:bg-green-50 px-8 py-4 rounded font-bold text-lg transition-colors">Book an AI Opportunity Assessment</Link>
             <span className="text-green-400 text-sm">Complimentary for qualified service businesses.</span>
           </div>
         </div>
@@ -393,7 +233,7 @@ export default function HomePage() {
           <div>
             <div className="font-display font-bold text-xl text-white mb-3">Makr</div>
             <p>AI Growth & Operations for Service Businesses.</p>
-            <p className="mt-2 text-brass">Built in New England.</p>
+            <p className="mt-2 text-canvas-warm">Built in New England.</p>
           </div>
           <div>
             <div className="text-white font-semibold mb-3 text-xs uppercase tracking-widest">Solutions</div>

@@ -24,16 +24,12 @@ export default function ProfessionalServicesPage() {
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-6">
             <Link href="/industries" className="text-sm text-ink-light hover:text-green-700 transition">Industries</Link>
-            <span className="text-brass-light">/</span>
-            <span className="text-sm font-semibold text-brass">Professional Services</span>
+            <span className="text-ink-light">/</span>
+            <span className="text-sm font-semibold text-ink-mid">Professional Services</span>
           </div>
-          <h1 className="font-display font-extrabold text-5xl md:text-6xl text-ink leading-none tracking-tight mb-6">
-            Most professional service firms are using AI. Very few are measuring what it delivers.
-          </h1>
+          <h1 className="font-display font-extrabold text-5xl md:text-6xl text-ink leading-none tracking-tight mb-6">Most professional service firms are using AI. Very few are measuring what it delivers.</h1>
           <p className="text-ink-mid text-xl max-w-2xl leading-relaxed">Makr helps accounting firms, law firms, consultancies, and other professional service businesses turn scattered AI experiments into measurable productivity gains and client outcomes.</p>
-          <div className="mt-8">
-            <Link href="/contact" className="inline-block bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded font-semibold text-lg transition-colors">Book an AI Opportunity Assessment</Link>
-          </div>
+          <div className="mt-8"><Link href="/contact" className="inline-block bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded font-semibold text-lg transition-colors">Book an AI Opportunity Assessment</Link></div>
         </div>
       </section>
       <section className="py-5 px-6 bg-canvas-warm border-b border-brass-light">
@@ -54,7 +50,7 @@ export default function ProfessionalServicesPage() {
                 <div className="font-display font-bold text-4xl text-green-700 mb-2">{s.stat}</div>
                 <div className="font-semibold text-ink text-sm mb-2">{s.label}</div>
                 <p className="text-ink-light text-xs">{s.detail}</p>
-                <p className="text-brass text-xs mt-1">{s.source}</p>
+                <p className="text-ink-light text-xs mt-1">{s.source}</p>
               </div>
             ))}
           </div>
@@ -81,11 +77,7 @@ export default function ProfessionalServicesPage() {
               <div key={p.pillar} className={`bg-white border-l-4 ${p.accent} rounded-sm p-6`}>
                 <div className={`inline-block ${p.label} text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3`}>{p.pillar}</div>
                 <h3 className="font-semibold text-ink mb-3">{p.tagline}</h3>
-                <ul className="space-y-2">
-                  {p.items.map((item) => (
-                    <li key={item} className="text-sm text-ink-mid flex items-start gap-2"><span className="text-green-600 mt-0.5 shrink-0">✓</span>{item}</li>
-                  ))}
-                </ul>
+                <ul className="space-y-2">{p.items.map((item) => <li key={item} className="text-sm text-ink-mid flex items-start gap-2"><span className="text-green-600 mt-0.5 shrink-0">✓</span>{item}</li>)}</ul>
               </div>
             ))}
           </div>
@@ -99,11 +91,7 @@ export default function ProfessionalServicesPage() {
               <div key={s.name} className="bg-canvas border-l-4 border-brass rounded-sm p-6">
                 <h3 className="font-semibold text-ink mb-2">{s.name}</h3>
                 <p className="text-ink-mid text-sm mb-4">{s.opportunity}</p>
-                <ul className="space-y-1">
-                  {s.capabilities.map((c) => (
-                    <li key={c} className="text-xs text-ink-mid flex items-start gap-2"><span className="text-green-600 mt-0.5 shrink-0">✓</span>{c}</li>
-                  ))}
-                </ul>
+                <ul className="space-y-1">{s.capabilities.map((c) => <li key={c} className="text-xs text-ink-mid flex items-start gap-2"><span className="text-green-600 mt-0.5 shrink-0">✓</span>{c}</li>)}</ul>
               </div>
             ))}
           </div>

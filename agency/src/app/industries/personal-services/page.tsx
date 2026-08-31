@@ -31,16 +31,12 @@ export default function PersonalServicesPage() {
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-6">
             <Link href="/industries" className="text-sm text-ink-light hover:text-green-700 transition">Industries</Link>
-            <span className="text-brass-light">/</span>
+            <span className="text-ink-light">/</span>
             <span className="text-sm font-semibold text-green-700">Personal Services</span>
           </div>
-          <h1 className="font-display font-extrabold text-5xl md:text-6xl text-ink leading-none tracking-tight mb-6">
-            Appointment-driven businesses grow when more slots are filled and more clients come back.
-          </h1>
+          <h1 className="font-display font-extrabold text-5xl md:text-6xl text-ink leading-none tracking-tight mb-6">Appointment-driven businesses grow when more slots are filled and more clients come back.</h1>
           <p className="text-ink-mid text-xl max-w-2xl leading-relaxed">Makr helps dental practices, veterinary clinics, wellness providers, med spas, fitness studios, and beauty businesses capture more appointments, reduce no-shows, and reactivate lapsed clients.</p>
-          <div className="mt-8">
-            <Link href="/contact" className="inline-block bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded font-semibold text-lg transition-colors">Book an AI Opportunity Assessment</Link>
-          </div>
+          <div className="mt-8"><Link href="/contact" className="inline-block bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded font-semibold text-lg transition-colors">Book an AI Opportunity Assessment</Link></div>
         </div>
       </section>
       <section className="py-16 px-6 bg-canvas">
@@ -53,7 +49,7 @@ export default function PersonalServicesPage() {
                 <div className="font-display font-bold text-4xl text-green-700 mb-2">{s.stat}</div>
                 <div className="font-semibold text-ink text-sm mb-2">{s.label}</div>
                 <p className="text-ink-light text-xs">{s.detail}</p>
-                <p className="text-brass text-xs mt-1">{s.source}</p>
+                <p className="text-ink-light text-xs mt-1">{s.source}</p>
               </div>
             ))}
           </div>
@@ -81,11 +77,7 @@ export default function PersonalServicesPage() {
               <div key={s.name} className="bg-white border-l-4 border-green-700 rounded-sm p-6">
                 <h3 className="font-semibold text-ink mb-2">{s.name}</h3>
                 <p className="text-ink-mid text-sm mb-4">{s.problem}</p>
-                <ul className="space-y-1">
-                  {s.capabilities.map((c) => (
-                    <li key={c} className="text-xs text-ink-mid flex items-start gap-2"><span className="text-green-600 mt-0.5 shrink-0">✓</span>{c}</li>
-                  ))}
-                </ul>
+                <ul className="space-y-1">{s.capabilities.map((c) => <li key={c} className="text-xs text-ink-mid flex items-start gap-2"><span className="text-green-600 mt-0.5 shrink-0">✓</span>{c}</li>)}</ul>
               </div>
             ))}
           </div>

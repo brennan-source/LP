@@ -2,10 +2,10 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 
 const STATS = [
-  { stat: "52%", label: "Average call answer rate", detail: "Nearly half of all inbound calls go unanswered in the average home service business.", source: "Invoca 2026" },
-  { stat: "38%", label: "Lead rate on answered calls", detail: "Of the calls that do get answered, less than 4 in 10 result in a qualified lead.", source: "Invoca 2026" },
-  { stat: "45%", label: "Call-to-appointment conversion", detail: "Less than half of inbound calls result in a booked appointment.", source: "Invoca 2026" },
-  { stat: "55%", label: "Of agents never ask the caller to book", detail: "More than half of call handlers fail to actively request the appointment during the call.", source: "Invoca 2026" },
+  { stat: "52%", label: "Average call answer rate", detail: "Nearly half of all inbound calls go unanswered in the average home service business." },
+  { stat: "38%", label: "Lead rate on answered calls", detail: "Of the calls that do get answered, less than 4 in 10 result in a qualified lead." },
+  { stat: "45%", label: "Call-to-appointment conversion", detail: "Less than half of inbound calls result in a booked appointment." },
+  { stat: "55%", label: "Of agents never ask the caller to book", detail: "More than half of call handlers fail to actively request the appointment during the call." },
 ];
 
 const TRADES = [
@@ -33,18 +33,12 @@ export default function HomeServicesPage() {
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-6">
             <Link href="/industries" className="text-sm text-ink-light hover:text-green-700 transition">Industries</Link>
-            <span className="text-brass-light">/</span>
+            <span className="text-ink-light">/</span>
             <span className="text-sm font-semibold text-green-700">Home Services</span>
           </div>
-          <h1 className="font-display font-extrabold text-5xl md:text-6xl text-ink leading-none tracking-tight mb-6">
-            Home service businesses lose revenue every day from unanswered calls.
-          </h1>
-          <p className="text-ink-mid text-xl max-w-2xl leading-relaxed">
-            Makr helps HVAC, plumbing, roofing, electrical, and other home service businesses capture more leads, book more jobs, and run more efficiently — without adding headcount.
-          </p>
-          <div className="mt-8">
-            <Link href="/contact" className="inline-block bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded font-semibold text-lg transition-colors">Book an AI Opportunity Assessment</Link>
-          </div>
+          <h1 className="font-display font-extrabold text-5xl md:text-6xl text-ink leading-none tracking-tight mb-6">Home service businesses lose revenue every day from unanswered calls.</h1>
+          <p className="text-ink-mid text-xl max-w-2xl leading-relaxed">Makr helps HVAC, plumbing, roofing, electrical, and other home service businesses capture more leads, book more jobs, and run more efficiently — without adding headcount.</p>
+          <div className="mt-8"><Link href="/contact" className="inline-block bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded font-semibold text-lg transition-colors">Book an AI Opportunity Assessment</Link></div>
         </div>
       </section>
       <section className="py-16 px-6 bg-canvas">
@@ -72,11 +66,7 @@ export default function HomeServicesPage() {
               <div key={t.name} className="bg-canvas border-l-4 border-green-700 rounded-sm p-6">
                 <h3 className="font-semibold text-ink mb-2">{t.name}</h3>
                 <p className="text-ink-mid text-sm mb-4">{t.problem}</p>
-                <ul className="space-y-1">
-                  {t.capabilities.map((c) => (
-                    <li key={c} className="text-xs text-ink-mid flex items-start gap-2"><span className="text-green-600 mt-0.5 shrink-0">✓</span>{c}</li>
-                  ))}
-                </ul>
+                <ul className="space-y-1">{t.capabilities.map((c) => <li key={c} className="text-xs text-ink-mid flex items-start gap-2"><span className="text-green-600 mt-0.5 shrink-0">✓</span>{c}</li>)}</ul>
               </div>
             ))}
           </div>
@@ -87,22 +77,8 @@ export default function HomeServicesPage() {
           <h2 className="font-display font-bold text-3xl text-white mb-8">What changes when Makr is running</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-green-600">
-                  <th className="text-left py-3 pr-6 font-semibold text-green-200">Metric</th>
-                  <th className="text-left py-3 px-4 font-semibold text-green-200">Industry baseline</th>
-                  <th className="text-left py-3 px-4 font-semibold text-green-100">With Makr</th>
-                </tr>
-              </thead>
-              <tbody>
-                {OUTCOMES.map((row) => (
-                  <tr key={row.metric} className="border-b border-green-700">
-                    <td className="py-3 pr-6 font-medium text-white">{row.metric}</td>
-                    <td className="py-3 px-4 text-green-300">{row.baseline}</td>
-                    <td className="py-3 px-4 text-white font-medium">{row.withMakr}</td>
-                  </tr>
-                ))}
-              </tbody>
+              <thead><tr className="border-b border-green-600"><th className="text-left py-3 pr-6 font-semibold text-green-200">Metric</th><th className="text-left py-3 px-4 font-semibold text-green-200">Industry baseline</th><th className="text-left py-3 px-4 font-semibold text-green-100">With Makr</th></tr></thead>
+              <tbody>{OUTCOMES.map((row) => <tr key={row.metric} className="border-b border-green-700"><td className="py-3 pr-6 font-medium text-white">{row.metric}</td><td className="py-3 px-4 text-green-300">{row.baseline}</td><td className="py-3 px-4 text-white font-medium">{row.withMakr}</td></tr>)}</tbody>
             </table>
           </div>
           <p className="text-xs text-green-400 mt-4">Industry baselines from Invoca 2026. &quot;With Makr&quot; reflects system design goals — individual results depend on business size, volume, and configuration.</p>
