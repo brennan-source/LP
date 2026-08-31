@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-barlow), system-ui, sans-serif;
+  --font-display: var(--font-barlow-condensed), system-ui, sans-serif;
+
+  --color-canvas: #EDEBE4;
+  --color-canvas-warm: #F5F3EE;
+  --color-ink: #1C231E;
+  --color-ink-mid: #4A5548;
+  --color-ink-light: #8A9490;
+  --color-brass: #7A6344;
+  --color-brass-light: #EAE0D0;
+}

@@ -1,36 +1,60 @@
 import Link from "next/link";
 import Nav from "@/components/Nav";
 
+const MARKETS = [
+  {
+    name: "Home Services",
+    href: "/industries/home-services",
+    description:
+      "HVAC, plumbing, roofing, electrical, restoration, landscaping — businesses where every inbound call is a revenue opportunity.",
+    stat: "52% average call answer rate industry-wide.",
+    statDetail: "Nearly half of all inbound calls go unanswered. Every missed call is a lead someone else captured.",
+    source: "Invoca 2026",
+  },
+  {
+    name: "Professional Services",
+    href: "/industries/professional-services",
+    description:
+      "Accounting, legal, consulting, engineering — firms where AI compresses billable work and sharpens client experience.",
+    stat: "Only 18% of professional service firms track AI ROI.",
+    statDetail: "Most firms are spending on AI tools but can't measure what they're delivering.",
+    source: "Thomson Reuters 2026",
+  },
+  {
+    name: "Personal Services",
+    href: "/industries/personal-services",
+    description:
+      "Dental, veterinary, wellness, med spa, fitness — appointment-driven businesses where utilization and retention drive profit.",
+    stat: "40% call-to-appointment conversion on average.",
+    statDetail: "Systematic follow-up and reactivation campaigns move that number.",
+    source: "Invoca 2026",
+  },
+];
+
 const PROBLEMS = [
   {
-    icon: "📵",
     title: "Revenue left uncaptured",
     body: "Calls go unanswered. Web leads sit cold. After-hours inquiries disappear. Every gap is revenue someone else captured.",
   },
   {
-    icon: "⏱️",
     title: "Slow speed-to-lead",
-    body: "The business that responds first usually wins. Manual follow-up creates delays that cost you jobs.",
+    body: "The business that responds first usually wins the job. Manual follow-up creates delays that cost you work.",
   },
   {
-    icon: "📋",
     title: "Unsold proposals",
     body: "Estimates go out. No follow-up happens. Jobs that were close are forgotten instead of closed.",
   },
   {
-    icon: "🗂️",
     title: "Manual administrative work",
-    body: "Scheduling, data entry, billing, reporting — hours every week spent on tasks that could run automatically.",
+    body: "Scheduling, data entry, billing, reporting — hours every week on tasks that could run on their own.",
   },
   {
-    icon: "🔌",
     title: "Disconnected software",
     body: "Your CRM, phone, scheduling, and billing tools don't talk to each other. You pay the gap in time and errors.",
   },
   {
-    icon: "🧠",
     title: "Teams underusing AI",
-    body: "AI tools are available. Most teams don't know how to use them well. Productivity gains stay theoretical.",
+    body: "AI tools are available. Most teams haven't been shown how to use them well. Productivity gains stay theoretical.",
   },
 ];
 
@@ -38,7 +62,8 @@ const PILLARS = [
   {
     name: "Grow",
     tagline: "Capture more revenue",
-    color: "bg-green-700",
+    accent: "border-green-700",
+    label: "bg-green-700",
     capabilities: [
       "AI receptionist — every call answered",
       "Missed-call recovery",
@@ -51,7 +76,8 @@ const PILLARS = [
   {
     name: "Operate",
     tagline: "Run a more efficient business",
-    color: "bg-green-800",
+    accent: "border-green-800",
+    label: "bg-green-800",
     capabilities: [
       "Scheduling & dispatch automation",
       "Billing & invoicing workflows",
@@ -64,139 +90,137 @@ const PILLARS = [
   {
     name: "Enable",
     tagline: "Build AI into your team",
-    color: "bg-green-900",
+    accent: "border-brass",
+    label: "bg-brass",
     capabilities: [
       "AI readiness assessment",
       "Team training & adoption",
       "Prompt frameworks for your workflows",
-      "AI tool selection & integration",
+      "Tool selection & integration",
       "Ongoing optimization",
       "Quarterly performance reviews",
     ],
   },
 ];
 
-const MARKETS = [
+const TIERS = [
   {
-    name: "Home Services",
-    label: "Primary focus",
-    description:
-      "HVAC, plumbing, roofing, electrical, restoration, landscaping — businesses where every call is a revenue opportunity.",
-    href: "/industries/home-services",
-    stats: "52% average call answer rate in the industry. Every unanswered call is a lead your competitor captured.",
-    source: "Invoca 2026",
+    name: "Essentials",
+    price: "$1,800",
+    period: "/month",
+    tagline: "Core AI capture running 24/7.",
+    includes: [
+      "AI receptionist",
+      "Missed-call recovery",
+      "Web lead capture",
+      "CRM sync",
+      "Monthly performance report",
+    ],
+    featured: false,
   },
   {
-    name: "Professional Services",
-    label: "Growing focus",
-    description:
-      "Accounting, legal, consulting, engineering — firms where AI can compress billable work and sharpen client experience.",
-    href: "/industries/professional-services",
-    stats: "Only 18% of professional service firms track AI ROI. Most are spending but not measuring.",
-    source: "Thomson Reuters 2026",
-  },
-  {
-    name: "Personal Services",
-    label: "Growing focus",
-    description:
-      "Dental, veterinary, wellness, med spa, fitness — appointment-driven businesses where utilization and retention drive profit.",
-    href: "/industries/personal-services",
-    stats: "40% call-to-appointment conversion in personal services. Room to grow with the right follow-up systems.",
-    source: "Invoca 2026",
-  },
-];
-
-const ENGAGEMENTS = [
-  {
-    name: "AI Opportunity Audit",
-    price: "$2,500 – $5,000",
-    type: "One-time",
-    description:
-      "A structured discovery engagement. We map your business, identify where AI creates the most value, and deliver a prioritized roadmap.",
-    cta: "Start here",
-  },
-  {
-    name: "Implementation Projects",
-    price: "$5,000 – $25,000+",
-    type: "Per project",
-    description:
-      "Scoped builds: AI receptionist, CRM automation, scheduling systems, billing workflows. Priced per project, not per month.",
-    cta: "See what we build",
-  },
-  {
-    name: "Revenue Engine",
-    price: "~$3,500 / month",
-    type: "Managed — our flagship",
+    name: "Growth",
+    price: "$3,500",
+    period: "/month",
+    tagline: "Full revenue operations — managed.",
+    includes: [
+      "Everything in Essentials",
+      "Appointment booking automation",
+      "Estimate follow-up system",
+      "Review generation",
+      "Scheduling workflows",
+      "Dedicated account management",
+    ],
     featured: true,
-    description:
-      "Ongoing AI operations management. We run your systems, optimize continuously, and report on what it's generating for your business.",
-    cta: "Most common starting point",
   },
   {
-    name: "Revenue OS",
-    price: "From $5,000 / month",
-    type: "Managed + custom implementation",
-    description:
-      "Full-stack AI operations for businesses ready to build a durable competitive advantage. Custom scope, dedicated support.",
-    cta: "For larger operations",
+    name: "Projects",
+    price: "$5,000–$25,000+",
+    period: "per project",
+    tagline: "One-time builds, scoped upfront.",
+    includes: [
+      "AI receptionist setup",
+      "CRM buildout & automation",
+      "Custom workflow builds",
+      "System integrations",
+      "No monthly commitment",
+    ],
+    featured: false,
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    period: "let's scope it",
+    tagline: "For complex or multi-location operations.",
+    includes: [
+      "Full-stack AI operations",
+      "Custom workflow development",
+      "Team enablement program",
+      "Multi-location support",
+      "Quarterly business reviews",
+    ],
+    featured: false,
   },
 ];
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-800">
+    <div className="min-h-screen bg-canvas text-ink">
       <Nav />
 
       {/* Hero */}
-      <section className="bg-white pt-24 pb-20 px-6 text-center">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-sm font-semibold uppercase tracking-widest text-green-700 mb-4">
-            AI Growth &amp; Operations for Service Businesses
-          </p>
-          <h1 className="text-5xl md:text-6xl font-bold text-stone-900 leading-tight mb-6">
+      <section className="bg-white pt-28 pb-20 px-6 border-b border-brass-light">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="font-display font-extrabold text-[clamp(4rem,10vw,8.5rem)] leading-[0.92] tracking-tight text-ink text-balance">
             Grow faster.
             <br />
             Run smarter.
           </h1>
-          <p className="text-xl text-stone-600 mb-10 max-w-2xl mx-auto">
+          <p className="mt-8 text-lg md:text-xl text-ink-mid leading-relaxed max-w-xl">
             Makr designs, implements, and manages practical AI systems that help service businesses
             capture more revenue, automate operations, and build teams that use AI well.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-10 flex flex-wrap gap-4 items-center">
             <Link
               href="/contact"
-              className="bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-800 transition"
+              className="bg-green-700 hover:bg-green-800 text-white px-7 py-3.5 rounded font-semibold text-base transition-colors"
             >
               Book an AI Opportunity Assessment
             </Link>
             <Link
               href="/services"
-              className="border border-stone-300 text-stone-700 px-8 py-4 rounded-lg font-semibold text-lg hover:border-green-700 hover:text-green-700 transition"
+              className="text-ink-mid hover:text-ink font-semibold text-base transition-colors underline underline-offset-4 decoration-brass"
             >
-              See How We Work
+              See how we work →
             </Link>
           </div>
         </div>
       </section>
 
       {/* Three Service Markets */}
-      <section className="py-20 px-6 bg-stone-100">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-4">Three types of service businesses. One platform.</h2>
-          <p className="text-center text-stone-600 mb-12">
-            We work with established service businesses across three markets.
+      <section className="py-20 px-6 bg-canvas">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-display font-bold text-4xl md:text-5xl text-ink mb-2">
+            Three markets. One platform.
+          </h2>
+          <p className="text-ink-mid text-lg mb-12">
+            We work with established service businesses across home, professional, and personal services.
           </p>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {MARKETS.map((m) => (
-              <Link key={m.name} href={m.href} className="block bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition group">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="font-bold text-lg text-stone-900 group-hover:text-green-700 transition">{m.name}</span>
-                  <span className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full font-medium">{m.label}</span>
-                </div>
-                <p className="text-stone-600 text-sm mb-4">{m.description}</p>
-                <div className="border-t pt-3 mt-3">
-                  <p className="text-sm text-stone-500 italic">{m.stats}</p>
-                  <p className="text-xs text-stone-400 mt-1">Source: {m.source}</p>
+              <Link
+                key={m.name}
+                href={m.href}
+                className="group bg-white border border-brass-light rounded-sm p-6 hover:border-brass transition-colors flex flex-col"
+              >
+                <h3 className="font-display font-bold text-2xl text-ink mb-3 group-hover:text-green-700 transition-colors">
+                  {m.name}
+                </h3>
+                <p className="text-ink-mid text-sm leading-relaxed flex-1">{m.description}</p>
+                <div className="mt-5 pt-4 border-t border-brass-light">
+                  <p className="text-sm text-ink font-medium">{m.stat}</p>
+                  <p className="text-xs text-ink-light mt-1">{m.statDetail}</p>
+                  <p className="text-xs text-brass mt-2 font-medium">Source: {m.source}</p>
                 </div>
               </Link>
             ))}
@@ -205,165 +229,199 @@ export default function HomePage() {
       </section>
 
       {/* Problems */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-4">Where service businesses lose revenue</h2>
-          <p className="text-center text-stone-600 mb-12 max-w-2xl mx-auto">
-            Most businesses aren&apos;t losing money from one big failure. They&apos;re leaking it across six smaller ones.
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="py-20 px-6 bg-white border-y border-brass-light">
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-xl mb-12">
+            <h2 className="font-display font-bold text-4xl md:text-5xl text-ink leading-tight">
+              Six ways service businesses leak revenue every month.
+            </h2>
+            <p className="mt-4 text-ink-mid">
+              Most businesses aren&apos;t losing money from one big failure. They&apos;re leaking it across smaller gaps that compound every week.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
             {PROBLEMS.map((p) => (
-              <div key={p.title} className="bg-stone-50 rounded-xl p-6 border border-stone-100">
-                <div className="text-3xl mb-3">{p.icon}</div>
-                <h3 className="font-semibold text-stone-900 mb-2">{p.title}</h3>
-                <p className="text-stone-600 text-sm">{p.body}</p>
+              <div key={p.title} className="border-l-2 border-brass pl-5">
+                <h3 className="font-semibold text-ink mb-1">{p.title}</h3>
+                <p className="text-ink-mid text-sm leading-relaxed">{p.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Opportunity bridge */}
-      <section className="py-16 px-6 bg-green-800 text-white text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold mb-4">
+      {/* Bridge */}
+      <section className="py-16 px-6 bg-green-800">
+        <div className="max-w-6xl mx-auto">
+          <p className="font-display font-bold text-3xl md:text-4xl text-white leading-snug max-w-2xl">
             The businesses that close these gaps grow faster than their competitors.
-          </h2>
-          <p className="text-green-200 text-lg">
-            Makr&apos;s job is to close them — with practical AI systems designed for your business, not generic software.
+            Makr&apos;s job is to close them.
           </p>
         </div>
       </section>
 
       {/* Three Pillars */}
-      <section className="py-20 px-6 bg-stone-100">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-4">Three ways Makr helps your business</h2>
-          <p className="text-center text-stone-600 mb-12">
+      <section className="py-20 px-6 bg-canvas">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-display font-bold text-4xl md:text-5xl text-ink mb-2">
+            Three ways Makr works.
+          </h2>
+          <p className="text-ink-mid text-lg mb-12">
             Every engagement draws from one or more of these capability pillars.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             {PILLARS.map((p) => (
-              <div key={p.name} className="bg-white rounded-xl overflow-hidden shadow-sm">
-                <div className={`${p.color} text-white p-6`}>
-                  <div className="text-2xl font-bold mb-1">{p.name}</div>
-                  <div className="text-green-200 text-sm">{p.tagline}</div>
+              <div key={p.name} className={`bg-white border-l-4 ${p.accent} rounded-sm`}>
+                <div className="p-6">
+                  <div className={`inline-block ${p.label} text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-4`}>
+                    {p.name}
+                  </div>
+                  <p className="text-ink-mid text-sm mb-5">{p.tagline}</p>
+                  <ul className="space-y-2">
+                    {p.capabilities.map((c) => (
+                      <li key={c} className="text-sm text-ink-mid flex items-start gap-2">
+                        <span className="text-green-600 mt-0.5 shrink-0">✓</span>
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="p-6 space-y-2">
-                  {p.capabilities.map((c) => (
-                    <li key={c} className="text-sm text-stone-700 flex items-start gap-2">
-                      <span className="text-green-600 mt-0.5">✓</span>
-                      {c}
-                    </li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Engagement Options */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-4">Transparent pricing. Four ways to engage.</h2>
-          <p className="text-center text-stone-600 mb-12">
-            Most clients start with an Audit, then move into a managed engagement.
-          </p>
-          <div className="grid md:grid-cols-2 gap-6">
-            {ENGAGEMENTS.map((e) => (
+      {/* Pricing */}
+      <section className="py-20 px-6 bg-white border-t border-brass-light">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <h2 className="font-display font-bold text-4xl md:text-5xl text-ink mb-2">
+              Transparent pricing.
+            </h2>
+            <p className="text-ink-mid text-lg">
+              Monthly retainers, one-time projects, or custom scope — you pick the model that fits.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {TIERS.map((t) => (
               <div
-                key={e.name}
-                className={`rounded-xl p-6 border-2 ${
-                  e.featured
-                    ? "border-green-600 bg-green-50"
-                    : "border-stone-100 bg-stone-50"
+                key={t.name}
+                className={`rounded-sm flex flex-col ${
+                  t.featured
+                    ? "bg-green-700 text-white"
+                    : "bg-canvas border border-brass-light"
                 }`}
               >
-                {e.featured && (
-                  <div className="text-xs font-semibold uppercase tracking-widest text-green-700 mb-2">
-                    Flagship
+                {t.featured && (
+                  <div className="text-xs font-bold uppercase tracking-widest text-green-200 px-5 pt-4">
+                    Most Popular
                   </div>
                 )}
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-bold text-stone-900 text-lg">{e.name}</h3>
-                  <div className="text-right">
-                    <div className="font-bold text-green-700">{e.price}</div>
-                    <div className="text-xs text-stone-500">{e.type}</div>
+                <div className="p-5 flex-1">
+                  <h3 className={`font-display font-bold text-xl mb-1 ${t.featured ? "text-white" : "text-ink"}`}>
+                    {t.name}
+                  </h3>
+                  <div className={`text-2xl font-bold mb-0.5 ${t.featured ? "text-white" : "text-green-700"}`}>
+                    {t.price}
                   </div>
+                  <div className={`text-xs mb-3 ${t.featured ? "text-green-200" : "text-ink-light"}`}>
+                    {t.period}
+                  </div>
+                  <p className={`text-sm mb-4 ${t.featured ? "text-green-100" : "text-ink-mid"}`}>
+                    {t.tagline}
+                  </p>
+                  <ul className="space-y-1.5">
+                    {t.includes.map((item) => (
+                      <li
+                        key={item}
+                        className={`text-xs flex items-start gap-2 ${t.featured ? "text-green-100" : "text-ink-mid"}`}
+                      >
+                        <span className={`mt-0.5 shrink-0 ${t.featured ? "text-green-300" : "text-green-600"}`}>✓</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="text-stone-600 text-sm">{e.description}</p>
-                {e.cta && (
-                  <p className="text-xs text-stone-500 mt-3 italic">{e.cta}</p>
-                )}
+                <div className="px-5 pb-5">
+                  <Link
+                    href="/contact"
+                    className={`block text-center py-2.5 rounded text-sm font-semibold transition-colors ${
+                      t.featured
+                        ? "bg-white text-green-700 hover:bg-green-50"
+                        : "bg-ink text-white hover:bg-green-700"
+                    }`}
+                  >
+                    Get started
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
-          <div className="text-center mt-10">
-            <Link
-              href="/pricing"
-              className="text-green-700 font-semibold hover:underline"
-            >
+          <p className="mt-6 text-center">
+            <Link href="/pricing" className="text-ink-mid text-sm hover:text-ink underline underline-offset-4 decoration-brass">
               See full pricing details →
             </Link>
-          </div>
+          </p>
         </div>
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-20 px-6 bg-green-900 text-white text-center">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4">Ready to find out what AI can actually do for your business?</h2>
-          <p className="text-green-200 mb-8 text-lg">
-            Start with an AI Opportunity Audit. We&apos;ll map the gaps, size the opportunity, and give you a clear roadmap.
+      <section className="py-24 px-6 bg-green-900">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-display font-extrabold text-4xl md:text-6xl text-white leading-tight max-w-2xl">
+            Ready to find out what AI can actually do for your business?
+          </h2>
+          <p className="mt-6 text-green-200 text-lg max-w-lg">
+            Start with an AI Opportunity Assessment. We&apos;ll map the gaps, size the opportunity, and give you a clear roadmap — before you commit to anything.
           </p>
-          <Link
-            href="/contact"
-            className="bg-white text-green-900 px-10 py-4 rounded-lg font-bold text-lg hover:bg-green-50 transition inline-block"
-          >
-            Book an AI Opportunity Assessment
-          </Link>
-          <p className="text-green-300 text-sm mt-4">
-            Complimentary for qualified service businesses.
-          </p>
+          <div className="mt-10 flex flex-wrap gap-4 items-center">
+            <Link
+              href="/contact"
+              className="bg-white text-green-900 hover:bg-green-50 px-8 py-4 rounded font-bold text-lg transition-colors"
+            >
+              Book an AI Opportunity Assessment
+            </Link>
+            <span className="text-green-400 text-sm">Complimentary for qualified service businesses.</span>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-stone-900 text-stone-400 py-12 px-6">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
+      <footer className="bg-ink text-ink-light py-14 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
           <div>
-            <div className="text-white font-bold text-lg mb-2">Makr</div>
-            <p>AI Growth &amp; Operations for Service Businesses.</p>
-            <p className="mt-2">Built in New England.</p>
+            <div className="font-display font-bold text-xl text-white mb-3">Makr</div>
+            <p>AI Growth & Operations for Service Businesses.</p>
+            <p className="mt-2 text-brass">Built in New England.</p>
           </div>
           <div>
-            <div className="text-white font-semibold mb-3">Solutions</div>
+            <div className="text-white font-semibold mb-3 text-xs uppercase tracking-widest">Solutions</div>
             <ul className="space-y-2">
-              <li><Link href="/services" className="hover:text-white transition">Grow</Link></li>
-              <li><Link href="/services" className="hover:text-white transition">Operate</Link></li>
-              <li><Link href="/services" className="hover:text-white transition">Enable</Link></li>
+              <li><Link href="/services#grow" className="hover:text-white transition-colors">Grow</Link></li>
+              <li><Link href="/services#operate" className="hover:text-white transition-colors">Operate</Link></li>
+              <li><Link href="/services#enable" className="hover:text-white transition-colors">Enable</Link></li>
             </ul>
           </div>
           <div>
-            <div className="text-white font-semibold mb-3">Industries</div>
+            <div className="text-white font-semibold mb-3 text-xs uppercase tracking-widest">Industries</div>
             <ul className="space-y-2">
-              <li><Link href="/industries/home-services" className="hover:text-white transition">Home Services</Link></li>
-              <li><Link href="/industries/professional-services" className="hover:text-white transition">Professional Services</Link></li>
-              <li><Link href="/industries/personal-services" className="hover:text-white transition">Personal Services</Link></li>
+              <li><Link href="/industries/home-services" className="hover:text-white transition-colors">Home Services</Link></li>
+              <li><Link href="/industries/professional-services" className="hover:text-white transition-colors">Professional Services</Link></li>
+              <li><Link href="/industries/personal-services" className="hover:text-white transition-colors">Personal Services</Link></li>
             </ul>
           </div>
           <div>
-            <div className="text-white font-semibold mb-3">Company</div>
+            <div className="text-white font-semibold mb-3 text-xs uppercase tracking-widest">Company</div>
             <ul className="space-y-2">
-              <li><Link href="/about" className="hover:text-white transition">About</Link></li>
-              <li><Link href="/pricing" className="hover:text-white transition">Pricing</Link></li>
-              <li><Link href="/insights" className="hover:text-white transition">Insights</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
+              <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
+              <li><Link href="/insights" className="hover:text-white transition-colors">Insights</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
         </div>
-        <div className="max-w-5xl mx-auto mt-8 pt-8 border-t border-stone-800 text-xs text-stone-500">
+        <div className="max-w-6xl mx-auto mt-10 pt-8 border-t border-ink-mid/30 text-xs text-ink-light">
           © {new Date().getFullYear()} Makr. All rights reserved.
         </div>
       </footer>

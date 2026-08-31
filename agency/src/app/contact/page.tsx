@@ -25,6 +25,9 @@ const REVENUE_RANGES = [
   { value: "over-30m", label: "Over $30M" },
 ];
 
+const inputClass =
+  "w-full border border-brass-light bg-canvas-warm rounded-sm px-4 py-2.5 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent placeholder:text-ink-light";
+
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
@@ -67,12 +70,12 @@ export default function ContactPage() {
 
   if (status === "success") {
     return (
-      <div className="min-h-screen bg-stone-50 text-stone-800">
+      <div className="min-h-screen bg-canvas text-ink">
         <Nav />
         <div className="pt-32 pb-20 px-6 text-center max-w-xl mx-auto">
-          <div className="text-5xl mb-6">✓</div>
-          <h1 className="text-3xl font-bold mb-4">We&apos;ll be in touch soon.</h1>
-          <p className="text-stone-600 text-lg">
+          <div className="text-5xl mb-6 text-green-700">✓</div>
+          <h1 className="font-display font-bold text-4xl mb-4">We&apos;ll be in touch soon.</h1>
+          <p className="text-ink-mid text-lg">
             Thanks for reaching out. We review every request and will follow up within one business day.
           </p>
         </div>
@@ -81,161 +84,99 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-800">
+    <div className="min-h-screen bg-canvas text-ink">
       <Nav />
-      <section className="pt-24 pb-20 px-6">
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold uppercase tracking-widest text-green-700 mb-4">Get Started</p>
-            <h1 className="text-4xl font-bold text-stone-900 mb-4">Book an AI Opportunity Assessment</h1>
-            <p className="text-stone-600 text-lg">
+      <div className="pt-28 pb-20 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-12 items-start">
+
+          {/* Left column */}
+          <div className="md:col-span-2 pt-4">
+            <h1 className="font-display font-extrabold text-4xl md:text-5xl text-ink leading-tight mb-4">
+              Book an AI Opportunity Assessment
+            </h1>
+            <p className="text-ink-mid leading-relaxed mb-8">
               Tell us about your business. We&apos;ll review your submission and follow up to schedule a conversation.
             </p>
+            <div className="space-y-4 border-l-2 border-brass pl-5">
+              <div>
+                <p className="font-semibold text-ink text-sm">Complimentary</p>
+                <p className="text-ink-mid text-sm">For qualified service businesses.</p>
+              </div>
+              <div>
+                <p className="font-semibold text-ink text-sm">Based in New England</p>
+                <p className="text-ink-mid text-sm">Serving contractors across MA, NH, and beyond.</p>
+              </div>
+              <div>
+                <p className="font-semibold text-ink text-sm">One business day response</p>
+                <p className="text-ink-mid text-sm">We review every submission personally.</p>
+              </div>
+            </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm p-8 space-y-5">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-stone-700 mb-1">Name *</label>
-                <input
-                  name="name"
-                  required
-                  value={form.name}
-                  onChange={handleChange}
-                  className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="Your name"
-                />
+          {/* Form */}
+          <div className="md:col-span-3">
+            <form onSubmit={handleSubmit} className="bg-white border border-brass-light rounded-sm p-7 space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-ink mb-1">Name *</label>
+                  <input name="name" required value={form.name} onChange={handleChange} className={inputClass} placeholder="Your name" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-ink mb-1">Business Name *</label>
+                  <input name="businessName" required value={form.businessName} onChange={handleChange} className={inputClass} placeholder="Your company" />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-ink mb-1">Phone *</label>
+                  <input name="phone" type="tel" required value={form.phone} onChange={handleChange} className={inputClass} placeholder="(555) 555-5555" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-ink mb-1">Email *</label>
+                  <input name="email" type="email" required value={form.email} onChange={handleChange} className={inputClass} placeholder="you@company.com" />
+                </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-stone-700 mb-1">Business Name *</label>
-                <input
-                  name="businessName"
-                  required
-                  value={form.businessName}
-                  onChange={handleChange}
-                  className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="Your company"
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-stone-700 mb-1">Phone *</label>
-                <input
-                  name="phone"
-                  type="tel"
-                  required
-                  value={form.phone}
-                  onChange={handleChange}
-                  className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="(555) 555-5555"
-                />
+                <label className="block text-sm font-medium text-ink mb-1">Type of service business *</label>
+                <select name="serviceCategory" required value={form.serviceCategory} onChange={handleChange} className={inputClass}>
+                  <option value="">Select category</option>
+                  {SERVICE_CATEGORIES.map((c) => <option key={c.value} value={c.value}>{c.label}</option>)}
+                </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-stone-700 mb-1">Email *</label>
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={handleChange}
-                  className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="you@company.com"
-                />
+                <label className="block text-sm font-medium text-ink mb-1">Industry *</label>
+                <select name="industry" required value={form.industry} onChange={handleChange} className={inputClass}>
+                  <option value="">Select industry</option>
+                  {INDUSTRIES.map((i) => <option key={i} value={i}>{i}</option>)}
+                </select>
               </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-stone-700 mb-1">Type of service business *</label>
-              <select
-                name="serviceCategory"
-                required
-                value={form.serviceCategory}
-                onChange={handleChange}
-                className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              <div>
+                <label className="block text-sm font-medium text-ink mb-1">Annual revenue *</label>
+                <select name="revenue" required value={form.revenue} onChange={handleChange} className={inputClass}>
+                  <option value="">Select range</option>
+                  {REVENUE_RANGES.map((r) => <option key={r.value} value={r.value}>{r.label}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-ink mb-1">Website (optional)</label>
+                <input name="website" type="url" value={form.website} onChange={handleChange} className={inputClass} placeholder="https://yourcompany.com" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-ink mb-1">Anything else? (optional)</label>
+                <textarea name="message" rows={3} value={form.message} onChange={handleChange} className={`${inputClass} resize-none`} placeholder="Tell us about your biggest challenge, or what you're hoping to accomplish." />
+              </div>
+              {status === "error" && <p className="text-red-600 text-sm">{errorMsg}</p>}
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="w-full bg-green-700 hover:bg-green-800 text-white py-3.5 rounded-sm font-semibold text-base transition-colors disabled:opacity-60"
               >
-                <option value="">Select category</option>
-                {SERVICE_CATEGORIES.map((c) => (
-                  <option key={c.value} value={c.value}>{c.label}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-stone-700 mb-1">Industry *</label>
-              <select
-                name="industry"
-                required
-                value={form.industry}
-                onChange={handleChange}
-                className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-              >
-                <option value="">Select industry</option>
-                {INDUSTRIES.map((i) => (
-                  <option key={i} value={i}>{i}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-stone-700 mb-1">Annual revenue (approximate) *</label>
-              <select
-                name="revenue"
-                required
-                value={form.revenue}
-                onChange={handleChange}
-                className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-              >
-                <option value="">Select range</option>
-                {REVENUE_RANGES.map((r) => (
-                  <option key={r.value} value={r.value}>{r.label}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-stone-700 mb-1">Website (optional)</label>
-              <input
-                name="website"
-                type="url"
-                value={form.website}
-                onChange={handleChange}
-                className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-                placeholder="https://yourcompany.com"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-stone-700 mb-1">Anything else you&apos;d like us to know? (optional)</label>
-              <textarea
-                name="message"
-                rows={4}
-                value={form.message}
-                onChange={handleChange}
-                className="w-full border border-stone-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
-                placeholder="Tell us about your biggest challenge, or what you're hoping to accomplish."
-              />
-            </div>
-
-            {status === "error" && (
-              <p className="text-red-600 text-sm">{errorMsg}</p>
-            )}
-
-            <button
-              type="submit"
-              disabled={status === "loading"}
-              className="w-full bg-green-700 text-white py-3.5 rounded-lg font-semibold text-base hover:bg-green-800 transition disabled:opacity-60"
-            >
-              {status === "loading" ? "Submitting..." : "Book My Assessment"}
-            </button>
-
-            <p className="text-center text-xs text-stone-400">
-              Complimentary for qualified service businesses. Based in New England, serving contractors across MA, NH, and beyond.
-            </p>
-          </form>
+                {status === "loading" ? "Submitting..." : "Book My Assessment"}
+              </button>
+            </form>
+          </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

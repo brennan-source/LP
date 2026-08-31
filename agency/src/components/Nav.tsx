@@ -2,7 +2,6 @@ import Link from "next/link";
 
 export function Nav({ activePath }: { activePath?: string }) {
   const links = [
-    { href: "/", label: "Home" },
     { href: "/services", label: "Solutions" },
     { href: "/industries", label: "Industries" },
     { href: "/how-it-works", label: "How It Works" },
@@ -11,30 +10,30 @@ export function Nav({ activePath }: { activePath?: string }) {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-stone-200">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-brass-light">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="text-xl font-black text-green-800 tracking-tight">
-          Makr<span className="text-stone-400 font-medium">.ai</span>
+        <Link href="/" className="font-display text-xl font-bold text-ink tracking-tight">
+          Makr
         </Link>
-        <div className="hidden md:flex items-center gap-5 text-sm text-stone-500">
+        <div className="hidden md:flex items-center gap-6 text-sm text-ink-mid">
           {links.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
-              className={`hover:text-stone-900 transition ${activePath === href ? "text-stone-900 font-medium" : ""}`}
+              className={`hover:text-ink transition-colors ${activePath === href ? "text-ink font-semibold" : ""}`}
             >
               {label}
             </Link>
           ))}
           <Link
             href="/contact"
-            className="px-4 py-2 bg-green-700 hover:bg-green-600 text-white rounded-lg transition font-medium"
+            className="px-4 py-2 bg-green-700 hover:bg-green-800 text-white rounded font-semibold transition-colors"
           >
             Book an Assessment
           </Link>
         </div>
-        <Link href="/contact" className="md:hidden px-3 py-1.5 bg-green-700 text-white text-sm rounded-lg font-medium">
-          Book an Assessment
+        <Link href="/contact" className="md:hidden px-3 py-1.5 bg-green-700 text-white text-sm rounded font-semibold">
+          Book Assessment
         </Link>
       </div>
     </nav>
