@@ -57,24 +57,14 @@ const PILLARS = [
 
 const TIERS = [
   {
-    name: "Essentials", price: "$1,500", period: "/month", tagline: "Core AI capture running 24/7.",
+    name: "Essentials", price: "$999", period: "/month", tagline: "Core AI capture running 24/7.",
     includes: ["AI receptionist", "Missed-call recovery", "Web lead capture", "CRM sync", "Monthly performance report"],
     featured: false,
   },
   {
-    name: "Growth", price: "$3,500", period: "/month", tagline: "Full revenue operations — managed.",
+    name: "Growth", price: "$1,499", period: "/month", tagline: "Full revenue operations — managed.",
     includes: ["Everything in Essentials", "Appointment booking automation", "Estimate follow-up system", "Review generation", "Scheduling workflows", "Dedicated account management"],
     featured: true,
-  },
-  {
-    name: "Projects", price: "$4,000–$10,000+", period: "per project", tagline: "One-time builds, scoped upfront.",
-    includes: ["AI receptionist setup", "CRM buildout & automation", "Custom workflow builds", "System integrations", "No monthly commitment"],
-    featured: false,
-  },
-  {
-    name: "Enterprise", price: "Custom", period: "let’s scope it", tagline: "For complex or multi-location operations.",
-    includes: ["Full-stack AI operations", "Custom workflow development", "Team enablement program", "Multi-location support", "Quarterly business reviews"],
-    featured: false,
   },
 ];
 
@@ -184,9 +174,9 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <h2 className="font-display font-bold text-4xl md:text-5xl text-ink mb-2">Transparent pricing.</h2>
-            <p className="text-ink-mid text-lg">Monthly retainers, one-time projects, or custom scope — you pick the model that fits.</p>
+            <p className="text-ink-mid text-lg">Fixed monthly retainers. Implementation fee quoted after assessment, locked before kickoff.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid md:grid-cols-2 gap-5 max-w-3xl">
             {TIERS.map((t) => (
               <div key={t.name} className={`rounded-sm flex flex-col ${t.featured ? "bg-green-700 text-white" : "bg-canvas border border-brass-light"}`}>
                 {t.featured && <div className="text-xs font-bold uppercase tracking-widest text-green-200 px-5 pt-4">Most Popular</div>}
@@ -209,7 +199,7 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          <p className="mt-6 text-center">
+          <p className="mt-6">
             <Link href="/pricing" className="text-ink-mid text-sm hover:text-ink underline underline-offset-4 decoration-brass">See full pricing details →</Link>
           </p>
         </div>
@@ -232,7 +222,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
           <div>
             <div className="font-display font-bold text-xl text-white mb-3">Makr</div>
-            <p>AI Growth & Operations for Service Businesses.</p>
+            <p>AI Growth &amp; Operations for Service Businesses.</p>
             <p className="mt-2 text-canvas-warm">Built in New England.</p>
           </div>
           <div>
@@ -262,7 +252,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="max-w-6xl mx-auto mt-10 pt-8 border-t border-ink-mid/30 text-xs text-ink-light">
-          © {new Date().getFullYear()} Makr. All rights reserved.
+          &copy; {new Date().getFullYear()} Makr. All rights reserved.
         </div>
       </footer>
     </div>
