@@ -62,7 +62,7 @@ const TIERS = [
     featured: false,
   },
   {
-    name: "Growth", price: "$1,499", period: "/month", tagline: "Full revenue operations — managed.",
+    name: "Growth", price: "$1,999", period: "/month", tagline: "Full revenue operations — managed.",
     includes: ["Everything in Essentials", "Appointment booking automation", "Estimate follow-up system", "Review generation", "Scheduling workflows", "Dedicated account management"],
     featured: true,
   },

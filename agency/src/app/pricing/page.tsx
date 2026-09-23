@@ -20,7 +20,7 @@ const RETAINERS = [
   },
   {
     name: "Growth",
-    price: "$1,499",
+    price: "$1,999",
     period: "/month",
     tagline: "Full revenue operations, managed.",
     description:
@@ -93,7 +93,7 @@ const DECISION_CARDS = [
     label: "Start with Growth",
     accent: "border-green-800",
     badge: "bg-green-800",
-    fit: "You're ready to run revenue operations end to end and want a dedicated partner managing it at $1,499/month.",
+    fit: "You're ready to run revenue operations end to end and want a dedicated partner managing it at $1,999/month.",
     signs: [
       "You're capturing leads but losing them later",
       "Estimates go unfollowed, reviews go unrequested",
@@ -285,7 +285,7 @@ export default function PricingPage() {
           {[
             {
               q: "Why publish prices publicly?",
-              a: "Because you shouldn't have to get on a sales call to know if something fits your budget. These are real, fixed numbers — $999/month for Essentials, $1,499/month for Growth. The only variable is the one-time implementation fee, which we quote after a free assessment and lock in before any work begins.",
+              a: "Because you shouldn't have to get on a sales call to know if something fits your budget. These are real, fixed numbers — $999/month for Essentials, $1,999/month for Growth. The only variable is the one-time implementation fee, which we quote after a free assessment and lock in before any work begins.",
             },
             {
               q: "What's the implementation fee?",
