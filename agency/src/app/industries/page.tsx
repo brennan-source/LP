@@ -40,11 +40,11 @@ export default function IndustriesPage() {
 
       {INDUSTRIES.map((v, i) => (
         <section key={v.id} id={v.id} className={`scroll-mt-20 py-20 px-6 border-b border-brass-light ${i % 2 === 0 ? "bg-canvas" : "bg-white"}`}>
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <div className={i % 2 === 1 ? "md:order-2" : ""}>
               <div className="flex items-baseline gap-4 mb-6 min-w-0">
-                <span className="font-display font-bold text-6xl text-ink-light leading-none">{v.number}</span>
-                <h2 className="min-w-0 font-display font-extrabold text-4xl lg:text-5xl text-ink leading-tight text-balance">{v.name}</h2>
+                <span className="font-display font-bold text-5xl sm:text-6xl text-ink-light leading-none">{v.number}</span>
+                <h2 className="min-w-0 font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-ink leading-tight text-balance">{v.name}</h2>
               </div>
               <p className="text-ink font-semibold text-lg mb-4">{v.line}</p>
               <p className="text-ink-mid leading-relaxed mb-8">{v.description}</p>
@@ -60,11 +60,11 @@ export default function IndustriesPage() {
               )}
             </div>
             <div className={i % 2 === 1 ? "md:order-1" : ""}>
-              <div className="bg-white border border-brass-light rounded-sm p-8">
+              <div className="bg-white border border-brass-light rounded-sm p-6 sm:p-8">
                 <p className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-5">Where we often start</p>
                 <ul className="space-y-4">
                   {v.workflows.map((w) => (
-                    <li key={w} className="border-l-4 border-green-700 pl-4 font-display font-bold text-2xl text-ink leading-snug">{w}</li>
+                    <li key={w} className="border-l-4 border-green-700 pl-4 font-display font-bold text-xl sm:text-2xl text-ink leading-snug">{w}</li>
                   ))}
                 </ul>
                 <p className="text-ink-light text-xs mt-6">Examples, not a fixed package. Every business gets the improvements that fit how it actually works.</p>

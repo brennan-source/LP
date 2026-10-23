@@ -4,11 +4,66 @@
   --font-sans: var(--font-barlow), system-ui, sans-serif;
   --font-display: var(--font-barlow-condensed), system-ui, sans-serif;
 
-  --color-canvas: #EDEBE4;
-  --color-canvas-warm: #F5F3EE;
-  --color-ink: #1C231E;
-  --color-ink-mid: #4A5548;
-  --color-ink-light: #8A9490;
-  --color-brass: #7A6344;
-  --color-brass-light: #EAE0D0;
+  /* Neutrals. canvas = stone (section differentiation), canvas-warm = warm white. */
+  --color-canvas: #EEECE5;
+  --color-canvas-warm: #FAF9F5;
+  --color-ink: #19211C;
+  --color-ink-mid: #566058; /* muted text: AA on white, warm white and stone */
+  --color-ink-light: #626B64; /* captions: AA on stone and lighter */
+
+  /* Brass is the copper accent: numbering, annotations, small details (~5% of the UI).
+     Darkened from the brief's #9A6A3A so small text passes AA. */
+  --color-brass: #84592F;
+  --color-brass-light: #D8D6CE; /* warm neutral border */
+  --color-copper: #84592F;
+  --color-sage: #DCE7DE;
+
+  /* Forest green replaces Tailwind's green scale so existing classes pick it up. */
+  --color-green-50: #EEF5EF;
+  --color-green-100: #E6EFE8;
+  --color-green-200: #DCE9DF;
+  --color-green-300: #B5D1BD;
+  --color-green-600: #0E7F47;
+  --color-green-700: #076B3A;
+  --color-green-800: #0B4D2C;
+  --color-green-900: #0A3F25;
+
+  /* Type scale: larger body copy, 1.6 line height for reading. */
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.55;
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.6;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.55;
+  --text-xl: 1.375rem;
+  --text-xl--line-height: 1.5;
+
+  --shadow-showcase: 0 1px 2px rgb(25 33 28 / 0.04), 0 12px 32px -12px rgb(25 33 28 / 0.18);
 }
+
+h1, h2, h3, p, li, dd {
+  overflow-wrap: break-word;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-green-700);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Gentle entrance for the hero artifact stack. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.animate-rise { animation: rise 0.7s ease-out both; }

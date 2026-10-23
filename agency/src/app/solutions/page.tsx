@@ -55,11 +55,11 @@ export default function SolutionsPage() {
       {SOLUTIONS.map((s, i) => (
         <section key={s.id} id={s.id} className={`scroll-mt-20 py-20 px-6 border-b border-brass-light ${i % 2 === 0 ? "bg-canvas" : "bg-white"}`}>
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-[1fr_20rem] gap-10 mb-10">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_20rem] gap-10 mb-10">
               <div>
-                <div className="flex items-baseline gap-4 mb-4">
-                  <span className="font-display font-bold text-5xl text-ink-light leading-none">{s.number}</span>
-                  <h2 className="font-display font-extrabold text-4xl md:text-5xl text-ink leading-tight">{s.name}</h2>
+                <div className="flex items-baseline gap-4 mb-4 min-w-0">
+                  <span className="font-display font-bold text-4xl sm:text-5xl text-ink-light leading-none">{s.number}</span>
+                  <h2 className="min-w-0 font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-ink leading-tight">{s.name}</h2>
                 </div>
                 <p className="text-ink-mid text-lg max-w-2xl leading-relaxed">{s.summary}</p>
                 <p className="mt-4 text-ink font-semibold max-w-2xl">{s.outcome}</p>

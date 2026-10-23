@@ -10,13 +10,13 @@ export function Footer() {
           <div className="font-display font-bold text-xl text-white mb-3">Makr</div>
           <p>Websites, lead follow-up and practical AI workflows for growing businesses.</p>
           <p className="mt-3 text-canvas-warm">{LOCAL_LINE}</p>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="mt-3 inline-block hover:text-white transition-colors">{CONTACT_EMAIL}</a>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="mt-3 inline-block py-1 hover:text-white transition-colors">{CONTACT_EMAIL}</a>
         </div>
         <div>
           <div className="text-white font-semibold mb-3 text-xs uppercase tracking-widest">Solutions</div>
           <ul className="space-y-2">
             {SOLUTIONS.map((s) => (
-              <li key={s.id}><Link href={`/solutions#${s.id}`} className="hover:text-white transition-colors">{s.name}</Link></li>
+              <li key={s.id}><Link href={`/solutions#${s.id}`} className="inline-block py-1 hover:text-white transition-colors">{s.name}</Link></li>
             ))}
           </ul>
         </div>
@@ -24,18 +24,18 @@ export function Footer() {
           <div className="text-white font-semibold mb-3 text-xs uppercase tracking-widest">Industries</div>
           <ul className="space-y-2">
             {INDUSTRIES.map((i) => (
-              <li key={i.id}><Link href={`/industries#${i.id}`} className="hover:text-white transition-colors">{i.name}</Link></li>
+              <li key={i.id}><Link href={`/industries#${i.id}`} className="inline-block py-1 hover:text-white transition-colors">{i.name}</Link></li>
             ))}
           </ul>
         </div>
         <div>
           <div className="text-white font-semibold mb-3 text-xs uppercase tracking-widest">Company</div>
           <ul className="space-y-2">
-            <li><Link href="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
-            <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
-            <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
-            <li><Link href="/growth-score" className="hover:text-white transition-colors">Free Growth Score</Link></li>
-            <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+            <li><Link href="/how-it-works" className="inline-block py-1 hover:text-white transition-colors">How It Works</Link></li>
+            <li><Link href="/about" className="inline-block py-1 hover:text-white transition-colors">About</Link></li>
+            <li><Link href="/pricing" className="inline-block py-1 hover:text-white transition-colors">Pricing</Link></li>
+            <li><Link href="/growth-score" className="inline-block py-1 hover:text-white transition-colors">Free Growth Score</Link></li>
+            <li><Link href="/contact" className="inline-block py-1 hover:text-white transition-colors">Contact</Link></li>
           </ul>
         </div>
       </div>

@@ -51,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${barlow.variable} ${barlowCondensed.variable} font-sans bg-canvas text-ink antialiased`}
+        className={`${barlow.variable} ${barlowCondensed.variable} font-sans bg-canvas-warm text-ink antialiased`}
       >
         <JsonLd data={organizationSchema} />
         {children}

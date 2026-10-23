@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { INDUSTRIES, PROCESS, SOLUTIONS } from "@/lib/content";
 import { BOOKING_URL } from "@/lib/site";
+import { AssessmentPreview } from "@/components/visuals";
 
 // Reusable page sections for the marketing site.
 
@@ -77,7 +78,7 @@ export function ProcessGrid() {
   );
 }
 
-// Closing call to action. Every page ends with the same primary action.
+// Closing call to action. Shows what the visitor receives, not just a button.
 export function CtaBand({
   title = "Where is your business losing leads or time?",
   body = "Book a short Growth Gap Review. We will identify the clearest opportunities across your website, follow-up process and internal workflows.",
@@ -93,17 +94,25 @@ export function CtaBand({
 }) {
   return (
     <section className="py-24 px-6 bg-green-900">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="font-display font-extrabold text-4xl md:text-6xl text-white leading-tight max-w-3xl text-balance">{title}</h2>
-        <p className="mt-6 text-green-100 text-lg max-w-xl leading-relaxed">{body}</p>
-        <div className="mt-10 flex flex-wrap gap-x-6 gap-y-4 items-center">
-          <Link href={href} data-cta={name} className="bg-white text-green-900 hover:bg-green-50 px-8 py-4 rounded-sm font-bold text-lg transition-colors">
-            {cta}
-          </Link>
-          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-cta={`${name}-calendar`} className="text-green-100 hover:text-white text-sm font-medium underline underline-offset-4">
-            Or pick a time on our calendar
-          </a>
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-[7fr_5fr] gap-12 items-center">
+        <div>
+          <h2 className="font-display font-extrabold text-4xl md:text-5xl text-white leading-tight max-w-2xl text-balance">{title}</h2>
+          <p className="mt-6 text-green-100 text-lg max-w-xl">{body}</p>
+          <ul className="mt-6 space-y-2 text-green-100">
+            {["A clear read on your website, follow-up and workflows", "Your top opportunities, in priority order", "A recommended sequence — whether or not you hire us"].map((item) => (
+              <li key={item} className="flex gap-3"><span className="text-green-300" aria-hidden>→</span>{item}</li>
+            ))}
+          </ul>
+          <div className="mt-10 flex flex-wrap gap-x-6 gap-y-4 items-center">
+            <Link href={href} data-cta={name} className="bg-white text-green-900 hover:bg-green-50 px-8 py-4 rounded-sm font-bold text-lg transition-colors">
+              {cta}
+            </Link>
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-cta={`${name}-calendar`} className="text-green-100 hover:text-white text-sm font-medium underline underline-offset-4">
+              Or pick a time on our calendar
+            </a>
+          </div>
         </div>
+        <AssessmentPreview />
       </div>
     </section>
   );
