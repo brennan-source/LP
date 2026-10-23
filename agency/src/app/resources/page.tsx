@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
+
+export const metadata: Metadata = {
+  title: "Resources — Workshops, Guides and Assessments",
+  description: "Free workshops, guides and assessments for business owners who want to understand practical automation before committing to anything.",
+  alternates: { canonical: "/resources" },
+};
 
 const WORKSHOPS = [
   "10 Practical Ways Home Service Businesses Can Use AI Today",
@@ -16,11 +23,6 @@ const GUIDES = [
   { title: "ROI Calculator Worksheet", desc: "Estimate how much lost revenue you can recover with AI revenue operations.", href: "/contact" },
 ];
 
-const CASE_STUDIES = [
-  { trade: "HVAC", result: "Captured 40% more after-hours leads in the first 90 days.", status: "coming-soon" },
-  { trade: "Plumbing", result: "Reduced office hours by 12/week with billing and scheduling automation.", status: "coming-soon" },
-];
-
 export default function ResourcesPage() {
   return (
     <>
@@ -33,7 +35,7 @@ export default function ResourcesPage() {
             <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-3">Resources</p>
             <h1 className="text-5xl font-black text-stone-900 mb-4">Learn before you buy</h1>
             <p className="text-stone-500 text-lg max-w-2xl mx-auto">
-              Free workshops, guides, assessments, and events for home service business owners who want to understand AI before committing to anything.
+              Free workshops, guides, assessments, and events for business owners who want to understand AI before committing to anything.
             </p>
           </div>
 
@@ -70,26 +72,6 @@ export default function ResourcesPage() {
                   Book Your Assessment
                 </Link>
               </div>
-            </div>
-          </div>
-
-          {/* Case Studies */}
-          <div className="mb-16">
-            <div className="mb-8 pb-4 border-b border-stone-200">
-              <p className="text-green-700 text-sm font-semibold uppercase tracking-widest mb-1">Case Studies</p>
-              <h2 className="text-2xl font-black text-stone-900">Real results from real contractors</h2>
-              <p className="text-stone-500 mt-1 text-sm">Numbers don&apos;t lie. Here&apos;s what Makr has delivered for businesses like yours.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {CASE_STUDIES.map((cs) => (
-                <div key={cs.trade} className="bg-stone-50 border border-stone-200 border-dashed rounded-2xl p-6 flex flex-col justify-between">
-                  <div>
-                    <p className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-2">{cs.trade}</p>
-                    <p className="text-stone-500 text-sm italic">{cs.result}</p>
-                  </div>
-                  <p className="text-xs text-stone-400 mt-4">Full case study coming soon</p>
-                </div>
-              ))}
             </div>
           </div>
 
@@ -176,7 +158,7 @@ export default function ResourcesPage() {
 
       <footer className="border-t border-stone-200 py-8 px-6 bg-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-stone-400 text-sm">
-          <span className="font-black text-green-800">Makr<span className="text-stone-400 font-medium">.ai</span></span>
+          <span className="font-black text-green-800">Makr</span>
           <div className="flex gap-6">
             <Link href="/services" className="hover:text-stone-700 transition">Solutions</Link>
             <Link href="/industries" className="hover:text-stone-700 transition">Industries</Link>
@@ -185,7 +167,7 @@ export default function ResourcesPage() {
             <Link href="/about" className="hover:text-stone-700 transition">About</Link>
             <Link href="/contact" className="hover:text-stone-700 transition">Contact</Link>
           </div>
-          <span>© {new Date().getFullYear()} Makr.ai. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Makr. All rights reserved.</span>
         </div>
       </footer>
     </>

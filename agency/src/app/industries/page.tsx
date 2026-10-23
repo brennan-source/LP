@@ -1,98 +1,81 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import { CtaBand, PageHeader } from "@/components/sections";
+import { INDUSTRIES } from "@/lib/content";
+import { LOCAL_LINE } from "@/lib/site";
 
-const VERTICALS = [
-  {
-    name: "Home Services", href: "/industries/home-services", number: "01",
-    description: "HVAC, plumbing, roofing, electrical, restoration, landscaping, pest control. Every call is a revenue opportunity. Speed-to-lead determines who wins the job.",
-    trades: ["HVAC", "Plumbing", "Roofing", "Electrical", "Restoration", "Landscaping", "Pest Control"],
-    stat: "52%", statLabel: "average call answer rate industry-wide",
-    statDetail: "Nearly half of all inbound calls go unanswered. Every missed call is a lead a competitor captured.",
-    source: "Invoca 2026", accentText: "text-green-700",
-  },
-  {
-    name: "Professional Services", href: "/industries/professional-services", number: "02",
-    description: "Accounting, legal, consulting, engineering. AI can compress billable work, sharpen client experience, and build measurable productivity gains across the team.",
-    trades: ["Accounting & Tax", "Legal", "Consulting", "Engineering", "Architecture", "Financial Advisory"],
-    stat: "18%", statLabel: "of professional service firms track AI ROI",
-    statDetail: "Most firms are using AI tools but can't measure what they're delivering. That's the gap we close.",
-    source: "Thomson Reuters 2026", accentText: "text-ink-mid",
-  },
-  {
-    name: "Personal Services", href: "/industries/personal-services", number: "03",
-    description: "Dental, veterinary, wellness, med spa, fitness, beauty. Appointment-driven businesses where utilization, no-show reduction, and retention drive profitability.",
-    trades: ["Dental", "Veterinary", "Med Spa", "Wellness", "Fitness", "Beauty", "Senior Services"],
-    stat: "40%", statLabel: "average call-to-appointment conversion",
-    statDetail: "Systematic follow-up and reactivation campaigns move that number meaningfully.",
-    source: "Invoca 2026", accentText: "text-green-700",
-  },
-];
+export const metadata: Metadata = {
+  title: "Industries — Home, Professional, Personal, Manufacturing & B2B Services",
+  description:
+    "How Makr helps home services, professional services, personal services, manufacturing and B2B service businesses respond faster, follow up consistently and reduce manual work.",
+  alternates: { canonical: "/industries" },
+};
 
 export default function IndustriesPage() {
   return (
     <div className="min-h-screen bg-canvas text-ink">
-      <Nav />
+      <Nav activePath="/industries" />
 
-      <section className="bg-white pt-28 pb-20 px-6 border-b border-brass-light">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="font-display font-extrabold text-5xl md:text-7xl text-ink leading-none tracking-tight">Built for service businesses.</h1>
-          <p className="mt-6 text-ink-mid text-xl max-w-2xl leading-relaxed">The economics, workflows, and growth levers are different for each market we serve. Our approach reflects that.</p>
-          <div className="mt-10 flex flex-wrap gap-6">
-            {VERTICALS.map((v) => (
-              <a key={v.name} href={`#${v.number}`} className="group flex items-center gap-3">
-                <span className="font-display font-bold text-4xl md:text-5xl text-ink-light group-hover:text-ink-mid transition-colors leading-none">{v.number}</span>
-                <span className="text-ink-mid text-sm font-medium group-hover:text-ink transition-colors">{v.name}</span>
-              </a>
-            ))}
-          </div>
+      <PageHeader
+        title="Built for businesses where responsiveness and execution matter."
+        intro="Different industries lose opportunities in different places. We start with the bottleneck that matters most in yours."
+      >
+        <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
+          {INDUSTRIES.map((v) => (
+            <a key={v.id} href={`#${v.id}`} className="group flex items-center gap-3">
+              <span className="font-display font-bold text-4xl text-ink-light group-hover:text-ink-mid transition-colors leading-none">{v.number}</span>
+              <span className="text-ink-mid text-sm font-medium group-hover:text-ink transition-colors">{v.name}</span>
+            </a>
+          ))}
         </div>
-      </section>
+      </PageHeader>
 
       <div className="bg-ink px-6 py-4">
         <div className="max-w-6xl mx-auto">
-          <p className="text-sm text-canvas-warm"><span className="text-white font-semibold">Built in New England.</span>{" "}Serving contractors and service businesses across Massachusetts, New Hampshire, and beyond.</p>
+          <p className="text-sm text-canvas-warm">{LOCAL_LINE}</p>
         </div>
       </div>
 
-      {VERTICALS.map((v, i) => (
-        <section key={v.name} id={v.number} className={`py-24 px-6 border-b border-brass-light ${i % 2 === 0 ? "bg-canvas" : "bg-white"}`}>
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-              <div className={i % 2 === 1 ? "md:order-2" : ""}>
-                <div className="flex items-baseline gap-4 mb-6">
-                  <span className="font-display font-bold text-6xl text-ink-light leading-none">{v.number}</span>
-                  <h2 className="font-display font-extrabold text-4xl md:text-5xl text-ink leading-tight">{v.name}</h2>
-                </div>
-                <p className="text-ink-mid leading-relaxed mb-8 text-lg">{v.description}</p>
-                <div className="flex flex-wrap gap-2 mb-10">
-                  {v.trades.map((t) => (
-                    <span key={t} className="text-xs bg-canvas-warm border border-brass-light text-ink-mid px-3 py-1.5 rounded-sm">{t}</span>
-                  ))}
-                </div>
-                <Link href={v.href} className="inline-block bg-ink text-white hover:bg-green-700 transition-colors px-6 py-3 rounded-sm font-semibold text-sm">Learn more about {v.name} →</Link>
+      {INDUSTRIES.map((v, i) => (
+        <section key={v.id} id={v.id} className={`scroll-mt-20 py-20 px-6 border-b border-brass-light ${i % 2 === 0 ? "bg-canvas" : "bg-white"}`}>
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+            <div className={i % 2 === 1 ? "md:order-2" : ""}>
+              <div className="flex items-baseline gap-4 mb-6 min-w-0">
+                <span className="font-display font-bold text-6xl text-ink-light leading-none">{v.number}</span>
+                <h2 className="min-w-0 font-display font-extrabold text-4xl lg:text-5xl text-ink leading-tight text-balance">{v.name}</h2>
               </div>
-              <div className={`${i % 2 === 1 ? "md:order-1" : ""} flex flex-col justify-start`}>
-                <div className="bg-white border border-brass-light rounded-sm p-8">
-                  <div className={`font-display font-extrabold text-7xl md:text-8xl ${v.accentText} leading-none mb-3`}>{v.stat}</div>
-                  <p className="font-semibold text-ink mb-3 leading-snug">{v.statLabel}</p>
-                  <p className="text-ink-mid text-sm leading-relaxed">{v.statDetail}</p>
-                  <p className="text-ink-light text-xs mt-4">Source: {v.source}</p>
-                </div>
+              <p className="text-ink font-semibold text-lg mb-4">{v.line}</p>
+              <p className="text-ink-mid leading-relaxed mb-8">{v.description}</p>
+              <div className="flex flex-wrap gap-2 mb-8">
+                {v.examples.map((t) => (
+                  <span key={t} className="text-xs bg-canvas-warm border border-brass-light text-ink-mid px-3 py-1.5 rounded-sm">{t}</span>
+                ))}
+              </div>
+              {v.href && (
+                <Link href={v.href} className="inline-block bg-ink text-white hover:bg-green-700 transition-colors px-6 py-3 rounded-sm font-semibold text-sm">
+                  {v.id === "manufacturing" ? "Request a Manufacturing Growth Checkup →" : `More on ${v.name} →`}
+                </Link>
+              )}
+            </div>
+            <div className={i % 2 === 1 ? "md:order-1" : ""}>
+              <div className="bg-white border border-brass-light rounded-sm p-8">
+                <p className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-5">Where we often start</p>
+                <ul className="space-y-4">
+                  {v.workflows.map((w) => (
+                    <li key={w} className="border-l-4 border-green-700 pl-4 font-display font-bold text-2xl text-ink leading-snug">{w}</li>
+                  ))}
+                </ul>
+                <p className="text-ink-light text-xs mt-6">Examples, not a fixed package. Every business gets the improvements that fit how it actually works.</p>
               </div>
             </div>
           </div>
         </section>
       ))}
 
-      <section className="py-24 px-6 bg-green-900">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-display font-extrabold text-4xl md:text-6xl text-white leading-tight max-w-2xl">Not sure if Makr is a fit?</h2>
-          <p className="mt-6 text-green-200 text-lg max-w-lg">Book an AI Opportunity Assessment. We&apos;ll tell you honestly whether we can help — and what the opportunity looks like for your specific business.</p>
-          <div className="mt-10">
-            <Link href="/contact" className="inline-block bg-white text-green-900 hover:bg-green-50 px-8 py-4 rounded font-bold text-lg transition-colors">Book an AI Opportunity Assessment</Link>
-          </div>
-        </div>
-      </section>
+      <CtaBand name="industries-bottom" title="Not sure if we're a fit?" body="Book a short Growth Gap Review. We'll tell you honestly whether we can help and where the clearest opportunity is for your business." />
+      <Footer />
     </div>
   );
 }

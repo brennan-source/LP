@@ -3,7 +3,7 @@ import { GrowthScoreResults } from "@/types/growth-score";
 import { formatDollars } from "@/lib/utils";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const FROM = process.env.FROM_EMAIL || "Makr.ai <noreply@gomakr.ai>";
+const FROM = process.env.FROM_EMAIL || "Makr <noreply@gomakr.ai>";
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "brennan@gomakr.ai";
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3003";
 
@@ -61,7 +61,7 @@ export async function sendGrowthScoreReportEmail(toEmail: string, results: Growt
   </div>
 
   <p style="color: #a8a29e; font-size: 12px; text-align: center; margin-top: 32px;">
-    Makr.ai · AI Growth Score<br>
+    Makr · AI Growth Score<br>
     <a href="${reportUrl}" style="color: #15803d;">View full report</a>
   </p>
 </body>

@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
+
+export const metadata: Metadata = {
+  title: "Insights — Practical Growth and Automation Guides",
+  description: "Practical guides on websites, lead follow-up and workflow automation for growing businesses. No hype, no jargon.",
+  alternates: { canonical: "/insights" },
+};
 
 export default function InsightsPage() {
   return (
@@ -47,7 +54,7 @@ export default function InsightsPage() {
 
       <footer className="border-t border-stone-200 py-8 px-6 bg-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-stone-400 text-sm">
-          <span className="font-black text-green-800">Makr<span className="text-stone-400 font-medium">.ai</span></span>
+          <span className="font-black text-green-800">Makr</span>
           <div className="flex flex-wrap gap-6 justify-center">
             <Link href="/services" className="hover:text-stone-700 transition">Solutions</Link>
             <Link href="/industries" className="hover:text-stone-700 transition">Industries</Link>
@@ -57,7 +64,7 @@ export default function InsightsPage() {
             <Link href="/insights" className="hover:text-stone-700 transition">Insights</Link>
             <Link href="/contact" className="hover:text-stone-700 transition">Contact</Link>
           </div>
-          <span>© {new Date().getFullYear()} Makr.ai. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Makr. All rights reserved.</span>
         </div>
       </footer>
     </>

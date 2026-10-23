@@ -121,8 +121,8 @@ export default async function DemoPage({ params }: Props) {
       <div className="sticky top-0 z-50 bg-green-800 px-4 py-2.5 flex items-center justify-between gap-4">
         <p className="text-white text-sm font-medium truncate">
           {industryIcon} {d.hasWebsite
-            ? `Makr.ai built ${d.businessName} a new SEO-optimized website — designed to rank higher and drive more leads. No setup fee.`
-            : `This is a free website Makr.ai built for ${d.businessName} — no setup fee, included with any plan.`}
+            ? `Makr built ${d.businessName} a new SEO-optimized website — designed to rank higher and drive more leads. No setup fee.`
+            : `This is a free website Makr built for ${d.businessName} — no setup fee, included with any plan.`}
         </p>
         <Link
           href={`/contact?name=${encodeURIComponent(d.businessName)}`}
@@ -459,7 +459,7 @@ export default async function DemoPage({ params }: Props) {
               <p>
                 Website by{" "}
                 <Link href="https://gomakr.ai" className="text-amber-400 hover:text-amber-300 transition font-semibold">
-                  Makr.ai
+                  Makr
                 </Link>
                 {" "}— want a site like this?{" "}
                 <Link href="/contact" className="text-amber-400 hover:text-amber-300 transition underline">

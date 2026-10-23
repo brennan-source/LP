@@ -9,7 +9,7 @@ export default async function PostcardPreviewIndexPage() {
     <div className="min-h-screen bg-stone-100 p-8 font-sans">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
-          <Link href="/" className="text-green-700 hover:text-green-600 text-sm font-medium transition">← Back to Makr.ai</Link>
+          <Link href="/" className="text-green-700 hover:text-green-600 text-sm font-medium transition">← Back to Makr</Link>
           <h1 className="text-3xl font-black text-stone-800 mt-3">Postcard & Demo Directory</h1>
           <p className="text-stone-500 mt-1">Top 30 targets — postcard preview and live demo site for each.</p>
         </div>

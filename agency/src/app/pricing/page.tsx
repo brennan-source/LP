@@ -1,5 +1,14 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Pricing — Monthly Retainers, Projects & Implementation",
+  description:
+    "Transparent Makr pricing: Essentials at $999/month, Growth at $1,999/month, one-time implementation from $2,500–$5,000, and scoped projects from $4,000.",
+  alternates: { canonical: "/pricing" },
+};
 
 const RETAINERS = [
   {
@@ -72,7 +81,7 @@ const PROJECTS_AND_CUSTOM = [
       "Quarterly business reviews",
       "Priority support",
     ],
-    note: "Start with an AI Opportunity Assessment.",
+    note: "Start with a Growth Gap Review.",
     featured: false,
   },
 ];
@@ -116,7 +125,7 @@ const DECISION_CARDS = [
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-canvas text-ink">
-      <Nav />
+      <Nav activePath="/pricing" />
 
       {/* Header */}
       <section className="bg-white pt-28 pb-16 px-6 border-b border-brass-light">
@@ -205,7 +214,7 @@ export default function PricingPage() {
           <div className="mt-8 bg-white border border-brass-light rounded-sm p-6">
             <h3 className="font-semibold text-ink mb-1">Implementation fee</h3>
             <p className="text-ink-mid text-sm leading-relaxed">
-              Both retainers include a one-time implementation fee of <span className="font-semibold text-ink">$2,500–$5,000</span>, depending on what needs to be built. The exact amount is quoted after your free AI Opportunity Assessment and locked in before any work begins — no surprises after you sign.
+              Both retainers include a one-time implementation fee of <span className="font-semibold text-ink">$2,500–$5,000</span>, depending on what needs to be built. The exact amount is quoted after your free Growth Gap Review and locked in before any work begins — no surprises after you sign.
             </p>
           </div>
         </div>
@@ -289,11 +298,11 @@ export default function PricingPage() {
             },
             {
               q: "What's the implementation fee?",
-              a: "One-time, $2,500–$5,000 depending on what needs to be built. The exact figure is determined during the free AI Opportunity Assessment and is fixed in writing before kickoff. No surprises after you sign.",
+              a: "One-time, $2,500–$5,000 depending on what needs to be built. The exact figure is determined during the free Growth Gap Review and is fixed in writing before kickoff. No surprises after you sign.",
             },
             {
               q: "Where should I start?",
-              a: "Most clients start with a quick conversation. We'll look at your business, tell you honestly where AI creates the most value, and recommend a starting point — no obligation.",
+              a: "Most clients start with a quick conversation. We'll look at your business, tell you honestly where the clearest opportunities are, and recommend a starting point — no obligation.",
             },
           ].map((faq) => (
             <div key={faq.q} className="border-l-2 border-brass pl-5">
@@ -311,19 +320,20 @@ export default function PricingPage() {
             Ready to get started?
           </h2>
           <p className="mt-6 text-green-200 text-lg max-w-lg">
-            Book an AI Opportunity Assessment. We&apos;ll identify where AI creates the most value for your business, quote your implementation fee, and give you a clear plan.
+            Book a Growth Gap Review. We&apos;ll identify the clearest opportunities for your business, quote your implementation fee, and give you a clear plan.
           </p>
           <div className="mt-10 flex flex-wrap gap-4 items-center">
             <Link
               href="/contact"
               className="bg-white text-green-900 hover:bg-green-50 px-8 py-4 rounded font-bold text-lg transition-colors"
             >
-              Book an AI Opportunity Assessment
+              Book a Growth Gap Review
             </Link>
-            <span className="text-green-400 text-sm">Complimentary for qualified service businesses.</span>
+            <span className="text-green-400 text-sm">Complimentary, no obligation.</span>
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

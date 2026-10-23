@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Free Growth Score — See Where Your Business Is Losing Customers",
+  description: "Get a free Makr Growth Score: your website, SEO, Google presence, reviews, lead capture and AI search visibility, benchmarked against local competitors.",
+  alternates: { canonical: "/growth-score" },
+};
 
 const CATEGORIES = [
   { icon: "🌐", name: "Website", desc: "Speed, mobile experience, conversion elements" },

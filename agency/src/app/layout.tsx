@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Barlow, Barlow_Condensed } from "next/font/google";
+import Analytics from "@/components/Analytics";
+import JsonLd from "@/components/JsonLd";
+import { CONTACT_EMAIL, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -17,9 +20,27 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "Makr — AI Growth & Operations for Service Businesses",
-  description:
-    "Makr designs, implements, and manages practical AI systems that help service businesses capture more revenue, automate operations, and build teams that use AI well.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Makr — Websites, Lead Follow-Up & AI Workflows for Growing Businesses",
+    template: "%s | Makr",
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: { siteName: SITE_NAME, type: "website", locale: "en_US" },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+  email: CONTACT_EMAIL,
+  description: SITE_DESCRIPTION,
+  areaServed: [
+    { "@type": "State", name: "Massachusetts" },
+    { "@type": "State", name: "New Hampshire" },
+    { "@type": "Place", name: "New England" },
+  ],
 };
 
 export default function RootLayout({
@@ -32,7 +53,9 @@ export default function RootLayout({
       <body
         className={`${barlow.variable} ${barlowCondensed.variable} font-sans bg-canvas text-ink antialiased`}
       >
+        <JsonLd data={organizationSchema} />
         {children}
+        <Analytics />
       </body>
     </html>
   );

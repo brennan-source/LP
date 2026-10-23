@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { GrowthScoreForm } from "@/components/growth-score/GrowthScoreForm";
+
+export const metadata: Metadata = {
+  title: "Start Your Free Growth Score",
+  description: "Tell us about your business and get your free Makr Growth Score in about two minutes.",
+  alternates: { canonical: "/growth-score/start" },
+};
 
 export default function GrowthScoreStartPage() {
   return (

@@ -8,17 +8,18 @@ This file captures everything a new Claude Code session needs to work on this co
 
 ## What Makr Is
 
-Makr is an **AI Growth & Operations** agency for service businesses. The positioning: practical AI systems that help contractors and service businesses capture more revenue, automate operations, and build teams that use AI well. **Not** a SaaS product. Not a chatbot vendor. A managed service.
+Brand name is **Makr** — not "Makr.ai" or "gomakr.ai" (gomakr.ai is only the domain).
 
-Three service pillars:
-- **Grow** — Capture more revenue (AI receptionist, missed-call recovery, lead qualification, estimate follow-up, review generation, customer reactivation)
-- **Operate** — Run a more efficient business (scheduling automation, billing workflows, CRM automation, back-office reporting)
-- **Enable** — Build AI into your team (training, adoption, prompt frameworks, tool selection, quarterly reviews)
+Makr is a practical **growth and automation partner for owner-led businesses**. Central promise: Makr builds the digital systems that help growing businesses get found, capture more opportunities and operate with less manual work. Not a home-services-only agency, not a generic AI consultancy. AI is an enabling capability, not the product.
 
-Three target markets:
-- **Home Services** — HVAC, plumbing, roofing, electrical, restoration, landscaping, pest control
-- **Professional Services** — Accounting, legal, consulting, engineering, architecture, financial advisory
-- **Personal Services** — Dental, veterinary, med spa, wellness, fitness, beauty, senior services
+Three connected services (one operating system, not three businesses) — copy lives in `agency/src/lib/content.ts`:
+- **Website Development & Care** — design, development, maintenance, landing pages, conversion improvements, integrations
+- **Lead Follow-Up & Revenue Recovery** — missed-call recovery, follow-up on unconverted leads, reactivation, review requests, reminders
+- **AI Workflow Automation** — intake, routing, quoting support, document processing, customer communication, internal reporting
+
+Five target markets: Home Services, Professional Services, Personal Services, Manufacturing, B2B Services.
+
+Primary action site-wide: **Book a Growth Gap Review** (nav CTA: "Find Your Growth Gaps") → `/contact` form → Google Calendar booking page (`BOOKING_URL` in `agency/src/lib/site.ts`).
 
 Based in **New England**. This local angle matters — mention it where appropriate (about page, industries page, footer).
 
@@ -30,7 +31,7 @@ Based in **New England**. This local angle matters — mention it where appropri
 |---|---|---|
 | **Essentials** | $999/month | Core AI capture: receptionist, missed-call recovery, web lead capture, CRM sync, monthly report |
 | **Growth** | $1,999/month | Flagship · Most Popular. Everything in Essentials + booking automation, estimate follow-up, review generation, scheduling workflows, dedicated account management, continuous optimization |
-| **Implementation** | $2,500–$5,000 one-time | Applies to both retainers. Exact amount quoted after the free AI Opportunity Assessment, locked in writing before kickoff. Never leave this as open-ended. |
+| **Implementation** | $2,500–$5,000 one-time | Applies to both retainers. Exact amount quoted after the free Growth Gap Review, locked in writing before kickoff. Never leave this as open-ended. |
 | **Projects** | $4,000–$10,000+ one-time | Scoped builds, no monthly commitment. CRM buildouts, AI receptionist setup, workflow automation. |
 | **Enterprise** | Custom | Multi-location or complex operations. Scope after discovery. |
 
@@ -115,20 +116,32 @@ agency/src/app/
   page.tsx                          — Homepage
   globals.css                       — Tailwind v4 theme tokens
   layout.tsx                        — Root layout, font loading, metadata
-  pricing/page.tsx                  — Pricing page
-  services/page.tsx                 — Services / three-pillar page
-  industries/page.tsx               — Industries hub (alternating layout)
+  pricing/page.tsx                  — Pricing page (linked from footer/solutions, not the nav)
+  solutions/page.tsx                — Three services (/services 308-redirects here)
+  industries/page.tsx               — Industries hub, all five markets (alternating layout)
   industries/home-services/page.tsx — Home services sub-page
   industries/professional-services/page.tsx
   industries/personal-services/page.tsx
   about/page.tsx                    — About page
   contact/page.tsx                  — Contact form
-  how-it-works/page.tsx             — Connected timeline (6 steps)
+  how-it-works/page.tsx             — Connected timeline (4 steps: Diagnose, Build, Connect, Improve)
+  manufacturing-growth-checkup/     — Event landing page + form (Mash-Up, Oct 27 2026)
+  api/checkup/route.ts              — Manufacturing checkup form API
+  sitemap.ts                        — sitemap.xml
   insights/page.tsx                 — Resources/insights
   api/contact/route.ts              — Contact form API route
 agency/src/components/
-  Nav.tsx                           — Navigation component
+  Nav.tsx                           — Navigation (Home, Solutions, Industries, How It Works, About, Contact)
+  Footer.tsx                        — Shared footer
+  sections.tsx                      — PageHeader, SolutionCards, IndustryList, ProcessGrid, CtaBand
+  IndustryDetail.tsx                — Layout for /industries/* sub-pages
+  forms.tsx                         — Shared form fields, tracking, post-submit scheduler redirect
+  Analytics.tsx                     — GA4 loader + data-cta click tracking
 agency/src/lib/
+  site.ts                           — Brand name, URLs, BOOKING_URL, GA_ID (NEXT_PUBLIC_GA_ID)
+  content.ts                        — Shared copy: solutions, industries, problems, process
+  analytics.ts                      — track(): cta_click, form_start, form_submit, schedule_click
+  leads.ts                          — Lead notification email via Resend
   evidence.ts                       — Source citations (all marked [VERIFY] — not verified for paid traffic)
 ```
 
@@ -173,23 +186,23 @@ There is also a branch `claude/optimistic-albattani-1uf2Y` — this is stale and
 - The pillar coverage matrix (Grow/Operate/Enable checkboxes) was removed from the pricing page and replaced with "Which tier fits your situation?" decision cards. Keep it this way.
 - `rounded-sm` not `rounded-lg` — sharp corners are part of the brand aesthetic.
 - Brass tokens are for decoration only (borders, backgrounds). This decision was made after seeing text-brass render as pink/peach on screen.
-- The industries page uses an alternating two-column layout with oversized stat numbers (text-7xl/8xl) — not a flat card grid.
-- How-it-works page uses a vertical connected timeline (6 steps with a connector line), not flat cards.
-- Homepage pricing section shows only Essentials + Growth (2-card grid). Projects/Enterprise are on /pricing only.
+- The industries page uses an alternating two-column layout — not a flat card grid. Unverified stats were removed in the October 2026 repositioning; don't add statistics back until verified.
+- How-it-works page uses a vertical connected timeline (4 steps with a connector line), not flat cards.
+- Homepage has no pricing section and Pricing is not in the nav (October 2026 decision). /pricing stays public, linked from the footer and Solutions page.
 - The `evidence.ts` source citations are all marked [VERIFY] and have not been confirmed. Do not add new statistics without noting they need verification.
 
 ---
 
 ## Contact Form
 
-The contact form at `/contact` collects: name, business name, phone, email, service category (Home Services / Professional Services / Personal Services / Other), monthly revenue range, and message. There is no "free build" or "free trial" field — removed intentionally. The API route is at `agency/src/app/api/contact/route.ts`.
+The contact form at `/contact` collects: name, business name, phone, email, business type (five markets + Other), industry/trade (free text), optional annual revenue, optional "where do you want help first", optional website and message. After submit it redirects to the booking calendar. There is no "free build" or "free trial" field — removed intentionally. The API route is at `agency/src/app/api/contact/route.ts`.
 
 ---
 
 ## What Still Needs Work (known gaps)
 
 - `evidence.ts` — all 12 source citations marked [VERIFY]. Do not drive paid traffic until confirmed.
-- `services/page.tsx` — may still use old palette or old pillar structure; verify before editing
-- `about/page.tsx` — "Built in New England" section exists but may need prominence review
 - `insights/page.tsx` — old palette, not updated to canvas/ink/brass system
-- Contact API route — not verified against current form fields after recent form updates
+- `resources/page.tsx` — old palette and home-services-focused content; not linked from nav/footer
+- Website services are not reflected in /pricing tiers yet
+- GA4 needs `NEXT_PUBLIC_GA_ID` set in Vercel before analytics collects anything

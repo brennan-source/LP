@@ -1,8 +1,5 @@
-import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "brennan@gomakr.ai";
+import { EMAIL_RE, sendLeadEmail } from "@/lib/leads";
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,31 +12,26 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+    if (!EMAIL_RE.test(email)) {
+      return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
+    }
 
-    const optionalFields = [
-      body.serviceCategory && `Service category: ${body.serviceCategory}`,
-      body.revenue && `Annual revenue: ${body.revenue}`,
-      body.website && `Website: ${body.website}`,
-      body.message && `Message: ${body.message}`,
-    ]
-      .filter(Boolean)
-      .join("\n");
-
-    await resend.emails.send({
-      from: "noreply@gomakr.ai",
-      to: CONTACT_EMAIL,
-      subject: `New assessment request: ${businessName} (${industry})`,
-      text: [
+    await sendLeadEmail(
+      `New Growth Gap Review request: ${businessName} (${industry})`,
+      [
         `Name: ${name}`,
         `Business: ${businessName}`,
         `Phone: ${phone}`,
         `Email: ${email}`,
         `Industry: ${industry}`,
-        optionalFields,
-      ]
-        .filter(Boolean)
-        .join("\n"),
-    });
+        body.serviceCategory && `Business type: ${body.serviceCategory}`,
+        body.revenue && `Annual revenue: ${body.revenue}`,
+        body.focus && `Wants help first with: ${body.focus}`,
+        body.website && `Website: ${body.website}`,
+        body.message && `Message: ${body.message}`,
+      ],
+      email
+    );
 
     return NextResponse.json({ ok: true });
   } catch {
