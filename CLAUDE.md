@@ -25,20 +25,21 @@ Based in **New England**. This local angle matters — mention it where appropri
 
 ---
 
-## Current Pricing (as of October 2026)
+## Current Pricing (as of October 23, 2026)
 
-| Tier | Price | Notes |
+Priced per service, plus a discounted package for all three and an enterprise option. Lives in `agency/src/app/pricing/page.tsx`.
+
+| Offer | One-time | Monthly |
 |---|---|---|
-| **Essentials** | $999/month | Core AI capture: receptionist, missed-call recovery, web lead capture, CRM sync, monthly report |
-| **Growth** | $1,999/month | Flagship · Most Popular. Everything in Essentials + booking automation, estimate follow-up, review generation, scheduling workflows, dedicated account management, continuous optimization |
-| **Implementation** | $2,500–$5,000 one-time | Applies to both retainers. Exact amount quoted after the free Growth Gap Review, locked in writing before kickoff. Never leave this as open-ended. |
-| **Projects** | $4,000–$10,000+ one-time | Scoped builds, no monthly commitment. CRM buildouts, AI receptionist setup, workflow automation. |
-| **Enterprise** | Custom | Multi-location or complex operations. Scope after discovery. |
+| **Website Development & Care** | $2,000–$4,000 build (by complexity) | $299 care plan |
+| **Lead Follow-Up & Revenue Recovery** | $1,500 setup | $999 |
+| **AI Workflow Automation** | From $3,000 per workflow | $499 optional support |
+| **Complete Growth System** (all three) | $5,500–$7,500 (vs. $6,500–$8,500 separately) | $1,499 (vs. $1,797 separately) |
+| **Enterprise** | Projects from $7,500 | Custom |
 
 **Pricing rules:**
-- Always show the implementation range ($2,500–$5,000), never just say "scoped per business"
-- Growth always gets the green featured card treatment (bg-green-700, ring-2 ring-green-600, "Flagship · Most Popular" label)
-- Essentials and Growth are the two retainers; Projects and Enterprise are one-time/custom
+- Monthly prices are fixed; one-time builds are quoted within the published range after the Growth Gap Review and locked in writing before kickoff
+- Keep package savings consistent with the per-service prices if any number changes
 
 ---
 

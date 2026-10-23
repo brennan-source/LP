@@ -1,124 +1,108 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { CtaBand, PageHeader } from "@/components/sections";
 
 export const metadata: Metadata = {
-  title: "Pricing — Monthly Retainers, Projects & Implementation",
+  title: "Pricing — Websites, Lead Follow-Up & Workflow Automation",
   description:
-    "Transparent Makr pricing: Essentials at $999/month, Growth at $1,999/month, one-time implementation from $2,500–$5,000, and scoped projects from $4,000.",
+    "Transparent Makr pricing: website builds from $2,000–$4,000, lead follow-up at $999/month, workflow automation from $3,000, all three for $1,499/month, and enterprise projects from $7,500.",
   alternates: { canonical: "/pricing" },
 };
 
-const RETAINERS = [
-  {
-    name: "Essentials",
-    price: "$999",
-    period: "/month",
-    tagline: "Core AI capture running 24/7.",
-    description:
-      "The fundamentals: every call answered, every lead captured, your CRM kept current. The starting point for businesses ready to stop missing revenue.",
-    includes: [
-      "AI receptionist — 24/7 call handling",
-      "Missed-call recovery automation",
-      "Web chat & lead capture",
-      "CRM integration & data sync",
-      "Monthly performance report",
-    ],
-    featured: false,
-  },
-  {
-    name: "Growth",
-    price: "$1,999",
-    period: "/month",
-    tagline: "Full revenue operations, managed.",
-    description:
-      "Our flagship. We run your AI systems end to end — capturing leads, booking jobs, following up on estimates, generating reviews, and reporting on what it's producing.",
-    includes: [
-      "Everything in Essentials",
-      "Appointment booking automation",
-      "Estimate follow-up system",
-      "Review generation & management",
-      "Scheduling & dispatch workflows",
-      "Back-office reporting",
-      "Dedicated account management",
-      "Continuous optimization",
-    ],
-    featured: true,
-  },
-];
+type Price = { amount: string; label: string };
 
-const PROJECTS_AND_CUSTOM = [
+const SERVICES: {
+  id: string;
+  number: string;
+  name: string;
+  summary: string;
+  oneTime: Price;
+  monthly: Price;
+  includes: string[];
+}[] = [
   {
-    name: "Projects",
-    price: "$4,000–$10,000+",
-    period: "one-time, per project",
-    tagline: "Scoped builds. No monthly commitment.",
-    description:
-      "AI receptionist setups, CRM buildouts, scheduling automation, billing workflows — scoped and priced before work begins. Own it outright.",
+    id: "websites",
+    number: "01",
+    name: "Website Development & Care",
+    summary: "A fast, credible website built to turn visitors into inquiries — and kept that way.",
+    oneTime: { amount: "$2,000–$4,000", label: "build, depending on complexity" },
+    monthly: { amount: "$299", label: "/month care plan" },
     includes: [
-      "Scoped requirements & architecture",
-      "Build, configuration, and integration",
-      "Testing and QA",
-      "Team handoff & training",
-      "30-day post-launch support",
+      "Design and development",
+      "Mobile-ready, fast-loading pages",
+      "Forms, click-to-call and booking connected to your tools",
+      "Updates, backups and content changes",
+      "Ongoing conversion improvements",
     ],
-    note: "Scope defined upfront. No surprises.",
-    featured: false,
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    period: "let's scope it",
-    tagline: "For complex or multi-location operations.",
-    description:
-      "Full-stack AI operations for businesses with multiple locations, large teams, or complex workflows. Scope and pricing after discovery.",
+    id: "revenue-recovery",
+    number: "02",
+    name: "Lead Follow-Up & Revenue Recovery",
+    summary: "Automated responses, reminders and reactivation that recover opportunities already coming in.",
+    oneTime: { amount: "$1,500", label: "one-time setup" },
+    monthly: { amount: "$999", label: "/month" },
     includes: [
-      "All Growth capabilities",
-      "Custom workflow development",
-      "Team AI adoption program",
-      "Multi-location support",
-      "Quarterly business reviews",
-      "Priority support",
+      "Missed-call text back",
+      "Instant response to web inquiries",
+      "Estimate and proposal follow-up",
+      "Appointment reminders",
+      "Reactivation and review requests",
     ],
-    note: "Start with a Growth Gap Review.",
-    featured: false,
+  },
+  {
+    id: "ai-workflows",
+    number: "03",
+    name: "AI Workflow Automation",
+    summary: "Practical automations that take repetitive admin work off your team.",
+    oneTime: { amount: "From $3,000", label: "per workflow" },
+    monthly: { amount: "$499", label: "/month optional support" },
+    includes: [
+      "Intake and routing",
+      "Quoting and RFQ support",
+      "Document processing",
+      "Customer communication drafts",
+      "Internal reporting",
+    ],
   },
 ];
 
 const DECISION_CARDS = [
   {
-    label: "Start with Essentials",
-    accent: "border-green-700",
-    badge: "bg-green-700",
-    fit: "You're losing revenue from missed calls and slow follow-up. At $999/month, it's easy to prove the ROI before going deeper.",
-    signs: [
-      "Calls go to voicemail after hours",
-      "Leads slip through without follow-up",
-      "You want results before a bigger commitment",
-    ],
+    label: "Start with one service",
+    fit: "You know exactly where the bottleneck is — a dated website, slow follow-up or one painful manual process.",
+    signs: ["One clear problem to solve first", "You want to see results before expanding", "Add the other services later at any time"],
   },
   {
-    label: "Start with Growth",
-    accent: "border-green-800",
-    badge: "bg-green-800",
-    fit: "You're ready to run revenue operations end to end and want a dedicated partner managing it at $1,999/month.",
-    signs: [
-      "You're capturing leads but losing them later",
-      "Estimates go unfollowed, reviews go unrequested",
-      "You want someone accountable for outcomes",
-    ],
+    label: "Take the full package",
+    fit: "Your website, follow-up and admin work all need attention, and you want them working together.",
+    signs: ["Visitors, inquiries and paperwork all slip", "You want one partner accountable for the system", "You want the bundled price"],
   },
   {
-    label: "Start with a Project",
-    accent: "border-brass",
-    badge: "bg-brass",
-    fit: "You have a specific system to build and don't want a monthly commitment.",
-    signs: [
-      "CRM buildout, scheduling automation, billing workflow",
-      "You want to own it outright",
-      "You'll manage it internally after handoff",
-    ],
+    label: "Go enterprise",
+    fit: "You have multiple locations, a larger team or workflows that need custom design.",
+    signs: ["Several systems or sites to connect", "Custom workflows beyond a standard build", "Ongoing support scoped to your operation"],
+  },
+];
+
+const FAQS = [
+  {
+    q: "Why publish prices publicly?",
+    a: "Because you shouldn't have to get on a sales call to know if something fits your budget. Monthly prices are fixed. One-time builds are quoted within the published range after a short review and locked in writing before any work begins.",
+  },
+  {
+    q: "What decides where a website lands in the $2,000–$4,000 range?",
+    a: "Mostly size and complexity: the number of pages, how much content needs writing, and which forms, booking or integrations are involved. We confirm the exact price before kickoff.",
+  },
+  {
+    q: "Can I start with one service and add more later?",
+    a: "Yes. Most businesses start with the bottleneck that matters most. If you later add the other services, we'll move you to the package price.",
+  },
+  {
+    q: "Is the AI Workflow support plan required?",
+    a: "No. Each workflow is a one-time build that you own. The optional support plan covers monitoring, fixes and small improvements after launch.",
   },
 ];
 
@@ -127,133 +111,46 @@ export default function PricingPage() {
     <div className="min-h-screen bg-canvas text-ink">
       <Nav activePath="/pricing" />
 
-      {/* Header */}
-      <section className="bg-white pt-28 pb-16 px-6 border-b border-brass-light">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="font-display font-extrabold text-5xl md:text-7xl text-ink leading-none tracking-tight">
-            Transparent pricing.
-            <br />
-            No surprises.
-          </h1>
-          <p className="mt-6 text-ink-mid text-xl max-w-2xl leading-relaxed">
-            We publish our numbers because you shouldn&apos;t have to get on a sales call to find out if something is in your budget. Monthly retainers or one-time projects — you pick the model that fits.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        title={<>Transparent pricing.<br />No surprises.</>}
+        intro="Price each service on its own, or take all three as one connected system for less. One-time builds are quoted within the published range and locked in writing before work begins."
+      />
 
-      {/* Monthly Retainers */}
-      <section className="py-16 px-6 bg-canvas">
+      {/* Services */}
+      <section className="py-20 px-6 bg-canvas">
         <div className="max-w-6xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-8">Monthly retainers</p>
-          <div className="grid md:grid-cols-2 gap-6">
-            {RETAINERS.map((t) => (
-              <div
-                key={t.name}
-                className={`rounded-sm flex flex-col ${
-                  t.featured
-                    ? "bg-green-700 ring-2 ring-green-600"
-                    : "bg-white border border-brass-light"
-                }`}
-              >
-                {t.featured && (
-                  <div className="px-7 pt-5 pb-0">
-                    <span className="text-xs font-bold uppercase tracking-widest text-green-200">
-                      Flagship &middot; Most Popular
-                    </span>
-                  </div>
-                )}
+          <p className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-6">By service</p>
+          <div className="grid lg:grid-cols-3 gap-6">
+            {SERVICES.map((s) => (
+              <div key={s.id} className="bg-white border border-brass-light rounded-sm flex flex-col">
                 <div className="p-7 flex-1">
-                  <div className="flex items-end justify-between mb-4">
-                    <h2 className={`font-display font-bold text-3xl ${t.featured ? "text-white" : "text-ink"}`}>
-                      {t.name}
-                    </h2>
-                    <div className="text-right">
-                      <span className={`text-3xl font-bold ${t.featured ? "text-white" : "text-green-700"}`}>
-                        {t.price}
-                      </span>
-                      <span className={`text-sm ml-1 ${t.featured ? "text-green-200" : "text-ink-light"}`}>
-                        {t.period}
-                      </span>
+                  <span className="font-display font-bold text-2xl text-ink-light leading-none">{s.number}</span>
+                  <h2 className="mt-2 font-display font-bold text-2xl text-ink leading-tight">
+                    <Link href={`/solutions#${s.id}`} className="hover:text-green-700">{s.name}</Link>
+                  </h2>
+                  <p className="mt-2 text-sm text-ink-mid leading-relaxed">{s.summary}</p>
+                  <dl className="mt-6 grid grid-cols-2 gap-4 border-y border-brass-light py-5">
+                    <div>
+                      <dt className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-1">One-time</dt>
+                      <dd className="text-xl font-bold text-green-700 leading-tight">{s.oneTime.amount}</dd>
+                      <dd className="text-xs text-ink-light mt-1">{s.oneTime.label}</dd>
                     </div>
-                  </div>
-                  <p className={`font-medium mb-2 ${t.featured ? "text-green-100" : "text-green-700"}`}>
-                    {t.tagline}
-                  </p>
-                  <p className={`text-sm leading-relaxed mb-6 ${t.featured ? "text-green-100" : "text-ink-mid"}`}>
-                    {t.description}
-                  </p>
-                  <ul className="space-y-2">
-                    {t.includes.map((item) => (
-                      <li
-                        key={item}
-                        className={`text-sm flex items-start gap-2 ${t.featured ? "text-green-100" : "text-ink-mid"}`}
-                      >
-                        <span className={`mt-0.5 shrink-0 ${t.featured ? "text-green-300" : "text-green-600"}`}>✓</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="px-7 pb-7">
-                  <Link
-                    href="/contact"
-                    className={`block text-center py-3 rounded font-semibold transition-colors ${
-                      t.featured
-                        ? "bg-white text-green-700 hover:bg-green-50"
-                        : "bg-ink text-white hover:bg-green-700"
-                    }`}
-                  >
-                    Get started
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Implementation fee callout */}
-          <div className="mt-8 bg-white border border-brass-light rounded-sm p-6">
-            <h3 className="font-semibold text-ink mb-1">Implementation fee</h3>
-            <p className="text-ink-mid text-sm leading-relaxed">
-              Both retainers include a one-time implementation fee of <span className="font-semibold text-ink">$2,500–$5,000</span>, depending on what needs to be built. The exact amount is quoted after your free Growth Gap Review and locked in before any work begins — no surprises after you sign.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects + Enterprise */}
-      <section className="py-16 px-6 bg-white border-y border-brass-light">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-8">One-time &amp; custom</p>
-          <div className="grid md:grid-cols-2 gap-6">
-            {PROJECTS_AND_CUSTOM.map((t) => (
-              <div key={t.name} className="bg-canvas border border-brass-light rounded-sm flex flex-col">
-                <div className="p-7 flex-1">
-                  <div className="flex items-end justify-between mb-4">
-                    <h2 className="font-display font-bold text-3xl text-ink">{t.name}</h2>
-                    <div className="text-right">
-                      <span className="text-xl font-bold text-green-700">{t.price}</span>
-                      <div className="text-xs text-ink-light mt-0.5">{t.period}</div>
+                    <div>
+                      <dt className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-1">Monthly</dt>
+                      <dd className="text-xl font-bold text-green-700 leading-tight">{s.monthly.amount}</dd>
+                      <dd className="text-xs text-ink-light mt-1">{s.monthly.label}</dd>
                     </div>
-                  </div>
-                  <p className="font-medium text-green-700 mb-2">{t.tagline}</p>
-                  <p className="text-sm text-ink-mid leading-relaxed mb-6">{t.description}</p>
-                  <ul className="space-y-2">
-                    {t.includes.map((item) => (
+                  </dl>
+                  <ul className="mt-5 space-y-2">
+                    {s.includes.map((item) => (
                       <li key={item} className="text-sm text-ink-mid flex items-start gap-2">
-                        <span className="text-green-600 mt-0.5 shrink-0">✓</span>
-                        {item}
+                        <span className="text-green-700 mt-0.5 shrink-0" aria-hidden>✓</span>{item}
                       </li>
                     ))}
                   </ul>
-                  {t.note && (
-                    <p className="text-xs mt-4 italic text-ink-light">{t.note}</p>
-                  )}
                 </div>
                 <div className="px-7 pb-7">
-                  <Link
-                    href="/contact"
-                    className="block text-center py-3 rounded font-semibold bg-ink text-white hover:bg-green-700 transition-colors"
-                  >
+                  <Link href="/contact" data-cta={`pricing-${s.id}`} className="block text-center py-3 rounded-sm text-sm font-semibold transition-colors bg-ink text-white hover:bg-green-700">
                     Get started
                   </Link>
                 </div>
@@ -263,23 +160,101 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Decision cards */}
-      <section className="py-16 px-6 bg-canvas">
+      {/* Package + enterprise */}
+      <section className="py-20 px-6 bg-white border-y border-brass-light">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-display font-bold text-3xl text-ink mb-2">Which tier fits your situation?</h2>
-          <p className="text-ink-mid text-sm mb-10">Most clients know within the first conversation. Here&apos;s a quick read.</p>
-          <div className="grid md:grid-cols-3 gap-5">
-            {DECISION_CARDS.map((card) => (
-              <div key={card.label} className={`bg-white border-l-4 ${card.accent} rounded-sm p-6`}>
-                <div className={`inline-block ${card.badge} text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-4`}>
-                  {card.label}
-                </div>
-                <p className="text-ink-mid text-sm leading-relaxed mb-5">{card.fit}</p>
-                <ul className="space-y-2">
-                  {card.signs.map((s) => (
-                    <li key={s} className="text-xs text-ink-mid flex items-start gap-2">
-                      <span className="text-green-600 mt-0.5 shrink-0">→</span>{s}
+          <p className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-6">Packages &amp; custom</p>
+          <div className="grid lg:grid-cols-[3fr_2fr] gap-6">
+            <div className="bg-green-700 ring-2 ring-green-600 rounded-sm flex flex-col text-white">
+              <div className="px-7 pt-5">
+                <span className="text-xs font-bold uppercase tracking-widest text-green-200">Best value · All three services</span>
+              </div>
+              <div className="p-7 flex-1">
+                <h2 className="font-display font-bold text-3xl">The Complete Growth System</h2>
+                <p className="mt-2 text-green-100 leading-relaxed">
+                  Your website, lead follow-up and workflow automation built and managed together — one partner, one connected system.
+                </p>
+                <dl className="mt-6 grid sm:grid-cols-2 gap-4 border-y border-green-600 py-5">
+                  <div>
+                    <dt className="text-xs font-bold uppercase tracking-widest text-green-200 mb-1">One-time</dt>
+                    <dd className="text-2xl font-bold leading-tight">$5,500–$7,500</dd>
+                    <dd className="text-xs text-green-200 mt-1">vs. $6,500–$8,500 separately</dd>
+                  </div>
+                  <div>
+                    <dt className="text-xs font-bold uppercase tracking-widest text-green-200 mb-1">Monthly</dt>
+                    <dd className="text-2xl font-bold leading-tight">$1,499<span className="text-sm font-medium text-green-200">/month</span></dd>
+                    <dd className="text-xs text-green-200 mt-1">vs. $1,797 separately</dd>
+                  </div>
+                </dl>
+                <ul className="mt-5 grid sm:grid-cols-2 gap-2">
+                  {[
+                    "Website build and care plan",
+                    "Full lead follow-up and recovery",
+                    "Your first automated workflow",
+                    "Workflow support plan",
+                    "One point of contact",
+                    "Regular reviews and improvements",
+                  ].map((item) => (
+                    <li key={item} className="text-sm text-green-100 flex items-start gap-2">
+                      <span className="text-green-300 mt-0.5 shrink-0" aria-hidden>✓</span>{item}
                     </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="px-7 pb-7">
+                <Link href="/contact" data-cta="pricing-package" className="block text-center py-3 rounded-sm text-sm font-semibold transition-colors bg-white text-green-700 hover:bg-green-50">
+                  Get started
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-canvas-warm border border-brass-light rounded-sm flex flex-col">
+              <div className="p-7 flex-1">
+                <h2 className="font-display font-bold text-3xl text-ink">Enterprise</h2>
+                <p className="mt-2 text-ink-mid leading-relaxed">
+                  For multi-location businesses, larger teams and complex operations that need custom implementation.
+                </p>
+                <dl className="mt-6 grid grid-cols-2 gap-4 border-y border-brass-light py-5">
+                  <div>
+                    <dt className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-1">Projects</dt>
+                    <dd className="text-2xl font-bold text-green-700 leading-tight">From $7,500</dd>
+                  </div>
+                  <div>
+                    <dt className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-1">Monthly</dt>
+                    <dd className="text-2xl font-bold text-green-700 leading-tight">Custom</dd>
+                  </div>
+                </dl>
+                <ul className="mt-5 space-y-2">
+                  {["Custom workflow design", "Multiple systems or locations", "Scoped support and reviews"].map((item) => (
+                    <li key={item} className="text-sm text-ink-mid flex items-start gap-2">
+                      <span className="text-green-700 mt-0.5 shrink-0" aria-hidden>✓</span>{item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="px-7 pb-7">
+                <Link href="/contact" data-cta="pricing-enterprise" className="block text-center py-3 rounded-sm text-sm font-semibold transition-colors bg-ink text-white hover:bg-green-700">
+                  Scope a project
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Which fits */}
+      <section className="py-20 px-6 bg-canvas">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-display font-bold text-4xl text-ink mb-2">Which option fits your situation?</h2>
+          <p className="text-ink-mid mb-10">Most businesses know within the first conversation. Here&apos;s a quick read.</p>
+          <div className="grid md:grid-cols-3 gap-5">
+            {DECISION_CARDS.map((c) => (
+              <div key={c.label} className="bg-white border-l-4 border-green-700 rounded-sm p-6">
+                <div className="inline-block bg-green-700 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-4">{c.label}</div>
+                <p className="text-ink-mid text-sm leading-relaxed mb-4">{c.fit}</p>
+                <ul className="space-y-2">
+                  {c.signs.map((s) => (
+                    <li key={s} className="text-xs text-ink-mid flex items-start gap-2"><span className="shrink-0" aria-hidden>→</span>{s}</li>
                   ))}
                 </ul>
               </div>
@@ -290,21 +265,8 @@ export default function PricingPage() {
 
       {/* FAQ */}
       <section className="py-16 px-6 bg-white border-t border-brass-light">
-        <div className="max-w-3xl mx-auto space-y-7">
-          {[
-            {
-              q: "Why publish prices publicly?",
-              a: "Because you shouldn't have to get on a sales call to know if something fits your budget. These are real, fixed numbers — $999/month for Essentials, $1,999/month for Growth. The only variable is the one-time implementation fee, which we quote after a free assessment and lock in before any work begins.",
-            },
-            {
-              q: "What's the implementation fee?",
-              a: "One-time, $2,500–$5,000 depending on what needs to be built. The exact figure is determined during the free Growth Gap Review and is fixed in writing before kickoff. No surprises after you sign.",
-            },
-            {
-              q: "Where should I start?",
-              a: "Most clients start with a quick conversation. We'll look at your business, tell you honestly where the clearest opportunities are, and recommend a starting point — no obligation.",
-            },
-          ].map((faq) => (
+        <div className="max-w-3xl mx-auto space-y-6">
+          {FAQS.map((faq) => (
             <div key={faq.q} className="border-l-2 border-brass pl-5">
               <h3 className="font-semibold text-ink mb-1">{faq.q}</h3>
               <p className="text-ink-mid text-sm leading-relaxed">{faq.a}</p>
@@ -313,26 +275,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 px-6 bg-green-900">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-display font-extrabold text-4xl md:text-6xl text-white leading-tight max-w-2xl">
-            Ready to get started?
-          </h2>
-          <p className="mt-6 text-green-200 text-lg max-w-lg">
-            Book a Growth Gap Review. We&apos;ll identify the clearest opportunities for your business, quote your implementation fee, and give you a clear plan.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4 items-center">
-            <Link
-              href="/contact"
-              className="bg-white text-green-900 hover:bg-green-50 px-8 py-4 rounded font-bold text-lg transition-colors"
-            >
-              Book a Growth Gap Review
-            </Link>
-            <span className="text-green-400 text-sm">Complimentary, no obligation.</span>
-          </div>
-        </div>
-      </section>
+      <CtaBand name="pricing-bottom" title="Not sure where to start?" body="Book a short Growth Gap Review. We'll point to the clearest opportunity, recommend a starting point and confirm your price before any work begins." />
       <Footer />
     </div>
   );
