@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { CtaBand, PageHeader } from "@/components/sections";
 import { SOLUTIONS } from "@/lib/content";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About — A Practical Growth & Automation Partner Built in New England",
@@ -33,6 +34,33 @@ export default function AboutPage() {
         title="A practical growth and automation partner for owner-led businesses."
         intro="We build the digital systems that help growing businesses get found, capture more opportunities and operate with less manual work."
       />
+
+      {/* Founder */}
+      <section className="py-20 px-6 bg-canvas">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-[16rem_1fr] gap-x-12 gap-y-6">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest text-ink-mid">Founder</p>
+            <h2 className="mt-3 font-display font-bold text-4xl text-ink leading-tight">A person accountable for the work.</h2>
+          </div>
+          <div className="max-w-2xl space-y-5 text-ink-mid text-lg leading-relaxed">
+            <p>
+              I&apos;m Brennan Burks, founder of Makr. For 13 years I&apos;ve led communications and marketing for organizations
+              in manufacturing, financial services, biotech and higher education — including corporate communications for a
+              $1B division of a global paper manufacturer, and an independent practice advising founders on how to explain
+              what they do and win the right customers.
+            </p>
+            <p>
+              The pattern is the same everywhere: good businesses lose opportunities because their website undersells them,
+              follow-up depends on memory, and their teams are buried in manual work. Makr fixes those basics — and I&apos;m
+              personally responsible for every engagement.
+            </p>
+            <p className="text-base">
+              <span className="font-semibold text-ink">Brennan Burks</span> · Westford, Massachusetts ·{" "}
+              <a href={`mailto:${CONTACT_EMAIL}`} className="underline underline-offset-4 decoration-brass hover:text-ink">{CONTACT_EMAIL}</a>
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Built in New England */}
       <section className="py-16 px-6 bg-green-800">
