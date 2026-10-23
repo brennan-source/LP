@@ -1,7 +1,7 @@
 // Site-wide constants shared by pages, components, metadata and schema.
 
 export const SITE_NAME = "Makr";
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gomakr.ai";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.gomakr.ai";
 export const CONTACT_EMAIL = "brennan@gomakr.ai";
 
 // Google Calendar appointment page. Override with NEXT_PUBLIC_BOOKING_URL.
