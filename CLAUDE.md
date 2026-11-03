@@ -12,8 +12,9 @@ Brand name is **Makr** — not "Makr.ai" or "gomakr.ai" (gomakr.ai is only the d
 
 Makr is a practical **growth and automation partner for owner-led businesses**. Central promise: Makr builds the digital systems that help growing businesses get found, capture more opportunities and operate with less manual work. Not a home-services-only agency, not a generic AI consultancy. AI is an enabling capability, not the product.
 
-Three connected services (one operating system, not three businesses) — copy lives in `agency/src/lib/content.ts`:
-- **Website Development & Care** — design, development, maintenance, landing pages, conversion improvements, integrations
+Four connected services (one operating system, not four businesses) — copy lives in `agency/src/lib/content.ts`:
+- **Website Development & Management** — design, development, hosting, maintenance, ongoing management, landing pages, conversion improvements, integrations
+- **Search Visibility & Content Marketing** — local and technical SEO, AEO (answer engine optimization), GEO (generative engine optimization / AI search), Google Business Profile and listings, industry content, digital marketing. Emphasis by industry is in `byIndustry` on the solution. Never promise rankings or AI mentions.
 - **Lead Follow-Up & Revenue Recovery** — missed-call recovery, follow-up on unconverted leads, reactivation, review requests, reminders
 - **AI Workflow Automation** — intake, routing, quoting support, document processing, customer communication, internal reporting
 
@@ -25,16 +26,17 @@ Based in **New England**. This local angle matters — mention it where appropri
 
 ---
 
-## Current Pricing (as of October 23, 2026)
+## Current Pricing (as of October 26, 2026 — search & content pricing proposed, pending owner approval)
 
-Priced per service, plus a discounted package for all three and an enterprise option. Lives in `agency/src/app/pricing/page.tsx`.
+Priced per service, plus a discounted package for all four and an enterprise option. Lives in `agency/src/app/pricing/page.tsx`.
 
 | Offer | One-time | Monthly |
 |---|---|---|
-| **Website Development & Care** | $2,000–$4,000 build (by complexity) | $299 care plan |
+| **Website Development & Management** | $2,000–$4,000 build (by complexity) | $299 management plan |
+| **Search Visibility & Content Marketing** | $1,500 setup | $999 |
 | **Lead Follow-Up & Revenue Recovery** | $1,500 setup | $999 |
 | **AI Workflow Automation** | From $3,000 per workflow | $499 optional support |
-| **Complete Growth System** (all three) | $5,500–$7,500 (vs. $6,500–$8,500 separately) | $1,499 (vs. $1,797 separately) |
+| **Complete Growth System** (all four) | $6,000–$7,000 (vs. $8,000–$10,000 separately) | $2,299 (vs. $2,796 separately) |
 | **Enterprise** | Projects from $7,500 | Custom |
 
 **Pricing rules:**
@@ -118,7 +120,7 @@ agency/src/app/
   globals.css                       — Tailwind v4 theme tokens
   layout.tsx                        — Root layout, font loading, metadata
   pricing/page.tsx                  — Pricing page (linked from footer/solutions, not the nav)
-  solutions/page.tsx                — Three services (/services 308-redirects here)
+  solutions/page.tsx                — Four services (/services 308-redirects here)
   industries/page.tsx               — Industries hub, all five markets (alternating layout)
   industries/home-services/page.tsx — Home services sub-page
   industries/professional-services/page.tsx

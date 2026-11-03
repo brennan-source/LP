@@ -28,6 +28,7 @@ export default function PersonalServicesPage() {
       segments={SEGMENTS}
       applications={[
         ["A site that makes booking the obvious next step", "Service pages that answer common questions", "Ongoing updates as services change"],
+        ["Map results and review visibility", "Local content for new-client questions", "Google posts and email to past clients"],
         ["Confirmations and reminders before every visit", "Reactivation for clients who haven't returned", "Review requests after great visits"],
         ["Intake forms that fill your systems automatically", "Fewer manual reminder calls", "Simple reports on bookings and no-shows"],
       ]}

@@ -12,7 +12,7 @@ export const BOOKING_URL =
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 
 export const SITE_DESCRIPTION =
-  "Makr builds websites, automated lead follow-up and practical AI workflows that help growing service and manufacturing businesses get found, capture more opportunities and operate with less manual work.";
+  "Makr builds websites, search visibility and content, automated lead follow-up and practical AI workflows that help growing service and manufacturing businesses get found, capture more opportunities and operate with less manual work.";
 
 export const LOCAL_LINE =
   "Built in New England. Serving businesses across Massachusetts, New Hampshire, and beyond.";

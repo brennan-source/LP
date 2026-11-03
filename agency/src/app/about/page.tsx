@@ -9,7 +9,7 @@ import { CONTACT_EMAIL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About — A Practical Growth & Automation Partner Built in New England",
   description:
-    "Makr is a New England growth and automation partner for owner-led businesses: websites, lead follow-up and practical AI workflows, implemented and supported for the long term.",
+    "Makr is a New England growth and automation partner for owner-led businesses: websites, search visibility and content marketing, lead follow-up and practical AI workflows, implemented and supported for the long term.",
   alternates: { canonical: "/about" },
 };
 
@@ -88,7 +88,7 @@ export default function AboutPage() {
           <h2 className="font-display font-bold text-4xl text-ink mb-8">What we believe</h2>
           <div className="space-y-6 text-ink-mid text-lg leading-relaxed">
             <p>
-              Most growing businesses aren&apos;t held back by one big failure. They lose ground in small gaps: a website that doesn&apos;t convert, an inquiry nobody followed up on, a quote that went cold, hours of copying information between tools.
+              Most growing businesses aren&apos;t held back by one big failure. They lose ground in small gaps: customers who can&apos;t find them, a website that doesn&apos;t convert, an inquiry nobody followed up on, a quote that went cold, hours of copying information between tools.
             </p>
             <p>
               Closing those gaps is less about technology than about getting the basics to work together. AI is a useful tool for that — but it is one capability, not the whole answer.
@@ -103,8 +103,8 @@ export default function AboutPage() {
       {/* What we do */}
       <section className="py-16 px-6 bg-canvas">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-display font-bold text-4xl text-ink mb-10">Three services. One connected system.</h2>
-          <div className="grid md:grid-cols-3 gap-5">
+          <h2 className="font-display font-bold text-4xl text-ink mb-10">Four services. One connected system.</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {SOLUTIONS.map((s) => (
               <Link key={s.id} href={`/solutions#${s.id}`} className="group bg-white border-l-4 border-green-700 rounded-sm p-6">
                 <h3 className="font-semibold text-ink mb-2 group-hover:text-green-700">{s.name}</h3>

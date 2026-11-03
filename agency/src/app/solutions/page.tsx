@@ -8,9 +8,9 @@ import { SOLUTIONS } from "@/lib/content";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Solutions — Websites, Lead Follow-Up & AI Workflow Automation",
+  title: "Solutions — Websites, Search & Content, Lead Follow-Up and AI Workflow Automation",
   description:
-    "Website development and care, lead follow-up and revenue recovery, and AI workflow automation — three connected services that help growing businesses get found, capture opportunities and cut manual work.",
+    "Website development and management, search visibility and content marketing (SEO, AEO and GEO), lead follow-up and revenue recovery, and AI workflow automation — four connected services that help growing businesses get found, capture opportunities and cut manual work.",
   alternates: { canonical: "/solutions" },
 };
 
@@ -31,8 +31,8 @@ export default function SolutionsPage() {
       <Nav activePath="/solutions" />
 
       <PageHeader
-        title={<>One system.<br />Three connected services.</>}
-        intro="Your website, your follow-up and your internal workflows are parts of the same process. We improve whichever part is holding you back first, then connect the rest."
+        title={<>One system.<br />Four connected services.</>}
+        intro="How people find you, your website, your follow-up and your internal workflows are parts of the same process. We improve whichever part is holding you back first, then connect the rest."
       >
         <div className="mt-8 flex flex-wrap gap-3">
           {SOLUTIONS.map((s) => (
@@ -43,10 +43,11 @@ export default function SolutionsPage() {
         </div>
       </PageHeader>
 
-      {/* How the three fit together */}
+      {/* How the four fit together */}
       <section className="py-12 px-6 bg-green-800">
-        <ol className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 text-white">
-          <li><span className="text-xs font-bold uppercase tracking-widest text-green-200">Get found</span><p className="mt-2 text-lg leading-snug">A website turns visitors into inquiries.</p></li>
+        <ol className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-white">
+          <li><span className="text-xs font-bold uppercase tracking-widest text-green-200">Convert</span><p className="mt-2 text-lg leading-snug">A website turns visitors into inquiries.</p></li>
+          <li><span className="text-xs font-bold uppercase tracking-widest text-green-200">Get found</span><p className="mt-2 text-lg leading-snug">Search and content bring the right visitors.</p></li>
           <li><span className="text-xs font-bold uppercase tracking-widest text-green-200">Follow through</span><p className="mt-2 text-lg leading-snug">Follow-up turns inquiries into customers.</p></li>
           <li><span className="text-xs font-bold uppercase tracking-widest text-green-200">Run better</span><p className="mt-2 text-lg leading-snug">Workflows take the busywork off your team.</p></li>
         </ol>
@@ -81,6 +82,19 @@ export default function SolutionsPage() {
                 </div>
               ))}
             </div>
+            {s.byIndustry && (
+              <div className="mt-12">
+                <h3 className="font-display font-bold text-2xl text-ink mb-5">Where we focus, by industry</h3>
+                <dl className="divide-y divide-brass-light border-y border-brass-light">
+                  {s.byIndustry.map((b) => (
+                    <div key={b.industry} className="grid md:grid-cols-[14rem_1fr] gap-x-6 gap-y-1 py-4">
+                      <dt className="font-semibold text-ink">{b.industry}</dt>
+                      <dd className="text-ink-mid text-sm leading-relaxed">{b.focus}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
           </div>
         </section>
       ))}
@@ -107,7 +121,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <CtaBand name="solutions-bottom" title="Not sure which piece to start with?" body="Book a short Growth Gap Review. We will look at your website, follow-up and workflows and tell you where the clearest opportunity is." />
+      <CtaBand name="solutions-bottom" title="Not sure which piece to start with?" body="Book a short Growth Gap Review. We will look at how you're found, your website, follow-up and workflows and tell you where the clearest opportunity is." />
       <Footer />
     </div>
   );

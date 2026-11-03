@@ -5,9 +5,9 @@ import Footer from "@/components/Footer";
 import { CtaBand, PageHeader } from "@/components/sections";
 
 export const metadata: Metadata = {
-  title: "Pricing — Websites, Lead Follow-Up & Workflow Automation",
+  title: "Pricing — Websites, Search & Content, Lead Follow-Up and Workflow Automation",
   description:
-    "Transparent Makr pricing: website builds from $2,000–$4,000, lead follow-up at $999/month, workflow automation from $3,000, all three for $1,499/month, and enterprise projects from $7,500.",
+    "Transparent Makr pricing: website builds from $2,000–$4,000, search and content marketing at $999/month, lead follow-up at $999/month, workflow automation from $3,000, all four for $2,299/month, and enterprise projects from $7,500.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -25,21 +25,36 @@ const SERVICES: {
   {
     id: "websites",
     number: "01",
-    name: "Website Development & Care",
-    summary: "A fast, credible website built to turn visitors into inquiries — and kept that way.",
+    name: "Website Development & Management",
+    summary: "A fast, credible website built to turn visitors into inquiries — and managed so it stays that way.",
     oneTime: { amount: "$2,000–$4,000", label: "build, depending on complexity" },
-    monthly: { amount: "$299", label: "/month care plan" },
+    monthly: { amount: "$299", label: "/month management plan" },
     includes: [
       "Design and development",
       "Mobile-ready, fast-loading pages",
       "Forms, click-to-call and booking connected to your tools",
-      "Updates, backups and content changes",
+      "Hosting, updates, backups and content changes",
       "Ongoing conversion improvements",
     ],
   },
   {
-    id: "revenue-recovery",
+    id: "search-content",
     number: "02",
+    name: "Search Visibility & Content Marketing",
+    summary: "SEO, AEO and GEO plus industry content and digital marketing, so the right customers find you on Google and in AI answers.",
+    oneTime: { amount: "$1,500", label: "search foundation setup" },
+    monthly: { amount: "$999", label: "/month" },
+    includes: [
+      "Technical and local SEO fixes",
+      "Google Business Profile and listings",
+      "AEO and GEO for Google and AI answers",
+      "Industry content every month",
+      "Email, social posts and monthly reporting",
+    ],
+  },
+  {
+    id: "revenue-recovery",
+    number: "03",
     name: "Lead Follow-Up & Revenue Recovery",
     summary: "Automated responses, reminders and reactivation that recover opportunities already coming in.",
     oneTime: { amount: "$1,500", label: "one-time setup" },
@@ -54,7 +69,7 @@ const SERVICES: {
   },
   {
     id: "ai-workflows",
-    number: "03",
+    number: "04",
     name: "AI Workflow Automation",
     summary: "Practical automations that take repetitive admin work off your team.",
     oneTime: { amount: "From $3,000", label: "per workflow" },
@@ -72,13 +87,13 @@ const SERVICES: {
 const DECISION_CARDS = [
   {
     label: "Start with one service",
-    fit: "You know exactly where the bottleneck is — a dated website, slow follow-up or one painful manual process.",
+    fit: "You know exactly where the bottleneck is — a dated website, weak search visibility, slow follow-up or one painful manual process.",
     signs: ["One clear problem to solve first", "You want to see results before expanding", "Add the other services later at any time"],
   },
   {
     label: "Take the full package",
-    fit: "Your website, follow-up and admin work all need attention, and you want them working together.",
-    signs: ["Visitors, inquiries and paperwork all slip", "You want one partner accountable for the system", "You want the bundled price"],
+    fit: "How you're found, your website, follow-up and admin work all need attention, and you want them working together.",
+    signs: ["Search, inquiries and paperwork all slip", "You want one partner accountable for the system", "You want the bundled price"],
   },
   {
     label: "Go enterprise",
@@ -97,6 +112,10 @@ const FAQS = [
     a: "Mostly size and complexity: the number of pages, how much content needs writing, and which forms, booking or integrations are involved. We confirm the exact price before kickoff.",
   },
   {
+    q: "Do you guarantee rankings or AI mentions?",
+    a: "No. Nobody controls Google or AI tools, and anyone who promises a #1 ranking is guessing. We do the work that makes you easier to find and recommend, and report plainly each month on what changed.",
+  },
+  {
     q: "Can I start with one service and add more later?",
     a: "Yes. Most businesses start with the bottleneck that matters most. If you later add the other services, we'll move you to the package price.",
   },
@@ -113,14 +132,14 @@ export default function PricingPage() {
 
       <PageHeader
         title={<>Transparent pricing.<br />No surprises.</>}
-        intro="Price each service on its own, or take all three as one connected system for less. One-time builds are quoted within the published range and locked in writing before work begins."
+        intro="Price each service on its own, or take all four as one connected system for less. One-time builds are quoted within the published range and locked in writing before work begins."
       />
 
       {/* Services */}
       <section className="py-20 px-6 bg-canvas">
         <div className="max-w-6xl mx-auto">
           <p className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-6">By service</p>
-          <div className="grid lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {SERVICES.map((s) => (
               <div key={s.id} className="bg-white border border-brass-light rounded-sm flex flex-col">
                 <div className="p-7 flex-1">
@@ -167,32 +186,32 @@ export default function PricingPage() {
           <div className="grid lg:grid-cols-[3fr_2fr] gap-6">
             <div className="bg-green-700 ring-2 ring-green-600 rounded-sm flex flex-col text-white">
               <div className="px-7 pt-5">
-                <span className="text-xs font-bold uppercase tracking-widest text-green-200">Best value · All three services</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-green-200">Best value · All four services</span>
               </div>
               <div className="p-7 flex-1">
                 <h2 className="font-display font-bold text-3xl">The Complete Growth System</h2>
                 <p className="mt-2 text-green-100 leading-relaxed">
-                  Your website, lead follow-up and workflow automation built and managed together — one partner, one connected system.
+                  Your website, search and content, lead follow-up and workflow automation built and managed together — one partner, one connected system.
                 </p>
                 <dl className="mt-6 grid sm:grid-cols-2 gap-4 border-y border-green-600 py-5">
                   <div>
                     <dt className="text-xs font-bold uppercase tracking-widest text-green-200 mb-1">One-time</dt>
-                    <dd className="text-2xl font-bold leading-tight">$5,500–$7,500</dd>
-                    <dd className="text-xs text-green-200 mt-1">vs. $6,500–$8,500 separately</dd>
+                    <dd className="text-2xl font-bold leading-tight">$6,000–$7,000</dd>
+                    <dd className="text-xs text-green-200 mt-1">vs. $8,000–$10,000 separately</dd>
                   </div>
                   <div>
                     <dt className="text-xs font-bold uppercase tracking-widest text-green-200 mb-1">Monthly</dt>
-                    <dd className="text-2xl font-bold leading-tight">$1,499<span className="text-sm font-medium text-green-200">/month</span></dd>
-                    <dd className="text-xs text-green-200 mt-1">vs. $1,797 separately</dd>
+                    <dd className="text-2xl font-bold leading-tight">$2,299<span className="text-sm font-medium text-green-200">/month</span></dd>
+                    <dd className="text-xs text-green-200 mt-1">vs. $2,796 separately</dd>
                   </div>
                 </dl>
                 <ul className="mt-5 grid sm:grid-cols-2 gap-2">
                   {[
-                    "Website build and care plan",
+                    "Website build and management plan",
+                    "Search visibility and monthly content",
                     "Full lead follow-up and recovery",
                     "Your first automated workflow",
                     "Workflow support plan",
-                    "One point of contact",
                     "Regular reviews and improvements",
                   ].map((item) => (
                     <li key={item} className="text-sm text-green-100 flex items-start gap-2">

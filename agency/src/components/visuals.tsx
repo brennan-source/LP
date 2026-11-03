@@ -76,9 +76,9 @@ function BrowserFrame({ url, children, className = "" }: { url: string; children
 }
 
 // A small, legible rendering of a concept homepage.
-export function ConceptScreen({ concept, size = "md" }: { concept: Concept; size?: "sm" | "md" | "lg" }) {
+export function ConceptScreen({ concept, size = "md" }: { concept: Concept; size?: "sm" | "md" | "lg" | "hero" }) {
   const t = TONES[concept.tone];
-  const head = size === "lg" ? "text-2xl md:text-3xl" : size === "md" ? "text-xl" : "text-base";
+  const head = size === "lg" ? "text-2xl md:text-3xl" : size === "md" || size === "hero" ? "text-xl" : "text-base";
   const slug = concept.brand.toLowerCase().replace(/[^a-z]+/g, "");
   return (
     <BrowserFrame url={`${slug}.com`}>
@@ -89,12 +89,12 @@ export function ConceptScreen({ concept, size = "md" }: { concept: Concept; size
             {concept.nav.map((n) => <span key={n}>{n}</span>)}
           </span>
         </div>
-        <div className={`${t.hero} px-5 ${size === "sm" ? "py-5" : "py-8"}`}>
+        <div className={`${t.hero} px-5 ${size === "sm" ? "py-5" : size === "hero" ? "py-8 sm:pr-[48%]" : "py-8"}`}>
           <p className={`text-[10px] uppercase tracking-widest ${t.sub}`}>{concept.eyebrow}</p>
           <p className={`mt-2 font-display font-extrabold leading-[1.05] ${head} ${t.text} max-w-md`}>{concept.headline}</p>
           <span className={`mt-4 inline-block text-[11px] font-semibold px-3 py-1.5 rounded-sm ${t.btn}`}>{concept.cta}</span>
         </div>
-        {size !== "sm" && (
+        {(size === "md" || size === "lg") && (
           <div className="grid grid-cols-3 gap-2 p-4">
             {[0, 1, 2].map((i) => (
               <div key={i} className="border border-brass-light rounded-sm p-2">
@@ -145,19 +145,21 @@ export function WorkflowCard({ className = "" }: { className?: string }) {
   );
 }
 
-// Hero composition: the website, the customer interaction, and the workflow behind it.
+// Hero composition: the website, with the customer's first contact overlapping
+// it. Kept compact so the hero stays roughly the height of the headline block.
 export function ArtifactStack() {
   return (
     <figure>
-      <div className="animate-rise">
-        <ConceptScreen concept={CONCEPTS[0]} size="lg" />
-      </div>
-      <div className="relative -mt-8 sm:-mt-12 mx-3 sm:mx-6 grid sm:grid-cols-2 gap-3 items-start">
-        <div className="animate-rise" style={{ animationDelay: "150ms" }}><LeadCard className="w-auto" /></div>
-        <div className="animate-rise sm:mt-8" style={{ animationDelay: "300ms" }}><WorkflowCard className="w-auto" /></div>
+      <div className="relative">
+        <div className="animate-rise">
+          <ConceptScreen concept={CONCEPTS[0]} size="hero" />
+        </div>
+        <div className="hidden sm:block absolute top-16 -right-4 w-60 animate-rise" style={{ animationDelay: "150ms" }}>
+          <LeadCard className="w-auto" />
+        </div>
       </div>
       <figcaption className="mt-4 text-xs text-ink-light">
-        Illustrative example: a website, the customer&apos;s first contact, and the workflow behind it. Fictional business.
+        Illustrative example: a website and the customer&apos;s first contact, answered automatically. Fictional business.
       </figcaption>
     </figure>
   );
@@ -188,6 +190,35 @@ export function JourneyVisual() {
   );
 }
 
+export function SearchVisual() {
+  return (
+    <figure className="bg-white border border-brass-light rounded-sm shadow-showcase p-6">
+      <div className="border border-brass-light rounded-sm px-3 py-2 text-sm text-ink flex items-center gap-2">
+        <span className="text-ink-light" aria-hidden>⌕</span>furnace repair near Nashua NH
+      </div>
+      <div className="mt-4 grid sm:grid-cols-2 gap-4">
+        <div className="border border-brass-light rounded-sm p-3 bg-canvas-warm">
+          <p className="text-[11px] font-bold uppercase tracking-widest text-copper">AI answer</p>
+          <p className="mt-2 text-xs text-ink">
+            Several local companies offer same-week furnace repair. <span className="font-semibold">Brookside Heating &amp; Air</span> lists
+            emergency service, maintenance plans and service areas across southern New Hampshire.
+          </p>
+          <p className="mt-2 text-[10px] text-ink-light">Source: brooksideheatingair.com</p>
+        </div>
+        <div className="border border-brass-light rounded-sm p-3">
+          <p className="text-[11px] font-bold uppercase tracking-widest text-copper">Map results</p>
+          <ol className="mt-2 space-y-2 text-xs">
+            <li className="flex justify-between gap-2"><span className="font-semibold text-ink">Brookside Heating &amp; Air</span><span className="text-green-700 font-semibold shrink-0">Call · Book</span></li>
+            <li className="flex justify-between gap-2 text-ink-mid"><span>Another local company</span><span className="shrink-0">Call</span></li>
+            <li className="flex justify-between gap-2 text-ink-mid"><span>Another local company</span><span className="shrink-0">Call</span></li>
+          </ol>
+        </div>
+      </div>
+      <figcaption className="mt-5 text-xs text-ink-light">Illustrative example: one business showing up in an AI answer and in map results. Fictional business; not a ranking promise.</figcaption>
+    </figure>
+  );
+}
+
 export function ProcessVisual() {
   return (
     <figure className="bg-white border border-brass-light rounded-sm shadow-showcase p-6">
@@ -210,6 +241,7 @@ export function ProcessVisual() {
 }
 
 const BEFORE_AFTER = [
+  ["Hard to find on Google or in AI answers", "Showing up where customers search and ask"],
   ["Website that only describes", "Website built to start conversations"],
   ["Slow response to new inquiries", "Immediate acknowledgment"],
   ["Manual handoffs between people", "Automated routing to the right person"],
@@ -244,6 +276,7 @@ export function BeforeAfter() {
 // What a Growth Gap Review produces. Fictional sample, labeled as such.
 export function AssessmentPreview() {
   const scores = [
+    { area: "Search visibility", rating: "Weak", width: "w-1/4" },
     { area: "Website", rating: "Needs work", width: "w-2/5" },
     { area: "Lead follow-up", rating: "Gap", width: "w-1/5" },
     { area: "Workflows", rating: "Solid", width: "w-4/5" },
@@ -268,7 +301,7 @@ export function AssessmentPreview() {
           <ol className="space-y-1 text-ink-mid list-decimal list-inside">
             <li>Text back missed calls</li>
             <li>Follow up on open quotes</li>
-            <li>Add a clear quote form</li>
+            <li>Fix Google Business Profile</li>
           </ol>
         </div>
         <div>
@@ -276,11 +309,11 @@ export function AssessmentPreview() {
           <ol className="space-y-1 text-ink-mid">
             <li><span className="text-copper font-semibold">Weeks 1–2</span> · Follow-up</li>
             <li><span className="text-copper font-semibold">Weeks 3–6</span> · Website</li>
-            <li><span className="text-copper font-semibold">Then</span> · Intake workflow</li>
+            <li><span className="text-copper font-semibold">Then</span> · Search &amp; content</li>
           </ol>
         </div>
       </div>
-      <figcaption className="mt-5 text-xs text-ink-light">Sample review for a fictional business. Yours is based on your website, follow-up and workflows.</figcaption>
+      <figcaption className="mt-5 text-xs text-ink-light">Sample review for a fictional business. Yours is based on your search visibility, website, follow-up and workflows.</figcaption>
     </figure>
   );
 }

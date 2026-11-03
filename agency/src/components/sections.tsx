@@ -27,10 +27,10 @@ export function SectionIntro({ eyebrow, title, intro }: { eyebrow?: string; titl
   );
 }
 
-// The three offers as connected parts of one system.
+// The four offers as connected parts of one system.
 export function SolutionCards() {
   return (
-    <div className="grid md:grid-cols-3 gap-6">
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
       {SOLUTIONS.map((s) => (
         <Link
           key={s.id}
@@ -81,7 +81,7 @@ export function ProcessGrid() {
 // Closing call to action. Shows what the visitor receives, not just a button.
 export function CtaBand({
   title = "Where is your business losing leads or time?",
-  body = "Book a short Growth Gap Review. We will identify the clearest opportunities across your website, follow-up process and internal workflows.",
+  body = "Book a short Growth Gap Review. We will identify the clearest opportunities across your search visibility, website, follow-up process and internal workflows.",
   cta = "Book a Growth Gap Review",
   href = "/contact",
   name,
@@ -99,7 +99,7 @@ export function CtaBand({
           <h2 className="font-display font-extrabold text-4xl md:text-5xl text-white leading-tight max-w-2xl text-balance">{title}</h2>
           <p className="mt-6 text-green-100 text-lg max-w-xl">{body}</p>
           <ul className="mt-6 space-y-2 text-green-100">
-            {["A clear read on your website, follow-up and workflows", "Your top opportunities, in priority order", "A recommended sequence — whether or not you hire us"].map((item) => (
+            {["A clear read on how you're found, your website, follow-up and workflows", "Your top opportunities, in priority order", "A recommended sequence — whether or not you hire us"].map((item) => (
               <li key={item} className="flex gap-3"><span className="text-green-300" aria-hidden>→</span>{item}</li>
             ))}
           </ul>

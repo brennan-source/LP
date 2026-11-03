@@ -8,7 +8,7 @@ export function Footer() {
       <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm">
         <div>
           <div className="font-display font-bold text-xl text-white mb-3">Makr</div>
-          <p>Websites, lead follow-up and practical AI workflows for growing businesses.</p>
+          <p>Websites, search and content, lead follow-up and practical AI workflows for growing businesses.</p>
           <p className="mt-3 text-canvas-warm">{LOCAL_LINE}</p>
           <a href={`mailto:${CONTACT_EMAIL}`} className="mt-3 inline-block py-1 hover:text-white transition-colors">{CONTACT_EMAIL}</a>
         </div>

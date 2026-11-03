@@ -4,17 +4,17 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import IndustrySelector from "@/components/IndustrySelector";
 import { CtaBand } from "@/components/sections";
-import { ArtifactStack, BeforeAfter, CONCEPTS, ConceptScreen, JourneyVisual, ProcessVisual } from "@/components/visuals";
+import { ArtifactStack, BeforeAfter, CONCEPTS, ConceptScreen, JourneyVisual, ProcessVisual, SearchVisual } from "@/components/visuals";
 import { PROCESS, SOLUTIONS } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: { absolute: "Makr — Websites, Lead Follow-Up & AI Workflows for Growing Businesses" },
+  title: { absolute: "Makr — Websites, SEO & AI Search, Lead Follow-Up and AI Workflows" },
   description:
-    "Turn missed opportunities and manual work into measurable growth. Makr builds high-performing websites, automated lead follow-up and practical AI workflows for service, manufacturing and B2B businesses.",
+    "Turn missed opportunities and manual work into measurable growth. Makr builds high-performing websites, gets you found on Google and in AI search, automates lead follow-up and builds practical AI workflows for service, manufacturing and B2B businesses.",
   alternates: { canonical: "/" },
 };
 
-const PROCESS_OUTPUTS = ["Growth Gap scorecard", "A finished website or workflow", "Tools connected and tested", "Regular review and next steps"];
+const PROCESS_OUTPUTS = ["Growth Gap scorecard", "A finished website, campaign or workflow", "Tools connected and tested", "Regular review and next steps"];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return <p className="text-xs font-bold uppercase tracking-widest text-copper mb-4">{children}</p>;
@@ -23,22 +23,22 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 export default function HomePage() {
   const featured = CONCEPTS[1];
   const others = [CONCEPTS[0], CONCEPTS[2]];
-  const serviceVisuals = [<ConceptScreen key="w" concept={CONCEPTS[2]} size="md" />, <JourneyVisual key="j" />, <ProcessVisual key="p" />];
+  const serviceVisuals = [<ConceptScreen key="w" concept={CONCEPTS[2]} size="md" />, <SearchVisual key="s" />, <JourneyVisual key="j" />, <ProcessVisual key="p" />];
 
   return (
     <div className="min-h-screen bg-canvas-warm text-ink">
       <Nav activePath="/" />
 
       {/* Hero */}
-      <section className="pt-32 pb-24 px-6 lg:min-h-[80vh] flex items-center">
+      <section className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 xl:grid-cols-[7fr_5fr] gap-12 lg:gap-12 xl:gap-16 items-center">
           <div>
-            <h1 className="font-display font-extrabold text-[clamp(2.75rem,6vw,5.25rem)] leading-[0.98] tracking-tight text-ink text-balance">
-              Turn missed opportunities and manual work into measurable growth.
+            <h1 className="font-display font-extrabold text-[clamp(2.75rem,5.5vw,4.75rem)] leading-[0.98] tracking-tight text-ink text-balance">
+              <span className="block">Win more work.</span> <span className="block">Waste less time.</span>
             </h1>
             <p className="mt-7 text-xl text-ink-mid max-w-xl">
-              Makr builds high-performing websites, automated lead follow-up and practical AI workflows for growing
-              service and manufacturing businesses.
+              Be the business customers find first, answer every lead fast, and take the manual work off your team.
+              Makr builds the websites, search visibility, follow-up and AI workflows that make it happen.
             </p>
             <div className="mt-9 flex flex-wrap gap-x-6 gap-y-4 items-center">
               <Link href="/contact" data-cta="home-hero-primary" className="bg-green-700 hover:bg-green-800 text-white px-7 py-3.5 rounded-sm font-semibold transition-colors">
@@ -84,7 +84,7 @@ export default function HomePage() {
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <Eyebrow>What we do</Eyebrow>
-          <h2 className="font-display font-bold text-4xl md:text-5xl text-ink leading-tight max-w-2xl text-balance">One partner. Three ways to improve growth and operations.</h2>
+          <h2 className="font-display font-bold text-4xl md:text-5xl text-ink leading-tight max-w-2xl text-balance">One partner. Four ways to improve growth and operations.</h2>
           <div className="mt-16 space-y-24">
             {SOLUTIONS.map((s, i) => (
               <div key={s.id} className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -111,7 +111,7 @@ export default function HomePage() {
             <Eyebrow>The difference</Eyebrow>
             <h2 className="font-display font-bold text-4xl md:text-5xl text-ink leading-tight text-balance">Growth gets expensive when your systems do not work together.</h2>
             <p className="mt-5 text-ink-mid max-w-md">
-              A dated website, slow follow-up and repetitive administrative work quietly cost you customers and capacity.
+              Weak search visibility, a dated website, slow follow-up and repetitive administrative work quietly cost you customers and capacity.
               We find those gaps and build a practical system around the way your business actually operates.
             </p>
           </div>

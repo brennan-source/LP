@@ -22,8 +22,8 @@ export function IndustryDetail({
   headline: string;
   intro: string;
   segments: Segment[];
-  // One list per solution, in SOLUTIONS order: websites, revenue recovery, AI workflows.
-  applications: [string[], string[], string[]];
+  // One list per solution, in SOLUTIONS order: websites, search & content, revenue recovery, AI workflows.
+  applications: [string[], string[], string[], string[]];
   ctaTitle: string;
   ctaBody: string;
 }) {
@@ -50,8 +50,8 @@ export function IndustryDetail({
 
       <section className="py-16 px-6 bg-canvas">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-ink mb-8">How the three services apply</h2>
-          <div className="grid md:grid-cols-3 gap-5">
+          <h2 className="font-display font-bold text-3xl md:text-4xl text-ink mb-8">How the four services apply</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {SOLUTIONS.map((s, i) => (
               <div key={s.id} className="bg-white border-l-4 border-green-700 rounded-sm p-6">
                 <p className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-2">{s.number}</p>

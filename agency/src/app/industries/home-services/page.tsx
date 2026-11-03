@@ -27,7 +27,8 @@ export default function HomeServicesPage() {
       intro="Makr helps HVAC, plumbing, roofing, electrical and other home service businesses respond faster, follow up on every estimate and spend less time on office work."
       segments={SEGMENTS}
       applications={[
-        ["Service and location pages that rank and convert", "Click-to-call and quote forms on every page", "Ongoing site care so it stays current"],
+        ["Service and location pages built to convert", "Click-to-call and quote forms on every page", "Ongoing site management so it stays current"],
+        ["Google Business Profile and map results", "Service-area pages for the towns you cover", "Answers that show up in Google and AI search"],
         ["Missed-call text back", "Estimate follow-up until a decision", "Seasonal reminders and review requests"],
         ["Intake details captured before the callback", "Job and estimate data moved between tools", "Weekly summaries of leads and open quotes"],
       ]}

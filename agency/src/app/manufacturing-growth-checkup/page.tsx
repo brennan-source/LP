@@ -84,7 +84,7 @@ export default function ManufacturingCheckupPage() {
           <p className="mt-8 text-sm text-ink-mid">
             Makr works with businesses across{" "}
             <Link href="/industries" className="underline underline-offset-4 decoration-brass hover:text-ink">five industries</Link>, with{" "}
-            <Link href="/solutions" className="underline underline-offset-4 decoration-brass hover:text-ink">three connected services</Link>: websites, lead follow-up and AI workflow automation.
+            <Link href="/solutions" className="underline underline-offset-4 decoration-brass hover:text-ink">four connected services</Link>: websites, search visibility and content, lead follow-up and AI workflow automation.
           </p>
           <a href="#request" data-cta="manufacturing-bottom" className="mt-8 inline-block bg-green-700 hover:bg-green-800 text-white px-7 py-3.5 rounded-sm font-semibold">
             Request My Checkup

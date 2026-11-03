@@ -22,7 +22,7 @@ const barlowCondensed = Barlow_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Makr — Websites, Lead Follow-Up & AI Workflows for Growing Businesses",
+    default: "Makr — Websites, SEO & AI Search, Lead Follow-Up and AI Workflows",
     template: "%s | Makr",
   },
   description: SITE_DESCRIPTION,

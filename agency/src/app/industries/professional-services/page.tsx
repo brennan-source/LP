@@ -26,6 +26,7 @@ export default function ProfessionalServicesPage() {
       segments={SEGMENTS}
       applications={[
         ["A credible site that explains your expertise", "Clear consultation requests and booking", "Landing pages for specific services"],
+        ["Articles and FAQs that show your expertise", "A consistent LinkedIn presence", "Being cited when prospects ask AI for a firm"],
         ["Fast replies to new inquiries", "Nurture for prospects who aren't ready yet", "Reminders before consultations"],
         ["Intake details routed to the right person", "Document collection without chasing", "Client updates drafted for your review"],
       ]}

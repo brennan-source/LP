@@ -1,6 +1,6 @@
 // Shared marketing copy: solutions, industries, problems and process.
 // Used by the homepage, /solutions, /industries and /how-it-works so the
-// three offers and five markets read the same everywhere.
+// four offers and five markets read the same everywhere.
 
 export type Solution = {
   id: string;
@@ -11,34 +11,64 @@ export type Solution = {
   outcome: string;
   includes: { title: string; body: string }[];
   goodFit: string[];
+  byIndustry?: { industry: string; focus: string }[]; // where the emphasis shifts by market
 };
 
 export const SOLUTIONS: Solution[] = [
   {
     id: "websites",
     number: "01",
-    name: "Website Development & Care",
+    name: "Website Development & Management",
     headline: "Websites that work harder",
     summary:
-      "Fast, credible and conversion-focused websites supported by reliable maintenance and continuous improvement.",
+      "Fast, credible and conversion-focused websites, plus the hosting, updates and ongoing management that keep them working.",
     outcome: "More of the people who find you become inquiries, calls and booked conversations.",
     includes: [
       { title: "Design & development", body: "A site that explains what you do, who you serve and why to call you — built to load fast and work on every phone." },
       { title: "Landing pages", body: "Focused pages for a service, a location, an event or a campaign, each with one clear next step." },
       { title: "Conversion improvements", body: "Clearer calls to action, shorter forms, click-to-call and booking where they help visitors take the next step." },
       { title: "Integrations", body: "Forms and booking connected to your inbox, calendar or CRM so inquiries land where your team already works." },
-      { title: "Maintenance & care", body: "Updates, backups, content changes and monitoring so the site keeps working after launch." },
-      { title: "Continuous improvement", body: "Regular reviews of what visitors do on the site and small changes that make it easier to reach you." },
+      { title: "Hosting & maintenance", body: "Hosting, updates, backups, security and monitoring handled for you, so the site keeps working after launch." },
+      { title: "Ongoing management", body: "Content changes made when you need them, plus regular reviews of what visitors do and small changes that make it easier to reach you." },
     ],
     goodFit: [
       "Your website is dated, slow or hard to update",
       "Visitors arrive but rarely call or fill out a form",
-      "You need a page for a specific service, location or campaign",
+      "Nobody on your team has time to keep the site current",
+    ],
+  },
+  {
+    id: "search-content",
+    number: "02",
+    name: "Search Visibility & Content Marketing",
+    headline: "Get found on Google and in AI answers",
+    summary:
+      "SEO, answer engine optimization (AEO), generative engine optimization (GEO) and industry-specific content and digital marketing — so the right customers find you wherever they search.",
+    outcome: "You show up when buyers search Google, check the map, or ask an AI assistant who to call.",
+    includes: [
+      { title: "Local & technical SEO", body: "Site structure, speed, metadata and schema fixed so search engines can read your pages, plus service and location pages built around what customers actually search." },
+      { title: "Google Business Profile & listings", body: "Your profile, categories, photos, posts and directory listings kept accurate and consistent — including the industry directories that matter in your market." },
+      { title: "Answer engine optimization (AEO)", body: "Clear, direct answers to the questions customers ask, structured so Google's featured answers and voice assistants can use them." },
+      { title: "Generative engine optimization (GEO)", body: "Content, citations and structured data that help AI tools like ChatGPT, Perplexity and Google's AI Overviews understand your business and mention it." },
+      { title: "Industry content", body: "Service pages, FAQs, project write-ups, capability pages and articles planned around your market — written for buyers first, search engines second." },
+      { title: "Digital marketing", body: "Email newsletters, LinkedIn and Google posts, and paid search where it pays off, with plain monthly reporting on what's working." },
+    ],
+    goodFit: [
+      "Competitors show up ahead of you on Google or in the map results",
+      "Your business doesn't come up when people ask an AI assistant for a recommendation",
+      "You know you should publish content, but nobody has time to do it",
+    ],
+    byIndustry: [
+      { industry: "Home Services", focus: "Google Business Profile, map results and reviews, service-area pages and seasonal content." },
+      { industry: "Professional Services", focus: "Expertise articles and FAQs, LinkedIn presence and being cited when prospects ask AI for a recommended firm." },
+      { industry: "Personal Services", focus: "Map results and reviews, booking-ready service pages and local content that answers new-client questions." },
+      { industry: "Manufacturing", focus: "Capability and specification pages that engineers and buyers search, industrial directories and technical content that leads to RFQs." },
+      { industry: "B2B Services", focus: "LinkedIn and email, comparison and case pages, and content that keeps you in front of buyers through longer sales cycles." },
     ],
   },
   {
     id: "revenue-recovery",
-    number: "02",
+    number: "03",
     name: "Lead Follow-Up & Revenue Recovery",
     headline: "Revenue recovery that follows through",
     summary:
@@ -60,7 +90,7 @@ export const SOLUTIONS: Solution[] = [
   },
   {
     id: "ai-workflows",
-    number: "03",
+    number: "04",
     name: "AI Workflow Automation",
     headline: "AI workflows that remove busywork",
     summary:
@@ -151,6 +181,7 @@ export const INDUSTRIES: Industry[] = [
 ];
 
 export const PROBLEMS = [
+  { title: "Customers who can't find you", body: "Buyers search Google, check the map or ask an AI assistant — and find a competitor first." },
   { title: "Visitors who never become leads", body: "People find your website, can't quickly tell what to do next and leave without calling or filling out a form." },
   { title: "Calls and inquiries with no follow-up", body: "A missed call or an unanswered form is often a customer who hired someone else." },
   { title: "Estimates and proposals that go cold", body: "Quotes go out, nobody follows up and work that was close to closing quietly disappears." },
@@ -169,8 +200,8 @@ export const PROCESS = [
   {
     number: "02",
     name: "Build",
-    summary: "Implement the highest-value website or automation improvement.",
-    body: "We pick the improvement most likely to matter first — a better website, a follow-up sequence or an automated workflow — scope it in writing and build it.",
+    summary: "Implement the highest-value improvement — website, search, follow-up or automation.",
+    body: "We pick the improvement most likely to matter first — a better website, stronger search visibility, a follow-up sequence or an automated workflow — scope it in writing and build it.",
     output: "A working improvement, tested with your team before it goes live.",
   },
   {

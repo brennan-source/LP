@@ -10,7 +10,7 @@ const AUDIENCES = [
     tab: "Service businesses",
     title: "Home services, practices and appointment-driven businesses",
     body: "When someone calls or books, the first business to respond usually wins. We make the next step obvious, catch the calls that would have gone to voicemail and keep customers coming back.",
-    starts: ["Missed-call text back", "Online booking and reminders", "Estimate follow-up", "Review requests"],
+    starts: ["Google Business Profile and map results", "Missed-call text back", "Online booking and reminders", "Estimate follow-up", "Review requests"],
     links: [
       { href: "/industries/home-services", label: "Home services" },
       { href: "/industries/personal-services", label: "Personal services and practices" },
@@ -22,7 +22,7 @@ const AUDIENCES = [
     tab: "Professional & B2B",
     title: "Firms that win on responsiveness and trust",
     body: "Accounting, legal, consulting, engineering and B2B service firms lose prospects to slow replies and forgotten proposals. We help you respond quickly, follow up consistently and spend less time on intake.",
-    starts: ["Fast first response to inquiries", "Consultation booking", "Proposal follow-up", "Intake and document collection"],
+    starts: ["Expertise content and AI search visibility", "Fast first response to inquiries", "Consultation booking", "Proposal follow-up", "Intake and document collection"],
     links: [
       { href: "/industries/professional-services", label: "Professional services" },
       { href: "/industries#b2b-services", label: "B2B services" },
@@ -34,7 +34,7 @@ const AUDIENCES = [
     tab: "Manufacturers",
     title: "Manufacturers with a disciplined production process",
     body: "Your website should show real capabilities, and RFQs shouldn't wait in a shared inbox. We help you turn interest into qualified quotes and cut the paperwork around orders.",
-    starts: ["RFQ intake and routing", "Quote follow-up", "Distributor and rep communication", "PO and document processing"],
+    starts: ["Capability pages buyers can find", "RFQ intake and routing", "Quote follow-up", "Distributor and rep communication", "PO and document processing"],
     links: [
       { href: "/manufacturing-growth-checkup", label: "Manufacturing Growth Checkup" },
       { href: "/industries#manufacturing", label: "Manufacturing" },

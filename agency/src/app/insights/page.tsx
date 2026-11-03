@@ -4,7 +4,7 @@ import Nav from "@/components/Nav";
 
 export const metadata: Metadata = {
   title: "Insights — Practical Growth and Automation Guides",
-  description: "Practical guides on websites, lead follow-up and workflow automation for growing businesses. No hype, no jargon.",
+  description: "Practical guides on websites, search visibility, lead follow-up and workflow automation for growing businesses. No hype, no jargon.",
   alternates: { canonical: "/insights" },
 };
 

@@ -25,6 +25,7 @@ const REVENUE_RANGES = [
 
 const FOCUS = [
   { value: "website", label: "Our website" },
+  { value: "search", label: "Getting found on Google and AI search" },
   { value: "follow-up", label: "Lead follow-up" },
   { value: "workflows", label: "Manual work and workflows" },
   { value: "not-sure", label: "Not sure yet" },
@@ -83,7 +84,7 @@ export default function ContactForm() {
               Book a Growth Gap Review
             </h1>
             <p className="text-ink-mid leading-relaxed mb-8">
-              Tell us a little about your business, then pick a time. We&apos;ll look for the clearest opportunities across your website, follow-up process and internal workflows.
+              Tell us a little about your business, then pick a time. We&apos;ll look for the clearest opportunities across your search visibility, website, follow-up process and internal workflows.
             </p>
             <div className="space-y-4 border-l-2 border-brass pl-5">
               <div>
