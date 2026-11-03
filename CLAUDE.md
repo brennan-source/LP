@@ -26,7 +26,7 @@ Based in **New England**. This local angle matters — mention it where appropri
 
 ---
 
-## Current Pricing (as of October 26, 2026 — search & content pricing proposed, pending owner approval)
+## Current Pricing (confirmed by the owner, November 2026)
 
 Priced per service, plus a discounted package for all four and an enterprise option. Lives in `agency/src/app/pricing/page.tsx`.
 
@@ -108,7 +108,7 @@ Supersedes older color guidance below where they conflict. Tokens live in `agenc
 - **Cards**: white, `border-brass-light`, `rounded-xl`, with a `border-t-[3px] border-t-copper-bright` top strip. List items and FAQ use a copper-bright left border.
 - **Dark bands**: `bg-green-900` with labels in #E2C49C and body text in green-100.
 - **Font loading**: the Barlow font variables must sit on `<html>` (see `layout.tsx`), or `font-display` silently falls back to regular Barlow.
-- **Homepage structure**: hero + `IndustrySwitcher` (tabs, sample weekly reports from `SAMPLE_REPORTS` in `content.ts`) → owner-type band → `SelfCheck` → four service cards → promises → founder → `CtaBand`.
+- **Homepage structure**: hero + `IndustrySwitcher` (tabs, sample weekly reports from `SAMPLE_REPORTS` in `content.ts`) → owner-type band → `SelfCheck` → four service cards → promises → founder note (first person, no photo or initials) → `CtaBand`.
 - **Industry pages** (`IndustryDetail`) take a `reportKey` to show the matching sample week. Every sample report is labeled "Sample" and is for a fictional business.
 - Pricing is still not in the main nav (October 2026 decision).
 

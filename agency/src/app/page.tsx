@@ -124,23 +124,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Founder */}
+      {/* Founder note */}
       <section className="py-20 px-6 bg-white border-y border-brass-light">
-        <div className="max-w-4xl mx-auto grid sm:grid-cols-[auto_1fr] gap-8 items-start">
-          <div className="w-20 h-20 rounded-full bg-green-200 text-green-700 border-[3px] border-copper-bright grid place-items-center font-display font-extrabold text-3xl" aria-hidden>
-            BB
-          </div>
-          <div>
-            <p className="text-xl md:text-2xl leading-relaxed text-ink">
-              &ldquo;Good businesses lose opportunities because their website undersells them, follow-up depends on memory,
-              and their teams are buried in manual work. Makr fixes those basics, and I&apos;m personally responsible for
-              every engagement.&rdquo;
+        <div className="max-w-3xl mx-auto">
+          <p className="eyebrow">A note from the founder</p>
+          <div className="mt-5 space-y-4 text-xl md:text-2xl leading-relaxed text-ink text-pretty">
+            <p>
+              I spent 13 years helping manufacturers, financial firms, biotech companies and universities explain what they
+              do. The pattern was always the same: people who were great at their work, stretched thin by everything
+              around it.
             </p>
-            <p className="mt-4 text-ink-mid">
-              <span className="font-semibold text-ink">Brennan Burks</span>, founder · Westford, Massachusetts
+            <p>
+              Calls missed while everyone was busy. A website nobody had time to fix. Good quotes that went quiet. I started
+              Makr to take that off owners&apos; plates, and I answer for every project myself.
             </p>
-            <Link href="/about" className="mt-4 inline-block font-semibold text-green-700 hover:text-green-800">About Makr →</Link>
           </div>
+          <p className="mt-6 text-ink-mid">
+            <span className="font-semibold text-ink">Brennan Burks</span>, founder · Westford, Massachusetts
+          </p>
+          <Link href="/about" className="mt-4 inline-block font-semibold text-green-700 hover:text-green-800">About Makr →</Link>
         </div>
       </section>
 
