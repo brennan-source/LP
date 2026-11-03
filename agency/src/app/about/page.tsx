@@ -66,7 +66,7 @@ export default function AboutPage() {
       <section className="py-16 px-6 bg-green-800">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
           <div>
-            <h2 className="font-display font-bold text-4xl text-white mb-5">Built in New England.</h2>
+            <h2 className="font-display font-extrabold uppercase text-4xl md:text-5xl leading-[0.95] text-white mb-5">Built in New England.</h2>
             <p className="text-green-100 text-lg leading-relaxed mb-4">
               Makr is based in New England and works with businesses across Massachusetts, New Hampshire and beyond — not as a distant software vendor, but as a partner who picks up the phone and builds things that fit how your operation actually runs.
             </p>
@@ -76,7 +76,7 @@ export default function AboutPage() {
           </div>
           <div className="flex flex-wrap gap-2">
             {GEOGRAPHY.map((g) => (
-              <span key={g} className="text-sm bg-green-700 text-white px-4 py-2 rounded-sm">{g}</span>
+              <span key={g} className="text-sm border border-green-700 text-green-100 px-4 py-2 rounded-full">{g}</span>
             ))}
           </div>
         </div>
@@ -85,7 +85,7 @@ export default function AboutPage() {
       {/* What we believe */}
       <section className="py-16 px-6 bg-white border-b border-brass-light">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display font-bold text-4xl text-ink mb-8">What we believe</h2>
+          <h2 className="font-display font-extrabold uppercase text-4xl md:text-5xl leading-[0.95] text-ink mb-8">What we believe</h2>
           <div className="space-y-6 text-ink-mid text-lg leading-relaxed">
             <p>
               Most growing businesses aren&apos;t held back by one big failure. They lose ground in small gaps: customers who can&apos;t find them, a website that doesn&apos;t convert, an inquiry nobody followed up on, a quote that went cold, hours of copying information between tools.
@@ -103,10 +103,10 @@ export default function AboutPage() {
       {/* What we do */}
       <section className="py-16 px-6 bg-canvas">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-display font-bold text-4xl text-ink mb-10">Four services. One connected system.</h2>
+          <h2 className="font-display font-extrabold uppercase text-4xl md:text-5xl leading-[0.95] text-ink mb-10">Four services. One connected system.</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {SOLUTIONS.map((s) => (
-              <Link key={s.id} href={`/solutions#${s.id}`} className="group bg-white border-l-4 border-green-700 rounded-sm p-6">
+              <Link key={s.id} href={`/solutions#${s.id}`} className="group bg-white border border-brass-light border-t-[3px] border-t-copper-bright rounded-xl p-6">
                 <h3 className="font-semibold text-ink mb-2 group-hover:text-green-700">{s.name}</h3>
                 <p className="text-ink-mid text-sm leading-relaxed">{s.summary}</p>
               </Link>
@@ -118,7 +118,7 @@ export default function AboutPage() {
       {/* Who we work with */}
       <section className="py-16 px-6 bg-white border-t border-brass-light">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display font-bold text-4xl text-ink mb-6">Who we work with</h2>
+          <h2 className="font-display font-extrabold uppercase text-4xl md:text-5xl leading-[0.95] text-ink mb-6">Who we work with</h2>
           <p className="text-ink-mid leading-relaxed mb-6">
             Owner-led and operationally complex businesses across{" "}
             <Link href="/industries" className="underline underline-offset-4 decoration-brass hover:text-ink">home services, professional services, personal services, manufacturing and B2B services</Link>{" "}

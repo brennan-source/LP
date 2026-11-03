@@ -22,6 +22,7 @@ export default function PersonalServicesPage() {
   return (
     <IndustryDetail
       id="personal-services"
+      reportKey="dental"
       name="Personal Services"
       headline="Increase bookings, reduce no-shows and reactivate past customers."
       intro="Makr helps dental practices, veterinary clinics, wellness providers, med spas, fitness studios and salons keep their calendars full and their front desks less buried."

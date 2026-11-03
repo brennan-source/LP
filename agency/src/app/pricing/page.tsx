@@ -131,32 +131,33 @@ export default function PricingPage() {
       <Nav activePath="/pricing" />
 
       <PageHeader
-        title={<>Transparent pricing.<br />No surprises.</>}
+        eyebrow="Pricing"
+        title={<>Published prices.<br />No sales call needed.</>}
         intro="Price each service on its own, or take all four as one connected system for less. One-time builds are quoted within the published range and locked in writing before work begins."
       />
 
       {/* Services */}
       <section className="py-20 px-6 bg-canvas">
         <div className="max-w-6xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-6">By service</p>
+          <p className="eyebrow mb-6">By service</p>
           <div className="grid md:grid-cols-2 gap-6">
             {SERVICES.map((s) => (
-              <div key={s.id} className="bg-white border border-brass-light rounded-sm flex flex-col">
+              <div key={s.id} className="bg-white border border-brass-light rounded-xl flex flex-col">
                 <div className="p-7 flex-1">
-                  <span className="font-display font-bold text-2xl text-ink-light leading-none">{s.number}</span>
-                  <h2 className="mt-2 font-display font-bold text-2xl text-ink leading-tight">
+                  <span className="font-display font-extrabold text-2xl text-copper leading-none">{s.number}</span>
+                  <h2 className="mt-2 font-display font-extrabold uppercase text-2xl text-ink leading-none">
                     <Link href={`/solutions#${s.id}`} className="hover:text-green-700">{s.name}</Link>
                   </h2>
                   <p className="mt-2 text-sm text-ink-mid leading-relaxed">{s.summary}</p>
                   <dl className="mt-6 grid grid-cols-2 gap-4 border-y border-brass-light py-5">
                     <div>
                       <dt className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-1">One-time</dt>
-                      <dd className="text-xl font-bold text-green-700 leading-tight">{s.oneTime.amount}</dd>
+                      <dd className="font-display font-extrabold text-3xl text-green-700 leading-tight tabular-nums">{s.oneTime.amount}</dd>
                       <dd className="text-xs text-ink-light mt-1">{s.oneTime.label}</dd>
                     </div>
                     <div>
                       <dt className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-1">Monthly</dt>
-                      <dd className="text-xl font-bold text-green-700 leading-tight">{s.monthly.amount}</dd>
+                      <dd className="font-display font-extrabold text-3xl text-green-700 leading-tight tabular-nums">{s.monthly.amount}</dd>
                       <dd className="text-xs text-ink-light mt-1">{s.monthly.label}</dd>
                     </div>
                   </dl>
@@ -169,7 +170,7 @@ export default function PricingPage() {
                   </ul>
                 </div>
                 <div className="px-7 pb-7">
-                  <Link href="/contact" data-cta={`pricing-${s.id}`} className="block text-center py-3 rounded-sm text-sm font-semibold transition-colors bg-ink text-white hover:bg-green-700">
+                  <Link href="/contact" data-cta={`pricing-${s.id}`} className="block text-center py-3 rounded-md text-sm font-semibold transition-colors bg-white border border-brass-light text-ink hover:border-green-700 hover:text-green-700">
                     Get started
                   </Link>
                 </div>
@@ -182,14 +183,14 @@ export default function PricingPage() {
       {/* Package + enterprise */}
       <section className="py-20 px-6 bg-white border-y border-brass-light">
         <div className="max-w-6xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-6">Packages &amp; custom</p>
+          <p className="eyebrow mb-6">Packages &amp; custom</p>
           <div className="grid lg:grid-cols-[3fr_2fr] gap-6">
-            <div className="bg-green-700 ring-2 ring-green-600 rounded-sm flex flex-col text-white">
+            <div className="bg-green-900 rounded-xl flex flex-col text-white">
               <div className="px-7 pt-5">
-                <span className="text-xs font-bold uppercase tracking-widest text-green-200">Best value · All four services</span>
+                <span className="eyebrow eyebrow-on-dark">Best value · All four services</span>
               </div>
               <div className="p-7 flex-1">
-                <h2 className="font-display font-bold text-3xl">The Complete Growth System</h2>
+                <h2 className="font-display font-extrabold uppercase text-3xl md:text-4xl leading-none">The Complete Growth System</h2>
                 <p className="mt-2 text-green-100 leading-relaxed">
                   Your website, search and content, lead follow-up and workflow automation built and managed together — one partner, one connected system.
                 </p>
@@ -221,15 +222,15 @@ export default function PricingPage() {
                 </ul>
               </div>
               <div className="px-7 pb-7">
-                <Link href="/contact" data-cta="pricing-package" className="block text-center py-3 rounded-sm text-sm font-semibold transition-colors bg-white text-green-700 hover:bg-green-50">
+                <Link href="/contact" data-cta="pricing-package" className="block text-center py-3 rounded-md text-sm font-bold transition-colors bg-white text-green-900 hover:bg-green-50">
                   Get started
                 </Link>
               </div>
             </div>
 
-            <div className="bg-canvas-warm border border-brass-light rounded-sm flex flex-col">
+            <div className="bg-canvas-warm border border-brass-light rounded-xl flex flex-col">
               <div className="p-7 flex-1">
-                <h2 className="font-display font-bold text-3xl text-ink">Enterprise</h2>
+                <h2 className="font-display font-extrabold uppercase text-3xl text-ink leading-none">Enterprise</h2>
                 <p className="mt-2 text-ink-mid leading-relaxed">
                   For multi-location businesses, larger teams and complex operations that need custom implementation.
                 </p>
@@ -252,7 +253,7 @@ export default function PricingPage() {
                 </ul>
               </div>
               <div className="px-7 pb-7">
-                <Link href="/contact" data-cta="pricing-enterprise" className="block text-center py-3 rounded-sm text-sm font-semibold transition-colors bg-ink text-white hover:bg-green-700">
+                <Link href="/contact" data-cta="pricing-enterprise" className="block text-center py-3 rounded-md text-sm font-semibold transition-colors bg-ink text-white hover:bg-green-800">
                   Scope a project
                 </Link>
               </div>
@@ -264,12 +265,12 @@ export default function PricingPage() {
       {/* Which fits */}
       <section className="py-20 px-6 bg-canvas">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-display font-bold text-4xl text-ink mb-2">Which option fits your situation?</h2>
+          <h2 className="font-display font-extrabold uppercase text-4xl text-ink leading-[0.95] mb-3">Which option fits your situation?</h2>
           <p className="text-ink-mid mb-10">Most businesses know within the first conversation. Here&apos;s a quick read.</p>
           <div className="grid md:grid-cols-3 gap-5">
             {DECISION_CARDS.map((c) => (
-              <div key={c.label} className="bg-white border-l-4 border-green-700 rounded-sm p-6">
-                <div className="inline-block bg-green-700 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-4">{c.label}</div>
+              <div key={c.label} className="bg-white border border-brass-light border-t-[3px] border-t-copper-bright rounded-xl p-6">
+                <p className="font-display font-extrabold uppercase text-xl text-ink leading-none mb-3">{c.label}</p>
                 <p className="text-ink-mid text-sm leading-relaxed mb-4">{c.fit}</p>
                 <ul className="space-y-2">
                   {c.signs.map((s) => (
@@ -286,7 +287,7 @@ export default function PricingPage() {
       <section className="py-16 px-6 bg-white border-t border-brass-light">
         <div className="max-w-3xl mx-auto space-y-6">
           {FAQS.map((faq) => (
-            <div key={faq.q} className="border-l-2 border-brass pl-5">
+            <div key={faq.q} className="border-l-[3px] border-copper-bright pl-5">
               <h3 className="font-semibold text-ink mb-1">{faq.q}</h3>
               <p className="text-ink-mid text-sm leading-relaxed">{faq.a}</p>
             </div>

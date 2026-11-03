@@ -31,12 +31,13 @@ export default function SolutionsPage() {
       <Nav activePath="/solutions" />
 
       <PageHeader
-        title={<>One system.<br />Four connected services.</>}
+        eyebrow="Solutions"
+        title={<>Four services.<br />One connected system.</>}
         intro="How people find you, your website, your follow-up and your internal workflows are parts of the same process. We improve whichever part is holding you back first, then connect the rest."
       >
         <div className="mt-8 flex flex-wrap gap-3">
           {SOLUTIONS.map((s) => (
-            <a key={s.id} href={`#${s.id}`} className="text-sm bg-canvas border border-brass-light text-ink-mid px-4 py-2 rounded-sm font-medium hover:border-brass hover:text-ink transition-colors">
+            <a key={s.id} href={`#${s.id}`} className="text-sm bg-white border border-brass-light text-ink-mid px-4 py-2 rounded-full font-medium hover:border-copper-bright hover:text-ink transition-colors">
               {s.number} · {s.name}
             </a>
           ))}
@@ -44,12 +45,12 @@ export default function SolutionsPage() {
       </PageHeader>
 
       {/* How the four fit together */}
-      <section className="py-12 px-6 bg-green-800">
+      <section className="py-12 px-6 bg-green-900">
         <ol className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-white">
-          <li><span className="text-xs font-bold uppercase tracking-widest text-green-200">Convert</span><p className="mt-2 text-lg leading-snug">A website turns visitors into inquiries.</p></li>
-          <li><span className="text-xs font-bold uppercase tracking-widest text-green-200">Get found</span><p className="mt-2 text-lg leading-snug">Search and content bring the right visitors.</p></li>
-          <li><span className="text-xs font-bold uppercase tracking-widest text-green-200">Follow through</span><p className="mt-2 text-lg leading-snug">Follow-up turns inquiries into customers.</p></li>
-          <li><span className="text-xs font-bold uppercase tracking-widest text-green-200">Run better</span><p className="mt-2 text-lg leading-snug">Workflows take the busywork off your team.</p></li>
+          <li><span className="text-xs font-bold uppercase tracking-widest text-[#E2C49C]">Convert</span><p className="mt-2 text-lg leading-snug">A website turns visitors into inquiries.</p></li>
+          <li><span className="text-xs font-bold uppercase tracking-widest text-[#E2C49C]">Get found</span><p className="mt-2 text-lg leading-snug">Search and content bring the right visitors.</p></li>
+          <li><span className="text-xs font-bold uppercase tracking-widest text-[#E2C49C]">Follow through</span><p className="mt-2 text-lg leading-snug">Follow-up turns inquiries into customers.</p></li>
+          <li><span className="text-xs font-bold uppercase tracking-widest text-[#E2C49C]">Run better</span><p className="mt-2 text-lg leading-snug">Workflows take the busywork off your team.</p></li>
         </ol>
       </section>
 
@@ -59,24 +60,28 @@ export default function SolutionsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_20rem] gap-10 mb-10">
               <div>
                 <div className="flex items-baseline gap-4 mb-4 min-w-0">
-                  <span className="font-display font-bold text-4xl sm:text-5xl text-ink-light leading-none">{s.number}</span>
-                  <h2 className="min-w-0 font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-ink leading-tight">{s.name}</h2>
+                  <span className="font-display font-extrabold text-3xl text-copper leading-none">{s.number}</span>
+                  <h2 className="min-w-0 font-display font-extrabold uppercase text-3xl sm:text-4xl md:text-5xl text-ink leading-[0.95] text-balance">{s.name}</h2>
                 </div>
                 <p className="text-ink-mid text-lg max-w-2xl leading-relaxed">{s.summary}</p>
                 <p className="mt-4 text-ink font-semibold max-w-2xl">{s.outcome}</p>
               </div>
-              <div className={`${i % 2 === 0 ? "bg-white" : "bg-canvas"} border border-brass-light rounded-sm p-6 self-start`}>
-                <p className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-3">A good fit if</p>
+              <div className={`${i % 2 === 0 ? "bg-white" : "bg-canvas"} border border-brass-light rounded-xl p-6 self-start`}>
+                <p className="eyebrow mb-3">A good fit if</p>
                 <ul className="space-y-2">
                   {s.goodFit.map((g) => (
                     <li key={g} className="text-sm text-ink-mid flex items-start gap-2"><span className="text-green-700 mt-0.5 shrink-0" aria-hidden>✓</span>{g}</li>
                   ))}
                 </ul>
+                <p className="mt-4 pt-3 border-t border-brass-light text-sm">
+                  <span className="font-semibold text-ink">{s.priceLine}</span><br />
+                  <Link href="/pricing" className="font-semibold text-green-700 hover:text-green-800">See pricing →</Link>
+                </p>
               </div>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {s.includes.map((item) => (
-                <div key={item.title} className={`${i % 2 === 0 ? "bg-white" : "bg-canvas"} border-l-4 border-green-700 rounded-sm p-5`}>
+                <div key={item.title} className={`${i % 2 === 0 ? "bg-white" : "bg-canvas"} border border-brass-light border-l-4 border-l-copper-bright rounded-md p-5`}>
                   <h3 className="font-semibold text-ink mb-2">{item.title}</h3>
                   <p className="text-ink-mid text-sm leading-relaxed">{item.body}</p>
                 </div>
@@ -84,7 +89,7 @@ export default function SolutionsPage() {
             </div>
             {s.byIndustry && (
               <div className="mt-12">
-                <h3 className="font-display font-bold text-2xl text-ink mb-5">Where we focus, by industry</h3>
+                <h3 className="font-display font-extrabold uppercase text-2xl text-ink mb-5">Where we focus, by industry</h3>
                 <dl className="divide-y divide-brass-light border-y border-brass-light">
                   {s.byIndustry.map((b) => (
                     <div key={b.industry} className="grid md:grid-cols-[14rem_1fr] gap-x-6 gap-y-1 py-4">
@@ -102,14 +107,14 @@ export default function SolutionsPage() {
       {/* Practical guardrails */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display font-bold text-3xl text-ink mb-6">How we keep it practical</h2>
+          <h2 className="font-display font-extrabold uppercase text-3xl text-ink mb-6">How we keep it practical</h2>
           <div className="space-y-5">
             {[
               { title: "Your team stays in control", body: "Automations handle repetitive steps and hand anything that needs judgment to a person. We don't promise a business that runs itself." },
               { title: "Built around your existing tools", body: "We work with what you already use wherever possible, and recommend something new only when it clearly earns its place." },
               { title: "Support after launch", body: "Every build includes testing with your team, and we stay involved to monitor, fix and improve it." },
             ].map((g) => (
-              <div key={g.title} className="border-l-2 border-brass pl-5">
+              <div key={g.title} className="border-l-[3px] border-copper-bright pl-5">
                 <h3 className="font-semibold text-ink mb-1">{g.title}</h3>
                 <p className="text-ink-mid text-sm leading-relaxed">{g.body}</p>
               </div>

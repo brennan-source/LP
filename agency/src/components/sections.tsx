@@ -5,11 +5,12 @@ import { AssessmentPreview } from "@/components/visuals";
 
 // Reusable page sections for the marketing site.
 
-export function PageHeader({ title, intro, children }: { title: React.ReactNode; intro?: React.ReactNode; children?: React.ReactNode }) {
+export function PageHeader({ title, intro, eyebrow, children }: { title: React.ReactNode; intro?: React.ReactNode; eyebrow?: string; children?: React.ReactNode }) {
   return (
-    <section className="bg-white pt-28 pb-16 px-6 border-b border-brass-light">
+    <section className="bg-canvas pt-32 pb-14 px-6 border-b border-brass-light">
       <div className="max-w-6xl mx-auto">
-        <h1 className="font-display font-extrabold text-5xl md:text-7xl text-ink leading-none tracking-tight text-balance">{title}</h1>
+        {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
+        <h1 className="font-display font-extrabold uppercase text-5xl md:text-7xl text-ink leading-[0.92] tracking-tight text-balance">{title}</h1>
         {intro && <p className="mt-6 text-ink-mid text-xl max-w-2xl leading-relaxed">{intro}</p>}
         {children}
       </div>
@@ -17,12 +18,12 @@ export function PageHeader({ title, intro, children }: { title: React.ReactNode;
   );
 }
 
-export function SectionIntro({ eyebrow, title, intro }: { eyebrow?: string; title: string; intro?: string }) {
+export function SectionIntro({ eyebrow, title, intro, dark = false }: { eyebrow?: string; title: string; intro?: string; dark?: boolean }) {
   return (
-    <div className="max-w-2xl mb-12">
-      {eyebrow && <p className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-3">{eyebrow}</p>}
-      <h2 className="font-display font-bold text-4xl md:text-5xl text-ink leading-tight text-balance">{title}</h2>
-      {intro && <p className="mt-4 text-ink-mid text-lg leading-relaxed">{intro}</p>}
+    <div className="max-w-3xl mb-10">
+      {eyebrow && <p className={`eyebrow mb-3 ${dark ? "eyebrow-on-dark" : ""}`}>{eyebrow}</p>}
+      <h2 className={`font-display font-extrabold uppercase text-4xl md:text-5xl leading-[0.95] text-balance ${dark ? "text-white" : "text-ink"}`}>{title}</h2>
+      {intro && <p className={`mt-4 text-lg leading-relaxed ${dark ? "text-green-100" : "text-ink-mid"}`}>{intro}</p>}
     </div>
   );
 }
@@ -96,15 +97,16 @@ export function CtaBand({
     <section className="py-24 px-6 bg-green-900">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-[7fr_5fr] gap-12 items-center">
         <div>
-          <h2 className="font-display font-extrabold text-4xl md:text-5xl text-white leading-tight max-w-2xl text-balance">{title}</h2>
+          <p className="eyebrow eyebrow-on-dark mb-4">The first step</p>
+          <h2 className="font-display font-extrabold uppercase text-4xl md:text-5xl text-white leading-[0.95] max-w-2xl text-balance">{title}</h2>
           <p className="mt-6 text-green-100 text-lg max-w-xl">{body}</p>
           <ul className="mt-6 space-y-2 text-green-100">
             {["A clear read on how you're found, your website, follow-up and workflows", "Your top opportunities, in priority order", "A recommended sequence — whether or not you hire us"].map((item) => (
-              <li key={item} className="flex gap-3"><span className="text-green-300" aria-hidden>→</span>{item}</li>
+              <li key={item} className="flex gap-3"><span className="text-[#E2C49C]" aria-hidden>→</span>{item}</li>
             ))}
           </ul>
           <div className="mt-10 flex flex-wrap gap-x-6 gap-y-4 items-center">
-            <Link href={href} data-cta={name} className="bg-white text-green-900 hover:bg-green-50 px-8 py-4 rounded-sm font-bold text-lg transition-colors">
+            <Link href={href} data-cta={name} className="bg-white text-green-900 hover:bg-green-50 px-7 py-4 rounded-md font-bold text-lg transition-colors">
               {cta}
             </Link>
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-cta={`${name}-calendar`} className="text-green-100 hover:text-white text-sm font-medium underline underline-offset-4">

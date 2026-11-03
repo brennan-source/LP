@@ -4,10 +4,10 @@ import { CONTACT_EMAIL, LOCAL_LINE } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-ink-light py-14 px-6">
+    <footer className="bg-ink text-[#B9C2BC] py-14 px-6">
       <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm">
         <div>
-          <div className="font-display font-bold text-xl text-white mb-3">Makr</div>
+          <div className="font-display font-bold text-xl text-white mb-3">Makr<span className="text-copper-bright">.</span></div>
           <p>Websites, search and content, lead follow-up and practical AI workflows for growing businesses.</p>
           <p className="mt-3 text-canvas-warm">{LOCAL_LINE}</p>
           <a href={`mailto:${CONTACT_EMAIL}`} className="mt-3 inline-block py-1 hover:text-white transition-colors">{CONTACT_EMAIL}</a>
@@ -39,7 +39,7 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="max-w-6xl mx-auto mt-10 pt-8 border-t border-ink-mid/30 text-xs text-ink-light">
+      <div className="max-w-6xl mx-auto mt-10 pt-8 border-t border-ink-mid/30 text-xs text-[#9DA79F]">
         &copy; {new Date().getFullYear()} Makr. All rights reserved.
       </div>
     </footer>

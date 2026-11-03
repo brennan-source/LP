@@ -58,7 +58,7 @@ export default function HowItWorksPage() {
       </section>
       <section className="py-16 px-6 bg-white border-y border-brass-light">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-display font-bold text-4xl text-ink mb-10">What stays the same throughout.</h2>
+          <h2 className="font-display font-extrabold uppercase text-4xl md:text-5xl leading-[0.95] text-ink mb-10">What stays the same throughout.</h2>
           <div className="grid md:grid-cols-3 gap-5">
             {[
               { title: "A single point of contact", body: "One person who knows your business, answers your questions and is accountable for the work. Not a support queue.", accent: "border-green-700" },

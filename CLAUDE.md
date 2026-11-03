@@ -97,9 +97,24 @@ border-l-2 border-brass      — FAQ items, problem lists
 
 ---
 
+## Design System — November 2026 redesign (Concept 5, "house colors")
+
+Supersedes older color guidance below where they conflict. Tokens live in `agency/src/app/globals.css`.
+
+- **Forest green is the only action color**: primary buttons, the second line of the hero headline, checkmarks, status chips. Don't use it for decoration.
+- **Copper has two shades.** `copper` (#84592F) is for small label text only (passes AA). `copper-bright` (#B87333) is for lines, borders, the logo dot and the active nav underline only. Never use `copper-bright` for text: it fails contrast.
+- **Section labels** use the `.eyebrow` class (small copper caps with a bright-copper rule). Use `.eyebrow eyebrow-on-dark` on green-900 bands.
+- **Headings**: `font-display font-extrabold uppercase` (Barlow Condensed) with tight leading (`leading-[0.92]`–`[0.95]`). `PageHeader` and `SectionIntro` in `sections.tsx` already do this.
+- **Cards**: white, `border-brass-light`, `rounded-xl`, with a `border-t-[3px] border-t-copper-bright` top strip. List items and FAQ use a copper-bright left border.
+- **Dark bands**: `bg-green-900` with labels in #E2C49C and body text in green-100.
+- **Font loading**: the Barlow font variables must sit on `<html>` (see `layout.tsx`), or `font-display` silently falls back to regular Barlow.
+- **Homepage structure**: hero + `IndustrySwitcher` (tabs, sample weekly reports from `SAMPLE_REPORTS` in `content.ts`) → owner-type band → `SelfCheck` → four service cards → promises → founder → `CtaBand`.
+- **Industry pages** (`IndustryDetail`) take a `reportKey` to show the matching sample week. Every sample report is labeled "Sample" and is for a fictional business.
+- Pricing is still not in the main nav (October 2026 decision).
+
 ## Layout & Component Patterns
 
-- **Corner radius**: `rounded-sm` everywhere. Never `rounded-lg` or `rounded-xl` on cards.
+- **Corner radius**: buttons `rounded-md`, cards `rounded-xl` (November 2026 redesign; replaces the old `rounded-sm`-only rule).
 - **Card left-border accent**: `border-l-4 border-{color} rounded-sm bg-white` — used for pillars, decision cards, capability cards
 - **Section eyebrow**: `text-xs font-bold uppercase tracking-widest text-ink-mid` — labels like "Monthly retainers", "One-time & custom"
 - **Display headings**: `font-display font-extrabold` (Barlow Condensed) for hero/section headlines
@@ -187,7 +202,7 @@ There is also a branch `claude/optimistic-albattani-1uf2Y` — this is stale and
 
 - Pricing is public and fixed. This is intentional positioning — contractors shouldn't need a sales call to know if it fits their budget.
 - The pillar coverage matrix (Grow/Operate/Enable checkboxes) was removed from the pricing page and replaced with "Which tier fits your situation?" decision cards. Keep it this way.
-- `rounded-sm` not `rounded-lg` — sharp corners are part of the brand aesthetic.
+- Corner radius changed in the November 2026 redesign: `rounded-md` buttons, `rounded-xl` cards.
 - Brass tokens are for decoration only (borders, backgrounds). This decision was made after seeing text-brass render as pink/peach on screen.
 - The industries page uses an alternating two-column layout — not a flat card grid. Unverified stats were removed in the October 2026 repositioning; don't add statistics back until verified.
 - How-it-works page uses a vertical connected timeline (4 steps with a connector line), not flat cards.

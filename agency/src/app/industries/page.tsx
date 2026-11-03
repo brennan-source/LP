@@ -64,7 +64,7 @@ export default function IndustriesPage() {
                 <p className="text-xs font-bold uppercase tracking-widest text-ink-mid mb-5">Where we often start</p>
                 <ul className="space-y-4">
                   {v.workflows.map((w) => (
-                    <li key={w} className="border-l-4 border-green-700 pl-4 font-display font-bold text-xl sm:text-2xl text-ink leading-snug">{w}</li>
+                    <li key={w} className="border-l-4 border-copper-bright pl-4 font-display font-bold text-xl sm:text-2xl text-ink leading-snug">{w}</li>
                   ))}
                 </ul>
                 <p className="text-ink-light text-xs mt-6">Examples, not a fixed package. Every business gets the improvements that fit how it actually works.</p>

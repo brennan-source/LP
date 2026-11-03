@@ -20,6 +20,7 @@ export default function ProfessionalServicesPage() {
   return (
     <IndustryDetail
       id="professional-services"
+      reportKey="law"
       name="Professional Services"
       headline="Streamline intake, nurture prospects and improve client communication."
       intro="Makr helps accounting firms, law firms, consultancies and other professional practices respond faster, keep prospects warm and spend less time on administrative work."

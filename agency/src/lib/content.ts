@@ -12,11 +12,13 @@ export type Solution = {
   includes: { title: string; body: string }[];
   goodFit: string[];
   byIndustry?: { industry: string; focus: string }[]; // where the emphasis shifts by market
+  priceLine: string; // short summary; full detail lives on /pricing
 };
 
 export const SOLUTIONS: Solution[] = [
   {
     id: "websites",
+    priceLine: "$2,000–$4,000 build · $299/month",
     number: "01",
     name: "Website Development & Management",
     headline: "Websites that work harder",
@@ -39,6 +41,7 @@ export const SOLUTIONS: Solution[] = [
   },
   {
     id: "search-content",
+    priceLine: "$1,500 setup · $999/month",
     number: "02",
     name: "Search Visibility & Content Marketing",
     headline: "Get found on Google and in AI answers",
@@ -68,6 +71,7 @@ export const SOLUTIONS: Solution[] = [
   },
   {
     id: "revenue-recovery",
+    priceLine: "$1,500 setup · $999/month",
     number: "03",
     name: "Lead Follow-Up & Revenue Recovery",
     headline: "Revenue recovery that follows through",
@@ -90,6 +94,7 @@ export const SOLUTIONS: Solution[] = [
   },
   {
     id: "ai-workflows",
+    priceLine: "From $3,000 per workflow · $499/month optional support",
     number: "04",
     name: "AI Workflow Automation",
     headline: "AI workflows that remove busywork",
@@ -218,4 +223,91 @@ export const PROCESS = [
     body: "After launch we watch what happens, fix what isn't working and decide together what to improve next. Support continues after the build.",
     output: "Regular check-ins and a running list of next improvements.",
   },
+];
+
+// Sample weekly reports for fictional businesses, used on the homepage
+// industry switcher and the industry pages. Always shown with a "Sample" label.
+export type SampleReport = {
+  key: string;
+  tab: string;
+  business: string;
+  problem: string;
+  items: { text: string; service: string; status: string; waiting?: boolean }[];
+};
+
+export const SAMPLE_REPORTS: SampleReport[] = [
+  {
+    key: "dental",
+    tab: "Dental practice",
+    business: "Elm Street Dental",
+    problem: "New-patient calls went to voicemail during procedures.",
+    items: [
+      { text: "Showing up in map results and AI answers for “dentist accepting new patients”", service: "Search & content", status: "Visible" },
+      { text: "New-patient call missed → text back with booking link in 1 min", service: "Lead follow-up", status: "Booked" },
+      { text: "Recall reminders sent to patients due for cleanings", service: "Lead follow-up", status: "Sent" },
+      { text: "Intake forms filled into the practice system automatically", service: "AI workflow", status: "Done" },
+    ],
+  },
+  {
+    key: "law",
+    tab: "Law firm",
+    business: "Harbor Street Law",
+    problem: "Consultation requests waited a day for a reply; intake was re-typed by hand.",
+    items: [
+      { text: "Practice-area FAQ cited in an AI answer for “estate planning attorney”", service: "Search & content", status: "Visible" },
+      { text: "Web inquiry answered with consult booking in 2 min", service: "Lead follow-up", status: "Booked" },
+      { text: "Prospect who didn't book gets a day-4 check-in", service: "Lead follow-up", status: "Waiting", waiting: true },
+      { text: "Intake answers organized into a new matter file", service: "AI workflow", status: "Done" },
+    ],
+  },
+  {
+    key: "plumbing",
+    tab: "Plumbing",
+    business: "Brookside Plumbing",
+    problem: "After-hours calls went to competitors; estimates went cold.",
+    items: [
+      { text: "Showing in map results for “emergency plumber Lowell”", service: "Search & content", status: "Visible" },
+      { text: "Missed 9pm call → text back, job booked for 8am", service: "Lead follow-up", status: "Booked" },
+      { text: "Water-heater estimate reminder sent, day 3", service: "Lead follow-up", status: "Waiting", waiting: true },
+      { text: "Job details sent to dispatch without re-typing", service: "AI workflow", status: "Done" },
+    ],
+  },
+  {
+    key: "manufacturing",
+    tab: "Manufacturing",
+    business: "Ridgeline Precision",
+    problem: "RFQs sat in a shared inbox; quotes were never followed up.",
+    items: [
+      { text: "Capability page found for “5-axis CNC machining New England”", service: "Search & content", status: "Visible" },
+      { text: "RFQ acknowledged in 1 min and routed to estimating", service: "Lead follow-up", status: "Answered" },
+      { text: "Quote #4471 reminder sent, day 3", service: "Lead follow-up", status: "Waiting", waiting: true },
+      { text: "PO details read from email and entered automatically", service: "AI workflow", status: "Done" },
+    ],
+  },
+];
+
+// One line per owner type for the homepage band.
+export const OWNER_LINES = [
+  { label: "Dental & medical", body: "New patients get an answer while you're chairside, and recalls go out without front-desk chasing.", href: "/industries/personal-services", link: "For practices" },
+  { label: "Law & accounting", body: "Intake runs itself, so partner hours go to billable work instead of paperwork.", href: "/industries/professional-services", link: "For firms" },
+  { label: "Trades & home services", body: "Missed calls get a text back and every estimate gets followed up until it's a yes or no.", href: "/industries/home-services", link: "For trades" },
+  { label: "Manufacturing & B2B", body: "Buyers find your capabilities, RFQs get answered fast and POs stop being re-typed.", href: "/manufacturing-growth-checkup", link: "For manufacturers" },
+];
+
+// Self-check questions. Each maps to the solution id that fixes it.
+export const SELF_CHECK = [
+  { text: "A competitor shows up before us on Google or in AI answers.", solution: "search-content", tag: "Search" },
+  { text: "Our website is dated, or hard for us to update.", solution: "websites", tag: "Website" },
+  { text: "Calls go to voicemail while we're with a customer.", solution: "revenue-recovery", tag: "Follow-up" },
+  { text: "Quotes, estimates or proposals go out and nobody follows up.", solution: "revenue-recovery", tag: "Follow-up" },
+  { text: "Someone re-types the same information into more than one system.", solution: "ai-workflows", tag: "Workflows" },
+  { text: "I'm doing admin work at night or on weekends.", solution: "ai-workflows", tag: "Workflows" },
+];
+
+// The promises that answer agency skepticism.
+export const PROMISES = [
+  { title: "Prices on the website", body: "Fixed monthly prices, published. Builds quoted in writing before work starts." },
+  { title: "One person accountable", body: "You work with the founder, not a support queue." },
+  { title: "Your tools, not new ones", body: "We connect to the phone, calendar and software you already use." },
+  { title: "A Monday report, no logins", body: "What changed and what's next, in plain language. No ranking promises." },
 ];

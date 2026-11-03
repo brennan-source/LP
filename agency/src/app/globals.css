@@ -16,6 +16,8 @@
   --color-brass: #84592F;
   --color-brass-light: #D8D6CE; /* warm neutral border */
   --color-copper: #84592F;
+  /* Brighter copper for lines, borders and the logo dot only. Never small text: it fails contrast. */
+  --color-copper-bright: #B87333;
   --color-sage: #DCE7DE;
 
   /* Forest green replaces Tailwind's green scale so existing classes pick it up. */
@@ -60,6 +62,26 @@ h1, h2, h3, p, li, dd {
     scroll-behavior: auto !important;
   }
 }
+
+/* Section label: small copper caps with a short bright-copper rule before it. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--color-copper-bright);
+  flex-shrink: 0;
+}
+.eyebrow-on-dark { color: #E2C49C; }
 
 /* Gentle entrance for the hero artifact stack. */
 @keyframes rise {

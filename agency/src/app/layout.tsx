@@ -49,10 +49,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body
-        className={`${barlow.variable} ${barlowCondensed.variable} font-sans bg-canvas-warm text-ink antialiased`}
-      >
+    // Font variables sit on <html> so the @theme tokens defined at :root can resolve them.
+    <html lang="en" className={`${barlow.variable} ${barlowCondensed.variable} scroll-smooth`}>
+      <body className="font-sans bg-canvas-warm text-ink antialiased">
         <JsonLd data={organizationSchema} />
         {children}
         <Analytics />

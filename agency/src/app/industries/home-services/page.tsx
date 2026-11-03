@@ -22,6 +22,7 @@ export default function HomeServicesPage() {
   return (
     <IndustryDetail
       id="home-services"
+      reportKey="plumbing"
       name="Home Services"
       headline="Convert local demand and follow up on every inquiry."
       intro="Makr helps HVAC, plumbing, roofing, electrical and other home service businesses respond faster, follow up on every estimate and spend less time on office work."
