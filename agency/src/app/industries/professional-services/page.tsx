@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const SEGMENTS = [
   { name: "Accounting & Tax", problem: "Deadline seasons bury the team in document chasing and repetitive client questions.", capabilities: ["Document collection reminders", "Client intake and routing", "Status updates drafted for review"] },
-  { name: "Legal", problem: "Inquiries need a fast, careful response, and intake details are often gathered by hand.", capabilities: ["Structured intake forms", "Consultation booking", "Document drafting support for attorney review"] },
+  { name: "Legal", problem: "Inquiries need a fast, careful response, and intake details are often gathered by hand.", capabilities: ["Structured intake forms", "Consultation booking", "Document drafting support for attorney review"], link: { href: "/industries/law-firms", label: "More for law firms" } },
   { name: "Consulting", problem: "Proposals take too long to produce and follow-up depends on whoever remembers.", capabilities: ["Proposal follow-up", "Research and notes organized", "Pipeline reporting"] },
   { name: "Engineering & Architecture", problem: "Project inquiries and documentation move through email threads and spreadsheets.", capabilities: ["Project inquiry intake", "Documentation workflows", "Client update drafting"] },
   { name: "Financial Advisory", problem: "Prospects need nurturing over months, and client reporting takes hours to assemble.", capabilities: ["Prospect nurture sequences", "Meeting booking and reminders", "Client reporting support"] },

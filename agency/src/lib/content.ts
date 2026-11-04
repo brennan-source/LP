@@ -126,6 +126,7 @@ export type Industry = {
   examples: string[];
   workflows: string[];
   href?: string; // deeper page, when one exists
+  more?: { href: string; label: string }[]; // extra deeper pages within the market
 };
 
 export const INDUSTRIES: Industry[] = [
@@ -135,7 +136,7 @@ export const INDUSTRIES: Industry[] = [
     name: "Home Services",
     line: "Convert local demand and follow up on every inquiry.",
     description:
-      "When a homeowner calls, the first business to respond usually gets the job. We help contractors answer faster, follow up on every estimate and keep past customers coming back.",
+      "When a homeowner calls, the shop that answers or texts back first gets the first conversation. We help contractors answer faster, follow up on every estimate and keep past customers coming back.",
     examples: ["HVAC", "Plumbing", "Roofing", "Electrical", "Restoration", "Landscaping", "Pest Control"],
     workflows: ["Missed-call text back", "Estimate follow-up", "Seasonal maintenance reminders", "Review requests after completed jobs"],
     href: "/industries/home-services",
@@ -150,6 +151,7 @@ export const INDUSTRIES: Industry[] = [
     examples: ["Accounting & Tax", "Legal", "Consulting", "Engineering", "Architecture", "Financial Advisory"],
     workflows: ["Inquiry intake and routing", "Consultation booking", "Prospect nurture", "Document collection reminders"],
     href: "/industries/professional-services",
+    more: [{ href: "/industries/law-firms", label: "Law firms" }],
   },
   {
     id: "personal-services",
@@ -239,10 +241,10 @@ export const SAMPLE_REPORTS: SampleReport[] = [
   {
     key: "dental",
     tab: "Dental practice",
-    business: "Elm Street Dental",
+    business: "Example Dental Practice (fictional)",
     problem: "New-patient calls went to voicemail during procedures.",
     items: [
-      { text: "Showing up in map results and AI answers for “dentist accepting new patients”", service: "Search & content", status: "Visible" },
+      { text: "New-patient FAQ page published and Google Business Profile hours updated", service: "Search & content", status: "Done" },
       { text: "New-patient call missed → text back with booking link in 1 min", service: "Lead follow-up", status: "Booked" },
       { text: "Recall reminders sent to patients due for cleanings", service: "Lead follow-up", status: "Sent" },
       { text: "Intake forms filled into the practice system automatically", service: "AI workflow", status: "Done" },
@@ -251,10 +253,10 @@ export const SAMPLE_REPORTS: SampleReport[] = [
   {
     key: "law",
     tab: "Law firm",
-    business: "Harbor Street Law",
+    business: "Example Law Group (fictional)",
     problem: "Consultation requests waited a day for a reply; intake was re-typed by hand.",
     items: [
-      { text: "Practice-area FAQ cited in an AI answer for “estate planning attorney”", service: "Search & content", status: "Visible" },
+      { text: "3 after-hours inquiries acknowledged within minutes", service: "Lead follow-up", status: "Sent" },
       { text: "Web inquiry answered with consult booking in 2 min", service: "Lead follow-up", status: "Booked" },
       { text: "Prospect who didn't book gets a day-4 check-in", service: "Lead follow-up", status: "Waiting", waiting: true },
       { text: "Intake answers organized into a new matter file", service: "AI workflow", status: "Done" },
@@ -263,10 +265,10 @@ export const SAMPLE_REPORTS: SampleReport[] = [
   {
     key: "plumbing",
     tab: "Plumbing",
-    business: "Brookside Plumbing",
-    problem: "After-hours calls went to competitors; estimates went cold.",
+    business: "Example Plumbing & Heating Co. (fictional)",
+    problem: "After-hours calls went unanswered; estimates went quiet.",
     items: [
-      { text: "Showing in map results for “emergency plumber Lowell”", service: "Search & content", status: "Visible" },
+      { text: "Google Business Profile service areas and hours updated", service: "Search & content", status: "Done" },
       { text: "Missed 9pm call → text back, job booked for 8am", service: "Lead follow-up", status: "Booked" },
       { text: "Water-heater estimate reminder sent, day 3", service: "Lead follow-up", status: "Waiting", waiting: true },
       { text: "Job details sent to dispatch without re-typing", service: "AI workflow", status: "Done" },
@@ -275,10 +277,10 @@ export const SAMPLE_REPORTS: SampleReport[] = [
   {
     key: "manufacturing",
     tab: "Manufacturing",
-    business: "Ridgeline Precision",
+    business: "Example Precision Machining Co. (fictional)",
     problem: "RFQs sat in a shared inbox; quotes were never followed up.",
     items: [
-      { text: "Capability page found for “5-axis CNC machining New England”", service: "Search & content", status: "Visible" },
+      { text: "Capability page for 5-axis CNC machining published", service: "Search & content", status: "Done" },
       { text: "RFQ acknowledged in 1 min and routed to estimating", service: "Lead follow-up", status: "Answered" },
       { text: "Quote #4471 reminder sent, day 3", service: "Lead follow-up", status: "Waiting", waiting: true },
       { text: "PO details read from email and entered automatically", service: "AI workflow", status: "Done" },
