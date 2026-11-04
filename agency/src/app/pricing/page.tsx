@@ -102,6 +102,25 @@ const DECISION_CARDS = [
   },
 ];
 
+// Contract and ownership terms (Brennan's decision, November 4, 2026).
+const TERMS = [
+  {
+    label: "Monthly services",
+    title: "3-month minimum, then month-to-month",
+    body: "After the first three months, you can cancel any monthly service with 30 days' written notice.",
+  },
+  {
+    label: "One-time builds",
+    title: "Quoted in writing first",
+    body: "Builds are quoted within the published range after the Growth Gap Review and locked in writing before kickoff.",
+  },
+  {
+    label: "Ownership",
+    title: "You own what you pay for",
+    body: "Once your build fee is paid in full, you own your website. Your domain, Google Business Profile, content and data are yours too.",
+  },
+];
+
 const FAQS = [
   {
     q: "Why publish prices publicly?",
@@ -114,6 +133,10 @@ const FAQS = [
   {
     q: "Do you guarantee rankings or AI mentions?",
     a: "No. Nobody controls Google or AI tools, and anyone who promises a #1 ranking is guessing. We do the work that makes you easier to find and recommend, and report plainly each month on what changed.",
+  },
+  {
+    q: "How long do I have to commit?",
+    a: "Three months. Monthly services have a 3-month minimum, then run month-to-month. After the minimum, cancel with 30 days' written notice.",
   },
   {
     q: "Can I start with one service and add more later?",
@@ -280,6 +303,30 @@ export default function PricingPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Terms */}
+      <section id="terms" className="scroll-mt-20 py-20 px-6 bg-canvas-warm border-t border-brass-light">
+        <div className="max-w-6xl mx-auto">
+          <p className="eyebrow mb-3">Our terms, in plain English</p>
+          <h2 className="font-display font-extrabold uppercase text-4xl text-ink leading-[0.95] mb-10">Plain terms. You keep what&apos;s yours.</h2>
+          <div className="grid md:grid-cols-3 gap-5">
+            {TERMS.map((t) => (
+              <div key={t.label} className="bg-white border border-brass-light border-t-[3px] border-t-copper-bright rounded-xl p-6">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-copper">{t.label}</p>
+                <h3 className="mt-2 font-display font-extrabold uppercase text-xl text-ink leading-none">{t.title}</h3>
+                <p className="mt-3 text-sm text-ink-mid leading-relaxed">{t.body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-sm text-ink-mid">
+            Leaving another vendor?{" "}
+            <Link href="/switching" className="font-semibold text-green-700 underline underline-offset-4 decoration-green-300 hover:text-green-800">
+              Use our switching checklist
+            </Link>{" "}
+            to secure your domain, Google Business Profile, phone numbers and data first.
+          </p>
         </div>
       </section>
 
