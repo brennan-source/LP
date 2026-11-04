@@ -159,6 +159,9 @@ agency/src/app/
   insights/[slug]/page.tsx          — Article template: FAQPage + Article JSON-LD, sources, related links, CTA
   switching/page.tsx                — Switching-from-a-locked-in-vendor checklist (FAQPage JSON-LD)
   api/contact/route.ts              — Contact form API route
+  favicon.ico, apple-icon.png       — Browser and Apple touch icons (App Router file conventions)
+  manifest.ts                       — Web app manifest; icons in agency/public/brand/makr-icon-192/512.png
+agency/public/brand/                — Approved wordmark (direction B, Nov 2026): makr-wordmark-on-light.svg (Nav), makr-wordmark-on-dark.svg (Footer)
 agency/src/components/
   Nav.tsx                           — Navigation (Home, Solutions, Industries, How It Works, About, Contact)
   Footer.tsx                        — Shared footer
