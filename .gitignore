@@ -47,7 +47,9 @@ aria/.env
 aria/node_modules
 aria/.next
 screenshots/
-.claude/
+# Personal Claude settings stay local; the shared project settings are committed.
+.claude/*
+!.claude/settings.json
 crm/.next/
 crm/node_modules/
 crm/package-lock.json

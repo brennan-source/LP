@@ -1,0 +1,10 @@
+{
+  "extraKnownMarketplaces": {
+    "makr": {
+      "source": { "source": "github", "repo": "brennan-source/LP" }
+    }
+  },
+  "enabledPlugins": {
+    "makr-team@makr": true
+  }
+}

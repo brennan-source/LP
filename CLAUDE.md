@@ -165,19 +165,25 @@ agency/src/lib/
 
 ---
 
-## Push Workflow — Important
+## Publishing Workflow — Important
 
-**All changes go through `mcp__github__push_files` directly to the `main` branch on GitHub.** Do not use local git commands to push — the local working tree in remote sessions is always stale and will show "uncommitted changes" in git status. This is expected and can be ignored.
+Vercel deploys the `main` branch to gomakr.ai automatically. Anything merged to `main` goes live within a few minutes.
 
-Process:
-1. Fetch the current file from GitHub with `mcp__github__get_file_contents` (ref: `refs/heads/main`)
-2. Make your changes
-3. Push with `mcp__github__push_files` to branch `main`
-4. Vercel auto-deploys from `main` → gomakr.ai
+1. Branch from the latest `main` (`git fetch origin main && git checkout -b <branch> origin/main`).
+2. Make the change. From `agency/`, run `npx tsc --noEmit -p .` and `npx next build`; both must pass. Check changed pages at 1440px and 390px wide.
+3. Push the branch and open a pull request with a plain summary and screenshots.
+4. Merge to `main` only when Brennan approves. Vercel posts deployment status on the commit.
 
-**Never push to a feature branch and expect it to appear on the live site.** Vercel deploys only from `main`.
+Branch `claude/optimistic-albattani-1uf2Y` is stale (cut from an older `main`); ignore it.
 
-There is also a branch `claude/optimistic-albattani-1uf2Y` — this is stale and was cut from an older state of main. Ignore it. All work goes to main.
+---
+
+## AI Team (Claude plugin)
+
+The `makr-team` plugin in `plugins/makr-team/` holds Makr's shared brand brief plus strategy, research, marketing, content, outreach and web-dev skills and agents. The repository root is also the plugin marketplace (`.claude-plugin/marketplace.json`, name `makr`), and `.claude/settings.json` offers the plugin to anyone who opens this repo in Claude Code. Setup steps for Cowork and Claude Code are in `plugins/makr-team/README.md`.
+
+- When prices or services change, update `plugins/makr-team/skills/makr-brand/services-and-pricing.md` in the same commit as this file.
+- This repository is public. Never put client names, prospect lists, pipeline notes or private strategy in the plugin or anywhere in this repo.
 
 ---
 

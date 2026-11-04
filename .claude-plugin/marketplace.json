@@ -1,0 +1,12 @@
+{
+  "name": "makr",
+  "description": "Makr's internal Claude plugins",
+  "owner": { "name": "Brennan Burks" },
+  "plugins": [
+    {
+      "name": "makr-team",
+      "source": "./plugins/makr-team",
+      "description": "Brand brief plus strategy, research, marketing, content, outreach and web-dev skills and agents for Makr."
+    }
+  ]
+}
