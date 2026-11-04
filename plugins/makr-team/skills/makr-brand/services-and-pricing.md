@@ -14,6 +14,12 @@
 - Never quote a price that isn't in this table. Never offer discounts, free builds or trials; Brennan decides those.
 - If you change a price anywhere, keep the package savings consistent with the per-service prices.
 
+## Contract and ownership terms (Brennan's decision, November 4, 2026)
+- **Monthly services:** 3-month minimum, then month-to-month. After the minimum, cancel with 30 days' written notice.
+- **Ownership:** once the build fee is paid in full, the client owns their website. Their domain, Google Business Profile, content and data are theirs too.
+- State these terms the same way everywhere (site, articles, outreach, proposals). They're published on gomakr.ai/pricing and gomakr.ai/switching.
+- Don't describe these as "no contract": there is a 3-month minimum.
+
 ## The Growth Gap Review
 A free, roughly 20-minute review of how customers find the business, what happens when they reach out, and where the team loses hours. The owner gets:
 - a clear read on search, website, follow-up and workflows
