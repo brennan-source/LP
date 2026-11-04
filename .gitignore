@@ -50,6 +50,7 @@ screenshots/
 # Personal Claude settings stay local; the shared project settings are committed.
 .claude/*
 !.claude/settings.json
+!.claude/agents/
 crm/.next/
 crm/node_modules/
 crm/package-lock.json

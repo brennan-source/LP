@@ -182,6 +182,8 @@ Branch `claude/optimistic-albattani-1uf2Y` is stale (cut from an older `main`); 
 
 The `makr-team` plugin in `plugins/makr-team/` holds Makr's shared brand brief plus strategy, research, marketing, content, outreach and web-dev skills and agents. The repository root is also the plugin marketplace (`.claude-plugin/marketplace.json`, name `makr`), and `.claude/settings.json` offers the plugin to anyone who opens this repo in Claude Code. Setup steps for Cowork and Claude Code are in `plugins/makr-team/README.md`.
 
+- **Web developer agent:** `.claude/agents/web-developer.md` loads in every Claude Code session on this repo, including cloud sessions. It works on a branch, runs the checks, opens a pull request and never merges to `main` without Brennan's explicit approval.
+
 - When prices or services change, update `plugins/makr-team/skills/makr-brand/services-and-pricing.md` in the same commit as this file.
 - This repository is public. Never put client names, prospect lists, pipeline notes or private strategy in the plugin or anywhere in this repo.
 
