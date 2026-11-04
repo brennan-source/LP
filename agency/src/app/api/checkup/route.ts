@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { EMAIL_RE, sendLeadEmail } from "@/lib/leads";
+import { EMAIL_RE, sendLeadEmail, sourceLines } from "@/lib/leads";
 
 const MEETING_LABELS: Record<string, string> = {
   "mash-up": "At the Mash-Up (Gillette Stadium, Oct 27)",
@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
         `Meeting preference: ${MEETING_LABELS[meeting]}`,
         `Consent to contact: yes`,
         `Source: /manufacturing-growth-checkup`,
+        ...sourceLines(body),
       ],
       email
     );
