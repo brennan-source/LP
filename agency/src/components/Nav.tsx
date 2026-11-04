@@ -30,7 +30,7 @@ export function Nav({ activePath }: { activePath?: string }) {
           <Link
             href="/contact"
             data-cta="nav-growth-gaps"
-            className="px-4 py-2 bg-ink text-white hover:bg-green-800 rounded-md font-semibold transition-colors"
+            className="px-4 py-2 bg-green-700 text-white hover:bg-green-800 rounded-md font-semibold transition-colors"
           >
             Find Your Growth Gaps
           </Link>
@@ -56,7 +56,7 @@ export function Nav({ activePath }: { activePath?: string }) {
             <Link
               href="/contact"
               data-cta="nav-growth-gaps-mobile"
-              className="mt-2 px-4 py-3 bg-green-700 hover:bg-green-800 text-white text-sm text-center rounded-sm font-semibold"
+              className="mt-2 px-4 py-3 bg-green-700 hover:bg-green-800 text-white text-sm text-center rounded-md font-semibold"
             >
               Find Your Growth Gaps
             </Link>
