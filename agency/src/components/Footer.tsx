@@ -34,7 +34,7 @@ export function Footer() {
             <li><Link href="/how-it-works" className="inline-block py-1 hover:text-white transition-colors">How It Works</Link></li>
             <li><Link href="/about" className="inline-block py-1 hover:text-white transition-colors">About</Link></li>
             <li><Link href="/pricing" className="inline-block py-1 hover:text-white transition-colors">Pricing</Link></li>
-            <li><Link href="/growth-score" className="inline-block py-1 hover:text-white transition-colors">Free Growth Score</Link></li>
+            <li><Link href="/insights" className="inline-block py-1 hover:text-white transition-colors">Insights</Link></li>
             <li><Link href="/contact" className="inline-block py-1 hover:text-white transition-colors">Contact</Link></li>
           </ul>
         </div>
