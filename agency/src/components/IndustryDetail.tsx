@@ -77,7 +77,7 @@ export function IndustryDetail({
             <p className="mt-5 text-ink-mid text-lg max-w-xl leading-relaxed">{intro}</p>
             <div className="mt-8 flex flex-wrap gap-3.5">
               <Link href="/contact" data-cta={`${id}-hero`} className="bg-green-700 hover:bg-green-800 text-white px-6 py-3.5 rounded-md font-bold transition-colors">
-                Find Your Growth Gaps
+                Get Your Free Assessment
               </Link>
               <Link href="/pricing" className="bg-white border border-brass-light hover:border-brass text-ink px-6 py-3.5 rounded-md font-semibold transition-colors">
                 See pricing
@@ -153,7 +153,7 @@ export function IndustryDetail({
             {offer.promise && <p className="mt-4 text-sm text-ink-mid leading-relaxed border-l-[3px] border-copper-bright pl-4"><Inline text={offer.promise} /></p>}
             <div className="mt-7">
               <Link href="/contact" data-cta={`${id}-offer`} className="inline-block bg-green-700 hover:bg-green-800 text-white px-6 py-3.5 rounded-md font-bold transition-colors">
-                Find Your Growth Gaps
+                Get Your Free Assessment
               </Link>
             </div>
           </div>

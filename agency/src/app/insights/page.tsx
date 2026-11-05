@@ -58,8 +58,8 @@ export default function InsightsPage() {
       <CtaBand
         name="insights-bottom"
         title="Want this applied to your business?"
-        body="Book a free, 20-minute Growth Gap Review. We'll look at how customers find you, what happens when they reach out and where time goes, and give you your top opportunities in priority order."
-        cta="Find Your Growth Gaps"
+        body="Book a free, 20-minute Business Growth Assessment. We'll look at how customers find you, what happens when they reach out and where time goes, and give you your top opportunities in priority order."
+        cta="Get Your Free Assessment"
       />
       <Footer />
     </div>

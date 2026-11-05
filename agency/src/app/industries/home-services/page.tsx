@@ -19,7 +19,7 @@ const SEGMENTS = [
 ];
 
 const FAQS = [
-  { q: "I already have Jobber (or Housecall Pro, or ServiceTitan). Do I need this?", a: "Maybe not all of it. We check what your software already does in the Growth Gap Review, set up what you have and only add what's missing, such as estimate follow-up and review requests that actually go out." },
+  { q: "I already have Jobber (or Housecall Pro, or ServiceTitan). Do I need this?", a: "Maybe not all of it. We check what your software already does in the Business Growth Assessment, set up what you have and only add what's missing, such as estimate follow-up and review requests that actually go out." },
   { q: "I don't want a robot texting my customers.", a: "You approve every message before it goes live, and it's written to sound like your shop. When a customer replies, your team takes it from there." },
   { q: "I don't have time to set this up.", a: "Setup needs a short kickoff and a review of the message wording. After that, the Monday report is a one-page read with no logins." },
   { q: "It's heating season and we're slammed.", a: "That's when calls get missed. Book the 20-minute review now; if January is better for setup, we'll schedule it then." },
@@ -44,7 +44,7 @@ export default function HomeServicesPage() {
       ]}
       howWeWork={{
         title: "We use the software you already have",
-        body: "Already on Jobber, Housecall Pro or ServiceTitan? Good. In the Growth Gap Review we check what your software already covers. If it handles something, we set it up properly and don't charge you to rebuild it. What usually isn't covered is estimate follow-up, review requests going out on time and someone watching it every week. Related guides: [estimate follow-up for contractors](/insights/contractor-estimate-follow-up) and [missed-call text back](/insights/missed-call-text-back-contractors).",
+        body: "Already on Jobber, Housecall Pro or ServiceTitan? Good. In the Business Growth Assessment we check what your software already covers. If it handles something, we set it up properly and don't charge you to rebuild it. What usually isn't covered is estimate follow-up, review requests going out on time and someone watching it every week. Related guides: [estimate follow-up for contractors](/insights/contractor-estimate-follow-up) and [missed-call text back](/insights/missed-call-text-back-contractors).",
       }}
       offer={{
         eyebrow: "Where most shops start",
@@ -56,7 +56,7 @@ export default function HomeServicesPage() {
       }}
       faqs={FAQS}
       ctaTitle="Find out what a customer sees when they call you after hours."
-      ctaBody="Book a free, 20-minute Growth Gap Review. We'll look at how customers find you, what happens when they call or fill out your form, and where estimates go quiet. We'll do a walk-through on the call using your own phone and inbox records."
+      ctaBody="Book a free, 20-minute Business Growth Assessment. We'll look at how customers find you, what happens when they call or fill out your form, and where estimates go quiet. We'll do a walk-through on the call using your own phone and inbox records."
     />
   );
 }

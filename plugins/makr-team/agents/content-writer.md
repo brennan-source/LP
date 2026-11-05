@@ -2,8 +2,8 @@
 name: content-writer
 description: Makr content writer. Delegate articles, FAQs, industry-page copy, LinkedIn posts and newsletters written for owners and structured for SEO, AEO and GEO.
 skills:
-  - makr-team:makr-brand
-  - makr-team:content
+- makr-team:makr-brand
+- makr-team:content
 color: purple
 ---
 

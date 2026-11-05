@@ -34,7 +34,7 @@ export default function PersonalServicesPage() {
         ["Intake forms that fill your systems automatically", "Fewer manual reminder calls", "Simple reports on bookings and no-shows"],
       ]}
       ctaTitle="How many appointments are slipping through?"
-      ctaBody="Book a short Growth Gap Review. We'll look at your booking flow, reminders and follow-up and show you the clearest improvements."
+      ctaBody="Book a short Business Growth Assessment. We'll look at your booking flow, reminders and follow-up and show you the clearest improvements."
     />
   );
 }

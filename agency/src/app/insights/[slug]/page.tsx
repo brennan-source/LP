@@ -110,7 +110,7 @@ export default async function ArticlePage({ params }: Props) {
         </div>
       </section>
 
-      <CtaBand name={`insights-${article.slug}`} title={article.cta.title} body={article.cta.body} cta="Find Your Growth Gaps" />
+      <CtaBand name={`insights-${article.slug}`} title={article.cta.title} body={article.cta.body} cta="Get Your Free Assessment" />
       <Footer />
     </div>
   );

@@ -65,7 +65,7 @@ export default function LawFirmsPage() {
       }}
       faqs={FAQS}
       ctaTitle="Find out what a prospective client experiences when they contact your firm."
-      ctaBody="Book a free, 20-minute Growth Gap Review focused on intake. We'll look at how inquiries arrive, how fast they're answered and where partner time goes, and give you a recommended order of fixes whether or not you hire us."
+      ctaBody="Book a free, 20-minute Business Growth Assessment focused on intake. We'll look at how inquiries arrive, how fast they're answered and where partner time goes, and give you a recommended order of fixes whether or not you hire us."
     />
   );
 }

@@ -112,7 +112,7 @@ const TERMS = [
   {
     label: "One-time builds",
     title: "Quoted in writing first",
-    body: "Builds are quoted within the published range after the Growth Gap Review and locked in writing before kickoff.",
+    body: "Builds are quoted within the published range after the Business Growth Assessment and locked in writing before kickoff.",
   },
   {
     label: "Ownership",
@@ -342,7 +342,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <CtaBand name="pricing-bottom" title="Not sure where to start?" body="Book a short Growth Gap Review. We'll point to the clearest opportunity, recommend a starting point and confirm your price before any work begins." />
+      <CtaBand name="pricing-bottom" title="Not sure where to start?" body="Book a short Business Growth Assessment. We'll point to the clearest opportunity, recommend a starting point and confirm your price before any work begins." />
       <Footer />
     </div>
   );

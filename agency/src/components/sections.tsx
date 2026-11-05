@@ -82,8 +82,8 @@ export function ProcessGrid() {
 // Closing call to action. Shows what the visitor receives, not just a button.
 export function CtaBand({
   title = "Where is your business losing leads or time?",
-  body = "Book a short Growth Gap Review. We will identify the clearest opportunities across your search visibility, website, follow-up process and internal workflows.",
-  cta = "Book a Growth Gap Review",
+  body = "Book a Business Growth Assessment: a free 20-minute call and a short written summary of where your business can win more work.",
+  cta = "Book a Business Growth Assessment",
   href = "/contact",
   name,
 }: {

@@ -105,7 +105,7 @@ Export everything you can, in a format you can open (CSV or spreadsheet is best)
 const MAKR = `
 ## 3. If you're switching to Makr
 
-- **We go through this checklist with you** in the Growth Gap Review, so you know what you own today and what to ask for before you give notice.
+- **We go through this checklist with you** in the Business Growth Assessment, so you know what you own today and what to ask for before you give notice.
 - **We don't touch anything until you have access.** The order matters: access first, notice second, move third.
 - **We set things up so you stay in control.** Your domain, Google Business Profile, content and data are yours.
 
@@ -124,7 +124,7 @@ const FAQS = [
   { q: "Will I lose my Google reviews if I leave my marketing company?", a: "Reviews on your Google Business Profile stay with the profile, so you keep them as long as you control it. Reviews collected inside a vendor's own platform or website widget may not transfer, so save them before you cancel." },
   { q: "Can my old provider refuse to port my business phone number?", a: "According to the FCC, your old provider can't refuse to port your number because you owe a balance or a termination fee. Start the port with your new provider and keep the old service active until it's complete." },
   { q: "How long does it take to transfer a domain?", a: "Your registrar must give you the transfer code within five calendar days of your request under ICANN's policy, and the transfer itself usually follows within days. If the registrant name was recently changed, the domain may be locked for 60 days, so start early." },
-  { q: "Does Makr help with the switch?", a: "Yes. We go through this checklist with you in a free Growth Gap Review so you know what you own and what to ask for before you give notice." },
+  { q: "Does Makr help with the switch?", a: "Yes. We go through this checklist with you in a free Business Growth Assessment so you know what you own and what to ask for before you give notice." },
 ];
 
 export default function SwitchingPage() {
@@ -140,7 +140,7 @@ export default function SwitchingPage() {
       >
         <div className="mt-8 flex flex-wrap gap-3.5">
           <Link href="/contact" data-cta="switching-hero" className="bg-green-700 hover:bg-green-800 text-white px-6 py-3.5 rounded-md font-bold transition-colors">
-            Find Your Growth Gaps
+            Get Your Free Assessment
           </Link>
           <Link href="/pricing" className="bg-white border border-brass-light hover:border-brass text-ink px-6 py-3.5 rounded-md font-semibold transition-colors">
             See pricing
@@ -171,8 +171,8 @@ export default function SwitchingPage() {
       <CtaBand
         name="switching-bottom"
         title="Not sure what you own right now?"
-        body="Book a free, 20-minute Growth Gap Review. We'll go through your accounts with you and give you a clear list of what to secure before you make any change, whether or not you hire us."
-        cta="Find Your Growth Gaps"
+        body="Book a free, 20-minute Business Growth Assessment. We'll go through your accounts with you and give you a clear list of what to secure before you make any change, whether or not you hire us."
+        cta="Get Your Free Assessment"
       />
       <Footer />
     </div>

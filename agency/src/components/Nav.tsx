@@ -31,10 +31,10 @@ export function Nav({ activePath }: { activePath?: string }) {
           ))}
           <Link
             href="/contact"
-            data-cta="nav-growth-gaps"
+            data-cta="nav-free-assessment"
             className="px-4 py-2 bg-green-700 text-white hover:bg-green-800 rounded-md font-semibold transition-colors"
           >
-            Find Your Growth Gaps
+            Get Your Free Assessment
           </Link>
         </div>
 
@@ -57,10 +57,10 @@ export function Nav({ activePath }: { activePath?: string }) {
             ))}
             <Link
               href="/contact"
-              data-cta="nav-growth-gaps-mobile"
+              data-cta="nav-free-assessment-mobile"
               className="mt-2 px-4 py-3 bg-green-700 hover:bg-green-800 text-white text-sm text-center rounded-md font-semibold"
             >
-              Find Your Growth Gaps
+              Get Your Free Assessment
             </Link>
           </div>
         </details>

@@ -9,7 +9,7 @@ Load the `makr-brand` skill first, especially `voice-and-claims.md`.
 
 ## Before writing
 - **Who is it for?** One market and one owner question. Write the question down in the owner's words. That question is often the title.
-- **What should they do next?** Usually book a Growth Gap Review, or read the related service page.
+- **What should they do next?** Usually book a Business Growth Assessment, or read the related service page.
 - **What do we know is true?** Gather facts with the `research` skill, and keep the sources.
 
 ## Writing rules

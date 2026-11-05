@@ -79,7 +79,7 @@ export default function IndustriesPage() {
         </section>
       ))}
 
-      <CtaBand name="industries-bottom" title="Not sure if we're a fit?" body="Book a short Growth Gap Review. We'll tell you honestly whether we can help and where the clearest opportunity is for your business." />
+      <CtaBand name="industries-bottom" title="Not sure if we're a fit?" body="Book a short Business Growth Assessment. We'll tell you honestly whether we can help and where the clearest opportunity is for your business." />
       <Footer />
     </div>
   );

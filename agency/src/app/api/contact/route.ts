@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     }
 
     await sendLeadEmail(
-      `New Growth Gap Review request: ${businessName} (${industry})`,
+      `New Business Growth Assessment request: ${businessName} (${industry})`,
       [
         `Name: ${name}`,
         `Business: ${businessName}`,

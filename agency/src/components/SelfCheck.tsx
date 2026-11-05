@@ -49,7 +49,7 @@ export default function SelfCheck() {
           <p className="text-sm text-ink-mid"><b className="text-ink">Tick any that apply</b> to see where to start.</p>
         ) : (
           <div className="text-sm text-ink-mid">
-            <p><b className="text-ink">Worth a Growth Gap Review.</b> Start here:</p>
+            <p><b className="text-ink">Worth a Business Growth Assessment.</b> Start here:</p>
             <div className="mt-1.5 flex flex-wrap gap-1.5">
               {fits.map((s) => (
                 <Link key={s.id} href={`/solutions#${s.id}`} className="text-xs font-bold px-2.5 py-1 rounded-full bg-white border border-green-200 text-green-700 hover:border-green-700">
@@ -58,7 +58,7 @@ export default function SelfCheck() {
               ))}
             </div>
             <Link href="/contact" data-cta="self-check-book" className="mt-3 inline-block font-semibold text-green-700 hover:text-green-800">
-              Book your Growth Gap Review →
+              Book your Business Growth Assessment →
             </Link>
           </div>
         )}

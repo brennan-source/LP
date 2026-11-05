@@ -32,7 +32,7 @@ export default function ProfessionalServicesPage() {
         ["Intake details routed to the right person", "Document collection without chasing", "Client updates drafted for your review"],
       ]}
       ctaTitle="Where is your firm losing prospects or hours?"
-      ctaBody="Book a short Growth Gap Review. We'll look at your website, intake process and client communication and point to the clearest improvements."
+      ctaBody="Book a short Business Growth Assessment. We'll look at your website, intake process and client communication and point to the clearest improvements."
     />
   );
 }

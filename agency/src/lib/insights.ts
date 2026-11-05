@@ -96,7 +96,7 @@ We'd rather keep clients because the work is useful and the Monday report shows 
       { q: "Can I keep my business phone number if I cancel?", a: "Usually yes. The FCC says a provider can't refuse to port your number because you owe money. Start the port with the new provider first and keep the old service active until it's done." },
       { q: "What should I do before I cancel a marketing contract?", a: "Confirm you have Owner access to your domain, Google Business Profile, analytics and any phone numbers, and export your data. Then give notice the way your contract requires. Our [switching page](/switching) has the full checklist." },
     ],
-    cta: { title: "Not sure what you own right now?", body: "In a free, 20-minute Growth Gap Review, we'll check how customers find you and what happens when they reach out, and we'll tell you what to confirm about your accounts, whether or not you hire us." },
+    cta: { title: "Not sure what you own right now?", body: "In a free, 20-minute Business Growth Assessment, we'll check how customers find you and what happens when they reach out, and we'll tell you what to confirm about your accounts, whether or not you hire us." },
     sources: [
       { label: "ICANN, FAQs for Registrants: Transferring Your Domain Name", url: "https://www.icann.org/resources/pages/name-holder-faqs-2017-10-10-en", usedFor: "Auth-code within five calendar days; 60-day locks" },
       { label: "Google Business Profile Help, Request ownership of a Business Profile", url: "https://support.google.com/business/answer/4566671?hl=en", usedFor: "Three-day response window; claim option" },
@@ -191,7 +191,7 @@ Lead Follow-Up & Revenue Recovery is $1,500 to set up and $999 a month, with a 3
       { q: "What information should we collect before a consultation?", a: "Collect contact details and only what your firm needs to run a conflict check. Ask prospective clients not to send confidential details until you've spoken, since shared information can create duties to them." },
       { q: "Does responding faster guarantee more clients?", a: "No. It removes one common reason firms lose prospective clients, but it doesn't guarantee anyone hires you. What it does is make sure you're in the conversation." },
     ],
-    cta: { title: "Want to see what a prospective client experiences when they contact your firm?", body: "In a free, 20-minute Growth Gap Review focused on intake, we'll look at how inquiries arrive, how fast they're answered and where partner time goes. We'll do a walk-through on the call using your own phone and inbox records." },
+    cta: { title: "Want to see what a prospective client experiences when they contact your firm?", body: "In a free, 20-minute Business Growth Assessment focused on intake, we'll look at how inquiries arrive, how fast they're answered and where partner time goes. We'll do a walk-through on the call using your own phone and inbox records." },
     sources: [
       { label: "2Civility, summary of the Clio 2024 Legal Trends Report", url: "https://www.2civility.org/2024-clio-legal-trends-report-fixing-the-first-impression-problem-for-law-firms/", usedFor: "40% answered the phone; 33% responded to email (Clio is a software vendor)" },
       { label: "Oldroyd, McElheran and Elkington, \"The Short Life of Online Sales Leads,\" Harvard Business Review, 2011 (BYU record)", url: "https://scholarsarchive.byu.edu/facpub/9711", usedFor: "2,241 companies; response within an hour (2011 study)" },
@@ -296,7 +296,7 @@ It's part of Lead Follow-Up & Revenue Recovery: $1,500 setup, $999 a month, a 3-
       { q: "What do I say if the customer went with someone else?", a: "Thank them, ask (once, lightly) whether price or timing made the difference, and offer to help in the future. Then close the estimate so it doesn't clutter your list." },
       { q: "Is it pushy to follow up on an estimate?", a: "Not if each message is short, useful and gives the customer an easy way to say no. Following up without an exit is what feels pushy." },
     ],
-    cta: { title: "How many of your open estimates have had a follow-up this week?", body: "In a free, 20-minute Growth Gap Review we'll look at how calls, web requests and estimates are handled at your shop and where jobs slip away. You get your top opportunities in priority order, whether or not you hire us." },
+    cta: { title: "How many of your open estimates have had a follow-up this week?", body: "In a free, 20-minute Business Growth Assessment we'll look at how calls, web requests and estimates are handled at your shop and where jobs slip away. You get your top opportunities in priority order, whether or not you hire us." },
     sources: [
     ],
     sourceNote: "No statistics are used in this article. Mass Save rebates are mentioned generally, with no figures. All message examples are templates for a fictional business.",
@@ -380,7 +380,7 @@ It's $1,500 to set up and $999 a month, with a 3-month minimum and then month-to
       { q: "Will customers find an automatic text annoying?", a: "Not usually, if it's short, sounds like your shop and is followed by a real callback. What annoys people is a robotic message with no follow-up." },
       { q: "Is missed-call text back enough on its own?", a: "No. It only covers the first minute. You still need fast callbacks, estimate follow-up and someone checking that replies get answered." },
     ],
-    cta: { title: "Want to know what a customer sees when they call your shop after hours?", body: "In a free, 20-minute Growth Gap Review, we'll check what your current software already covers and where calls and estimates slip through. We'll do a walk-through on the call using your own phone and inbox records." },
+    cta: { title: "Want to know what a customer sees when they call your shop after hours?", body: "In a free, 20-minute Business Growth Assessment, we'll check what your current software already covers and where calls and estimates slip through. We'll do a walk-through on the call using your own phone and inbox records." },
     sources: [
       { label: "Oldroyd, McElheran and Elkington, \"The Short Life of Online Sales Leads,\" Harvard Business Review, 2011 (BYU record)", url: "https://scholarsarchive.byu.edu/facpub/9711", usedFor: "Response within an hour (2011 study of web leads)" },
       { label: "SmartCompany, \"Are you letting online leads go cold?\", 2011", url: "https://www.smartcompany.com.au/marketing/20110704-are-you-letting-online-leads-go-cold/", usedFor: "Figures from the HBR study as reported" },
@@ -475,7 +475,7 @@ Setup is $1,500 and the service is $999 a month, with a 3-month minimum and then
       { q: "When is the best time to ask for a review?", a: "Shortly after the job is done and the customer has seen the result, usually the same day or the next morning. Send one reminder a few days later at most." },
       { q: "Can I give my techs a bonus for getting reviews?", a: "Google prohibits asking staff to solicit a set number of reviews, so avoid quotas and per-review bonuses. Encourage techs to mention reviews to every customer instead." },
     ],
-    cta: { title: "Not sure how your reviews compare with the shops around you?", body: "In a free, 20-minute Growth Gap Review, we'll look at how customers find you on Google and the map, and what happens after a job is done. You get your top opportunities in priority order, whether or not you hire us." },
+    cta: { title: "Not sure how your reviews compare with the shops around you?", body: "In a free, 20-minute Business Growth Assessment, we'll look at how customers find you on Google and the map, and what happens after a job is done. You get your top opportunities in priority order, whether or not you hire us." },
     sources: [
       { label: "Google Maps, Prohibited and restricted content policy", url: "https://support.google.com/contributionpolicy/answer/7400114?hl=en", usedFor: "Incentives, selective solicitation, staff quotas, on-site pressure, conflicts of interest" },
       { label: "FTC, final rule banning fake reviews and testimonials, August 14, 2024", url: "https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials", usedFor: "Sentiment-conditioned incentives, insider reviews, suppression" },
@@ -561,7 +561,7 @@ Run it for a month, look at what happened, then add the next step.
 
 At Makr, instant response and follow-up are part of Lead Follow-Up & Revenue Recovery: $1,500 to set up and $999 a month, with a 3-month minimum and then month-to-month. Structured intake and routing is an AI Workflow Automation build, from $3,000 per workflow, with optional support at $499 a month. All prices are on our [pricing page](/pricing).
 
-A simple way to check whether it's worth it: at an example billable rate of $300 an hour, $999 is about 3.3 hours of partner time a month. In the Growth Gap Review, we'll estimate your firm's actual intake hours with you. We don't promise more consultations or more matters.`,
+A simple way to check whether it's worth it: at an example billable rate of $300 an hour, $999 is about 3.3 hours of partner time a month. In the Business Growth Assessment, we'll estimate your firm's actual intake hours with you. We don't promise more consultations or more matters.`,
     faqs: [
       { q: "Can a small law firm automate client intake?", a: "Yes, for the routine steps: acknowledging inquiries, scheduling consultations, collecting conflict-check details, sending reminders and following up. Decisions about taking the matter, fees and anything resembling advice should stay with a lawyer." },
       { q: "Is automated intake compliant with legal ethics rules?", a: "It can be, if messages don't give legal advice, the firm approves every template, and intake collects only what's needed. Your firm is responsible for deciding what's compliant under your state's rules; check your bar's guidance." },
@@ -569,7 +569,7 @@ A simple way to check whether it's worth it: at an example billable rate of $300
       { q: "What intake information should we collect before a consultation?", a: "Contact details and what your firm needs for a conflict check. Ask prospective clients not to send confidential details until you've spoken." },
       { q: "How long does it take to set up intake automation?", a: "It depends on your tools and how many steps you automate. Starting with one workflow keeps it manageable; the timeline is set in writing before work begins." },
     ],
-    cta: { title: "Where does intake time go at your firm?", body: "In a free, 20-minute Growth Gap Review focused on intake, we'll look at how inquiries arrive, how fast they're answered and which steps take partner time. You get your top opportunities in priority order, whether or not you hire us." },
+    cta: { title: "Where does intake time go at your firm?", body: "In a free, 20-minute Business Growth Assessment focused on intake, we'll look at how inquiries arrive, how fast they're answered and which steps take partner time. You get your top opportunities in priority order, whether or not you hire us." },
     sources: [
       { label: "2Civility, summary of the Clio 2024 Legal Trends Report", url: "https://www.2civility.org/2024-clio-legal-trends-report-fixing-the-first-impression-problem-for-law-firms/", usedFor: "40% answered the phone; 33% responded to email (Clio is a software vendor)" },
       { label: "LawNext Legal Technology Directory, Clio Grow", url: "https://directory.lawnext.com/products/clio-grow/pricing/", usedFor: "Clio Grow provides intake features (no prices quoted)" },

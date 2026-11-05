@@ -1,6 +1,6 @@
 # Makr team plugin
 
-Makr's AI team in one package. A shared brand brief keeps everything consistent, and seven roles do the work:
+Makr's AI team in one package. A shared brand brief keeps everything consistent, and eight roles do the work:
 
 | Role | Skill (works everywhere) | Agent (Cowork and Claude Code) | Use it for |
 |---|---|---|---|
@@ -11,6 +11,7 @@ Makr's AI team in one package. A shared brand brief keeps everything consistent,
 | Content | `content` | `content-writer` | Articles, FAQs, industry pages, LinkedIn, newsletters (SEO, AEO, GEO) |
 | Outreach | `outreach` | `outreach-drafter` | Prospect research and email drafts. **Drafts only; nothing is sent without Brennan's approval.** |
 | Design and brand review | `design` | `designer` | Makr design system, social graphics, ad creative, mockups, flyers, email templates; final brand check of every finished piece |
+| House editing | `editor` | `editor` | Makes every piece sound like Brennan, owner to owner, never like AI; keeps the house style and approved outreach style |
 | Web development | `web-dev` | `web-developer` | Changes to gomakr.ai, checked and handed off as a pull request (runs in Claude Code) |
 
 ## Set up: Brennan, in Cowork (business work)

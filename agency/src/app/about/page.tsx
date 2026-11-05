@@ -132,7 +132,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <CtaBand name="about-bottom" title="Ready to talk?" body="Book a short Growth Gap Review. We'll tell you honestly where we can help and what we'd do first." />
+      <CtaBand name="about-bottom" title="Ready to talk?" body="Book a short Business Growth Assessment. We'll tell you honestly where we can help and what we'd do first." />
       <Footer />
     </div>
   );

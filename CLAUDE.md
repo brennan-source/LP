@@ -20,7 +20,7 @@ Four connected services (one operating system, not four businesses) — copy liv
 
 Five target markets: Home Services, Professional Services, Personal Services, Manufacturing, B2B Services.
 
-Primary action site-wide: **Book a Growth Gap Review** (nav CTA: "Find Your Growth Gaps") → `/contact` form → Google Calendar booking page (`BOOKING_URL` in `agency/src/lib/site.ts`).
+Primary action site-wide: **Book a Business Growth Assessment** (nav/CTA button: "Get Your Free Assessment"; renamed from "Growth Gap Review" / "Find Your Growth Gaps" in November 2026). Standard description: "A free 20-minute call and a short written summary of where your business can win more work." GA4 event names are unchanged; the nav `data-cta` labels are now `nav-free-assessment` and `nav-free-assessment-mobile`. Flow: → `/contact` form → Google Calendar booking page (`BOOKING_URL` in `agency/src/lib/site.ts`).
 
 Based in **New England**. This local angle matters — mention it where appropriate (about page, industries page, footer).
 
@@ -40,7 +40,7 @@ Priced per service, plus a discounted package for all four and an enterprise opt
 | **Enterprise** | Projects from $7,500 | Custom |
 
 **Pricing rules:**
-- Monthly prices are fixed; one-time builds are quoted within the published range after the Growth Gap Review and locked in writing before kickoff
+- Monthly prices are fixed; one-time builds are quoted within the published range after the Business Growth Assessment and locked in writing before kickoff
 - Keep package savings consistent with the per-service prices if any number changes
 
 **Contract and ownership terms (Brennan's decision, November 4, 2026):**
@@ -203,7 +203,7 @@ Branch `claude/optimistic-albattani-1uf2Y` is stale (cut from an older `main`); 
 
 ## AI Team (Claude plugin)
 
-The `makr-team` plugin in `plugins/makr-team/` holds Makr's shared brand brief plus strategy, research, marketing, content, outreach and web-dev skills and agents. The repository root is also the plugin marketplace (`.claude-plugin/marketplace.json`, name `makr`), and `.claude/settings.json` offers the plugin to anyone who opens this repo in Claude Code. Setup steps for Cowork and Claude Code are in `plugins/makr-team/README.md`.
+The `makr-team` plugin in `plugins/makr-team/` holds Makr's shared brand brief plus strategy, research, marketing, content, outreach, design, editor and web-dev skills and agents (v1.2.0). The repository root is also the plugin marketplace (`.claude-plugin/marketplace.json`, name `makr`), and `.claude/settings.json` offers the plugin to anyone who opens this repo in Claude Code. Setup steps for Cowork and Claude Code are in `plugins/makr-team/README.md`.
 
 - **Web developer agent:** `.claude/agents/web-developer.md` loads in every Claude Code session on this repo, including cloud sessions. It works on a branch, runs the checks, opens a pull request and never merges to `main` without Brennan's explicit approval.
 

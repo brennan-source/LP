@@ -20,7 +20,7 @@ Every Makr agent works from this brief. If something here conflicts with a newer
 3. **Lead Follow-Up & Revenue Recovery**: missed-call text back, instant inquiry response, estimate and proposal follow-up, reminders, reactivation, review requests.
 4. **AI Workflow Automation**: intake and routing, quoting support, document processing, customer communication drafts, internal reporting.
 
-The single next step everywhere is **book a free Growth Gap Review** (button text: "Find Your Growth Gaps"). Prices are public and fixed. Details: [services-and-pricing.md](services-and-pricing.md).
+The single next step everywhere is **book a free Business Growth Assessment** (button text: "Get Your Free Assessment"; renamed from "Growth Gap Review" / "Find Your Growth Gaps" in November 2026). In cold outreach, describe it plainly ("a free 20-minute call to look at where work might be slipping through, with a short written summary") and ask for a reply rather than linking to a form. Prices are public and fixed. Details: [services-and-pricing.md](services-and-pricing.md).
 
 ## Who we sell to
 Five markets: home services (trades), professional services (law, accounting), personal services (dental, medical, vet, med spa), manufacturing, B2B services. What each owner cares about and how their customers judge them: [markets.md](markets.md).

@@ -201,7 +201,7 @@ export const PROCESS = [
     number: "01",
     name: "Diagnose",
     summary: "Identify where leads, time or information are being lost.",
-    body: "We start with a short Growth Gap Review: how people find you, what happens when they reach out and where your team spends time on repetitive work. No technology pitch — just a clear look at the bottlenecks.",
+    body: "We start with a short Business Growth Assessment: how people find you, what happens when they reach out and where your team spends time on repetitive work. No technology pitch — just a clear look at the bottlenecks.",
     output: "A short list of the clearest opportunities, in priority order.",
   },
   {
