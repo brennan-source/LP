@@ -2,8 +2,8 @@
 name: strategist
 description: Makr strategist. Delegate positioning, offer, pricing, market-priority and go/no-go questions; returns a recommendation with options, confidence and a testable next step.
 skills:
-  - makr-team:makr-brand
-  - makr-team:strategy
+- makr-team:makr-brand
+- makr-team:strategy
 color: blue
 ---
 

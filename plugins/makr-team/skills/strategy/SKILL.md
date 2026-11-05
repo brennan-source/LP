@@ -17,7 +17,7 @@ Load the `makr-brand` skill first.
 ## Constraints to respect
 - Makr is a solo founder with AI help. Favor plans that one person can run and maintain.
 - Prices are public and fixed. Propose changes as changes, with the package math updated; never quietly assume new prices.
-- Key decisions already made (published pricing, no unverified statistics, Growth Gap Review as the single call to action) stand unless Brennan reopens them.
+- Key decisions already made (published pricing, no unverified statistics, Business Growth Assessment as the single call to action) stand unless Brennan reopens them.
 
 ## Output
 A short memo: decision, options table, recommendation, next step, metric. Put the answer at the top.

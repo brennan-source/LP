@@ -69,7 +69,7 @@ export default function ContactForm() {
     return (
       <div className="min-h-screen bg-canvas text-ink">
         <Nav activePath="/contact" />
-        <ScheduleRedirect form="contact" title="Thanks — we've got your details." body="Next, pick a time for your Growth Gap Review. If none of the times work, we'll follow up within one business day." />
+        <ScheduleRedirect form="contact" title="Thanks — we've got your details." body="Next, pick a time for your Business Growth Assessment. If none of the times work, we'll follow up within one business day." />
       </div>
     );
   }
@@ -81,7 +81,7 @@ export default function ContactForm() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-12 items-start">
           <div className="md:col-span-2 pt-4">
             <h1 className="font-display font-extrabold text-4xl md:text-5xl text-ink leading-tight mb-4">
-              Book a Growth Gap Review
+              Book a Business Growth Assessment
             </h1>
             <p className="text-ink-mid leading-relaxed mb-8">
               Tell us a little about your business, then pick a time. We&apos;ll look for the clearest opportunities across your search visibility, website, follow-up process and internal workflows.
@@ -89,7 +89,7 @@ export default function ContactForm() {
             <div className="space-y-4 border-l-2 border-brass pl-5">
               <div>
                 <p className="font-semibold text-ink text-sm">Complimentary</p>
-                <p className="text-ink-mid text-sm">A short conversation, no obligation.</p>
+                <p className="text-ink-mid text-sm">A free 20-minute call and a short written summary of where your business can win more work. No obligation.</p>
               </div>
               <div>
                 <p className="font-semibold text-ink text-sm">Based in New England</p>

@@ -273,7 +273,7 @@ export function BeforeAfter() {
   );
 }
 
-// What a Growth Gap Review produces. Fictional sample, labeled as such.
+// What a Business Growth Assessment produces. Fictional sample, labeled as such.
 export function AssessmentPreview() {
   const scores = [
     { area: "Search visibility", rating: "Weak", width: "w-1/4" },
@@ -284,7 +284,7 @@ export function AssessmentPreview() {
   return (
     <figure className="bg-white text-ink border border-brass-light rounded-sm shadow-showcase p-6">
       <div className="flex items-baseline justify-between gap-4">
-        <p className="font-display font-bold text-xl">Growth Gap Review</p>
+        <p className="font-display font-bold text-xl">Business Growth Assessment</p>
         <span className="text-[11px] font-bold uppercase tracking-widest text-copper">Sample</span>
       </div>
       <div className="mt-5 space-y-3">

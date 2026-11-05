@@ -2,8 +2,8 @@
 name: researcher
 description: Makr researcher. Delegate market, competitor, industry, buyer-behavior and fact-checking questions; returns an answer-first summary with every source linked and graded strong, moderate or weak.
 skills:
-  - makr-team:makr-brand
-  - makr-team:research
+- makr-team:makr-brand
+- makr-team:research
 color: cyan
 ---
 

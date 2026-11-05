@@ -1,6 +1,6 @@
 # Makr team plugin
 
-Makr's AI team in one package. A shared brand brief keeps everything consistent, and six roles do the work:
+Makr's AI team in one package. A shared brand brief keeps everything consistent, and eight roles do the work:
 
 | Role | Skill (works everywhere) | Agent (Cowork and Claude Code) | Use it for |
 |---|---|---|---|
@@ -10,6 +10,8 @@ Makr's AI team in one package. A shared brand brief keeps everything consistent,
 | Marketing | `marketing` | `marketer` | Campaigns, landing-page briefs, ads, event promotion |
 | Content | `content` | `content-writer` | Articles, FAQs, industry pages, LinkedIn, newsletters (SEO, AEO, GEO) |
 | Outreach | `outreach` | `outreach-drafter` | Prospect research and email drafts. **Drafts only; nothing is sent without Brennan's approval.** |
+| Design and brand review | `design` | `designer` | Makr design system, social graphics, ad creative, mockups, flyers, email templates; final brand check of every finished piece |
+| House editing | `editor` | `editor` | Makes every piece sound like Brennan, owner to owner, never like AI; keeps the house style and approved outreach style |
 | Web development | `web-dev` | `web-developer` | Changes to gomakr.ai, checked and handed off as a pull request (runs in Claude Code) |
 
 ## Set up: Brennan, in Cowork (business work)
@@ -17,6 +19,8 @@ Makr's AI team in one package. A shared brand brief keeps everything consistent,
 2. Choose **Add marketplace** and enter `brennan-source/LP`.
 3. Install **makr-team**.
 4. In Cowork, ask for work in plain language ("research HVAC competitors in the Merrimack Valley"), or call a role directly, such as `/makr-team:research` or `/makr-team:outreach`. The agents appear as `makr-team:researcher`, `makr-team:outreach-drafter` and so on.
+
+In Claude Code you can also install it in one step: `/plugin install makr-team --marketplace brennan-source/LP`.
 
 A plugin installed on your Claude account also appears in Claude Code on your computer at its next start. In plain claude.ai chat, the skills load but the agents don't; use Cowork or Claude Code for agents.
 

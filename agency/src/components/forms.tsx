@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { BOOKING_URL } from "@/lib/site";
 import { track, trackThenGo } from "@/lib/analytics";
+import { readAttribution } from "@/lib/attribution";
 
 // Shared pieces for the lead forms (/contact and the manufacturing checkup).
 
@@ -31,11 +32,12 @@ export function useFormStart(form: string) {
   };
 }
 
+// Every lead carries its source (UTM tags, landing page, referrer) when we have one.
 export async function submitLead(endpoint: string, form: string, payload: Record<string, unknown>) {
   const res = await fetch(endpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({ ...readAttribution(), ...payload }),
   });
   if (!res.ok) {
     const data = await res.json().catch(() => ({}));

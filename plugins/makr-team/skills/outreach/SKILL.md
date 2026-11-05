@@ -20,7 +20,7 @@ Load the `makr-brand` skill first.
 - 60–120 words. Subject line under 7 words, specific, no clickbait.
 - Open with the real observation about their business, not a compliment or "hope you're well."
 - One sentence on what Makr does that relates to it.
-- One easy ask: a free 20-minute Growth Gap Review, or a yes/no question.
+- One easy ask: a free 20-minute Business Growth Assessment, or a yes/no question.
 - Sign as Brennan, with Makr, Westford MA, and gomakr.ai.
 - Never imply a referral, relationship or past conversation that didn't happen. No fake "re:" or "following up" on a first message.
 

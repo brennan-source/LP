@@ -3,9 +3,9 @@ import Footer from "@/components/Footer";
 import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
-  title: "Book a Growth Gap Review",
+  title: "Book a Business Growth Assessment",
   description:
-    "Book a short, complimentary Growth Gap Review with Makr. We'll identify the clearest opportunities across your search visibility, website, lead follow-up and internal workflows.",
+    "Book a Business Growth Assessment with Makr: a free 20-minute call and a short written summary of where your business can win more work.",
   alternates: { canonical: "/contact" },
 };
 

@@ -41,7 +41,7 @@ export default function HomePage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3.5 items-center">
               <Link href="/contact" data-cta="home-hero-primary" className="bg-green-700 hover:bg-green-800 text-white px-6 py-3.5 rounded-md font-bold transition-colors">
-                Find Your Growth Gaps
+                Get Your Free Assessment
               </Link>
               <Link href="/pricing" data-cta="home-hero-pricing" className="bg-white border border-brass-light hover:border-brass text-ink px-6 py-3.5 rounded-md font-semibold transition-colors">
                 See pricing
@@ -79,7 +79,7 @@ export default function HomePage() {
             <SectionIntro
               eyebrow="Quick self-check"
               title="How many of these sound like you?"
-              intro="Tick what applies. Each answer points to the service that fixes it, and your Growth Gap Review starts from there."
+              intro="Tick what applies. Each answer points to the service that fixes it, and your Business Growth Assessment starts from there."
             />
           </div>
           <SelfCheck />

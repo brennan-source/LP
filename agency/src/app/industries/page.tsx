@@ -58,6 +58,11 @@ export default function IndustriesPage() {
                   {v.id === "manufacturing" ? "Request a Manufacturing Growth Checkup →" : `More on ${v.name} →`}
                 </Link>
               )}
+              {v.more?.map((m) => (
+                <Link key={m.href} href={m.href} className="inline-block ml-0 sm:ml-5 mt-4 sm:mt-0 text-sm font-semibold text-green-700 hover:text-green-800 underline underline-offset-4 decoration-green-300">
+                  {m.label} →
+                </Link>
+              ))}
             </div>
             <div className={i % 2 === 1 ? "md:order-1" : ""}>
               <div className="bg-white border border-brass-light rounded-sm p-6 sm:p-8">
@@ -74,7 +79,7 @@ export default function IndustriesPage() {
         </section>
       ))}
 
-      <CtaBand name="industries-bottom" title="Not sure if we're a fit?" body="Book a short Growth Gap Review. We'll tell you honestly whether we can help and where the clearest opportunity is for your business." />
+      <CtaBand name="industries-bottom" title="Not sure if we're a fit?" body="Book a short Business Growth Assessment. We'll tell you honestly whether we can help and where the clearest opportunity is for your business." />
       <Footer />
     </div>
   );

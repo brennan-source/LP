@@ -20,7 +20,7 @@ Four connected services (one operating system, not four businesses) — copy liv
 
 Five target markets: Home Services, Professional Services, Personal Services, Manufacturing, B2B Services.
 
-Primary action site-wide: **Book a Growth Gap Review** (nav CTA: "Find Your Growth Gaps") → `/contact` form → Google Calendar booking page (`BOOKING_URL` in `agency/src/lib/site.ts`).
+Primary action site-wide: **Book a Business Growth Assessment** (nav/CTA button: "Get Your Free Assessment"; renamed from "Growth Gap Review" / "Find Your Growth Gaps" in November 2026). Standard description: "A free 20-minute call and a short written summary of where your business can win more work." GA4 event names are unchanged; the nav `data-cta` labels are now `nav-free-assessment` and `nav-free-assessment-mobile`. Flow: → `/contact` form → Google Calendar booking page (`BOOKING_URL` in `agency/src/lib/site.ts`).
 
 Based in **New England**. This local angle matters — mention it where appropriate (about page, industries page, footer).
 
@@ -40,8 +40,13 @@ Priced per service, plus a discounted package for all four and an enterprise opt
 | **Enterprise** | Projects from $7,500 | Custom |
 
 **Pricing rules:**
-- Monthly prices are fixed; one-time builds are quoted within the published range after the Growth Gap Review and locked in writing before kickoff
+- Monthly prices are fixed; one-time builds are quoted within the published range after the Business Growth Assessment and locked in writing before kickoff
 - Keep package savings consistent with the per-service prices if any number changes
+
+**Contract and ownership terms (Brennan's decision, November 4, 2026):**
+- Monthly services: 3-month minimum, then month-to-month. After the minimum, cancel with 30 days' written notice.
+- Ownership: once the build fee is paid in full, the client owns the website. The client's domain, Google Business Profile, content and data are theirs too.
+- These terms appear in the "Our terms" block on `/pricing`, on `/switching`, in the industry-page offer blocks and in the articles. Change them everywhere together, plus `plugins/makr-team/skills/makr-brand/services-and-pricing.md`.
 
 ---
 
@@ -57,27 +62,30 @@ Priced per service, plus a discounted package for all four and an enterprise opt
 
 ## Design System — Color Tokens
 
-Defined in `agency/src/app/globals.css` under `@theme`:
+Defined in `agency/src/app/globals.css` under `@theme` (live values, checked November 2026):
 
 ```css
---color-canvas: #EDEBE4        /* warm limestone — primary page background */
---color-canvas-warm: #F5F3EE   /* slightly warmer canvas — secondary backgrounds */
---color-ink: #1C231E           /* near-black — headings, body text */
---color-ink-mid: #4A5548       /* mid-tone green-grey — secondary text */
---color-ink-light: #8A9490     /* light grey-green — captions, sources, tertiary */
---color-brass: #7A6344         /* warm brown — BORDERS AND BACKGROUNDS ONLY */
---color-brass-light: #EAE0D0   /* pale cream — BORDERS AND BACKGROUNDS ONLY */
+--color-canvas: #EEECE5        /* stone — primary page background, section differentiation */
+--color-canvas-warm: #FAF9F5   /* warm white — secondary backgrounds */
+--color-ink: #19211C           /* near-black — headings, body text */
+--color-ink-mid: #566058       /* muted green-grey — secondary text (AA on white, warm white, stone) */
+--color-ink-light: #626B64     /* captions, sources (AA on stone and lighter) */
+--color-brass: #84592F         /* same value as copper — use for borders and backgrounds */
+--color-brass-light: #D8D6CE   /* warm neutral — card borders and dividers */
+--color-copper: #84592F        /* small label text only (passes AA) */
+--color-copper-bright: #B87333 /* lines, borders, logo dot, active nav underline — NEVER text */
+--color-sage: #DCE7DE          /* soft green background */
+/* green-50…green-900 are overridden with the forest-green scale; green-700 #076B3A is the action color */
 ```
 
-### THE BRASS RULE — CRITICAL
+### Text color rules — CRITICAL
 
-**`text-brass` and `text-brass-light` must never be used as text colors.** Brass tokens are for borders (`border-brass`, `border-brass-light`) and backgrounds (`bg-brass`, `bg-brass-light`) only. On screen, `text-brass` reads as a warm pink/peach that is hard to read and off-brand.
-
-Instead:
-- Source citations, captions, labels → `text-ink-light`
-- Section eyebrows, step names → `text-ink-mid`
-- Text on dark (ink/green) backgrounds → `text-white` or `text-canvas-warm`
-- Decorative numbers → `text-ink-light`
+- **Never use `text-brass`, `text-brass-light` or `text-copper-bright` as text colors.** Brass tokens are for borders (`border-brass`, `border-brass-light`) and backgrounds only. (Historically `text-brass` rendered as a hard-to-read pink/peach; `copper-bright` fails contrast.)
+- **Copper label text** (section labels, small numbered labels) uses the `.eyebrow` class or `text-copper`. This is the one approved copper text color.
+- Body and secondary text → `text-ink` / `text-ink-mid`
+- Source citations and captions → `text-xs text-ink-light`
+- Text on dark (ink/green) backgrounds → `text-white`, `text-canvas-warm` or `text-green-100`; labels on green-900 use `.eyebrow eyebrow-on-dark` (#E2C49C)
+- Decorative numbers → `text-ink-light` or `text-copper`
 
 ### Approved color usage patterns
 
@@ -92,7 +100,7 @@ bg-green-900        — bottom CTA sections
 border-brass-light  — card borders, dividers (fine)
 border-brass        — hover borders, left-accent borders (fine)
 border-l-4 border-green-700  — pillar/capability cards
-border-l-2 border-brass      — FAQ items, problem lists
+border-l-[3px] border-copper-bright — FAQ items, problem lists, quotes
 ```
 
 ---
@@ -116,7 +124,7 @@ Supersedes older color guidance below where they conflict. Tokens live in `agenc
 
 - **Corner radius**: buttons `rounded-md`, cards `rounded-xl` (November 2026 redesign; replaces the old `rounded-sm`-only rule).
 - **Card left-border accent**: `border-l-4 border-{color} rounded-sm bg-white` — used for pillars, decision cards, capability cards
-- **Section eyebrow**: `text-xs font-bold uppercase tracking-widest text-ink-mid` — labels like "Monthly retainers", "One-time & custom"
+- **Section eyebrow**: the `.eyebrow` class (copper #84592F caps with a bright-copper rule), as in the November 2026 redesign above. Plain `text-xs font-bold uppercase tracking-widest text-ink-mid` is fine for in-card field labels (e.g. "One-time", "Monthly").
 - **Display headings**: `font-display font-extrabold` (Barlow Condensed) for hero/section headlines
 - **Body headings**: `font-display font-bold` for section titles
 - **Source/caption text**: `text-xs text-ink-light` — never text-brass
@@ -137,7 +145,8 @@ agency/src/app/
   pricing/page.tsx                  — Pricing page (linked from footer/solutions, not the nav)
   solutions/page.tsx                — Four services (/services 308-redirects here)
   industries/page.tsx               — Industries hub, all five markets (alternating layout)
-  industries/home-services/page.tsx — Home services sub-page
+  industries/home-services/page.tsx — Home services sub-page (trades campaign copy, offer, FAQ)
+  industries/law-firms/page.tsx     — Small law firms (2–20 lawyers); linked from the hub and professional services
   industries/professional-services/page.tsx
   industries/personal-services/page.tsx
   about/page.tsx                    — About page
@@ -146,22 +155,36 @@ agency/src/app/
   manufacturing-growth-checkup/     — Event landing page + form (Mash-Up, Oct 27 2026)
   api/checkup/route.ts              — Manufacturing checkup form API
   sitemap.ts                        — sitemap.xml
-  insights/page.tsx                 — Resources/insights
+  insights/page.tsx                 — Insights index (house design), grouped by market
+  insights/[slug]/page.tsx          — Article template: FAQPage + Article JSON-LD, sources, related links, CTA
+  switching/page.tsx                — Switching-from-a-locked-in-vendor checklist (FAQPage JSON-LD)
   api/contact/route.ts              — Contact form API route
+  favicon.ico, apple-icon.png       — Browser and Apple touch icons (App Router file conventions)
+  manifest.ts                       — Web app manifest; icons in agency/public/brand/makr-icon-192/512.png
+agency/public/brand/                — Approved wordmark (direction B, Nov 2026): makr-wordmark-on-light.svg (Nav), makr-wordmark-on-dark.svg (Footer)
 agency/src/components/
   Nav.tsx                           — Navigation (Home, Solutions, Industries, How It Works, About, Contact)
   Footer.tsx                        — Shared footer
   sections.tsx                      — PageHeader, SolutionCards, IndustryList, ProcessGrid, CtaBand
-  IndustryDetail.tsx                — Layout for /industries/* sub-pages
+  IndustryDetail.tsx                — Layout for /industries/* sub-pages; optional kicker, evidence, howWeWork, offer, faqs
+  Prose.tsx                         — Markdown-subset renderer for long-form copy, FaqList, faqSchema()
   forms.tsx                         — Shared form fields, tracking, post-submit scheduler redirect
   Analytics.tsx                     — GA4 loader + data-cta click tracking
 agency/src/lib/
   site.ts                           — Brand name, URLs, BOOKING_URL, GA_ID (NEXT_PUBLIC_GA_ID)
   content.ts                        — Shared copy: solutions, industries, problems, process
   analytics.ts                      — track(): cta_click, form_start, form_submit, schedule_click
-  leads.ts                          — Lead notification email via Resend
+  leads.ts                          — Lead notification email via Resend, incl. "Lead source" lines
+  attribution.ts                    — UTM source/medium/campaign, landing page and referrer per session
+  insights.ts                       — The six articles (copy from the approved drafts) and their sources
   evidence.ts                       — Source citations (all marked [VERIFY] — not verified for paid traffic)
 ```
+
+---
+
+### Retired pages (November 2026)
+
+`/preview/[slug]` (free-website previews, 4-month agreement, rankings language) and `/growth-score` (plus its report pages, API routes, components and `lib/growth-score`) were removed. `next.config.ts` 308-redirects `/preview/*` and `/growth-score/*` to `/contact`. Don't bring back free builds, trials or ranking reports. The Prisma schema and dependencies that only served Growth Score are still in `agency/`; remove them in a separate change. `/demo/[slug]` and `/postcard-preview` still carry the old free-website offer and are unlinked; they need Brennan's decision.
 
 ---
 
@@ -180,7 +203,7 @@ Branch `claude/optimistic-albattani-1uf2Y` is stale (cut from an older `main`); 
 
 ## AI Team (Claude plugin)
 
-The `makr-team` plugin in `plugins/makr-team/` holds Makr's shared brand brief plus strategy, research, marketing, content, outreach and web-dev skills and agents. The repository root is also the plugin marketplace (`.claude-plugin/marketplace.json`, name `makr`), and `.claude/settings.json` offers the plugin to anyone who opens this repo in Claude Code. Setup steps for Cowork and Claude Code are in `plugins/makr-team/README.md`.
+The `makr-team` plugin in `plugins/makr-team/` holds Makr's shared brand brief plus strategy, research, marketing, content, outreach, design, editor and web-dev skills and agents (v1.2.0). The repository root is also the plugin marketplace (`.claude-plugin/marketplace.json`, name `makr`), and `.claude/settings.json` offers the plugin to anyone who opens this repo in Claude Code. Setup steps for Cowork and Claude Code are in `plugins/makr-team/README.md`.
 
 - **Web developer agent:** `.claude/agents/web-developer.md` loads in every Claude Code session on this repo, including cloud sessions. It works on a branch, runs the checks, opens a pull request and never merges to `main` without Brennan's explicit approval.
 
@@ -223,12 +246,13 @@ The `makr-team` plugin in `plugins/makr-team/` holds Makr's shared brand brief p
 
 The contact form at `/contact` collects: name, business name, phone, email, business type (five markets + Other), industry/trade (free text), optional annual revenue, optional "where do you want help first", optional website and message. After submit it redirects to the booking calendar. There is no "free build" or "free trial" field — removed intentionally. The API route is at `agency/src/app/api/contact/route.ts`.
 
+Lead source: `Analytics.tsx` stores the UTM tags (`utm_source`, `utm_medium`, `utm_campaign`), the landing page and the referrer for the browser session (`lib/attribution.ts`). `submitLead()` in `forms.tsx` adds them to every form payload, and both lead APIs add a "Lead source" block to the notification email. Tag campaign links with UTMs so leads can be traced.
+
 ---
 
 ## What Still Needs Work (known gaps)
 
 - `evidence.ts` — all 12 source citations marked [VERIFY]. Do not drive paid traffic until confirmed.
-- `insights/page.tsx` — old palette, not updated to canvas/ink/brass system
 - `resources/page.tsx` — old palette and home-services-focused content; not linked from nav/footer
 - Website services are not reflected in /pricing tiers yet
 - GA4 needs `NEXT_PUBLIC_GA_ID` set in Vercel before analytics collects anything

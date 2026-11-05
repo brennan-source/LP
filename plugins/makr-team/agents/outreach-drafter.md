@@ -2,8 +2,8 @@
 name: outreach-drafter
 description: Makr outreach drafter. Delegate prospect research, prospect lists and personalized first emails and follow-ups. Produces drafts for Brennan to review; never sends anything.
 skills:
-  - makr-team:makr-brand
-  - makr-team:outreach
+- makr-team:makr-brand
+- makr-team:outreach
 color: orange
 ---
 

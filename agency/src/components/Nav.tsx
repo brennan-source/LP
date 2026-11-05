@@ -13,8 +13,10 @@ export function Nav({ activePath }: { activePath?: string }) {
   return (
     <nav aria-label="Main" className="fixed top-0 left-0 right-0 z-50 bg-canvas-warm/95 border-b border-brass-light">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" aria-label="Makr home" className="font-display text-[1.75rem] leading-none font-extrabold text-ink tracking-[-0.03em]">
-          Makr<span className="text-copper-bright">.</span>
+        <Link href="/" className="inline-flex items-center py-2">
+          {/* Approved wordmark (direction B). Plain img: SVGs aren't optimized by next/image. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/makr-wordmark-on-light.svg" alt="Makr" width={50} height={20} className="h-5 w-auto" />
         </Link>
         <div className="hidden lg:flex items-center gap-6 text-sm text-ink-mid">
           {LINKS.map(({ href, label }) => (
@@ -29,10 +31,10 @@ export function Nav({ activePath }: { activePath?: string }) {
           ))}
           <Link
             href="/contact"
-            data-cta="nav-growth-gaps"
-            className="px-4 py-2 bg-ink text-white hover:bg-green-800 rounded-md font-semibold transition-colors"
+            data-cta="nav-free-assessment"
+            className="px-4 py-2 bg-green-700 text-white hover:bg-green-800 rounded-md font-semibold transition-colors"
           >
-            Find Your Growth Gaps
+            Get Your Free Assessment
           </Link>
         </div>
 
@@ -55,10 +57,10 @@ export function Nav({ activePath }: { activePath?: string }) {
             ))}
             <Link
               href="/contact"
-              data-cta="nav-growth-gaps-mobile"
-              className="mt-2 px-4 py-3 bg-green-700 hover:bg-green-800 text-white text-sm text-center rounded-sm font-semibold"
+              data-cta="nav-free-assessment-mobile"
+              className="mt-2 px-4 py-3 bg-green-700 hover:bg-green-800 text-white text-sm text-center rounded-md font-semibold"
             >
-              Find Your Growth Gaps
+              Get Your Free Assessment
             </Link>
           </div>
         </details>

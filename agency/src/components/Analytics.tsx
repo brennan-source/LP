@@ -4,11 +4,14 @@ import Script from "next/script";
 import { useEffect } from "react";
 import { BOOKING_URL, GA_ID } from "@/lib/site";
 import { track } from "@/lib/analytics";
+import { captureAttribution } from "@/lib/attribution";
 
 // Loads GA4 (when NEXT_PUBLIC_GA_ID is set) and reports clicks on any element
 // marked with data-cta="<name>", plus every click through to the scheduler.
+// Also records UTM tags and the landing page for lead forms (lib/attribution.ts).
 export function Analytics() {
   useEffect(() => {
+    captureAttribution();
     function onClick(e: MouseEvent) {
       const el = (e.target as HTMLElement | null)?.closest<HTMLElement>("[data-cta], a[href]");
       if (!el) return;

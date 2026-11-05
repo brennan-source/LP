@@ -7,7 +7,10 @@ export function Footer() {
     <footer className="bg-ink text-[#B9C2BC] py-14 px-6">
       <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm">
         <div>
-          <div className="font-display font-bold text-xl text-white mb-3">Makr<span className="text-copper-bright">.</span></div>
+          <Link href="/" className="inline-block mb-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/makr-wordmark-on-dark.svg" alt="Makr" width={35} height={14} className="h-3.5 w-auto" />
+          </Link>
           <p>Websites, search and content, lead follow-up and practical AI workflows for growing businesses.</p>
           <p className="mt-3 text-canvas-warm">{LOCAL_LINE}</p>
           <a href={`mailto:${CONTACT_EMAIL}`} className="mt-3 inline-block py-1 hover:text-white transition-colors">{CONTACT_EMAIL}</a>
@@ -34,7 +37,7 @@ export function Footer() {
             <li><Link href="/how-it-works" className="inline-block py-1 hover:text-white transition-colors">How It Works</Link></li>
             <li><Link href="/about" className="inline-block py-1 hover:text-white transition-colors">About</Link></li>
             <li><Link href="/pricing" className="inline-block py-1 hover:text-white transition-colors">Pricing</Link></li>
-            <li><Link href="/growth-score" className="inline-block py-1 hover:text-white transition-colors">Free Growth Score</Link></li>
+            <li><Link href="/insights" className="inline-block py-1 hover:text-white transition-colors">Insights</Link></li>
             <li><Link href="/contact" className="inline-block py-1 hover:text-white transition-colors">Contact</Link></li>
           </ul>
         </div>

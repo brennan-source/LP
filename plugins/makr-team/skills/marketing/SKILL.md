@@ -1,6 +1,6 @@
 ---
 name: marketing
-description: Makr marketing covering campaigns, landing pages, ads, offers, event promotion, channel plans and measuring what works. Use when planning or writing anything meant to bring owners to a Growth Gap Review.
+description: Makr marketing covering campaigns, landing pages, ads, offers, event promotion, channel plans and measuring what works. Use when planning or writing anything meant to bring owners to a Business Growth Assessment.
 ---
 
 # Marketing
@@ -8,7 +8,7 @@ description: Makr marketing covering campaigns, landing pages, ads, offers, even
 Load the `makr-brand` skill first.
 
 ## Principles
-- **One audience, one problem, one action per piece.** Pick the market (dental, law, trades, manufacturing, B2B) and the pain from `markets.md`. The action is always to book a Growth Gap Review, or a step toward it.
+- **One audience, one problem, one action per piece.** Pick the market (dental, law, trades, manufacturing, B2B) and the pain from `markets.md`. The action is always to book a Business Growth Assessment, or a step toward it.
 - **Lead with the owner's problem in their words**, then the outcome, then how Makr does it.
 - **Proof without invention.** Use samples labeled as samples, published prices, the founder's accountability and the promises in `services-and-pricing.md`. No made-up results.
 - **Measure bookings, not clicks.** Every campaign names the metric (booked reviews) and how it's tracked (UTM tags, GA4 events: `cta_click`, `form_start`, `form_submit`, `schedule_click`).

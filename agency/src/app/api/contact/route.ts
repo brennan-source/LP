@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { EMAIL_RE, sendLeadEmail } from "@/lib/leads";
+import { EMAIL_RE, sendLeadEmail, sourceLines } from "@/lib/leads";
 
 export async function POST(req: NextRequest) {
   try {
@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     }
 
     await sendLeadEmail(
-      `New Growth Gap Review request: ${businessName} (${industry})`,
+      `New Business Growth Assessment request: ${businessName} (${industry})`,
       [
         `Name: ${name}`,
         `Business: ${businessName}`,
@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
         body.focus && `Wants help first with: ${body.focus}`,
         body.website && `Website: ${body.website}`,
         body.message && `Message: ${body.message}`,
+        ...sourceLines(body),
       ],
       email
     );

@@ -126,7 +126,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <CtaBand name="solutions-bottom" title="Not sure which piece to start with?" body="Book a short Growth Gap Review. We will look at how you're found, your website, follow-up and workflows and tell you where the clearest opportunity is." />
+      <CtaBand name="solutions-bottom" title="Not sure which piece to start with?" body="Book a short Business Growth Assessment. We will look at how you're found, your website, follow-up and workflows and tell you where the clearest opportunity is." />
       <Footer />
     </div>
   );

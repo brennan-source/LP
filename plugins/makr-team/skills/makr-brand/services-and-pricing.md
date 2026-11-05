@@ -10,15 +10,22 @@
 | Enterprise (multi-location, custom) | Projects from $7,500 | Custom |
 
 ## Rules
-- Monthly prices are fixed. One-time builds are quoted within the published range after the Growth Gap Review and locked in writing before work starts.
+- Monthly prices are fixed. One-time builds are quoted within the published range after the Business Growth Assessment and locked in writing before work starts.
 - Never quote a price that isn't in this table. Never offer discounts, free builds or trials; Brennan decides those.
 - If you change a price anywhere, keep the package savings consistent with the per-service prices.
 
-## The Growth Gap Review
-A free, roughly 20-minute review of how customers find the business, what happens when they reach out, and where the team loses hours. The owner gets:
+## Contract and ownership terms (Brennan's decision, November 4, 2026)
+- **Monthly services:** 3-month minimum, then month-to-month. After the minimum, cancel with 30 days' written notice.
+- **Ownership:** once the build fee is paid in full, the client owns their website. Their domain, Google Business Profile, content and data are theirs too.
+- State these terms the same way everywhere (site, articles, outreach, proposals). They're published on gomakr.ai/pricing and gomakr.ai/switching.
+- Don't describe these as "no contract": there is a 3-month minimum.
+
+## The Business Growth Assessment
+Formerly the "Growth Gap Review". A free, roughly 20-minute call about how customers find the business, what happens when they reach out, and where the team loses hours. The owner gets:
 - a clear read on search, website, follow-up and workflows
 - their top opportunities, in priority order
 - a recommended sequence, whether or not they hire Makr
+- a short written summary sent after the call
 
 Booking path: the contact form at gomakr.ai/contact, then the booking calendar.
 

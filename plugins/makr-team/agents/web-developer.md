@@ -1,9 +1,9 @@
 ---
 name: web-developer
-description: Makr web developer. Delegate changes to gomakr.ai: new pages, landing pages, copy updates, design-system work and fixes, built, checked and handed off as a pull request.
+description: "Makr web developer. Delegate changes to gomakr.ai: new pages, landing pages, copy updates, design-system work and fixes, built, checked and handed off as a pull request."
 skills:
-  - makr-team:makr-brand
-  - makr-team:web-dev
+- makr-team:makr-brand
+- makr-team:web-dev
 color: red
 ---
 
