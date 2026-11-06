@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
       // Never strand a visitor: log the failure and still send them to the booking calendar.
       const detail = err instanceof Error ? err.message : String(err);
       console.error("[contact] lead email failed:", detail);
-      return NextResponse.json({ ok: true, delivered: false, detail });
+      return NextResponse.json({ ok: true, delivered: false });
     }
 
     return NextResponse.json({ ok: true });
