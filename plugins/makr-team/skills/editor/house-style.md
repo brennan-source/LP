@@ -27,13 +27,14 @@ One business owner to another: articulate, empathetic, to the point, never arrog
 - A short, true line of context when it helps: "I run a small firm in Westford that helps owner-led businesses with follow-up and search."
 - First person, plainly: "I help", "I'd be glad to", not "Makr empowers".
 - Easy outs: "If the timing's wrong, no worries", "If this isn't useful, just say so and I won't follow up."
-- Sign-off: "Thanks," or "All the best," then "Brennan" on its own line, then the short signature.
+- Sign-off: "Thanks," (or "Best," / "All the best,") then "Brennan" on its own line, always. His Gmail signature follows with his full name, title, website and town; the first name is the personal touch, so never drop it.
 
 ## Signature (commercial email)
+Brennan's Gmail signature, added by Gmail (create drafts with the signature option on):
 Brennan Burks
-Makr · gomakr.ai
-[MAILING ADDRESS]
-(plus a one-line opt-out in plain words)
+Owner | Makr | gomakr.ai
+Westford, MA
+Never type a full signature block or a street address in the body. Always end with his first name, Brennan, after the sign-off.
 
 ## Before and after
 Before: "On [their website] this week, the Book Now and Chat With Us buttons on your Contact page didn't go anywhere."
@@ -50,11 +51,12 @@ After: "I help trades businesses make sure every call and web request gets a qui
 3. Widen in one sentence with the bigger question, naming two or three ways Makr helps that fit the market. Never the full service list. No social media management (not a Makr service).
    - Trades: the website, how you show up on Google and in AI search, what happens when the phone rings after hours.
    - Law: how easy the first step is for a new client, how you show up when people search for a lawyer, how fast inquiries get a reply.
-4. A plain, reply-based ask with no link: "If it's useful, I'd be glad to do a free 20-minute call to look at where work might be slipping through for you. Just reply and we'll find a time." Mention the short written summary when it fits. Easy out: "If it's not a fit, no hard feelings."
-5. "Thanks," then "Brennan", then the signature block and opt-out.
+4. A plain, reply-based ask with no link: "If it's useful, I'd be glad to do a free 20-minute call to look at where work might be slipping through for you. Just reply and we'll find a time." Mention the short written summary when it fits. Easy out, which also serves as the opt-out: "If it's not a fit, no hard feelings, and if you'd rather I not follow up, just say so."
+5. "Thanks," and "Brennan" on its own line. Gmail adds the signature below. No opt-out line.
 
 **Rules learned from Brennan's edits:**
-- Email sign-off (Nov 6, 2026): end the body with the opt-out line plus the mailing address, then "Thanks," and nothing else. Brennan's Gmail signature (name, Owner | Makr | gomakr.ai, Westford, MA) is added by Gmail; create drafts with the signature option on and never repeat his name or a signature block in the body.
+- Subject lines in title case and grammatically correct, professional rather than casual (e.g., "Same-Day Replies on Your Website", not "same-day replies"). Follow-ups use "Re: " plus the same subject.
+- Email sign-off (Nov 6, 2026): end the body with "Thanks," and "Brennan" on the next line. Never add a separate opt-out line ("If you'd rather not hear from me...") or a street address; the opt-out lives in the closing ask: "...no hard feelings, and if you'd rather I not follow up, just say so." (Brennan's decision.) Never include a street address anywhere (Brennan's decision); town and state come from the signature. Brennan's Gmail signature (name, Owner | Makr | gomakr.ai, Westford, MA) is added by Gmail; create drafts with the signature option on and never repeat his name or a signature block in the body.
 - Every observation about a prospect's site must have been seen in a real browser (desktop and phone). If the draft doesn't say it was verified, flag it rather than polishing it. (November 2026: 7 of 25 drafts described problems visitors never see.)
 - Never imply Brennan neglects his own website or marketing (he runs a marketing business). Empathy lines must not be self-deprecating about his craft.
 - Show more than lead follow-up, but in one sentence: website, search (Google and AI), follow-up. Don't throw in the kitchen sink.
@@ -64,7 +66,7 @@ After: "I help trades businesses make sure every call and web request gets a qui
 
 **Approved example (trades):**
 
-Subject: your contact page
+Subject: Your Contact Page
 
 Hi [First name],
 
@@ -72,16 +74,11 @@ I run a small marketing business out of Westford, Mass., that helps trades compa
 
 Fixes like that are usually quick. The bigger question I help owners answer is where work slips away: the website, how you show up on Google and in AI search, or what happens when the phone rings after hours.
 
-If it's useful, I'd be glad to do a free 20-minute call to look at where work might be slipping through for you. Just reply and we'll find a time. If it's not a fit, no hard feelings.
+If it's useful, I'd be glad to do a free 20-minute call to look at where work might be slipping through for you. Just reply and we'll find a time. If it's not a fit, no hard feelings, and if you'd rather I not follow up, just say so.
 
 Thanks,
 Brennan
-
-Brennan Burks
-Makr · gomakr.ai
-[MAILING ADDRESS]
-
-If you'd rather not hear from me, just reply and let me know.
+[Gmail signature]
 
 **Law version:** same shape, "helps small law firms bring in more clients", "law firms' websites", and the law widen sentence above. Greeting "Dear Attorney [Last name]," unless the firm's site is clearly first-name casual.
 
