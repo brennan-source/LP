@@ -18,6 +18,7 @@ Load the `makr-brand` skill first.
 - Record for each observation: the exact URL, the date checked, desktop/phone, and what a visitor sees or what happened when you clicked. Prefer observations the owner can confirm in ten seconds on their own phone.
 - Never claim something is missing (no form, no email, no booking) unless you checked the contact page, the home page, the header, the footer and the main menu. When a site already does something well, open with that genuine positive instead of inventing a gap.
 - Re-check the observation on the day the message is sent; sites change.
+- **No links in Gmail drafts created through the connector.** The Gmail connector rewrites every web address (linked or plain text) into a google.com redirect when it saves a draft. Leave web addresses out of the body and signature. The link to www.gomakr.ai comes from Brennan's Gmail signature, added when he sends, or he types it himself. Never let a redirect reach a prospect. If a follow-up must point to the booking page, write the draft without the link and flag it for Brennan to add.
 - Don't collect personal information beyond business contact details, and respect opt-outs and do-not-contact lists.
 
 ## Writing the first message
