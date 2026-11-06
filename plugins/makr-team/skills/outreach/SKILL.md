@@ -33,7 +33,7 @@ Load the `makr-brand` skill first.
 Two follow-ups at most, about 4 and 10 days apart, each adding something useful (a relevant tip or a sample from the site), then stop. Honor any reply asking to stop.
 
 ## Compliance basics (US)
-Commercial email needs an accurate sender and a non-deceptive subject. Brennan has decided (Nov 6, 2026) that Makr emails carry no opt-out line and no street address (town and state only, via his Gmail signature); he is aware CAN-SPAM asks for both. Never add either to a draft. Anyone who replies asking not to be contacted is removed the same day. Flag anything outside the US for Brennan, since rules differ.
+Commercial email needs an accurate sender and a non-deceptive subject. Brennan has decided (Nov 6, 2026) that Makr emails carry no separate opt-out line and no street address (town and state only, via his Gmail signature). The opt-out is built into the closing ask: "If it's not a fit, no hard feelings, and if you'd rather I not follow up, just say so." Never add a street address. Anyone who replies asking not to be contacted is removed the same day. Flag anything outside the US for Brennan, since rules differ.
 
 ## Output
 For each prospect: business, why they fit, the observation (with where you saw it), the draft email, and follow-up drafts. Put them in a table or document for review.

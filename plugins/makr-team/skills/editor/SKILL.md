@@ -16,7 +16,7 @@ Brennan Burks, a business owner writing to another business owner. Articulate an
 3. **Humanize.** Apply the "Sounds like AI" list in house-style.md line by line. Vary sentence length. Use contractions. Allow one plain personal touch (Westford, running a small business) when it's true and relevant.
 4. **Soften the ask.** Permission-based and easy to decline. One ask, no pressure, no false urgency.
 5. **Cut.** Remove anything the reader doesn't need. Cold emails stay under about 110 words before the signature.
-6. **Hold the rules.** Claim rules in `voice-and-claims.md`, prices and terms only from the brand brief, no opt-out line and no street address in Makr emails (Brennan's decision, Nov 6, 2026), statistics only with a cited source.
+6. **Hold the rules.** Claim rules in `voice-and-claims.md`, prices and terms only from the brand brief, the opt-out built into the closing ask ("...if you'd rather I not follow up, just say so") and no street address in Makr emails (Brennan's decision, Nov 6, 2026), statistics only with a cited source.
 7. **Read it aloud.** If Brennan wouldn't say it across a table, rewrite it.
 
 ## Output

@@ -30,7 +30,7 @@ Check each item and report pass / fix needed, with the exact fix:
 4. **Offer and prices:** only what's in `services-and-pricing.md`; no discounts, trials or free builds; the call to action is the Business Growth Assessment.
 5. **Visual consistency:** colors, fonts and components match the Makr design system; logo used correctly; contrast passes.
 6. **Market fit:** one market, one pain, written in that market's words (`markets.md`); local references are real, not invented.
-7. **Outreach safety:** drafts only; no implied relationship, referral or past conversation; no opt-out line or street address in Makr emails (Brennan's decision).
+7. **Outreach safety:** drafts only; no implied relationship, referral or past conversation; opt-out built into the closing ask and no street address in Makr emails (Brennan's decision).
 8. **Accessibility:** alt text on images, readable sizes, links that say where they go.
 
 Fix what you can directly. Anything that needs Brennan's decision goes in a short "needs Brennan" list.
