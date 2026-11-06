@@ -40,19 +40,22 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-[16rem_1fr] gap-x-12 gap-y-6">
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-ink-mid">Founder</p>
-            <h2 className="mt-3 font-display font-bold text-4xl text-ink leading-tight">A person accountable for the work.</h2>
+            <h2 className="mt-3 font-display font-bold text-4xl text-ink leading-tight">Why Makr exists.</h2>
           </div>
           <div className="max-w-2xl space-y-5 text-ink-mid text-lg leading-relaxed">
             <p>
-              I&apos;m Brennan Burks, founder of Makr. For 13 years I&apos;ve led communications and marketing for organizations
-              in manufacturing, financial services, biotech and higher education — including corporate communications for a
-              $1B division of a global paper manufacturer, and an independent practice advising founders on how to explain
-              what they do and win the right customers.
+              Good businesses lose work in small, fixable places: a website that undersells them, an inquiry nobody got
+              back to, a quote that went quiet, an office buried in copy-and-paste. None of it is dramatic. All of it adds up.
             </p>
             <p>
-              The pattern is the same everywhere: good businesses lose opportunities because their website undersells them,
-              follow-up depends on memory, and their teams are buried in manual work. Makr fixes those basics — and I&apos;m
-              personally responsible for every engagement.
+              Makr exists to fix those basics and keep them working, so owners can spend their time on the work they&apos;re
+              actually good at. I&apos;m personally responsible for every engagement, and you&apos;ll always know who to call.
+            </p>
+            <p>
+              Before Makr, I led marketing and communications for corporate, government, nonprofit and community
+              organizations, including a $1 billion paper and packaging manufacturer, a $7.5 billion bank and several
+              technology startups. For the past decade, I&apos;ve also advised owners and founders on how to tell their best
+              story to customers and earn the right to win their business.
             </p>
             <p className="text-base">
               <span className="font-semibold text-ink">Brennan Burks</span> · Westford, Massachusetts ·{" "}
@@ -88,10 +91,7 @@ export default function AboutPage() {
           <h2 className="font-display font-extrabold uppercase text-4xl md:text-5xl leading-[0.95] text-ink mb-8">What we believe</h2>
           <div className="space-y-6 text-ink-mid text-lg leading-relaxed">
             <p>
-              Most growing businesses aren&apos;t held back by one big failure. They lose ground in small gaps: customers who can&apos;t find them, a website that doesn&apos;t convert, an inquiry nobody followed up on, a quote that went cold, hours of copying information between tools.
-            </p>
-            <p>
-              Closing those gaps is less about technology than about getting the basics to work together. AI is a useful tool for that — but it is one capability, not the whole answer.
+              Closing the gaps is less about technology than about getting the basics to work together. AI is a useful tool for that — but it is one capability, not the whole answer.
             </p>
             <p>
               So we start with the bottleneck, build the fix that matters most, connect it to the tools you already use and stay involved to keep improving it.

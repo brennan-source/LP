@@ -239,15 +239,15 @@ export type SampleReport = {
 
 export const SAMPLE_REPORTS: SampleReport[] = [
   {
-    key: "dental",
-    tab: "Dental practice",
-    business: "Example Dental Practice (fictional)",
-    problem: "New-patient calls went to voicemail during procedures.",
+    key: "plumbing",
+    tab: "HVAC/Plumbing",
+    business: "Example HVAC & Plumbing Co. (fictional)",
+    problem: "After-hours calls went unanswered; estimates went quiet.",
     items: [
-      { text: "New-patient FAQ page published and Google Business Profile hours updated", service: "Search & content", status: "Done" },
-      { text: "New-patient call missed → text back with booking link in 1 min", service: "Lead follow-up", status: "Booked" },
-      { text: "Recall reminders sent to patients due for cleanings", service: "Lead follow-up", status: "Sent" },
-      { text: "Intake forms filled into the practice system automatically", service: "AI workflow", status: "Done" },
+      { text: "Google Business Profile service areas and hours updated", service: "Search & content", status: "Done" },
+      { text: "Missed 9pm call → text back, job booked for 8am", service: "Lead follow-up", status: "Booked" },
+      { text: "Water-heater estimate reminder sent, day 3", service: "Lead follow-up", status: "Waiting", waiting: true },
+      { text: "Job details sent to dispatch without re-typing", service: "AI workflow", status: "Done" },
     ],
   },
   {
@@ -263,18 +263,6 @@ export const SAMPLE_REPORTS: SampleReport[] = [
     ],
   },
   {
-    key: "plumbing",
-    tab: "Plumbing",
-    business: "Example Plumbing & Heating Co. (fictional)",
-    problem: "After-hours calls went unanswered; estimates went quiet.",
-    items: [
-      { text: "Google Business Profile service areas and hours updated", service: "Search & content", status: "Done" },
-      { text: "Missed 9pm call → text back, job booked for 8am", service: "Lead follow-up", status: "Booked" },
-      { text: "Water-heater estimate reminder sent, day 3", service: "Lead follow-up", status: "Waiting", waiting: true },
-      { text: "Job details sent to dispatch without re-typing", service: "AI workflow", status: "Done" },
-    ],
-  },
-  {
     key: "manufacturing",
     tab: "Manufacturing",
     business: "Example Precision Machining Co. (fictional)",
@@ -284,6 +272,18 @@ export const SAMPLE_REPORTS: SampleReport[] = [
       { text: "RFQ acknowledged in 1 min and routed to estimating", service: "Lead follow-up", status: "Answered" },
       { text: "Quote #4471 reminder sent, day 3", service: "Lead follow-up", status: "Waiting", waiting: true },
       { text: "PO details read from email and entered automatically", service: "AI workflow", status: "Done" },
+    ],
+  },
+  {
+    key: "dental",
+    tab: "Dental practice",
+    business: "Example Dental Practice (fictional)",
+    problem: "New-patient calls went to voicemail during procedures.",
+    items: [
+      { text: "New-patient FAQ page published and Google Business Profile hours updated", service: "Search & content", status: "Done" },
+      { text: "New-patient call missed → text back with booking link in 1 min", service: "Lead follow-up", status: "Booked" },
+      { text: "Recall reminders sent to patients due for cleanings", service: "Lead follow-up", status: "Sent" },
+      { text: "Intake forms filled into the practice system automatically", service: "AI workflow", status: "Done" },
     ],
   },
 ];
