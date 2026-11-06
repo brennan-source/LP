@@ -52,7 +52,7 @@ After: "I help trades businesses make sure every call and web request gets a qui
    - Trades: the website, how you show up on Google and in AI search, what happens when the phone rings after hours.
    - Law: how easy the first step is for a new client, how you show up when people search for a lawyer, how fast inquiries get a reply.
 4. A plain, reply-based ask with no link: "If it's useful, I'd be glad to do a free 20-minute call to look at where work might be slipping through for you. Just reply and we'll find a time." Mention the short written summary when it fits. Easy out: "If it's not a fit, no hard feelings."
-5. "Thanks," then "Brennan", then the signature block and opt-out.
+5. The opt-out line, then "Thanks," and "Brennan" on its own line. Gmail adds the signature below.
 
 **Rules learned from Brennan's edits:**
 - Email sign-off (Nov 6, 2026): end the body with the opt-out line, then "Thanks," and "Brennan" on the next line. Never include a street address anywhere (Brennan's decision); town and state come from the signature. Brennan's Gmail signature (name, Owner | Makr | gomakr.ai, Westford, MA) is added by Gmail; create drafts with the signature option on and never repeat his name or a signature block in the body.
