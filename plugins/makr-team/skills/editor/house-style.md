@@ -54,6 +54,7 @@ After: "I help trades businesses make sure every call and web request gets a qui
 5. "Thanks," then "Brennan", then the signature block and opt-out.
 
 **Rules learned from Brennan's edits:**
+- Every observation about a prospect's site must have been seen in a real browser (desktop and phone). If the draft doesn't say it was verified, flag it rather than polishing it. (November 2026: 7 of 25 drafts described problems visitors never see.)
 - Never imply Brennan neglects his own website or marketing (he runs a marketing business). Empathy lines must not be self-deprecating about his craft.
 - Show more than lead follow-up, but in one sentence: website, search (Google and AI), follow-up. Don't throw in the kitchen sink.
 - Don't use the branded name "Business Growth Assessment" in cold outreach; describe it plainly. Use the name on the website and once someone has said yes.
