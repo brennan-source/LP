@@ -16,7 +16,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
     }
 
-    await sendLeadEmail(
+    try {
+      await sendLeadEmail(
       `New Business Growth Assessment request: ${businessName} (${industry})`,
       [
         `Name: ${name}`,
@@ -33,6 +34,12 @@ export async function POST(req: NextRequest) {
       ],
       email
     );
+    } catch (err) {
+      // Never strand a visitor: log the failure and still send them to the booking calendar.
+      const detail = err instanceof Error ? err.message : String(err);
+      console.error("[contact] lead email failed:", detail);
+      return NextResponse.json({ ok: true, delivered: false, detail });
+    }
 
     return NextResponse.json({ ok: true });
   } catch {
