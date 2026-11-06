@@ -52,11 +52,11 @@ After: "I help trades businesses make sure every call and web request gets a qui
    - Trades: the website, how you show up on Google and in AI search, what happens when the phone rings after hours.
    - Law: how easy the first step is for a new client, how you show up when people search for a lawyer, how fast inquiries get a reply.
 4. A plain, reply-based ask with no link: "If it's useful, I'd be glad to do a free 20-minute call to look at where work might be slipping through for you. Just reply and we'll find a time." Mention the short written summary when it fits. Easy out: "If it's not a fit, no hard feelings."
-5. The opt-out line, then "Thanks," and "Brennan" on its own line. Gmail adds the signature below.
+5. "Thanks," and "Brennan" on its own line. Gmail adds the signature below. No opt-out line.
 
 **Rules learned from Brennan's edits:**
 - Subject lines in title case and grammatically correct, professional rather than casual (e.g., "Same-Day Replies on Your Website", not "same-day replies"). Follow-ups use "Re: " plus the same subject.
-- Email sign-off (Nov 6, 2026): end the body with the opt-out line, then "Thanks," and "Brennan" on the next line. Never include a street address anywhere (Brennan's decision); town and state come from the signature. Brennan's Gmail signature (name, Owner | Makr | gomakr.ai, Westford, MA) is added by Gmail; create drafts with the signature option on and never repeat his name or a signature block in the body.
+- Email sign-off (Nov 6, 2026): end the body with "Thanks," and "Brennan" on the next line. Never add an opt-out line ("If you'd rather not hear from me...") or a street address (Brennan's decision). Never include a street address anywhere (Brennan's decision); town and state come from the signature. Brennan's Gmail signature (name, Owner | Makr | gomakr.ai, Westford, MA) is added by Gmail; create drafts with the signature option on and never repeat his name or a signature block in the body.
 - Every observation about a prospect's site must have been seen in a real browser (desktop and phone). If the draft doesn't say it was verified, flag it rather than polishing it. (November 2026: 7 of 25 drafts described problems visitors never see.)
 - Never imply Brennan neglects his own website or marketing (he runs a marketing business). Empathy lines must not be self-deprecating about his craft.
 - Show more than lead follow-up, but in one sentence: website, search (Google and AI), follow-up. Don't throw in the kitchen sink.
@@ -75,8 +75,6 @@ I run a small marketing business out of Westford, Mass., that helps trades compa
 Fixes like that are usually quick. The bigger question I help owners answer is where work slips away: the website, how you show up on Google and in AI search, or what happens when the phone rings after hours.
 
 If it's useful, I'd be glad to do a free 20-minute call to look at where work might be slipping through for you. Just reply and we'll find a time. If it's not a fit, no hard feelings.
-
-If you'd rather not hear from me, just reply and let me know.
 
 Thanks,
 Brennan
