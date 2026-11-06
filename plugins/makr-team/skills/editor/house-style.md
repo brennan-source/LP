@@ -27,14 +27,14 @@ One business owner to another: articulate, empathetic, to the point, never arrog
 - A short, true line of context when it helps: "I run a small firm in Westford that helps owner-led businesses with follow-up and search."
 - First person, plainly: "I help", "I'd be glad to", not "Makr empowers".
 - Easy outs: "If the timing's wrong, no worries", "If this isn't useful, just say so and I won't follow up."
-- Sign-off: "Thanks," and nothing after it. Brennan's Gmail signature supplies his name.
+- Sign-off: "Thanks," (or "Best," / "All the best,") then "Brennan" on its own line, always. His Gmail signature follows with his full name, title, website and town; the first name is the personal touch, so never drop it.
 
 ## Signature (commercial email)
 Brennan's Gmail signature, added by Gmail (create drafts with the signature option on):
 Brennan Burks
 Owner | Makr | gomakr.ai
 Westford, MA
-Never type a signature block, his name after "Thanks," or a street address in the body.
+Never type a full signature block or a street address in the body. Always end with his first name, Brennan, after the sign-off.
 
 ## Before and after
 Before: "On [their website] this week, the Book Now and Chat With Us buttons on your Contact page didn't go anywhere."
@@ -55,7 +55,7 @@ After: "I help trades businesses make sure every call and web request gets a qui
 5. "Thanks," then "Brennan", then the signature block and opt-out.
 
 **Rules learned from Brennan's edits:**
-- Email sign-off (Nov 6, 2026): end the body with the opt-out line, then "Thanks," and nothing else. Never include a street address anywhere (Brennan's decision); town and state come from the signature. Brennan's Gmail signature (name, Owner | Makr | gomakr.ai, Westford, MA) is added by Gmail; create drafts with the signature option on and never repeat his name or a signature block in the body.
+- Email sign-off (Nov 6, 2026): end the body with the opt-out line, then "Thanks," and "Brennan" on the next line. Never include a street address anywhere (Brennan's decision); town and state come from the signature. Brennan's Gmail signature (name, Owner | Makr | gomakr.ai, Westford, MA) is added by Gmail; create drafts with the signature option on and never repeat his name or a signature block in the body.
 - Every observation about a prospect's site must have been seen in a real browser (desktop and phone). If the draft doesn't say it was verified, flag it rather than polishing it. (November 2026: 7 of 25 drafts described problems visitors never see.)
 - Never imply Brennan neglects his own website or marketing (he runs a marketing business). Empathy lines must not be self-deprecating about his craft.
 - Show more than lead follow-up, but in one sentence: website, search (Google and AI), follow-up. Don't throw in the kitchen sink.
@@ -78,6 +78,7 @@ If it's useful, I'd be glad to do a free 20-minute call to look at where work mi
 If you'd rather not hear from me, just reply and let me know.
 
 Thanks,
+Brennan
 [Gmail signature]
 
 **Law version:** same shape, "helps small law firms bring in more clients", "law firms' websites", and the law widen sentence above. Greeting "Dear Attorney [Last name]," unless the firm's site is clearly first-name casual.
