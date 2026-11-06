@@ -55,6 +55,7 @@ After: "I help trades businesses make sure every call and web request gets a qui
 5. The opt-out line, then "Thanks," and "Brennan" on its own line. Gmail adds the signature below.
 
 **Rules learned from Brennan's edits:**
+- Subject lines in title case and grammatically correct, professional rather than casual (e.g., "Same-Day Replies on Your Website", not "same-day replies"). Follow-ups use "Re: " plus the same subject.
 - Email sign-off (Nov 6, 2026): end the body with the opt-out line, then "Thanks," and "Brennan" on the next line. Never include a street address anywhere (Brennan's decision); town and state come from the signature. Brennan's Gmail signature (name, Owner | Makr | gomakr.ai, Westford, MA) is added by Gmail; create drafts with the signature option on and never repeat his name or a signature block in the body.
 - Every observation about a prospect's site must have been seen in a real browser (desktop and phone). If the draft doesn't say it was verified, flag it rather than polishing it. (November 2026: 7 of 25 drafts described problems visitors never see.)
 - Never imply Brennan neglects his own website or marketing (he runs a marketing business). Empathy lines must not be self-deprecating about his craft.
@@ -65,7 +66,7 @@ After: "I help trades businesses make sure every call and web request gets a qui
 
 **Approved example (trades):**
 
-Subject: your contact page
+Subject: Your Contact Page
 
 Hi [First name],
 
