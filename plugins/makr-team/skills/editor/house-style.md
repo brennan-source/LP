@@ -56,6 +56,7 @@ After: "I help trades businesses make sure every call and web request gets a qui
 
 **Rules learned from Brennan's edits:**
 - Subject lines in title case and grammatically correct, professional rather than casual (e.g., "Same-Day Replies on Your Website", not "same-day replies"). Follow-ups use "Re: " plus the same subject.
+- Greetings (Nov 10, 2026, Brennan's decision): use first names for everyone. Law firms: "Dear Pamela,"; trades: "Hi Warren,"; two people: "Dear Brendan and Linda,". Never "Dear Attorney Brown" or any title. Before: "Dear Attorney Vaughan," After: "Dear Brian,".
 - Email sign-off (Nov 6, 2026): end the body with "Thanks," and "Brennan" on the next line. Never add a separate opt-out line ("If you'd rather not hear from me...") or a street address; the opt-out lives in the closing ask: "...no hard feelings, and if you'd rather I not follow up, just say so." (Brennan's decision.) Never include a street address anywhere (Brennan's decision); town and state come from the signature. Brennan's Gmail signature (name, Owner | Makr | gomakr.ai, Westford, MA) is added by Gmail; create drafts with the signature option on and never repeat his name or a signature block in the body.
 - Every observation about a prospect's site must have been seen in a real browser (desktop and phone). If the draft doesn't say it was verified, flag it rather than polishing it. (November 2026: 7 of 25 drafts described problems visitors never see.)
 - Never imply Brennan neglects his own website or marketing (he runs a marketing business). Empathy lines must not be self-deprecating about his craft.
@@ -80,6 +81,6 @@ Thanks,
 Brennan
 [Gmail signature]
 
-**Law version:** same shape, "helps small law firms bring in more clients", "law firms' websites", and the law widen sentence above. Greeting "Dear Attorney [Last name]," unless the firm's site is clearly first-name casual.
+**Law version:** same shape, "helps small law firms bring in more clients", "law firms' websites", and the law widen sentence above. Greeting "Dear [First name]," (see the greeting rule above).
 
 **Follow-ups:** shorter (40–70 words), add one genuinely useful tip or a different angle, may include gomakr.ai/contact for booking the free Business Growth Assessment, and the last one closes the loop politely. No guilt ("just bumping this").
