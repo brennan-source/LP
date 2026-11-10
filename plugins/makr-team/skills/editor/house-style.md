@@ -46,7 +46,7 @@ After: "I help trades businesses make sure every call and web request gets a qui
 ## Approved outreach style: "Owner to owner" (approved by Brennan, November 5, 2026)
 
 **Shape of a first email or contact-form message:**
-1. Who Brennan is and why he was looking, in one line: "I run a small marketing business out of Westford, Mass., that helps [trades companies win more work / small law firms bring in more clients], so I spend a lot of time on [contractors' / law firms'] websites."
+1. Who Brennan is and why he was looking, in one line: "I run a small marketing business out of Westford, Mass., that helps [trades companies win more work / local law firms bring in more clients], so I spend a lot of time on [contractors' / law firms'] websites."
 2. One specific, verified observation, offered as a heads-up ("in case nobody's flagged it"). Never framed as a flaw he caught.
 3. Widen in one sentence with the bigger question, naming two or three ways Makr helps that fit the market. Never the full service list. No social media management (not a Makr service).
    - Trades: the website, how you show up on Google and in AI search, what happens when the phone rings after hours.
@@ -56,6 +56,7 @@ After: "I help trades businesses make sure every call and web request gets a qui
 
 **Rules learned from Brennan's edits:**
 - Subject lines in title case and grammatically correct, professional rather than casual (e.g., "Same-Day Replies on Your Website", not "same-day replies"). Follow-ups use "Re: " plus the same subject.
+- Don't say "small" twice in the intro (Nov 10, 2026, Brennan's decision). Makr is the "small marketing business"; describe the prospect as "local law firms", "trades companies", "local practices". Before: "a small marketing business ... that helps small law firms". After: "a small marketing business ... that helps local law firms".
 - Greetings (Nov 10, 2026, Brennan's decision): use first names for everyone. Law firms: "Dear Pamela,"; trades: "Hi Warren,"; two people: "Dear Brendan and Linda,". Never "Dear Attorney Brown" or any title. Before: "Dear Attorney Vaughan," After: "Dear Brian,".
 - Email sign-off (Nov 6, 2026): end the body with "Thanks," and "Brennan" on the next line. Never add a separate opt-out line ("If you'd rather not hear from me...") or a street address; the opt-out lives in the closing ask: "...no hard feelings, and if you'd rather I not follow up, just say so." (Brennan's decision.) Never include a street address anywhere (Brennan's decision); town and state come from the signature. Brennan's Gmail signature (name, Owner | Makr | gomakr.ai, Westford, MA) is added by Gmail; create drafts with the signature option on and never repeat his name or a signature block in the body.
 - Every observation about a prospect's site must have been seen in a real browser (desktop and phone). If the draft doesn't say it was verified, flag it rather than polishing it. (November 2026: 7 of 25 drafts described problems visitors never see.)
@@ -81,6 +82,6 @@ Thanks,
 Brennan
 [Gmail signature]
 
-**Law version:** same shape, "helps small law firms bring in more clients", "law firms' websites", and the law widen sentence above. Greeting "Dear [First name]," (see the greeting rule above).
+**Law version:** same shape, "helps local law firms bring in more clients", "law firms' websites", and the law widen sentence above. Greeting "Dear [First name]," (see the greeting rule above).
 
 **Follow-ups:** shorter (40–70 words), add one genuinely useful tip or a different angle, may include gomakr.ai/contact for booking the free Business Growth Assessment, and the last one closes the loop politely. No guilt ("just bumping this").
